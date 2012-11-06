@@ -1,0 +1,10 @@
+@charset "utf-8";
+/* CSS Document */ 
+/*** IE 7 Fixes ***/
+h3{width:100%; min-height:20px; line-height:1.3em;}
+#right div.widget_meta a, #right div.widget_categories a{ margin-top:5px;}
+.tab_inside span.date{width:100%; float:left;}
+#footer_widget div.inside div.widget ul a{ float:left; width:100%; margin:0; padding:0;}
+#footer_widget div.inside div.widget  li{ margin-top:10px;}
+.shortcode_left_image{margin-top:35px;}
+.shortcode_right_image{margin-top:35px;}
