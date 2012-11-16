@@ -7,12 +7,18 @@ class Main extends CI_Controller
     function __construct() {
         parent::__construct();
         
-        $this->load->helper('parser/download');
-        $this->load->library('parser/rss_url');
+        set_time_limit( 600 );
+        
+        $this->load->database();
+//        $this->load->helper('parser/download');
         $this->load->helper('parser/simple_html_dom');
+        $this->load->library('parser/rss_url_lib');
+        $this->load->library('parser/parse_lib');
+        $this->load->library('parser/news_parser_lib');
+        $this->load->library('parser/parse_page_lib');
+        $this->load->model('parser_m');
         
-        set_time_limit( 300 );
-        
+        unset( $this->parser_lib );
     }
 
 
@@ -35,8 +41,6 @@ class Main extends CI_Controller
                         //-! 'http://biz.liga.net/all/rss.xml',                      //== CAT TRUE
                         //-! 'http://finance.liga.net/export/all.xml',               //== CAT TRUE
                         //-! 'http://blog.liga.net/rss.aspx',                        //== CAT !FALSE            
-                        'http://zn.ua/export.rss',                              //== CAT !FALSE
-                        'http://www.rbc.ua/static/rss/topnews.rus.rss.xml',     //== CAT TRUE
                         'http://isport.ua/hnd/rss.ashx?image=0',                 //== CAT TRUE
                         'http://k.img.com.ua/rss/ru/news.xml'
                         );
@@ -44,12 +48,49 @@ class Main extends CI_Controller
         foreach ($url_ar as $url)
         {
             echo "<b>{$url}</b> <br /> \n\n";
-            $xml_str = down_with_curl($url);
+            $xml_str = $this->news_parser_lib->down_with_curl($url);
             
-            $news_ar = $this->rss_url->get_url( $xml_str );
+            $news_ar = $this->rss_url_lib->get_url( $xml_str );
+            
+            if( is_array($news_ar) && count($news_ar) > 0 ){
+                foreach( $news_ar as $news){
+                    $cat_id = $this->rss_url_lib->get_cat_id( $url, $news['url'], $news['category'] );
+                    if( $cat_id )
+                        $this->parser_m->add_to_scanlist( $news['url'], $cat_id );
+                }
+            }
             
             
             echo "<pre>".print_r( $news_ar, 1 )."</pre>";
         }
+    }
+    
+    function parse_news( $cnt_news = 1000 ){
+        header("Content-type:text/plain;Charset=utf-8");
+        
+        $parse_list = $this->parser_m->get_news_url_to_parse( $cnt_news );
+        
+        if( !$parse_list ){  echo "ERROR Отсутствуют URL для сканирования"; return; }
+        
+        foreach( $parse_list as $news_ar ){
+            
+//            $news_ar['url'] = 'http://tsn.ua/vybory_2012/svoboda-zahopila-kilka-mazhoritarnih-mandativ-poki-pr-zdaye-poziciyi.html';
+            
+            $html = $this->news_parser_lib->down_with_curl( $news_ar['url'] );
+            if( empty($html) ) continue;
+            
+            $host                           = $this->news_parser_lib->get_donor_url( $news_ar['url'] );
+            $insert_data                    = $this->parse_page_lib->get_data( $html, $host); 
+            $insert_data['scan_url_id']     = $news_ar['id'];
+            $insert_data['url']             = $news_ar['url'];
+            $insert_data['cat_id']          = $news_ar['cat_id'];
+            $insert_data['date']            = date("Y-m-d H:i:s");
+            
+//            echo $news_ar['url'].'<br />';
+//            echo '<pre>'.print_r($insert_data,1).'</pre>';
+            
+            $this->news_parser_lib->insert_news( $insert_data );
+            flush();
+        }    
     }
 }

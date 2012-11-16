@@ -5,6 +5,7 @@ function seoUrl( $title )
 {
     $title = iconv('utf-8', 'cp1251', $title);
 	$title = preg_replace("#&[a-z]+;#i", ' ', $title); //удаление мнемоники
+	$title = preg_replace("|&#\d{2,4};|i", ' ', $title); //удаление мнемоники
 	$title = strtolower( trim($title) );
 
     $letters = array(
@@ -15,9 +16,11 @@ function seoUrl( $title )
         'д'=>'d',
         'е'=>'e',
         'ё'=>'e',
+		'є'=>'e',
         'ж'=>'j',
         'з'=>'z',
         'и'=>'i',
+		'і'=>'i',
         'й'=>'y',
         'к'=>'k',
         'л'=>'l',
@@ -48,9 +51,11 @@ function seoUrl( $title )
         'Д'=>'d',
         'Е'=>'e',
         'Ё'=>'e',
+		'Є'=>'e',
         'Ж'=>'j',
         'З'=>'z',
         'И'=>'i',
+		'І'=>'i',
         'Й'=>'y',
         'К'=>'k',
         'Л'=>'l',
@@ -77,6 +82,7 @@ function seoUrl( $title )
         ' '=>'-',
 		'-'=>'-',
 		'.'=>'-',
+		'`'=>''
     );
 
     // разбивка строки на буквы

@@ -48,13 +48,15 @@
 $active_group = 'default';
 $active_record = TRUE;
 
-$db['default']['hostname'] = 'localhost';
-$db['default']['username'] = '';
-$db['default']['password'] = '';
-$db['default']['database'] = '';
+$db['default']['hostname'] = '78.46.22.144';
+$db['default']['username'] = 'user2892_hc';
+$db['default']['password'] = 'house-control44';
+$db['default']['database'] = 'user2892_sb';
+
+
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = '';
-$db['default']['pconnect'] = TRUE;
+$db['default']['pconnect'] = FALSE;
 $db['default']['db_debug'] = TRUE;
 $db['default']['cache_on'] = FALSE;
 $db['default']['cachedir'] = '';
