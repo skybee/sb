@@ -17,7 +17,7 @@ class parser_m extends CI_Model{
     }
     
     function get_news_url_to_parse( $limit ){
-        $query = $this->db->query("SELECT * FROM `scan_url` WHERE `scan`=0 AND ( `url` LIKE '%tsn%')  ORDER BY `date` DESC LIMIT {$limit} ");
+        $query = $this->db->query("SELECT * FROM `scan_url` WHERE `scan`=0 AND ( `url` LIKE '%unn.com.ua%')  ORDER BY `date` DESC LIMIT {$limit} ");
         
         if( $query->num_rows() < 1 ) return FALSE;
         
@@ -48,4 +48,9 @@ class parser_m extends CI_Model{
     }
     
     function get_like_shingles(){}
+    
+    function set_url_scaning( $url_id ){
+        if( !$url_id ) return FALSE;
+        $this->db->query(" UPDATE `scan_url` SET `scan`=1 WHERE `id`='$url_id' ");
+    }
 }

@@ -77,8 +77,7 @@ class parse_lib{
         return $html;
     }
     
-    function close_tags($content)
-    {
+    function close_tags($content){
         $position = 0;
         $open_tags = array();
         //теги для игнорирования
@@ -125,7 +124,8 @@ class parse_lib{
     
     function get_donor_url( $page_url ){
         $url_ar = parse_url($page_url);
-        return $url_ar['host'];
+        $host   = str_ireplace('www.', '', $url_ar['host']);
+        return $host;
     }
     
     function get_fname_from_url( $url ){
@@ -179,12 +179,12 @@ class parse_lib{
     }
         
     function get_shingles_hash( $text, $shingle_length = 7 ){ //возвращает массив хэшей шинглов
-        $text = iconv('utf-8', 'windows-1251', $text);
+//        $text = iconv('utf-8', 'windows-1251', $text);
         $text = strip_tags($text);
         $html_pattern = "#&[a-z]{2,6};#i"; //== удаление мнимоники
         $text = preg_replace($html_pattern, ' ', $text);
         $text = strtolower($text);
-        $pattern = "#\w{4,}#i";
+        $pattern = "#\w{4,}#ui";
         
         preg_match_all($pattern, $text, $word_ar);
         

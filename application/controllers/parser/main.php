@@ -74,7 +74,7 @@ class Main extends CI_Controller
         
         foreach( $parse_list as $news_ar ){
             
-//            $news_ar['url'] = 'http://tsn.ua/vybory_2012/svoboda-zahopila-kilka-mazhoritarnih-mandativ-poki-pr-zdaye-poziciyi.html';
+//            $news_ar['url'] = 'http://www.unn.com.ua/ru/publication/1024604-zakon-kornatskogo-ili-oppozitsionnost-kak-popytka-zamesti-sledy/';
             
             $html = $this->news_parser_lib->down_with_curl( $news_ar['url'] );
             if( empty($html) ) continue;
@@ -86,10 +86,11 @@ class Main extends CI_Controller
             $insert_data['cat_id']          = $news_ar['cat_id'];
             $insert_data['date']            = date("Y-m-d H:i:s");
             
-//            echo $news_ar['url'].'<br />';
-//            echo '<pre>'.print_r($insert_data,1).'</pre>';
+//            echo $news_ar['url']."\n";
+//            print_r($insert_data);
             
             $this->news_parser_lib->insert_news( $insert_data );
+            $this->parser_m->set_url_scaning( $news_ar['id'] );
             flush();
         }    
     }

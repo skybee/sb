@@ -14,7 +14,7 @@ class parse_page_lib{
         
         switch( $host ){
             case 'tsn.ua':                  $this->tsn();       break;
-            case 'www.unn.com.ua':          $this->unn();       break;
+            case 'unn.com.ua':              $this->unn();       break;
             case 'rss.unian.net' :          $this->unian();     break;
             case 'www.interfax.com.ua' :    $this->interfax();  break;
             case 'www.segodnya.ua' :        $this->segodnya();  break;
@@ -58,7 +58,27 @@ class parse_page_lib{
     }
     
     private function unn(){
-        return FALSE;
+        $this->data['text'] = '';
+        $this->data['img']  = '';
+                
+        if( is_object( $this->html_obj->find('h1',0) ) )
+            $this->data['title']    = $this->html_obj->find('h1',0)->innertext;
+        
+        if( is_object( $this->html_obj->find('.news_inside_page img',0) ) ){
+            $this->data['text']     = $this->html_obj->find('.news_inside_page img',0)->outertext;
+            $this->data['img']     .= $this->html_obj->find('.news_inside_page img',0)->src;
+        }    
+        
+        if( is_object( $this->html_obj->find('h2.title_leader',0) ) )
+            $this->data['text']    .= '<p><i>'.$this->html_obj->find('h2.title_leader',0)->innertext.'</i></p>';
+        
+        if( is_object( $this->html_obj->find('.news_inside_page p.link',0) ) )
+                $this->html_obj->find('.news_inside_page p.link',0)->outertext = '';
+        
+        if( is_array( $this->html_obj->find('.news_inside_page p') ) )
+            foreach( $this->html_obj->find('.news_inside_page p') as $p ){
+                $this->data['text']    .= $p->outertext."\n";
+            }
     }
     
     private function unian(){
