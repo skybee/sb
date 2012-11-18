@@ -29,10 +29,10 @@ class Main extends CI_Controller
     function get_url_from_rss(){
         header("Content-type:text/html;Charset=utf-8");
         $url_ar = array(
-                        'http://tsn.ua/rss/',                                   //== CAT TRUE
+                        'http://ru.tsn.ua/rss/',                                   //== CAT TRUE
                         'http://www.unn.com.ua/ru/rss/main_universal/',         //== CAT TRUE
                         //'http://gazeta.ua/export/rss/rss.xml',                  //== CAT !FALSE
-                        'http://rss.unian.net/site/news_ukr.rss',               //== CAT TRUE
+                        'http://rss.unian.net/site/news_rus.rss',               //== CAT TRUE
                         'http://www.interfax.com.ua/rus/rss/',                  //== CAT TRUE
                         'http://www.segodnya.ua/xml/rss.html',                  //== CAT TRUE
                         'http://delo.ua/news/rss/index.xml',                    //== CAT TRUE
@@ -65,7 +65,7 @@ class Main extends CI_Controller
         }
     }
     
-    function parse_news( $cnt_news = 1000 ){
+    function parse_news( $cnt_news = 30 ){
         header("Content-type:text/plain;Charset=utf-8");
         
         $parse_list = $this->parser_m->get_news_url_to_parse( $cnt_news );
@@ -74,7 +74,7 @@ class Main extends CI_Controller
         
         foreach( $parse_list as $news_ar ){
             
-//            $news_ar['url'] = 'http://www.unn.com.ua/ru/publication/1024604-zakon-kornatskogo-ili-oppozitsionnost-kak-popytka-zamesti-sledy/';
+//            $news_ar['url'] = 'http://unn.com.ua/ru/news/1037256-ukrainskiy-svyatoy-nikolay-budet-privetstvovat-rossiyskogo-deda-moroza-s-dnem-rogedeniya';
             
             $html = $this->news_parser_lib->down_with_curl( $news_ar['url'] );
             if( empty($html) ) continue;
@@ -86,11 +86,16 @@ class Main extends CI_Controller
             $insert_data['cat_id']          = $news_ar['cat_id'];
             $insert_data['date']            = date("Y-m-d H:i:s");
             
-//            echo $news_ar['url']."\n";
+            echo "\n\n<<<\n";
+            echo $news_ar['url']."\n";
 //            print_r($insert_data);
+            
             
             $this->news_parser_lib->insert_news( $insert_data );
             $this->parser_m->set_url_scaning( $news_ar['id'] );
+            
+            echo "\n>>>";
+            
             flush();
         }    
     }

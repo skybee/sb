@@ -3,7 +3,7 @@
 
 function seoUrl( $title )
 {
-    $title = iconv('utf-8', 'cp1251', $title);
+    $title = iconv('utf-8', 'cp1251//IGNORE', $title);
 	$title = preg_replace("#&[a-z]+;#i", ' ', $title); //удаление мнемоники
 	$title = preg_replace("|&#\d{2,4};|i", ' ', $title); //удаление мнемоники
 	$title = strtolower( trim($title) );

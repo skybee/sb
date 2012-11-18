@@ -46,7 +46,7 @@ class rss_url_lib
         
         $cat_id = FALSE;
         
-        if( $donor_url == 'http://tsn.ua/rss/' ){
+        if( $donor_url == 'http://tsn.ua/rss/' || $donor_url == 'http://ru.tsn.ua/rss/' ){
             if( stripos($url, 'tsn.ua/sport')           !== false ) $cat_id = $cat_ar['news']['sport'];
             elseif( stripos($url, 'tsn.ua/svit')        !== false ) $cat_id = $cat_ar['news']['world'];
             elseif( stripos($url, 'tsn.ua/ukrayina')    !== false ) $cat_id = $cat_ar['news']['ukraine'];
@@ -76,6 +76,14 @@ class rss_url_lib
             elseif( stripos($cat, 'Економіка')          !== false ) $cat_id = $cat_ar['news']['finance'];
             elseif( stripos($cat, 'Світ')               !== false ) $cat_id = $cat_ar['news']['world'];
             elseif( stripos($cat, "Здоров'я")           !== false ) $cat_id = $cat_ar['news']['health']; 
+            elseif( stripos($cat, 'Спорт')              !== false ) $cat_id = $cat_ar['news']['sport'];
+        }
+        elseif( $donor_url == 'http://rss.unian.net/site/news_rus.rss' ){
+            if( stripos($cat, 'Политика')               !== false ) $cat_id = $cat_ar['news']['politics'];
+            elseif( stripos($cat, 'Украина')            !== false ) $cat_id = $cat_ar['news']['ukraine'];
+            elseif( stripos($cat, 'Экономика')          !== false ) $cat_id = $cat_ar['news']['finance'];
+            elseif( stripos($cat, 'Мир')                !== false ) $cat_id = $cat_ar['news']['world'];
+            elseif( stripos($cat, "Здоровье")           !== false ) $cat_id = $cat_ar['news']['health']; 
             elseif( stripos($cat, 'Спорт')              !== false ) $cat_id = $cat_ar['news']['sport'];
         }
         elseif( $donor_url == 'http://www.interfax.com.ua/rus/rss/' ){

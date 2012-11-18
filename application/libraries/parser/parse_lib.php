@@ -179,12 +179,13 @@ class parse_lib{
     }
         
     function get_shingles_hash( $text, $shingle_length = 7 ){ //возвращает массив хэшей шинглов
-//        $text = iconv('utf-8', 'windows-1251', $text);
+        echo "\n\n$text\n\n";
+        $text = iconv('utf-8', 'windows-1251//IGNORE', $text);
         $text = strip_tags($text);
         $html_pattern = "#&[a-z]{2,6};#i"; //== удаление мнимоники
         $text = preg_replace($html_pattern, ' ', $text);
         $text = strtolower($text);
-        $pattern = "#\w{4,}#ui";
+        $pattern = "#\w{4,}#i";
         
         preg_match_all($pattern, $text, $word_ar);
         

@@ -13,9 +13,11 @@ class parse_page_lib{
         $this->html_obj = str_get_html($html);
         
         switch( $host ){
+            case 'ru.tsn.ua':               $this->tsn();       break;
             case 'tsn.ua':                  $this->tsn();       break;
             case 'unn.com.ua':              $this->unn();       break;
-            case 'rss.unian.net' :          $this->unian();     break;
+            case 'unian.ua' :               $this->unian();     break;
+            case 'unian.net' :              $this->unian();     break;
             case 'www.interfax.com.ua' :    $this->interfax();  break;
             case 'www.segodnya.ua' :        $this->segodnya();  break;
             case 'delo.ua' :                $this->delo();      break;
@@ -33,8 +35,8 @@ class parse_page_lib{
     }
     
     private function tsn(){
-        
         $this->data['text'] = '';
+        $this->data['img']  = '';
         
         if( is_object( $this->html_obj->find('.photo_descr',0) ) )
             $this->html_obj->find('.photo_descr',0)->outertext = '';
@@ -48,13 +50,10 @@ class parse_page_lib{
         if( is_object( $this->html_obj->find('#news_text',0) ) )
             $this->data['text']    .= $this->html_obj->find('#news_text',0)->innertext;
         
-        $this->data['text']         = preg_replace("#<p><strong>Читайте[\s\S]*?</p>#i", '', $this->data['text']);
-        $this->data['text']         = preg_replace("#<p><strong>Дивіться ФОТО:#i", '',      $this->data['text']);
+        $this->data['text']         = preg_replace("#<p><strong>[\s\S]{4,20}:[\s]*<a[\s\S]*?</a>[\s]*</strong></p>#iu", '', $this->data['text']); //удаление "Читайте:***" и т.д.
         
         if( is_object($this->html_obj->find('#news_text .image img',0)) )
             $this->data['img']      = $this->html_obj->find('#news_text .image img',0)->src;
-        else
-            $this->data['img']  = '';
     }
     
     private function unn(){
@@ -82,7 +81,28 @@ class parse_page_lib{
     }
     
     private function unian(){
-        return FALSE;
+        $this->data['text'] = '';
+        $this->data['img']  = '';
+        
+        if( is_object( $this->html_obj->find('h1',0) ) )
+            $this->data['title']    = $this->html_obj->find('h1',0)->innertext;
+        
+        if( is_object( $this->html_obj->find('.show_detail h2',0) ) )
+            $this->data['text']    .= $this->html_obj->find('.show_detail h2',0)->outertext."\n";
+        
+        if( is_object( $this->html_obj->find('.photo_block img',0) ) ){
+            $this->data['text']    .= iconv( 'windows-1251', 'utf-8', $this->html_obj->find('.photo_block img',0)->outertext."\n" );
+            $this->data['img']     .= $this->html_obj->find('.photo_block img',0)->src;
+        }
+        
+        if( is_array( $this->html_obj->find('.show_detail p') ) )
+            foreach( $this->html_obj->find('.show_detail p') as $p ){
+                $this->data['text']    .= $p->outertext."\n";
+            }
+        
+        $this->data['text']         = preg_replace("#<p>[\s]*По теме:[\s\S]*?</p>#iu", '', $this->data['text']);
+        $this->data['title']        = iconv( 'windows-1251', 'utf-8', $this->data['title'] );
+        
     }
     
     private function interfax(){
