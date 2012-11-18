@@ -65,7 +65,7 @@ class Main extends CI_Controller
         }
     }
     
-    function parse_news( $cnt_news = 1 ){
+    function parse_news( $cnt_news = 100 ){
         header("Content-type:text/plain;Charset=utf-8");
         
         $parse_list = $this->parser_m->get_news_url_to_parse( $cnt_news );
@@ -74,7 +74,7 @@ class Main extends CI_Controller
         
         foreach( $parse_list as $news_ar ){
             
-            $news_ar['url'] = 'http://unn.com.ua/ru/news/1037256-ukrainskiy-svyatoy-nikolay-budet-privetstvovat-rossiyskogo-deda-moroza-s-dnem-rogedeniya';
+//            $news_ar['url'] = 'http://unn.com.ua/ru/news/1037256-ukrainskiy-svyatoy-nikolay-budet-privetstvovat-rossiyskogo-deda-moroza-s-dnem-rogedeniya';
             
             $html = $this->news_parser_lib->down_with_curl( $news_ar['url'] );
             if( empty($html) ) continue;
@@ -86,15 +86,15 @@ class Main extends CI_Controller
             $insert_data['cat_id']          = $news_ar['cat_id'];
             $insert_data['date']            = date("Y-m-d H:i:s");
             
-            echo "\n\n<<<\n";
+//            echo "\n\n<<<\n";
             echo $news_ar['url']."\n";
 //            print_r($insert_data);
             
             
             $this->news_parser_lib->insert_news( $insert_data );
-//            $this->parser_m->set_url_scaning( $news_ar['id'] );
+            $this->parser_m->set_url_scaning( $news_ar['id'] );
             
-            echo "\n>>>";
+//            echo "\n>>>";
             
             flush();
         }    
