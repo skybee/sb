@@ -187,7 +187,7 @@ class parse_lib{
         $text = preg_replace($html_pattern, ' ', $text);
         
         echo "\n\n$text\n\n";
-        $pattern = "#(\w{4,100})\W#ui";
+        $pattern = "#(\pL{4,100})\W#ui";
         
         preg_match_all($pattern, $text, $word_ar);
         
