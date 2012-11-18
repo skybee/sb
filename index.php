@@ -2,6 +2,8 @@
 
 header("Content-type:text/html;Charset=utf-8");
 
+setlocale(LC_ALL, 'ru_RU.UTF-8');
+
 /*
  *---------------------------------------------------------------
  * APPLICATION ENVIRONMENT

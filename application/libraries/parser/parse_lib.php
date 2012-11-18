@@ -181,15 +181,17 @@ class parse_lib{
     function get_shingles_hash( $text, $shingle_length = 7 ){ //возвращает массив хэшей шинглов
         echo "\n\n$text\n\n";
         $text = mb_strtolower($text);
-        $text = iconv('utf-8', 'cp1251//IGNORE', $text);
+//        $text = iconv('utf-8', 'cp1251//IGNORE', $text);
         $text = strip_tags($text);
         $html_pattern = "#&[a-z]{2,6};#i"; //== удаление мнимоники
         $text = preg_replace($html_pattern, ' ', $text);
         
         echo "\n\n$text\n\n";
-        $pattern = "#(\w{4,100})\W#i";
+        $pattern = "#(\w{4,100})\W#ui";
         
         preg_match_all($pattern, $text, $word_ar);
+        
+        print_r($word_ar);
         
         $word_ar = $word_ar[1];
            
