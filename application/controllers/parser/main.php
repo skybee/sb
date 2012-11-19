@@ -87,10 +87,9 @@ class Main extends CI_Controller
             $insert_data['date']            = date("Y-m-d H:i:s");
             
 //            echo "\n\n<<<\n";
-            echo $news_ar['url']."\n";
+            echo "\n".$news_ar['url']."\n";
 //            print_r($insert_data);
-            
-            
+
             $this->news_parser_lib->insert_news( $insert_data );
             $this->parser_m->set_url_scaning( $news_ar['id'] );
             

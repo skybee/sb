@@ -18,8 +18,8 @@ class parse_page_lib{
             case 'unn.com.ua':              $this->unn();       break;
             case 'unian.ua' :               $this->unian();     break;
             case 'unian.net' :              $this->unian();     break;
-            case 'www.interfax.com.ua' :    $this->interfax();  break;
-            case 'www.segodnya.ua' :        $this->segodnya();  break;
+            case 'interfax.com.ua' :        $this->interfax();  break;
+            case 'segodnya.ua' :            $this->segodnya();  break;
             case 'delo.ua' :                $this->delo();      break;
             case 'focus.ua' :               $this->focus();     break;
             case 'news.liga.net' :          $this->news_liga(); break;
@@ -106,7 +106,22 @@ class parse_page_lib{
     }
     
     private function interfax(){
-        return FALSE;
+        $this->data['text'] = '';
+        $this->data['img']  = '';
+        
+        if( is_object( $this->html_obj->find('h3.article-content-title',0) ) )
+            $this->data['title']    = $this->html_obj->find('h3.article-content-title',0)->innertext;
+        
+        if( is_object( $this->html_obj->find('img.article-content-image',0) ) ){
+            $this->data['img']     .= $this->html_obj->find('img.article-content-image',0)->src;
+        }
+        
+        if( is_object( $this->html_obj->find('div.article-content',0) ) ){
+            $this->data['text']    .= $this->html_obj->find('div.article-content',0)->innertext;
+            $this->data['text']    = nl2br( $this->data['text'] );
+        }
+        
+        
     }
     
     private function segodnya(){
