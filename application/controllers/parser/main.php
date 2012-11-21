@@ -29,12 +29,12 @@ class Main extends CI_Controller
     function get_url_from_rss(){
         header("Content-type:text/html;Charset=utf-8");
         $url_ar = array(
-                        'http://ru.tsn.ua/rss/',                                   //== CAT TRUE
+                        'http://ru.tsn.ua/rss/',                                   //== CAT TRUE !--Good
                         'http://www.unn.com.ua/ru/rss/main_universal/',         //== CAT TRUE
                         //'http://gazeta.ua/export/rss/rss.xml',                  //== CAT !FALSE
                         'http://rss.unian.net/site/news_rus.rss',               //== CAT TRUE
                         'http://www.interfax.com.ua/rus/rss/',                  //== CAT TRUE
-                        'http://www.segodnya.ua/xml/rss.html',                  //== CAT TRUE
+                        'http://www.segodnya.ua/xml/rss.html',                  //== CAT TRUE !--Good
                         'http://delo.ua/news/rss/index.xml',                    //== CAT TRUE
                         'http://focus.ua/rss/ru.xml',                           //== CAT TRUE
                         'http://news.liga.net/all/rss.xml',                     //== CAT !FALSE
@@ -42,7 +42,7 @@ class Main extends CI_Controller
                         //-! 'http://finance.liga.net/export/all.xml',               //== CAT TRUE
                         //-! 'http://blog.liga.net/rss.aspx',                        //== CAT !FALSE            
                         'http://isport.ua/hnd/rss.ashx?image=0',                 //== CAT TRUE
-                        'http://k.img.com.ua/rss/ru/news.xml'
+                        'http://k.img.com.ua/rss/ru/news.xml'                   //== !--Good
                         );
         
         foreach ($url_ar as $url)
@@ -80,11 +80,13 @@ class Main extends CI_Controller
             if( empty($html) ) continue;
             
             $host                           = $this->news_parser_lib->get_donor_url( $news_ar['url'] );
-            $insert_data                    = $this->parse_page_lib->get_data( $html, $host); 
+            $insert_data                    = $this->parse_page_lib->get_data( $html, $host);
             $insert_data['scan_url_id']     = $news_ar['id'];
             $insert_data['url']             = $news_ar['url'];
             $insert_data['cat_id']          = $news_ar['cat_id'];
             $insert_data['date']            = date("Y-m-d H:i:s");
+            
+            if( !isset($insert_data['title']) || empty($insert_data['title']) ) continue;
             
 //            echo "\n\n<<<\n";
             echo "\n".$news_ar['url']."\n";
@@ -92,7 +94,6 @@ class Main extends CI_Controller
 
             $this->news_parser_lib->insert_news( $insert_data );
             $this->parser_m->set_url_scaning( $news_ar['id'] );
-            
 //            echo "\n>>>";
             
             flush();

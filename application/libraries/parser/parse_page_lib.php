@@ -20,6 +20,7 @@ class parse_page_lib{
             case 'unian.net' :              $this->unian();     break;
             case 'interfax.com.ua' :        $this->interfax();  break;
             case 'segodnya.ua' :            $this->segodnya();  break;
+            case 'sport.segodnya.ua' :      $this->segodnya();  break;
             case 'delo.ua' :                $this->delo();      break;
             case 'focus.ua' :               $this->focus();     break;
             case 'news.liga.net' :          $this->news_liga(); break;
@@ -125,11 +126,40 @@ class parse_page_lib{
     }
     
     private function segodnya(){
-        return FALSE;
+        $this->data['text'] = '';
+        $this->data['img']  = '';
+        
+        if( is_object( $this->html_obj->find('h1',0) ) )
+            $this->data['title']    = $this->html_obj->find('h1',0)->innertext;
+        
+        if( is_object( $this->html_obj->find('.article_cut_image img',0) ) ){
+            $this->data['text']    .= $this->html_obj->find('.article_cut_image img',0)->outertext."\n";
+            $this->data['img']      = $this->html_obj->find('.article_cut_image img',0)->src;
+        }
+        
+        if( is_array( $this->html_obj->find('.article p') ) )
+            foreach( $this->html_obj->find('.article p') as $p ){
+                $this->data['text']    .= $p->outertext."\n";
+            }
     }
     
     private function delo(){
-        return FALSE;
+        $this->data['text'] = '';
+        $this->data['img']  = '';
+        
+        if( is_object( $this->html_obj->find('h1',0) ) )
+            $this->data['title']    = $this->html_obj->find('h1',0)->innertext;
+        
+        if( is_object( $this->html_obj->find('h2.art_teaser',0) ) )
+            $this->data['text']    .= '<h2>'.$this->html_obj->find('h2.art_teaser',0)->innertext."</h2>\n";
+        
+        if( is_object( $this->html_obj->find('.big-img img',0) ) ){
+            $this->data['text']    .= $this->html_obj->find('.big-img img',0)->outertext."\n";
+            $this->data['img']      = $this->html_obj->find('.big-img img',0)->src;
+        }
+        
+        if( is_object( $this->html_obj->find('#hypercontext',0) ) )
+            $this->data['text']    .= $this->html_obj->find('#hypercontext',0)->innertext;
     }
     
     private function focus(){
