@@ -17,7 +17,7 @@ class parser_m extends CI_Model{
     }
     
     function get_news_url_to_parse( $limit ){
-        $query = $this->db->query("SELECT * FROM `scan_url` WHERE `scan`=0 AND ( `url` LIKE '%delo.ua%')  ORDER BY `date` DESC LIMIT {$limit} ");
+        $query = $this->db->query("SELECT * FROM `scan_url` WHERE `scan`=0  ORDER BY `date` ASC LIMIT {$limit} ");
         
         if( $query->num_rows() < 1 ) return FALSE;
         

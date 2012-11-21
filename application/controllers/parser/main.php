@@ -30,19 +30,19 @@ class Main extends CI_Controller
         header("Content-type:text/html;Charset=utf-8");
         $url_ar = array(
                         'http://ru.tsn.ua/rss/',                                   //== CAT TRUE !--Good
+                        'http://k.img.com.ua/rss/ru/news.xml',                   //== !--Good
+                        'http://www.segodnya.ua/xml/rss.html',                  //== CAT TRUE !--Good
                         'http://www.unn.com.ua/ru/rss/main_universal/',         //== CAT TRUE
                         //'http://gazeta.ua/export/rss/rss.xml',                  //== CAT !FALSE
                         'http://rss.unian.net/site/news_rus.rss',               //== CAT TRUE
                         'http://www.interfax.com.ua/rus/rss/',                  //== CAT TRUE
-                        'http://www.segodnya.ua/xml/rss.html',                  //== CAT TRUE !--Good
                         'http://delo.ua/news/rss/index.xml',                    //== CAT TRUE
                         'http://focus.ua/rss/ru.xml',                           //== CAT TRUE
                         'http://news.liga.net/all/rss.xml',                     //== CAT !FALSE
                         //-! 'http://biz.liga.net/all/rss.xml',                      //== CAT TRUE
                         //-! 'http://finance.liga.net/export/all.xml',               //== CAT TRUE
                         //-! 'http://blog.liga.net/rss.aspx',                        //== CAT !FALSE            
-                        'http://isport.ua/hnd/rss.ashx?image=0',                 //== CAT TRUE
-                        'http://k.img.com.ua/rss/ru/news.xml'                   //== !--Good
+                        'http://isport.ua/hnd/rss.ashx?image=0'                 //== CAT TRUE
                         );
         
         foreach ($url_ar as $url)
@@ -65,16 +65,17 @@ class Main extends CI_Controller
         }
     }
     
-    function parse_news( $cnt_news = 100 ){
-        header("Content-type:text/plain;Charset=utf-8");
+    function parse_news( $cnt_news = 1 ){
+//        header("Content-type:text/plain;Charset=utf-8");
         
         $parse_list = $this->parser_m->get_news_url_to_parse( $cnt_news );
         
         if( !$parse_list ){  echo "ERROR Отсутствуют URL для сканирования"; return; }
         
+        $i=1;
         foreach( $parse_list as $news_ar ){
             
-//            $news_ar['url'] = 'http://unn.com.ua/ru/news/1037256-ukrainskiy-svyatoy-nikolay-budet-privetstvovat-rossiyskogo-deda-moroza-s-dnem-rogedeniya';
+//            $news_ar['url'] = 'http://news.liga.net/news/politics/769425-apellyatsionnyy_sud_otkazal_lutsenko_v_provedenii_novogo_sledstviya.htm';
             
             $html = $this->news_parser_lib->down_with_curl( $news_ar['url'] );
             if( empty($html) ) continue;
@@ -86,17 +87,17 @@ class Main extends CI_Controller
             $insert_data['cat_id']          = $news_ar['cat_id'];
             $insert_data['date']            = date("Y-m-d H:i:s");
             
-            if( !isset($insert_data['title']) || empty($insert_data['title']) ) continue;
+//            if( !isset($insert_data['title']) || empty($insert_data['title']) ) continue;
             
 //            echo "\n\n<<<\n";
-            echo "\n".$news_ar['url']."\n";
+            echo "<br />\n$i - <i>".$news_ar['url']."</i><br />\n";
 //            print_r($insert_data);
 
             $this->news_parser_lib->insert_news( $insert_data );
             $this->parser_m->set_url_scaning( $news_ar['id'] );
 //            echo "\n>>>";
             
-            flush();
+            flush(); $i++;
         }    
     }
 }

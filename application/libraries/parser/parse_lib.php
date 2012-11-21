@@ -274,7 +274,7 @@ class parse_lib{
     
     function insert_news( $data_ar, $count_word = 80 ){ //принимает массив array('url','img','title','text','date') и минимальный размер текста(колличество слов более 4 букв) ; 
         $data_ar['text']    = $this->clear_txt( $data_ar['text'] );
-        $data_ar['title']   = mysql_real_escape_string( strip_tags($data_ar['title']) );
+        $data_ar['title']   = mysql_real_escape_string( strip_tags( trim($data_ar['title']) ) );
         $data_ar['donor']   = $this->get_donor_url( $data_ar['url'] );
         $this_hash_ar       = $this->get_shingles_hash( $data_ar['text'] );
         
