@@ -1,0 +1,121 @@
+/*** ESSENTIAL STYLES ***/
+.firstnav-menu, .firstnav-menu * {
+	margin:			0;
+	padding:		0;
+	list-style:		none;
+}
+.firstnav-menu {
+	line-height:	1.0;
+}
+.firstnav-menu ul {
+	position:		absolute;
+	top:			-999em;
+	width:			10em; /* left offset of submenus need to match (see below) */
+	margin-top:5px;
+}
+.firstnav-menu ul ul{
+	margin:0 !important;
+}
+.firstnav-menu ul li {
+	width:			100%;
+}
+.firstnav-menu li:hover {
+	visibility:		inherit; /* fixes IE7 'sticky bug' */
+}
+.firstnav-menu li {
+	float:			left;
+	position:		relative;
+}
+
+.firstnav-menu li li a {
+	width:100%;
+	background-color:#383838;
+	border-top:0 !important;
+	color:#fff !important; 
+	
+}
+
+.firstnav-menu li li a:hover{
+	background-color:#151515 !important;
+}
+
+.firstnav-menu li li li a{
+
+}
+
+.firstnav-menu a {
+	display:		block;
+	position:		relative;
+	font-size:10px;
+	text-tranfirstnavorm:uppercase;
+}
+.firstnav-menu li:hover ul,
+.firstnav-menu li.firstnavHover ul {
+	left:			0;
+	top:			25px; /* match top ul list item height */
+	z-index:		99;
+}
+ul.firstnav-menu li:hover li ul,
+ul.firstnav-menu li.firstnavHover li ul {
+	top:			-999em;
+}
+ul.firstnav-menu li li:hover ul,
+ul.firstnav-menu li li.firstnavHover ul {
+	left:			136px; /* match ul width */
+	top:			-0px;
+}
+ul.firstnav-menu li li:hover li ul,
+ul.firstnav-menu li li.firstnavHover li ul {
+	top:			-999em;
+}
+ul.firstnav-menu li li li:hover ul,
+ul.firstnav-menu li li li.firstnavHover ul {
+	left:			10em; /* match ul width */
+	top:			0;
+}
+
+/*** DEMO SKIN ***/
+
+/*** arrows **/
+.firstnav-menu a.firstnav-with-ul {
+	padding-right: 	2.25em;
+	min-width:		1px; /* trigger IE7 hasLayout so spans position accurately */
+}
+
+a > .firstnav-sub-indicator {  /* give all except IE6 the correct values */
+	top:			.8em;
+	background-position: 0 -100px; /* use translucent arrow for modern browsers*/
+}
+/* apply hovers to modern browsers */
+a:focus > .firstnav-sub-indicator,
+a:hover > .firstnav-sub-indicator,
+a:active > .firstnav-sub-indicator,
+li:hover > a > .firstnav-sub-indicator,
+li.firstnavHover > a > .firstnav-sub-indicator {
+	background-position: -10px -100px; /* arrow hovers for modern browsers*/
+}
+
+/* point right for anchors in subs */
+.firstnav-menu ul .firstnav-sub-indicator { background-position:  -10px 0; }
+.firstnav-menu ul a > .firstnav-sub-indicator { background-position:  0 0; }
+/* apply hovers to modern browsers */
+.firstnav-menu ul a:focus > .firstnav-sub-indicator,
+.firstnav-menu ul a:hover > .firstnav-sub-indicator,
+.firstnav-menu ul a:active > .firstnav-sub-indicator,
+.firstnav-menu ul li:hover > a > .firstnav-sub-indicator,
+.firstnav-menu ul li.firstnavHover > a > .firstnav-sub-indicator {
+	background-position: -10px 0; /* arrow hovers for modern browsers*/
+}
+
+/*** shadows for all but IE6 ***/
+.firstnav-shadow ul {
+	/*background:	url('images/shadow.png') no-repeat bottom right;*/
+	padding: 0 8px 9px 0;
+	-moz-border-radius-bottomleft: 17px;
+	-moz-border-radius-topright: 17px;
+	-webkit-border-top-right-radius: 17px;
+	-webkit-border-bottom-left-radius: 17px;
+}
+.firstnav-shadow ul.firstnav-shadow-off {
+	background: transparent;
+}

@@ -12,7 +12,7 @@ class template extends CI_Controller
     
     function index()
     {   
-        $this->main( 'main' );
+        $this->load->view('template/main2_v');
     }
     
     function main( $id )
