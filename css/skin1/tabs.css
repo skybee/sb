@@ -16,7 +16,7 @@
    
 }
 .tabsheader{
-	background-image:url(images/tabs_bg.png) !important; 
+	background-image:url(/img/tabs_bg.png) !important; 
 	
 	border:1px solid #d3d3d3;
 	float:left; 

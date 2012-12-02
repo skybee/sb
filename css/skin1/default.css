@@ -105,7 +105,7 @@ body{
 }
 
 #featured li.ui-tabs-selected{ /*Selected tab style*/
-	background:url('img/selected_item.png') top left ;
+	background:url('/img/selected_item.png') top left ;
 	
 }
 #featured ul.ui-tabs-nav li.ui-tabs-selected a{
