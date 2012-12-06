@@ -1361,6 +1361,7 @@ margin-top: 6px;
 	margin:.9em;
 	margin-left:0;
 }
+#left div.single div.content h2{ font-size:14px; }
 
 #left div.single div.content h3,#page div.entry-content h3 {
 	font-size:26px;

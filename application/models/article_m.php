@@ -62,11 +62,13 @@ class article_m extends CI_Model{
     
     function get_doc_data( $id ){
         $id = (int) $id;
-        $query = $this->db->query(" SELECT article.* 
+        $query = $this->db->query(" SELECT article.*, category.name AS 'cat_name' 
                                     FROM 
-                                        `article`
+                                        `article`, `category`
                                     WHERE 
-                                        article.id = $id 
+                                        article.id  = {$id}
+                                        AND
+                                        category.id = article.cat_id
                                   ");
         
         if( $query->num_rows() < 1 ) return FALSE; 

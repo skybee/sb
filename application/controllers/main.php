@@ -47,7 +47,7 @@ class main extends CI_Controller
         $tpl_ar = $data_ar; //== !!! tmp
         
         $tpl_ar['content']      = $this->load->view('page/doc_v', $data_ar, true);
-        $tpl_ar['content']     .=  '<pre>'.print_r($data_ar['doc_data'],1).'</pre>';
+        $tpl_ar['content']     .=  '<pre>'.print_r($data_ar,1).'</pre>';
         
         $this->load->view('main_v', $tpl_ar);
     }

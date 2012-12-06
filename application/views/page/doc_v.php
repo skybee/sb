@@ -5,7 +5,10 @@
     <div class="active"><h1><?=$doc_data['title']?></h1></div>
     <div class="date">
         <div class="left">
-            <span class="date"><a href="http://www.londonthemes.com/themes/londonlive/?cat=28" title="View all posts in Movies" rel="category">Movies</a><span class="time"> — 11 December 2010</span></span>
+            <span class="date">
+                <a href="" title="Перейти к разделу" rel="category"><?=$main_cat_ar['name'].': '.$doc_data['cat_name']?></a>
+                <span class="time"> — 11 December 2010</span>        
+            </span>
         </div><!-- #left -->
     </div><!-- #date -->
 
