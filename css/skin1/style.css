@@ -508,7 +508,7 @@ color:
 	border-radius:4px;
 	color:#717171;
 	font-weight:normal;
-	background: url('img/tags_bg.png');
+	background: url('/img/tags_bg.png');
 }
 
 #left div.single div.date .date a:hover {
@@ -1698,7 +1698,7 @@ border: 0;
 }
 
 #left div.cat_listing div.content div.right div.small-listing div.description {
-width: 155px;
+width: 180px;
 height: 78px;
 float: left;
 font-size: 12px;
@@ -2645,7 +2645,7 @@ a img.aligncenter {
 	width:620px;
 }
 
-#left div.latest div.heading h2 a:hover,#left div.listing div.content div.right div.small-listing div.description h4 a:hover,.left_other_news .content a:hover,,#left div.cat_listing div.content div.right div.small-listing div.description h4 a:hover {
+#left div.latest div.heading h2 a:hover,#left div.listing div.content div.right div.small-listing div.description h4 a:hover,.left_other_news .content a:hover, #left div.cat_listing div.content div.right div.small-listing div.description h4 a:hover {
 	text-decoration:underline;
 	color:#7d7d7d;
 }
@@ -2653,7 +2653,7 @@ a img.aligncenter {
 #left div.cat_listing div.content div.left div.description h3 a {
 color: white;
 text-shadow: 1px 1px 1px  black;
-font-size: 21px;
+font-size: 17px;
 text-decoration:none;
 line-height:1.1em;
 }
@@ -2664,7 +2664,7 @@ margin: 0;
 color: 
 #242424;
 text-decoration: none;
-line-height: 1.5em;
+line-height: 17px;
 font-size: 12px;
 font-weight: bold;
 text-shadow: none;

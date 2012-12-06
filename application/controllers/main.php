@@ -13,20 +13,42 @@ class main extends CI_Controller
         
     }
     
-    function index( $cat_name = 'news' ){   
-        
+    function index(){
+        $this->main_page('news');
+    }
+    
+    function main_page( $cat_name ){
         $data_ar['main_cat_ar']         = $this->article_m->get_cat_data_from_url_name( $cat_name );
         $data_ar['main_menu_list']      = $this->list_m->get_cat(0);
         $data_ar['second_menu_list']    = $this->list_m->get_cat( $data_ar['main_cat_ar']['id'] );
         $data_ar['mainpage_cat_list']   = $this->article_m->get_mainpage_cat_news( $data_ar['second_menu_list'] );
-//        echo '<pre>'.print_r($data_ar['mainpage_cat_list'],1).'</pre>';        
-        
+//        echo '<pre>'.print_r($data_ar,1).'</pre>';
         
         $tpl_ar = $data_ar; //== !!! tmp
-        $tpl_ar['content'] = $this->load->view('page/cat_listing_v', $data_ar, true);
+        $tpl_ar['content']      = $this->load->view('component/main_latest_v', $data_ar, true);
+        $tpl_ar['content']     .= $this->load->view('component/cat_listing_v', $data_ar, true);
+        $tpl_ar['content']     .= $this->load->view('component/main_other_news_v', $data_ar, true);
         
         $this->load->view('main_v', $tpl_ar);
     }
     
-    function tmp(){ echo '1231';}
+    function document( $cat_name, $s_cat_name, $url_id_name ){
+        preg_match("#-(\d+)-(.+)#i", $url_id_name, $url_id_name_ar); //зазбор URL_name
+        $doc_id         = $url_id_name_ar[1]; 
+        $doc_urlname    = $url_id_name_ar[2];
+        
+        $data_ar['doc_data']            = $this->article_m->get_doc_data( $doc_id );
+        if( !$data_ar['doc_data'] ) show_404 ();
+        $data_ar['main_cat_ar']         = $this->article_m->get_cat_data_from_url_name( $cat_name );
+        $data_ar['main_menu_list']      = $this->list_m->get_cat(0);
+        $data_ar['second_menu_list']    = $this->list_m->get_cat( $data_ar['main_cat_ar']['id'] );
+        
+        
+        $tpl_ar = $data_ar; //== !!! tmp
+        
+        $tpl_ar['content']      = $this->load->view('page/doc_v', $data_ar, true);
+        $tpl_ar['content']     .=  '<pre>'.print_r($data_ar['doc_data'],1).'</pre>';
+        
+        $this->load->view('main_v', $tpl_ar);
+    }
 }

@@ -228,7 +228,7 @@ class parse_lib{
         
         $percent_coincidence = round( $cnt_coincidence / ($cnt_comparison/100) ); //процент совпадений
         
-        echo $percent_coincidence.'% совпадений '.$cnt_comparison.'/'.$cnt_coincidence."\n";
+        echo $percent_coincidence.'% совпадений '.$cnt_comparison.'/'.$cnt_coincidence."<br />\n";
         
         if($percent_coincidence >= $percent) //документы идентичны
             return TRUE;

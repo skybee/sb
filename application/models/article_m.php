@@ -59,4 +59,18 @@ class article_m extends CI_Model{
         
         return $result_ar;
     }
+    
+    function get_doc_data( $id ){
+        $id = (int) $id;
+        $query = $this->db->query(" SELECT article.* 
+                                    FROM 
+                                        `article`
+                                    WHERE 
+                                        article.id = $id 
+                                  ");
+        
+        if( $query->num_rows() < 1 ) return FALSE; 
+        
+        return $query->row_array();
+    }
 }
