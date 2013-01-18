@@ -21,7 +21,7 @@
         <script type='text/javascript' src='/js/skin1/jquery-1.8.3.min.js'></script>
         <script type='text/javascript' src='/js/skin1/jquery-ui.min.js'></script>
         <script type='text/javascript' src='/js/skin1/tabs.js'></script>
-        <script type='text/javascript' src='/js/skin1/superfish.js'></script>
+<!--        <script type='text/javascript' src='/js/skin1/superfish.js'></script>-->
         <script type='text/javascript' src='/js/skin1/hoverIntent.js'></script>
         <script type='text/javascript' src='/js/skin1/custom.js'></script>
         <script type='text/javascript' src='/js/skin1/jquery.jcarousel.min.js'></script>

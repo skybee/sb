@@ -75,4 +75,31 @@ class article_m extends CI_Model{
         
         return $query->row_array();
     }
+    
+    function get_page_list( $cat_id, $page, $cnt = 15){
+        $stop   = $page * $cnt;
+        $start  = $stop - $cnt;
+        
+        $query = $this->db->query(" SELECT * 
+                                    FROM `article`
+                                    WHERE `cat_id`={$cat_id} 
+                                    ORDER BY `date` DESC 
+                                    LIMIT {$start}, {$cnt} ");
+        
+        if( $query->num_rows() < 1 ) return FALSE;
+        
+        $result_ar = array();
+        foreach( $query->result_array() as $row){
+            $row['text']    = $this->get_short_txt( $row['text'], 200 );
+            $row['date']    = get_date_str_ar( $row['date'] );
+            $result_ar[]    = $row;
+        }
+        
+        return $result_ar;
+    }
+    
+    function get_short_txt( $text, $length = 100 ){
+        $text = strip_tags($text);
+        return mb_substr($text, 0, $length);
+    }
 }

@@ -26,7 +26,7 @@
     <div class="othernews">
         <div class="listing other_news_listing" style="margin-bottom:10px;">
             <div class="header">
-                <h1>Related News</h1>
+                <h1>Похожие новости:</h1>
             </div><!-- #header -->
             <div class="left_other_news" style="margin-right:34px;">
                 <a href="http://www.londonthemes.com/themes/londonlive/?p=473">
@@ -62,13 +62,18 @@
 
 <div id="comments">
     <div id="respond">
-        <h3 id="reply-title">Leave a Reply <small><a rel="nofollow" id="cancel-comment-reply-link" href="/themes/londonlive/?p=470#respond" style="display:none;">Cancel reply</a></small></h3>
-        <form action="http://www.londonthemes.com/themes/londonlive/wp-comments-post.php" method="post" id="commentform">
-            <p class="comment-notes">Your email address will not be published. Required fields are marked <span class="required">*</span></p>							<p class="comment-form-author"><label for="author">Name</label> <span class="required">*</span><input id="author" name="author" type="text" value="" size="30" aria-required="true"></p>
-            <p class="comment-form-email"><label for="email">Email</label> <span class="required">*</span><input id="email" name="email" type="text" value="" size="30" aria-required="true"></p>
-            <p class="comment-form-url"><label for="url">Website</label><input id="url" name="url" type="text" value="" size="30"></p>
-            <p class="comment-form-comment"><label for="comment">Comment</label><textarea id="comment" name="comment" cols="45" rows="8" aria-required="true"></textarea></p>						<p class="form-allowed-tags">You may use these <abbr title="HyperText Markup Language">HTML</abbr> tags and attributes:  <code>&lt;a href="" title=""&gt; &lt;abbr title=""&gt; &lt;acronym title=""&gt; &lt;b&gt; &lt;blockquote cite=""&gt; &lt;cite&gt; &lt;code&gt; &lt;del datetime=""&gt; &lt;em&gt; &lt;i&gt; &lt;q cite=""&gt; &lt;strike&gt; &lt;strong&gt; </code></p>						<p class="form-submit">
-                <input name="submit" type="submit" id="submit" value="Post Comment">
+        <h3 id="reply-title">Оставить комментарий</h3>
+        <form action="#" method="post" id="commentform">
+            <p class="comment-form-author">
+                <label for="author">Имя</label> <span class="required">*</span>
+                <input id="author" name="author" type="text" value="" size="30" aria-required="true">
+            </p>
+            <p class="comment-form-comment">
+                <label for="comment">Комментарий</label>
+                <textarea id="comment" name="comment" cols="45" rows="8" aria-required="true"></textarea>
+            </p>												
+            <p class="form-submit">
+                <input name="submit" type="submit" id="submit" value="Добавить">
                 <input type="hidden" name="comment_post_ID" value="470" id="comment_post_ID">
                 <input type="hidden" name="comment_parent" id="comment_parent" value="0">
             </p>
