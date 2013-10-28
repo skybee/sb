@@ -7,7 +7,7 @@ class Main extends CI_Controller
     function __construct() {
         parent::__construct();
         
-        set_time_limit( 600 );
+        set_time_limit( 30 );
         
         $this->load->database();
 //        $this->load->helper('parser/download');
@@ -23,8 +23,6 @@ class Main extends CI_Controller
 
 
     function index(){ echo 'index'; }
-    
-    
     
     function get_url_from_rss(){
         header("Content-type:text/html;Charset=utf-8");
