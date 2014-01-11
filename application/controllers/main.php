@@ -1,7 +1,6 @@
 <?php
 
-if (!defined('BASEPATH'))
-    exit('No direct script access allowed');
+if (!defined('BASEPATH')) exit('No direct script access allowed');
 
 class main extends CI_Controller {
 
@@ -14,19 +13,17 @@ class main extends CI_Controller {
         $this->load->helper('date_convert');
     }
 
-    function index() {
-        $this->main_page('news');
-    }
+    function index(){ $this->main_page('news'); }
 
     function main_page($cat_name) {
-        $data_ar['main_cat_ar'] = $this->article_m->get_cat_data_from_url_name($cat_name);
-        $data_ar['main_menu_list'] = $this->list_m->get_cat(0);
-        $data_ar['second_menu_list'] = $this->list_m->get_cat($data_ar['main_cat_ar']['id']);
-        $data_ar['mainpage_cat_list'] = $this->article_m->get_mainpage_cat_news($data_ar['second_menu_list']);
+        $data_ar['main_cat_ar']         = $this->article_m->get_cat_data_from_url_name($cat_name);
+        $data_ar['main_menu_list']      = $this->list_m->get_cat(0);
+        $data_ar['second_menu_list']    = $this->list_m->get_cat($data_ar['main_cat_ar']['id']);
+        $data_ar['mainpage_cat_list']   = $this->article_m->get_mainpage_cat_news($data_ar['second_menu_list']);
 //        echo '<pre>'.print_r($data_ar,1).'</pre>';
 
         $tpl_ar = $data_ar; //== !!! tmp
-        $tpl_ar['content'] = $this->load->view('component/main_latest_v', $data_ar, true);
+        $tpl_ar['content']  = $this->load->view('component/main_latest_v', $data_ar, true);
         $tpl_ar['content'] .= $this->load->view('component/cat_listing_v', $data_ar, true);
         $tpl_ar['content'] .= $this->load->view('component/main_other_news_v', $data_ar, true);
 
@@ -38,12 +35,12 @@ class main extends CI_Controller {
         $doc_id = $url_id_name_ar[1];
         $doc_urlname = $url_id_name_ar[2];
 
-        $data_ar['doc_data'] = $this->article_m->get_doc_data($doc_id);
+        $data_ar['doc_data']            = $this->article_m->get_doc_data($doc_id);
         if (!$data_ar['doc_data'])
             show_404();
-        $data_ar['main_cat_ar'] = $this->article_m->get_cat_data_from_url_name($cat_name);
-        $data_ar['main_menu_list'] = $this->list_m->get_cat(0);
-        $data_ar['second_menu_list'] = $this->list_m->get_cat($data_ar['main_cat_ar']['id']);
+        $data_ar['main_cat_ar']         = $this->article_m->get_cat_data_from_url_name($cat_name);
+        $data_ar['main_menu_list']      = $this->list_m->get_cat(0);
+        $data_ar['second_menu_list']    = $this->list_m->get_cat($data_ar['main_cat_ar']['id']);
 
 
         $tpl_ar = $data_ar; //== !!! tmp
@@ -56,16 +53,15 @@ class main extends CI_Controller {
 
     function cat_list($cat_name, $s_cat_name, $page = 1) {
         $page = (int) $page;
-        if (!$page)
-            $page = 1;
+        if (!$page) $page = 1;
 
-        $data_ar['main_cat_ar'] = $this->article_m->get_cat_data_from_url_name($cat_name);
-        $data_ar['s_cat_ar'] = $this->article_m->get_cat_data_from_url_name($s_cat_name);
-        $data_ar['news_page_list'] = $this->article_m->get_page_list($data_ar['s_cat_ar']['id'], $page, 15);
+        $data_ar['main_cat_ar']         = $this->article_m->get_cat_data_from_url_name($cat_name);
+        $data_ar['s_cat_ar']            = $this->article_m->get_cat_data_from_url_name($s_cat_name);
+        $data_ar['news_page_list']      = $this->article_m->get_page_list($data_ar['s_cat_ar']['id'], $page, 15);
         if (!$data_ar['news_page_list'])
             show_404();
-        $data_ar['main_menu_list'] = $this->list_m->get_cat(0);
-        $data_ar['second_menu_list'] = $this->list_m->get_cat($data_ar['main_cat_ar']['id']);
+        $data_ar['main_menu_list']      = $this->list_m->get_cat(0);
+        $data_ar['second_menu_list']    = $this->list_m->get_cat($data_ar['main_cat_ar']['id']);
 
         $tpl_ar = $data_ar; //== !!! tmp
 
