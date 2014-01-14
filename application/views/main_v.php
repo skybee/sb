@@ -47,7 +47,7 @@
                 <div id="white_space">
                     <div id="content_holder">
                         <div id="header">
-                            <a href="http://www.londonthemes.com/themes/londonlive"><img src="/img/london_live.png" border="0" alt="London Live" class="logo"  /></a><div class="ad "><img src="/img/468-60.png" alt="468 X 60" /></div><!-- #ad 468x60 closer --></div><!-- #header closer -->
+                            <a href="/"><img src="/img/london_live.png" border="0" alt="London Live" class="logo"  /></a><div class="ad "><img src="/img/468-60.png" alt="468 X 60" /></div><!-- #ad 468x60 closer --></div><!-- #header closer -->
                         
                             <div id="categories">
                                 <ul class="secondnav-menu">
