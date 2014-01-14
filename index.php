@@ -23,6 +23,7 @@ setlocale(LC_ALL, 'ru_RU.UTF-8');
  *
  */
 	define('ENVIRONMENT', 'development');
+//        define('ENVIRONMENT', 'production');
 /*
  *---------------------------------------------------------------
  * ERROR REPORTING

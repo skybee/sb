@@ -3,9 +3,7 @@
 
 class parse_page_lib{
     
-    function __construct() {
-        
-    }
+    function __construct() {}
     
     function get_data( $html, $host){
         
@@ -42,6 +40,11 @@ class parse_page_lib{
         if( is_object( $this->html_obj->find('.photo_descr',0) ) )
             $this->html_obj->find('.photo_descr',0)->outertext = '';
         
+        if( is_object($this->html_obj->find('#news_text .image',0)) ){
+            $this->data['img']      = $this->html_obj->find('#news_text .image',0)->href;
+            $this->html_obj->find('#news_text .image',0)->outertext = '';
+        }
+        
         if( is_object( $this->html_obj->find('h1',0) ) )
             $this->data['title']    = $this->html_obj->find('h1',0)->innertext;
         
@@ -52,9 +55,6 @@ class parse_page_lib{
             $this->data['text']    .= $this->html_obj->find('#news_text',0)->innertext;
         
         $this->data['text']         = preg_replace("#<p><strong>[\s\S]{4,20}:[\s]*<a[\s\S]*?</a>[\s]*</strong></p>#iu", '', $this->data['text']); //удаление "Читайте:***" и т.д.
-        
-        if( is_object($this->html_obj->find('#news_text .image img',0)) )
-            $this->data['img']      = $this->html_obj->find('#news_text .image img',0)->src;
     }
     
     private function unn(){

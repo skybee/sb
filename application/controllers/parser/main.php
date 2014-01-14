@@ -7,7 +7,7 @@ class Main extends CI_Controller
     function __construct() {
         parent::__construct();
         
-        set_time_limit( 30 );
+        set_time_limit( 300 );
         
         $this->load->database();
 //        $this->load->helper('parser/download');
@@ -20,7 +20,6 @@ class Main extends CI_Controller
         
         unset( $this->parser_lib );
     }
-
 
     function index(){ echo 'index'; }
     
@@ -64,7 +63,7 @@ class Main extends CI_Controller
     }
     
     function parse_news( $cnt_news = 1 ){
-//        header("Content-type:text/plain;Charset=utf-8");
+        header("Content-type:text/plain;Charset=utf-8");
         
         $parse_list = $this->parser_m->get_news_url_to_parse( $cnt_news );
         
@@ -73,8 +72,8 @@ class Main extends CI_Controller
         $i=1;
         foreach( $parse_list as $news_ar ){
             
-//            $news_ar['url'] = 'http://news.liga.net/news/politics/769425-apellyatsionnyy_sud_otkazal_lutsenko_v_provedenii_novogo_sledstviya.htm';
-            
+//            $news_ar['url'] = 'http://ru.tsn.ua/ukrayina/sevastopolskiy-milicioner-kotoryy-ubil-bomzha-okazalsya-pyanym-343435.html';
+        
             $html = $this->news_parser_lib->down_with_curl( $news_ar['url'] );
             if( empty($html) ) continue;
             
@@ -85,15 +84,12 @@ class Main extends CI_Controller
             $insert_data['cat_id']          = $news_ar['cat_id'];
             $insert_data['date']            = date("Y-m-d H:i:s");
             
-//            if( !isset($insert_data['title']) || empty($insert_data['title']) ) continue;
-            
-//            echo "\n\n<<<\n";
             echo "<br />\n$i - <i>".$news_ar['url']."</i><br />\n";
-//            print_r($insert_data);
+            
+            print_r($insert_data);
 
             $this->news_parser_lib->insert_news( $insert_data );
             $this->parser_m->set_url_scaning( $news_ar['id'] );
-//            echo "\n>>>";
             
             flush(); $i++;
         }    

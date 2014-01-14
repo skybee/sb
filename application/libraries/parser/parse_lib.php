@@ -164,7 +164,7 @@ class parse_lib{
             
             if( empty($img_name) )  continue;
             
-            $new_img_name   = rand(100,999999).'_'.$img_name;
+            $new_img_name   = date("Y-m-d").'-'.rand(100,999999).'_'.$img_name;
             $img_buffer     = $this->down_with_curl($absolute_url); //скачивание изображения
             file_put_contents( $this->real_img_dir.$new_img_name, $img_buffer ); //сохранение изображения
 

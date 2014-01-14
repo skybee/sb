@@ -7,12 +7,10 @@ class rss_url_lib
         
     }
     
-    
-    
     function get_url( $xml_str )
     {
         libxml_use_internal_errors( FALSE ); //отключение вывода ошибок XML
-        $xml = simplexml_load_string( $xml_str );
+        $xml = simplexml_load_string( $xml_str, null, LIBXML_NOCDATA );
         
         if( !$xml ) return FALSE;
         
