@@ -14,8 +14,8 @@
 
     <div class="content">
         <div class="thumb ">
-            <a href="/upload/news/<?=$doc_data['main_img']?>" rel="prettyPhoto" title="<?=$doc_data['title']?>">
-                <img src="/upload/news/<?=$doc_data['main_img']?>" alt="<?=$doc_data['title']?>" class="imgf" style="opacity: 1;">
+            <a href="/upload/images/real/<?=$doc_data['main_img']?>" rel="prettyPhoto" title="<?=$doc_data['title']?>">
+                <img src="/upload/images/medium/<?=$doc_data['main_img']?>" alt="<?=$doc_data['title']?>" class="imgf" style="opacity: 1;">
             </a>
         </div>
         
@@ -29,28 +29,28 @@
                 <h1>Похожие новости:</h1>
             </div><!-- #header -->
             <div class="left_other_news" style="margin-right:34px;">
-                <a href="http://www.londonthemes.com/themes/londonlive/?p=473">
+                <a href="/">
                     <img src="http://www.londonthemes.com/themes/londonlive/wp-content/themes/LondonLive_Demo_1_4/thumb.php?src=/wp-content/uploads/2010/12/toy-story-3.jpg&amp;w=85&amp;h=69&amp;zc=1&amp;q=100" alt="Toy Story 3 One of the best movies (Video)">
                 </a>
-                <div class="content"><h4><a href="http://www.londonthemes.com/themes/londonlive/?p=473">Toy Story 3 One of the best movies (Video)</a></h4> <span class="date">December 11,  2010</span></div><!-- #content -->
+                <div class="content"><h4><a href="/">December 11,  2010</span></div><!-- #content -->
             </div><!-- #left_other_news -->
             <div class="left_other_news" style="margin-right:0;">
-                <a href="http://www.londonthemes.com/themes/londonlive/?p=319">
+                <a href="/">
                     <img src="http://www.londonthemes.com/themes/londonlive/wp-content/themes/LondonLive_Demo_1_4/thumb.php?src=/wp-content/uploads/2010/12/up.png&amp;w=85&amp;h=69&amp;zc=1&amp;q=100" alt="Our review on the movie Up">
                 </a>
-                <div class="content"><h4><a href="http://www.londonthemes.com/themes/londonlive/?p=319">Our review on the movie Up</a></h4> <span class="date">December 01,  2010</span></div><!-- #content -->
+                <div class="content"><h4><a href="/">December 01,  2010</span></div><!-- #content -->
             </div><!-- #left_other_news -->
             <div class="left_other_news" style="margin-right:34px;">
-                <a href="http://www.londonthemes.com/themes/londonlive/?p=310">
+                <a href="/">
                     <img src="http://www.londonthemes.com/themes/londonlive/wp-content/themes/LondonLive_Demo_1_4/thumb.php?src=/wp-content/uploads/2010/12/monster-inc.png&amp;w=85&amp;h=69&amp;zc=1&amp;q=100" alt="Monster inc, Voted Coolest Movie">
                 </a>
-                <div class="content"><h4><a href="http://www.londonthemes.com/themes/londonlive/?p=310">Monster inc, Voted Coolest Movie</a></h4> <span class="date">December 01,  2010</span></div><!-- #content -->
+                <div class="content"><h4><a href="/">December 01,  2010</span></div><!-- #content -->
             </div><!-- #left_other_news -->
             <div class="left_other_news" style="margin-right:0;">
-                <a href="http://www.londonthemes.com/themes/londonlive/?p=1037">
+                <a href="/">
                     <img src="http://www.londonthemes.com/themes/londonlive/wp-content/themes/LondonLive_Demo_1_4/thumb.php?src=/wp-content/uploads/2010/01/cars.png&amp;w=85&amp;h=69&amp;zc=1&amp;q=100" alt="Cars tops editors choice">
                 </a>
-                <div class="content"><h4><a href="http://www.londonthemes.com/themes/londonlive/?p=1037">Cars tops editors choice</a></h4> <span class="date">January 03,  2010</span></div><!-- #content -->
+                <div class="content"><h4><a href="/">January 03,  2010</span></div><!-- #content -->
             </div><!-- #left_other_news -->
         </div><!-- #listing -->
     </div><!-- #othernews -->

@@ -55,7 +55,7 @@ class parse_page_lib{
             $this->data['text']    .= $this->html_obj->find('#news_text',0)->innertext;
         
         $this->data['text']         = preg_replace("#<p><strong>[\s\S]{4,20}:[\s]*<a[\s\S]*?</a>[\s]*</strong></p>#iu", '', $this->data['text']); //удаление "Читайте:***" и т.д.
-    }
+    } #+
     
     private function unn(){
         $this->data['text'] = '';
@@ -64,22 +64,25 @@ class parse_page_lib{
         if( is_object( $this->html_obj->find('h1',0) ) )
             $this->data['title']    = $this->html_obj->find('h1',0)->innertext;
         
-        if( is_object( $this->html_obj->find('.news_inside_page img',0) ) ){
-            $this->data['text']     = $this->html_obj->find('.news_inside_page img',0)->outertext;
-            $this->data['img']     .= $this->html_obj->find('.news_inside_page img',0)->src;
-        }    
+        if( is_object( $this->html_obj->find('.b-news-full-img img',0) ) ){
+            $this->data['img']      = $this->html_obj->find('.b-news-full-img img',0)->src;
+            $this->html_obj->find('.b-news-full-img',0)->outertext = '';
+        }
         
-        if( is_object( $this->html_obj->find('h2.title_leader',0) ) )
-            $this->data['text']    .= '<p><i>'.$this->html_obj->find('h2.title_leader',0)->innertext.'</i></p>';
+        if( is_object( $this->html_obj->find('.b-news-holder',0) ) )
+            $this->data['text']    = $this->html_obj->find('.b-news-holder',0)->innertext;
         
-        if( is_object( $this->html_obj->find('.news_inside_page p.link',0) ) )
-                $this->html_obj->find('.news_inside_page p.link',0)->outertext = '';
-        
-        if( is_array( $this->html_obj->find('.news_inside_page p') ) )
-            foreach( $this->html_obj->find('.news_inside_page p') as $p ){
-                $this->data['text']    .= $p->outertext."\n";
-            }
-    }
+//        if( is_object( $this->html_obj->find('h2.title_leader',0) ) )
+//            $this->data['text']    .= '<p><i>'.$this->html_obj->find('h2.title_leader',0)->innertext.'</i></p>';
+//        
+//        if( is_object( $this->html_obj->find('.news_inside_page p.link',0) ) )
+//                $this->html_obj->find('.news_inside_page p.link',0)->outertext = '';
+//        
+//        if( is_array( $this->html_obj->find('.news_inside_page p') ) )
+//            foreach( $this->html_obj->find('.news_inside_page p') as $p ){
+//                $this->data['text']    .= $p->outertext."\n";
+//            }
+    } #+ ?
     
     private function unian(){
         $this->data['text'] = '';
@@ -129,19 +132,21 @@ class parse_page_lib{
         $this->data['text'] = '';
         $this->data['img']  = '';
         
+        if( is_object( $this->html_obj->find('.article_cut_image img',0) ) ){
+            $this->data['img']      = $this->html_obj->find('.article_cut_image img',0)->src;
+            $this->html_obj->find('.article_cut',0)->outertext = '';
+        }
+        
         if( is_object( $this->html_obj->find('h1',0) ) )
             $this->data['title']    = $this->html_obj->find('h1',0)->innertext;
         
-        if( is_object( $this->html_obj->find('.article_cut_image img',0) ) ){
-            $this->data['text']    .= $this->html_obj->find('.article_cut_image img',0)->outertext."\n";
-            $this->data['img']      = $this->html_obj->find('.article_cut_image img',0)->src;
-        }
-        
         if( is_array( $this->html_obj->find('.article p') ) )
             foreach( $this->html_obj->find('.article p') as $p ){
-                $this->data['text']    .= $p->outertext."\n";
+                $tmpP = $p->outertext;
+                if( preg_match("#<strong>Читайте также:<br />#i", $tmpP) ) continue;
+                $this->data['text']    .= $tmpP."\n";
             }
-    }
+    } #+
     
     private function delo(){
         $this->data['text'] = '';
@@ -230,19 +235,19 @@ class parse_page_lib{
         $this->data['text'] = '';
         $this->data['img']  = '';
         
+        if( is_object( $this->html_obj->find('.post-item__photo img',0) ) ){
+            $this->data['img']      = $this->html_obj->find('.post-item__photo img',0)->src;
+            $this->html_obj->find('.post-item__photo',0)->outertext = '';
+        }
+        
         if( is_object( $this->html_obj->find('h1',0) ) )
             $this->data['title']    = $this->html_obj->find('h1',0)->innertext;
         
-        if( is_object( $this->html_obj->find('.img_box img',0) ) ){
-            $this->data['text']    .= $this->html_obj->find('.img_box img',0)->outertext."\n";
-            $this->data['img']      = $this->html_obj->find('.img_box img',0)->src;
-        }
+        if( is_object( $this->html_obj->find('.post-item__text',0) ) )
+            $this->data['text']    = $this->html_obj->find('.post-item__text',0)->innertext;
         
-        if( is_object( $this->html_obj->find('.article_box span',0) ) )
-            $this->data['text']    .= $this->html_obj->find('.article_box span',0)->innertext;
-        
-        $this->data['text']     = iconv('utf-8', 'utf-8//IGNORE', $this->data['text']);
-        $this->data['title']    = iconv('cp1251', 'utf-8//IGNORE', $this->data['title']);
-    }
+//        $this->data['text']     = iconv('utf-8', 'utf-8//IGNORE', $this->data['text']);
+//        $this->data['title']    = iconv('cp1251', 'utf-8//IGNORE', $this->data['title']);
+    } #+
     
 }

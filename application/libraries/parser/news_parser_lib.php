@@ -66,6 +66,10 @@ class news_parser_lib extends parse_lib{
          
          $data_ar['text']        = $this->change_img_in_txt($data_ar['text'], $data_ar['url']); //замена изображений в тексте
          $data_ar['img_name']    = $this->load_img( $data_ar['img'], $data_ar['url']  );
+         if( $data_ar['img_name'] ){
+            $this->resizeImg('medium');
+            $this->resizeImg('small');
+         }
          $data_ar['url_name']    = seoUrl( $data_ar['title'] );
             
          $this->CI->db->query("  INSERT INTO `article` 

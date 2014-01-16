@@ -15,7 +15,7 @@
             <div class="left">
                 <div class="imgholder">
                     <a href="<?=$news_url?>">
-                        <img src="/upload/news/<?=$news_page_ar['main_img']?>" class="imgf" style="opacity: 1;">
+                        <img src="/upload/images/medium/<?=$news_page_ar['main_img']?>" class="imgf" style="opacity: 1;">
                     </a>
                 </div><!-- #imgholder -->
             </div><!-- #left -->

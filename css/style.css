@@ -12,7 +12,7 @@ Version: 1.2
 /*** General ***/
 
 html, body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input, th, td{margin:0;padding:0;font-family:Arial, Verdana, Geneva, sans-serif;}
-body{line-height:1; !important; }
+body{line-height:1 !important; }
 body{background:#fff url(images/theme_bg.png) center  repeat-y !important;}
 #left_no_sidebar code, #left_no_sidebar pre{width:910px !important;}
 blockquote {margin: 1em 3em; color: #656565; padding-left: 60px;  float:left; font-style:italic; background:url(images/block-quote.png) no-repeat; }
@@ -92,8 +92,19 @@ hr{ margin-top:15px; margin-bottom:19px;  }
 #page div.line {width:100%; float:left; height:1px; background-color:#c7c7c7; margin-top:6px; margin-bottom:16px;}
 #left div.single div.date{	float:left;margin-top:12px;width:615px;padding-bottom:13px;}
 #left .time{padding-top:4px; float:left;}
-#left div.single div.thumb{float:left;padding-top:17px;padding-right:19px;padding-bottom:1px; width:350px; height:222px;}
-#left div.single div.thumb img{border:1px solid #DEDBD1;padding:3px; -moz-border-radius: 6px; background:#fff; width:340px; height:192px; -webkit-box-shadow: #dfdfdf 0px 0px 7px; -moz-box-shadow: 0px 2px 7px #dfdfdf;}
+#left div.single div.thumb{float:left;padding-top:17px;padding-right:19px;padding-bottom:1px; 
+      /*width:350px; height:222px;*/
+}
+#left div.single div.thumb img{
+    border:1px solid #DEDBD1; 
+    padding:3px; 
+    border-radius: 6px; 
+    background:#fff; 
+/*    width:340px; 
+    height:192px; */
+    width: 300px;
+    box-shadow: 0px 2px 7px #dfdfdf;
+}
 #left div.single div.date div.left{float:left;}
 #left div.single div.date div.right{float:right;}
 #left div.single div.date .date{font-size:12px;text-shadow:none !important;color:#7e7e7e;}
@@ -148,7 +159,7 @@ hr{ margin-top:15px; margin-bottom:19px;  }
 /*** Right Content ***/
 #right{width:315px;height:100%;overflow:hidden;float:left; margin-left:25px; padding:5px; padding-top:18px;}
 #right li{list-style:none;}
-#right div.rightwidget{ background-color:; width:100%; float:left; }
+#right div.rightwidget{  width:100%; float:left; }
 #right div.rightwidget li{ color:#505050; float:left; width:100%; }
 #right div.rightwidget a{  color:#242424 !important; text-decoration:none; text-shadow:none !important; padding-bottom:9px !important;}
 #right div.rightwidget a:hover{border-bottom:1px solid #ccc !important; color:#7D7D7D !important; }
@@ -395,7 +406,7 @@ text-decoration:none;}
 #respond textarea{width:613px;padding:0 !important;margin:0 !important;}
 #respond { text-align: left; font: normal 12px arial; color: #494949;  }
 #reply-title { clear:both; padding-top:10px; display: block; border-bottom: 1px solid #ccc; font: normal 14px arial; color: #9e9e9e; padding-bottom: 10px; margin-bottom: 10px; text-transform:uppercase;}
-.logged-in-as { display: block; background: #; text-align: left; font: normal 12px arial; color: #494949; margin-bottom: 10px;}
+.logged-in-as { display: block;  text-align: left; font: normal 12px arial; color: #494949; margin-bottom: 10px;}
 .comment-notes { margin-bottom: 20px; }
 #respond form { margin-bottom:30px; }
 #respond #submit {background: url(images/blk-button.png) #000; border: 1px solid #000; font: normal 12px arial; color: #fff; text-align: center; text-shadow: #000 -1px 1px 0px; text-decoration: none; line-height: 20px; margin-bottom:20px; height: 31px; width:100px; -moz-border-radius:5px;-webkit-border-radius:5px;-khtml-border-radius:5px;border-radius:5px; -moz-box-shadow: 0 0 3px #e7e7e7; -webkit-box-shadow: 0 0 3px #e7e7e7;  box-shadow: 0 0 3px #e7e7e7;  }
@@ -404,7 +415,7 @@ text-decoration:none;}
 #commentform #author, #commentform #email, #commentform #url{ background:#FFF; padding:6px; border:1px solid #CCC; margin-left:10px;}
 #commentform #author{margin-left:14px;}
 #commentform #email{ margin-left:15px;}
-code { display: block; background: #; border-bottom: 1px solid #d5d5d5; font: normal 9px verdana; color: #494949; text-align: left; padding-bottom: 10px; margin: 10px 0px 15px 10px; width: 380px; }
+code { display: block; border-bottom: 1px solid #d5d5d5; font: normal 9px verdana; color: #494949; text-align: left; padding-bottom: 10px; margin: 10px 0px 15px 10px; width: 380px; }
 .navigation{width:620px;}
 .navigation div.nav-previous{float:left;}
 .navigation div.nav-next{float:right;}

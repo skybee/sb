@@ -10,6 +10,8 @@ class parse_lib{
         $this->CI = & get_instance();
         $this->CI->load->database();
         $this->CI->load->helper('parser/url_name_helper');
+        $this->CI->load->library('dir_lib');
+        $this->CI->load->library('image_lib');
         $this->img_dir = '/upload/news/';
         $this->real_img_dir = rtrim( $_SERVER['DOCUMENT_ROOT'],'/' ).$this->img_dir;
     }
@@ -144,11 +146,52 @@ class parse_lib{
         
         $absolute_url   = $this->uri2absolute($img_url, $base_url);
         $new_img_name   = rand(100,999999).'_'.$this->get_fname_from_url($absolute_url);
+        
+        $this->lastLoadImgName  = $new_img_name;
+        $savePathName           = $this->CI->dir_lib->getImgRdir().$new_img_name;
+        $imgNameWithDatePath    = $this->CI->dir_lib->getDatePath().$new_img_name;
             
         $img_buffer     = $this->down_with_curl($absolute_url); //скачивание изображения
-        file_put_contents( $this->real_img_dir.$new_img_name, $img_buffer ); //сохранение изображения
+        file_put_contents( $savePathName, $img_buffer ); //сохранение изображения
         
-        return $new_img_name;
+//        $absolute_url   = $this->uri2absolute($img_url, $base_url);
+//        $new_img_name   = rand(100,999999).'_'.$this->get_fname_from_url($absolute_url);
+//            
+//        $img_buffer     = $this->down_with_curl($absolute_url); //скачивание изображения
+//        file_put_contents( $this->real_img_dir.$new_img_name, $img_buffer ); //сохранение изображения
+        
+        return $imgNameWithDatePath;
+    }
+    
+    function resizeImg( $resize = 'medium' ){
+        
+        $pathToImg = $this->CI->dir_lib->getImgRdir().$this->lastLoadImgName;
+        
+        if( !file_exists($pathToImg) ) 
+            return false;
+        
+        switch( $resize ){
+            case 'medium' :
+                $savePath = $this->CI->dir_lib->getImgMdir().$this->lastLoadImgName;
+                $width  = '300';
+                $height = '400';
+                break;
+            case 'small' :
+                $savePath = $this->CI->dir_lib->getImgSdir().$this->lastLoadImgName;
+                $width  = '90';
+                $height = '90';
+                break;
+            default :
+                return false;
+        }
+        
+        $config['source_image']     = $pathToImg;
+        $config['new_image']        = $savePath;
+        $config['width']            = $width;
+        $config['height']           = $height;
+        
+        $this->CI->image_lib->initialize($config);
+        $this->CI->image_lib->resize();
     }
     
     function change_img_in_txt( $text, $base_url ){
@@ -164,12 +207,20 @@ class parse_lib{
             
             if( empty($img_name) )  continue;
             
-            $new_img_name   = date("Y-m-d").'-'.rand(100,999999).'_'.$img_name;
+            
+            $imgPathName    = $this->CI->dir_lib->getImgRdir().rand(100,999999).'_'.$img_name;
             $img_buffer     = $this->down_with_curl($absolute_url); //скачивание изображения
-            file_put_contents( $this->real_img_dir.$new_img_name, $img_buffer ); //сохранение изображения
+            file_put_contents( $imgPathName, $img_buffer ); //сохранение изображения
 
             $replace_img_ar['search'][]     = $img_url;
-            $replace_img_ar['replace'][]    = $this->img_dir.$new_img_name;
+            $replace_img_ar['replace'][]    = '/'.$imgPathName;
+            
+//            $new_img_name   = rand(100,999999).'_'.$img_name;
+//            $img_buffer     = $this->down_with_curl($absolute_url); //скачивание изображения
+//            file_put_contents( $this->real_img_dir.$new_img_name, $img_buffer ); //сохранение изображения
+//
+//            $replace_img_ar['search'][]     = $img_url;
+//            $replace_img_ar['replace'][]    = $this->img_dir.$new_img_name;
         }
         
         if( isset($replace_img_ar) )

@@ -8,12 +8,12 @@
         </div><!-- #header -->
         <div class="inside">
             <div class="top">
-                <a href="http://www.londonthemes.com/themes/londonlive/?p=485">
+                <a href="/">
                     <img src="http://www.londonthemes.com/themes/londonlive/wp-content/themes/LondonLive_Demo_1_4/thumb.php?src=/wp-content/uploads/2010/12/sharper-business.png&amp;w=275&amp;h=130&amp;zc=1&amp;q=100" alt="Fresh business tips to stay on top" />
                 </a>
                 <div class="heading">
                     <h2>
-                        <a href="http://www.londonthemes.com/themes/londonlive/?p=485">Fresh business tips to stay on top</a>
+                        <a href="/">Fresh business tips to stay on top</a>
                     </h2>
                     <span class="date">Posted On: December 11,  2010</span>
 
@@ -33,11 +33,11 @@
         <!-- #header -->
         <div class="inside">
             <div class="top">
-                <a href="http://www.londonthemes.com/themes/londonlive/?p=310">
+                <a href="/">
                     <img src="http://www.londonthemes.com/themes/londonlive/wp-content/themes/LondonLive_Demo_1_4/thumb.php?src=/wp-content/uploads/2010/12/monster-inc.png&amp;w=275&amp;h=130&amp;zc=1&amp;q=100" alt="Monster inc, Voted Coolest Movie" />
                 </a>
                 <div class="heading">
-                    <h2><a href="http://www.londonthemes.com/themes/londonlive/?p=310">Monster inc, Voted Coolest Movie</a></h2> 
+                    <h2><a href="/">Monster inc, Voted Coolest Movie</a></h2> 
                     <span class="date">Posted On: December 01,  2010</span>
                     <div class="pholder">
                         <p>Maecenas mattis, tortor ut posuere aliquam, quam enim accumsan purus, auctor placerat orci velit vitae massa. Vivamus non iaculis lectus. [...]</p>

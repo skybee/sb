@@ -1,33 +1,5 @@
 // JavaScript Document
 
-$(function() {
-$(".imgf").css("opacity","1.0");
-$(".imgf").hover(function () {
-$(this).stop().animate({
-opacity:0.5
-}, "slow");
-},
-function () {
-$(this).stop().animate({
-opacity: 1.0
-}, "slow");
-});
-});
-
-$(function() {
-$(".shareimg").css("opacity","0.7");
-$(".shareimg").hover(function () {									  
-$(this).stop().animate({
-opacity: 1.0
-}, "slow");
-},	
-function () {		
-$(this).stop().animate({
-opacity: 0.5
-}, "slow");
-});
-});
-
 
 $(document).ready(function() { 
 $('.toparrow').click(function(){ 

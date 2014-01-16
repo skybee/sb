@@ -31,6 +31,7 @@ class main extends CI_Controller {
     }
 
     function document($cat_name, $s_cat_name, $url_id_name) {
+        
         preg_match("#-(\d+)-(.+)#i", $url_id_name, $url_id_name_ar); //зазбор URL_name
         $doc_id = $url_id_name_ar[1];
         $doc_urlname = $url_id_name_ar[2];

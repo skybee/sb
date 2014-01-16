@@ -53,20 +53,14 @@ class rss_url_lib
             elseif( stripos($url, 'tsn.ua/politika')    !== false ) $cat_id = $cat_ar['news']['politics'];
             elseif( stripos($url, 'tsn.ua/glamur/')     !== false ) $cat_id = $cat_ar['news']['showbiz'];
         }
-        elseif( $donor_url == 'http://www.unn.com.ua/ru/rss/main_universal/' ){
-            if( stripos($cat, 'events')                 !== false ) $cat_id = $cat_ar['news']['ukraine'];
-            elseif( stripos($cat, 'agro')               !== false ) $cat_id = $cat_ar['news']['ukraine'];
-            elseif( stripos($cat, 'army')               !== false ) $cat_id = $cat_ar['news']['ukraine'];
-            elseif( stripos($cat, 'crime')              !== false ) $cat_id = $cat_ar['news']['ukraine'];
-            elseif( stripos($cat, 'good')               !== false ) $cat_id = $cat_ar['news']['ukraine'];
-            elseif( stripos($cat, 'politic')            !== false ) $cat_id = $cat_ar['news']['politics'];
-            elseif( stripos($cat, 'zovnishnya')         !== false ) $cat_id = $cat_ar['news']['politics'];
-            elseif( stripos($cat, 'economika')          !== false ) $cat_id = $cat_ar['news']['finance'];
-            elseif( stripos($cat, 'techno')             !== false ) $cat_id = $cat_ar['news']['science'];
-            elseif( stripos($cat, 'abroad')             !== false ) $cat_id = $cat_ar['news']['world'];
-            elseif( stripos($cat, 'sport')              !== false ) $cat_id = $cat_ar['news']['sport'];
-            elseif( stripos($cat, 'health')             !== false ) $cat_id = $cat_ar['news']['health'];
-            elseif( stripos($cat, 'culture')            !== false ) $cat_id = $cat_ar['news']['showbiz'];
+        elseif( $donor_url == 'http://www.unn.com.ua/rss/news_ru.xml' ){
+            if( stripos($cat, 'Политика')           !== false ) $cat_id = $cat_ar['news']['politics'];
+            elseif( stripos($cat, 'Экономика')          !== false ) $cat_id = $cat_ar['news']['finance'];
+            elseif( stripos($cat, 'Технологии')         !== false ) $cat_id = $cat_ar['news']['science'];
+            elseif( stripos($cat, 'Мир')                !== false ) $cat_id = $cat_ar['news']['world'];
+            elseif( stripos($cat, 'Спорт')              !== false ) $cat_id = $cat_ar['news']['sport'];
+            elseif( stripos($cat, 'Здоровье')           !== false ) $cat_id = $cat_ar['news']['health'];
+            elseif( stripos($cat, 'Культура')           !== false ) $cat_id = $cat_ar['news']['showbiz'];
         }
         elseif( $donor_url == 'http://rss.unian.net/site/news_ukr.rss' ){
             if( stripos($cat, 'Політика')               !== false ) $cat_id = $cat_ar['news']['politics'];

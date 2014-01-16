@@ -37,7 +37,7 @@
 
                 <div class="navigation">
                     <ul class="firstnav-menu">
-                        <li><a href="http://www.londonthemes.com/themes/londonlive" class="selected home_link">Home</a></li>
+                        <li><a href="/">Home</a></li>
                         <li>
                             <a href="#">Change Settings</a>
                             <ul>
@@ -54,35 +54,35 @@
                                 <li><a href="?blog_style=2">Blog Style 2</a></li>
                             </ul>
                         </li>
-                        <li class="page_item page-item-275"><a href="http://www.londonthemes.com/themes/londonlive/?page_id=275">Archives</a></li>
-                        <li class="page_item page-item-277"><a href="http://www.londonthemes.com/themes/londonlive/?page_id=277">Page Elements</a></li>
-                        <li class="page_item page-item-279"><a href="http://www.londonthemes.com/themes/londonlive/?page_id=279">Full Width</a></li>
-                        <li class="page_item page-item-372"><a href="http://www.londonthemes.com/themes/londonlive/?page_id=372">Contact</a></li>
+                        <li class="page_item page-item-275"><a href="/">Archives</a></li>
+                        <li class="page_item page-item-277"><a href="/">Page Elements</a></li>
+                        <li class="page_item page-item-279"><a href="/">Full Width</a></li>
+                        <li class="page_item page-item-372"><a href="/">Contact</a></li>
                     </ul>
-                    <div class="icon_holder"><a href="http://www.londonthemes.com/themes/londonlive?feed=rss2"><img src="/img/rss.png" alt="Subscribe to our Rss" class="shareimg"  /></a><a href="http://www.twitter.com/#"><img src="/img/twitter.png" alt="Follow us on Twitter!" class="shareimg" /></a><a href="http://www.facebook.com/#"><img src="/img/facebook.png" alt="Follow us on Facebook!" class="shareimg" /></a><a href="http://www.youtube.com/user/#"><img src="/img/youtube.png" alt="Check out our Youtube!" class="shareimg"  /></a></div><!-- #icon holder closer --></div><!-- #navigation closer -->
+                    <div class="icon_holder"><a href="/"  /></a></div><!-- #icon holder closer --></div><!-- #navigation closer -->
             </div><!-- #headernavigation closer -->
             <div id="content">
                 <div id="white_space">
                     <div id="content_holder">
                         <div id="header">
-                            <a href="http://www.londonthemes.com/themes/londonlive"><img src="/img/london_live.png" border="0" alt="London Live" class="logo"  /></a><div class="ad "><img src="/img/468-60.png" alt="468 X 60" /></div><!-- #ad 468x60 closer --></div><!-- #header closer -->
+                            <a href="/" /></div><!-- #ad 468x60 closer --></div><!-- #header closer -->
                         <div id="categories">
                             <ul class="secondnav-menu">             
-                                <li class="cat-item cat-item-62"><a href="http://www.londonthemes.com/themes/londonlive/?cat=62" title="View all posts filed under World">World</a>
+                                <li class="cat-item cat-item-62"><a href="/">World</a>
                                 </li>
-                                <li class="cat-item cat-item-32"><a href="http://www.londonthemes.com/themes/londonlive/?cat=32" title="View all posts filed under Technology">Technology</a>
+                                <li class="cat-item cat-item-32"><a href="/">Technology</a>
                                 </li>
-                                <li class="cat-item cat-item-31"><a href="http://www.londonthemes.com/themes/londonlive/?cat=31" title="View all posts filed under Sports">Sports</a>
+                                <li class="cat-item cat-item-31"><a href="/">Sports</a>
                                 </li>
-                                <li class="cat-item cat-item-30"><a href="http://www.londonthemes.com/themes/londonlive/?cat=30" title="View all posts filed under Politics">Politics</a>
+                                <li class="cat-item cat-item-30"><a href="/">Politics</a>
                                 </li>
-                                <li class="cat-item cat-item-29"><a href="http://www.londonthemes.com/themes/londonlive/?cat=29" title="View all posts filed under Opinion">Opinion</a>
+                                <li class="cat-item cat-item-29"><a href="/">Opinion</a>
                                 </li>
-                                <li class="cat-item cat-item-28"><a href="http://www.londonthemes.com/themes/londonlive/?cat=28" title="View all posts filed under Movies">Movies</a>
+                                <li class="cat-item cat-item-28"><a href="/">Movies</a>
                                 </li>
-                                <li class="cat-item cat-item-27"><a href="http://www.londonthemes.com/themes/londonlive/?cat=27" title="View all posts filed under Health">Health</a>
+                                <li class="cat-item cat-item-27"><a href="/">Health</a>
                                 </li>
-                                <li class="cat-item cat-item-26"><a href="http://www.londonthemes.com/themes/londonlive/?cat=26" title="View all posts filed under Business">Business</a>
+                                <li class="cat-item cat-item-26"><a href="/">Business</a>
                                 </li>
                                 <li><a href="#">Drop Menu</a><ul><li><a href="#">Drop 1</a></li><li><a href="#">Drop 2</a></li><li><a href="#">Drop 3</a></li></ul></li>
                             </ul>
@@ -135,12 +135,12 @@
 
                             <!-- 1 Content -->
                             <div id="fragment-1" class="ui-tabs-panel " style="margin-top:1px; background-color:transparent; float:left;">
-                                <a href="http://www.londonthemes.com/themes/londonlive/?p=485">
+                                <a href="/">
                                     <img src="http://www.londonthemes.com/themes/londonlive/wp-content/themes/LondonLive_Demo_1_4/thumb.php?src=/wp-content/uploads/2010/12/sharper-business.png&amp;w=467&amp;h=278&amp;zc=1&amp;q=100" alt="Fresh business tips to stay on top" border="0" />
                                 </a>
                                 <div class="info">
-                                    <h2><a href="http://www.londonthemes.com/themes/londonlive/?p=485" >Fresh business tips to stay on top</a></h2>
-                                    <span class="date">December 11,  2010 -  <a href="http://www.londonthemes.com/themes/londonlive/?p=485#respond" title="Comment on Fresh business tips to stay on top">(0) comments</a></span>
+                                    <h2><a href="/" >Fresh business tips to stay on top</a></h2>
+                                    <span class="date">December 11,  2010 -  <a href="/">(0) comments</a></span>
                                     <p>Maecenas mattis, tortor ut posuere aliquam, quam enim accumsan purus, auctor placerat orci velit vitae massa. Vivamus non iaculis lectus. Sed dignissim metus ac libero sagittis non iaculis lorem mattis. Praesent adipiscing mi eget ipsum imperdiet elementum. Nulla facilisi. Quisque [&hellip;]</p>
                                 </div><!-- #info closer -->
                             </div><!-- #fragment-1 closer -->
@@ -149,12 +149,12 @@
 
                             <!-- 2 Content -->
                             <div id="fragment-2" class="ui-tabs-panel ui-tabs-hide" style="margin-top:1px; background-color:transparent; float:left;">
-                                <a href="http://www.londonthemes.com/themes/londonlive/?p=482">
+                                <a href="/">
                                     <img src="http://www.londonthemes.com/themes/londonlive/wp-content/themes/LondonLive_Demo_1_4/thumb.php?src=/wp-content/uploads/2010/12/exercise-1.png&amp;w=467&amp;h=278&amp;zc=1&amp;q=100" alt="How much exercise is enough?" border="0" />
                                 </a>
                                 <div class="info">
-                                    <h2><a href="http://www.londonthemes.com/themes/londonlive/?p=482" >How much exercise is enough?</a></h2>
-                                    <span class="date">December 11,  2010 -  <a href="http://www.londonthemes.com/themes/londonlive/?p=482#respond" title="Comment on How much exercise is enough?">(0) comments</a></span>
+                                    <h2><a href="/" >How much exercise is enough?</a></h2>
+                                    <span class="date">December 11,  2010 -  <a href="/">(0) comments</a></span>
                                     <p>Maecenas mattis, tortor ut posuere aliquam, quam enim accumsan purus, auctor placerat orci velit vitae massa. Vivamus non iaculis lectus. Sed dignissim metus ac libero sagittis non iaculis lorem mattis. Praesent adipiscing mi eget ipsum imperdiet elementum. Nulla facilisi. Quisque [&hellip;]</p>
                                 </div><!-- #info closer -->
                             </div><!-- #fragment-2 closer -->
@@ -163,12 +163,12 @@
 
                             <!-- 3 Content -->
                             <div id="fragment-3" class="ui-tabs-panel ui-tabs-hide" style="margin-top:1px; background-color:transparent; float:left;">
-                                <a href="http://www.londonthemes.com/themes/londonlive/?p=477">
+                                <a href="/">
                                     <img src="http://www.londonthemes.com/themes/londonlive/wp-content/themes/LondonLive_Demo_1_4/thumb.php?src=/wp-content/uploads/2010/12/obama.png&amp;w=467&amp;h=278&amp;zc=1&amp;q=100" alt="Obama stresses to his staff &quot;Failure not option&quot;" border="0" />
                                 </a>
                                 <div class="info">
-                                    <h2><a href="http://www.londonthemes.com/themes/londonlive/?p=477" >Obama stresses to his staff &quot;Failure not option&quot;</a></h2>
-                                    <span class="date">December 11,  2010 -  <a href="http://www.londonthemes.com/themes/londonlive/?p=477#respond" title="Comment on Obama stresses to his staff &quot;Failure not option&quot;">(0) comments</a></span>
+                                    <h2><a href="/" >Obama stresses to his staff &quot;Failure not option&quot;</a></h2>
+                                    <span class="date">December 11,  2010 -  <a href="/">(0) comments</a></span>
                                     <p>Maecenas mattis, tortor ut posuere aliquam, quam enim accumsan purus, auctor placerat orci velit vitae massa. Vivamus non iaculis lectus. Sed dignissim metus ac libero sagittis non iaculis lorem mattis. Praesent adipiscing mi eget ipsum imperdiet elementum. Nulla facilisi. Quisque [&hellip;]</p>
                                 </div><!-- #info closer -->
                             </div><!-- #fragment-3 closer -->
@@ -177,12 +177,12 @@
 
                             <!-- 4 Content -->
                             <div id="fragment-4" class="ui-tabs-panel ui-tabs-hide" style="margin-top:1px; background-color:transparent; float:left;">
-                                <a href="http://www.londonthemes.com/themes/londonlive/?p=475">
+                                <a href="/">
                                     <img src="http://www.londonthemes.com/themes/londonlive/wp-content/themes/LondonLive_Demo_1_4/thumb.php?src=/wp-content/uploads/2010/12/durant.png&amp;w=467&amp;h=278&amp;zc=1&amp;q=100" alt="Kevin Durant set to surpass legends" border="0" />
                                 </a>
                                 <div class="info">
-                                    <h2><a href="http://www.londonthemes.com/themes/londonlive/?p=475" >Kevin Durant set to surpass legends</a></h2>
-                                    <span class="date">December 11,  2010 -  <a href="http://www.londonthemes.com/themes/londonlive/?p=475#respond" title="Comment on Kevin Durant set to surpass legends">(0) comments</a></span>
+                                    <h2><a href="/" >Kevin Durant set to surpass legends</a></h2>
+                                    <span class="date">December 11,  2010 -  <a href="/">(0) comments</a></span>
                                     <p>Maecenas mattis, tortor ut posuere aliquam, quam enim accumsan purus, auctor placerat orci velit vitae massa. Vivamus non iaculis lectus. Sed dignissim metus ac libero sagittis non iaculis lorem mattis. Praesent adipiscing mi eget ipsum imperdiet elementum. Nulla facilisi. Quisque [&hellip;]</p>
                                 </div><!-- #info closer -->
                             </div><!-- #fragment-4 closer -->
@@ -207,31 +207,31 @@
                                                 <ul id="slide_" class="jcarousel-list jcarousel-list-horizontal" style="overflow-x: hidden; overflow-y: hidden; position: relative; top: 0px; margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; width: 1450px; left: 0px; ">
 
 
-                                                    <li class="jcarousel-item jcarousel-item-horizontal jcarousel-item-1 jcarousel-item-1-horizontal" style="list-style-type: none; list-style-position: initial; list-style-image: initial; float: left; " jcarouselindex="1"><div class="date"><span class="month"><h1><a href="http://www.londonthemes.com/themes/londonlive/?p=470">Dec</a></h1></span> <span class="day"><h2><a href="http://www.londonthemes.com/themes/londonlive/?p=470">11</a></h2></span></div><a href="http://www.londonthemes.com/themes/londonlive/?p=470">
+                                                    <li class="jcarousel-item jcarousel-item-horizontal jcarousel-item-1 jcarousel-item-1-horizontal" style="list-style-type: none; list-style-position: initial; list-style-image: initial; float: left; " jcarouselindex="1"><div class="date"><span class="month"><h1><a href="/">
                                                             <img src="http://www.londonthemes.com/themes/londonlive/wp-content/themes/LondonLive_Demo_1_4/thumb.php?src=/wp-content/uploads/2010/12/spider-man.jpg&amp;w=115&amp;h=94&amp;zc=1&amp;q=100" alt="Spider-man 4 Coming Soon in 2012">
                                                         </a></li>
 
-                                                    <li class="jcarousel-item jcarousel-item-horizontal jcarousel-item-1 jcarousel-item-1-horizontal" style="list-style-type: none; list-style-position: initial; list-style-image: initial; float: left; " jcarouselindex="1"><div class="date"><span class="month"><h1><a href="http://www.londonthemes.com/themes/londonlive/?p=467">Dec</a></h1></span> <span class="day"><h2><a href="http://www.londonthemes.com/themes/londonlive/?p=467">11</a></h2></span></div><a href="http://www.londonthemes.com/themes/londonlive/?p=467">
+                                                    <li class="jcarousel-item jcarousel-item-horizontal jcarousel-item-1 jcarousel-item-1-horizontal" style="list-style-type: none; list-style-position: initial; list-style-image: initial; float: left; " jcarouselindex="1"><div class="date"><span class="month"><h1><a href="/">
                                                             <img src="http://www.londonthemes.com/themes/londonlive/wp-content/themes/LondonLive_Demo_1_4/thumb.php?src=/wp-content/uploads/2010/12/john-f-kennedy.jpg&amp;w=115&amp;h=94&amp;zc=1&amp;q=100" alt="John F Kennedy Voted one of the best presidents">
                                                         </a></li>
 
-                                                    <li class="jcarousel-item jcarousel-item-horizontal jcarousel-item-1 jcarousel-item-1-horizontal" style="list-style-type: none; list-style-position: initial; list-style-image: initial; float: left; " jcarouselindex="1"><div class="date"><span class="month"><h1><a href="http://www.londonthemes.com/themes/londonlive/?p=460">Dec</a></h1></span> <span class="day"><h2><a href="http://www.londonthemes.com/themes/londonlive/?p=460">11</a></h2></span></div><a href="http://www.londonthemes.com/themes/londonlive/?p=460">
+                                                    <li class="jcarousel-item jcarousel-item-horizontal jcarousel-item-1 jcarousel-item-1-horizontal" style="list-style-type: none; list-style-position: initial; list-style-image: initial; float: left; " jcarouselindex="1"><div class="date"><span class="month"><h1><a href="/">
                                                             <img src="http://www.londonthemes.com/themes/londonlive/wp-content/themes/LondonLive_Demo_1_4/thumb.php?src=/wp-content/uploads/2010/12/lakers.png&amp;w=115&amp;h=94&amp;zc=1&amp;q=100" alt="Lakers at the top of the west">
                                                         </a></li>
 
-                                                    <li class="jcarousel-item jcarousel-item-horizontal jcarousel-item-1 jcarousel-item-1-horizontal" style="list-style-type: none; list-style-position: initial; list-style-image: initial; float: left; " jcarouselindex="1"><div class="date"><span class="month"><h1><a href="http://www.londonthemes.com/themes/londonlive/?p=434">Dec</a></h1></span> <span class="day"><h2><a href="http://www.londonthemes.com/themes/londonlive/?p=434">11</a></h2></span></div><a href="http://www.londonthemes.com/themes/londonlive/?p=434">
+                                                    <li class="jcarousel-item jcarousel-item-horizontal jcarousel-item-1 jcarousel-item-1-horizontal" style="list-style-type: none; list-style-position: initial; list-style-image: initial; float: left; " jcarouselindex="1"><div class="date"><span class="month"><h1><a href="/">
                                                             <img src="http://www.londonthemes.com/themes/londonlive/wp-content/themes/LondonLive_Demo_1_4/thumb.php?src=/wp-content/uploads/2010/12/chicago-bulls.png&amp;w=115&amp;h=94&amp;zc=1&amp;q=100" alt="Chicago Bulls say &quot;We are the best&quot;">
                                                         </a></li>
 
-                                                    <li class="jcarousel-item jcarousel-item-horizontal jcarousel-item-1 jcarousel-item-1-horizontal" style="list-style-type: none; list-style-position: initial; list-style-image: initial; float: left; " jcarouselindex="1"><div class="date"><span class="month"><h1><a href="http://www.londonthemes.com/themes/londonlive/?p=315">Dec</a></h1></span> <span class="day"><h2><a href="http://www.londonthemes.com/themes/londonlive/?p=315">01</a></h2></span></div><a href="http://www.londonthemes.com/themes/londonlive/?p=315">
+                                                    <li class="jcarousel-item jcarousel-item-horizontal jcarousel-item-1 jcarousel-item-1-horizontal" style="list-style-type: none; list-style-position: initial; list-style-image: initial; float: left; " jcarouselindex="1"><div class="date"><span class="month"><h1><a href="/">
                                                             <img src="http://www.londonthemes.com/themes/londonlive/wp-content/themes/LondonLive_Demo_1_4/thumb.php?src=/wp-content/uploads/2010/12/boston-celtic.png&amp;w=115&amp;h=94&amp;zc=1&amp;q=100" alt="Celtics win another one on the road">
                                                         </a></li>
 
-                                                    <li class="jcarousel-item jcarousel-item-horizontal jcarousel-item-1 jcarousel-item-1-horizontal" style="list-style-type: none; list-style-position: initial; list-style-image: initial; float: left; " jcarouselindex="1"><div class="date"><span class="month"><h1><a href="http://www.londonthemes.com/themes/londonlive/?p=300">Dec</a></h1></span> <span class="day"><h2><a href="http://www.londonthemes.com/themes/londonlive/?p=300">01</a></h2></span></div><a href="http://www.londonthemes.com/themes/londonlive/?p=300">
+                                                    <li class="jcarousel-item jcarousel-item-horizontal jcarousel-item-1 jcarousel-item-1-horizontal" style="list-style-type: none; list-style-position: initial; list-style-image: initial; float: left; " jcarouselindex="1"><div class="date"><span class="month"><h1><a href="/">
                                                             <img src="http://www.londonthemes.com/themes/londonlive/wp-content/themes/LondonLive_Demo_1_4/thumb.php?src=/wp-content/uploads/2010/12/BRIDGE.png&amp;w=115&amp;h=94&amp;zc=1&amp;q=100" alt="Top bridges to walk in the world">
                                                         </a></li>
 
-                                                    <li class="jcarousel-item jcarousel-item-horizontal jcarousel-item-1 jcarousel-item-1-horizontal" style="list-style-type: none; list-style-position: initial; list-style-image: initial; float: left; " jcarouselindex="1"><div class="date"><span class="month"><h1><a href="http://www.londonthemes.com/themes/londonlive/?p=326">Nov</a></h1></span> <span class="day"><h2><a href="http://www.londonthemes.com/themes/londonlive/?p=326">01</a></h2></span></div><a href="http://www.londonthemes.com/themes/londonlive/?p=326">
+                                                    <li class="jcarousel-item jcarousel-item-horizontal jcarousel-item-1 jcarousel-item-1-horizontal" style="list-style-type: none; list-style-position: initial; list-style-image: initial; float: left; " jcarouselindex="1"><div class="date"><span class="month"><h1><a href="/">
                                                             <img src="http://www.londonthemes.com/themes/londonlive/wp-content/themes/LondonLive_Demo_1_4/thumb.php?src=/wp-content/uploads/2010/11/france.png&amp;w=115&amp;h=94&amp;zc=1&amp;q=100" alt="On the streets of france">
                                                         </a></li>
 
@@ -267,10 +267,10 @@
 
                                             <div class="top">
 
-                                                <a href="http://www.londonthemes.com/themes/londonlive/?p=485">
+                                                <a href="/">
                                                     <img src="http://www.londonthemes.com/themes/londonlive/wp-content/themes/LondonLive_Demo_1_4/thumb.php?src=/wp-content/uploads/2010/12/sharper-business.png&amp;w=275&amp;h=130&amp;zc=1&amp;q=100" alt="Fresh business tips to stay on top" />
                                                 </a><div class="heading">
-                                                    <h2><a href="http://www.londonthemes.com/themes/londonlive/?p=485">Fresh business tips to stay on top</a></h2>
+                                                    <h2><a href="/">Fresh business tips to stay on top</a></h2>
 
                                                     <span class="date">Posted On: December 11,  2010</span>
 
@@ -309,14 +309,14 @@
 
                                             <div class="top">
 
-                                                <a href="http://www.londonthemes.com/themes/londonlive/?p=310">
+                                                <a href="/">
 
 
                                                     <img src="http://www.londonthemes.com/themes/londonlive/wp-content/themes/LondonLive_Demo_1_4/thumb.php?src=/wp-content/uploads/2010/12/monster-inc.png&amp;w=275&amp;h=130&amp;zc=1&amp;q=100" alt="Monster inc, Voted Coolest Movie" />
 
 
                                                 </a><div class="heading">
-                                                    <h2><a href="http://www.londonthemes.com/themes/londonlive/?p=310">Monster inc, Voted Coolest Movie</a></h2> 
+                                                    <h2><a href="/">Monster inc, Voted Coolest Movie</a></h2> 
 
                                                     <span class="date">Posted On: December 01,  2010</span>
 
@@ -345,7 +345,7 @@
 
                                     <div class="header">
 
-                                        <h1><a href="http://www.londonthemes.com/themes/londonlive/?cat=28">Movies</a></h1>
+                                        <h1><a href="/">Movies</a></h1>
 
                                     </div><!-- #header -->
 
@@ -358,13 +358,13 @@
 
 
 
-                                                <a href="http://www.londonthemes.com/themes/londonlive/?p=473">
+                                                <a href="/">
 
                                                     <img src="http://www.londonthemes.com/themes/londonlive/wp-content/themes/LondonLive_Demo_1_4/thumb.php?src=/wp-content/uploads/2010/12/toy-story-3.jpg&amp;w=276&amp;h=221&amp;zc=1&amp;q=100" alt="Toy Story 3 One of the best movies (Video)" class="imgf"  border="0" style="height:213px;" />
 
                                                 </a>
 
-                                                <div class="description"><h3><a href="http://www.londonthemes.com/themes/londonlive/?p=473">Toy Story 3 One of the best movies (Video)</a></h3></div><!-- #description -->
+                                                <div class="description"><h3><a href="/">Toy Story 3 One of the best movies (Video)</a></h3></div><!-- #description -->
 
                                             </div><!-- #imgholder -->
 
@@ -383,12 +383,12 @@
 
                                             <div class="small-listing">
                                                 <div class="thumb">
-                                                    <a href="http://www.londonthemes.com/themes/londonlive/?p=470">
+                                                    <a href="/">
 
                                                         <img src="http://www.londonthemes.com/themes/londonlive/wp-content/themes/LondonLive_Demo_1_4/thumb.php?src=/wp-content/uploads/2010/12/spider-man.jpg&amp;w=106&amp;h=69&amp;zc=1&amp;q=100" alt="Spider-man 4 Coming Soon in 2012" class="shareimg" border="0" />
                                                     </a>
                                                 </div><!-- #thumb -->
-                                                <div class="description"><h4><a href="http://www.londonthemes.com/themes/londonlive/?p=470">Spider-man 4 Coming Soon in 2012</a></h4><span class="date">December 11,  2010</span></div><!-- #description -->
+                                                <div class="description"><h4><a href="/">December 11,  2010</span></div><!-- #description -->
 
                                             </div><!-- #small-listing -->
 
@@ -399,12 +399,12 @@
 
                                             <div class="small-listing">
                                                 <div class="thumb">
-                                                    <a href="http://www.londonthemes.com/themes/londonlive/?p=319">
+                                                    <a href="/">
 
                                                         <img src="http://www.londonthemes.com/themes/londonlive/wp-content/themes/LondonLive_Demo_1_4/thumb.php?src=/wp-content/uploads/2010/12/up.png&amp;w=106&amp;h=69&amp;zc=1&amp;q=100" alt="Our review on the movie Up" class="shareimg" border="0" />
                                                     </a>
                                                 </div><!-- #thumb -->
-                                                <div class="description"><h4><a href="http://www.londonthemes.com/themes/londonlive/?p=319">Our review on the movie Up</a></h4><span class="date">December 01,  2010</span></div><!-- #description -->
+                                                <div class="description"><h4><a href="/">December 01,  2010</span></div><!-- #description -->
 
                                             </div><!-- #small-listing -->
 
@@ -415,12 +415,12 @@
 
                                             <div class="small-listing">
                                                 <div class="thumb">
-                                                    <a href="http://www.londonthemes.com/themes/londonlive/?p=310">
+                                                    <a href="/">
 
                                                         <img src="http://www.londonthemes.com/themes/londonlive/wp-content/themes/LondonLive_Demo_1_4/thumb.php?src=/wp-content/uploads/2010/12/monster-inc.png&amp;w=106&amp;h=69&amp;zc=1&amp;q=100" alt="Monster inc, Voted Coolest Movie" class="shareimg" border="0" />
                                                     </a>
                                                 </div><!-- #thumb -->
-                                                <div class="description"><h4><a href="http://www.londonthemes.com/themes/londonlive/?p=310">Monster inc, Voted Coolest Movie</a></h4><span class="date">December 01,  2010</span></div><!-- #description -->
+                                                <div class="description"><h4><a href="/">December 01,  2010</span></div><!-- #description -->
 
                                             </div><!-- #small-listing -->
 
@@ -442,7 +442,7 @@
 
                                     <div class="header">
 
-                                        <h1><a href="http://www.londonthemes.com/themes/londonlive/?cat=31">Sports</a></h1>
+                                        <h1><a href="/">Sports</a></h1>
 
                                     </div><!-- #header -->
 
@@ -455,13 +455,13 @@
 
 
 
-                                                <a href="http://www.londonthemes.com/themes/londonlive/?p=475">
+                                                <a href="/">
 
                                                     <img src="http://www.londonthemes.com/themes/londonlive/wp-content/themes/LondonLive_Demo_1_4/thumb.php?src=/wp-content/uploads/2010/12/durant.png&amp;w=276&amp;h=221&amp;zc=1&amp;q=100" alt="Kevin Durant set to surpass legends" class="imgf"  border="0" style="height:213px;" />
 
                                                 </a>
 
-                                                <div class="description"><h3><a href="http://www.londonthemes.com/themes/londonlive/?p=475">Kevin Durant set to surpass legends</a></h3></div><!-- #description -->
+                                                <div class="description"><h3><a href="/">Kevin Durant set to surpass legends</a></h3></div><!-- #description -->
 
                                             </div><!-- #imgholder -->
 
@@ -480,12 +480,12 @@
 
                                             <div class="small-listing">
                                                 <div class="thumb">
-                                                    <a href="http://www.londonthemes.com/themes/londonlive/?p=460">
+                                                    <a href="/">
 
                                                         <img src="http://www.londonthemes.com/themes/londonlive/wp-content/themes/LondonLive_Demo_1_4/thumb.php?src=/wp-content/uploads/2010/12/lakers.png&amp;w=106&amp;h=69&amp;zc=1&amp;q=100" alt="Lakers at the top of the west" class="shareimg" border="0" />
                                                     </a>
                                                 </div><!-- #thumb -->
-                                                <div class="description"><h4><a href="http://www.londonthemes.com/themes/londonlive/?p=460">Lakers at the top of the west</a></h4><span class="date">December 11,  2010</span></div><!-- #description -->
+                                                <div class="description"><h4><a href="/">December 11,  2010</span></div><!-- #description -->
 
                                             </div><!-- #small-listing -->
 
@@ -496,12 +496,12 @@
 
                                             <div class="small-listing">
                                                 <div class="thumb">
-                                                    <a href="http://www.londonthemes.com/themes/londonlive/?p=434">
+                                                    <a href="/">
 
                                                         <img src="http://www.londonthemes.com/themes/londonlive/wp-content/themes/LondonLive_Demo_1_4/thumb.php?src=/wp-content/uploads/2010/12/chicago-bulls.png&amp;w=106&amp;h=69&amp;zc=1&amp;q=100" alt="Chicago Bulls say &quot;We are the best&quot;" class="shareimg" border="0" />
                                                     </a>
                                                 </div><!-- #thumb -->
-                                                <div class="description"><h4><a href="http://www.londonthemes.com/themes/londonlive/?p=434">Chicago Bulls say &quot;We are the best&quot;</a></h4><span class="date">December 11,  2010</span></div><!-- #description -->
+                                                <div class="description"><h4><a href="/">December 11,  2010</span></div><!-- #description -->
 
                                             </div><!-- #small-listing -->
 
@@ -512,12 +512,12 @@
 
                                             <div class="small-listing">
                                                 <div class="thumb">
-                                                    <a href="http://www.londonthemes.com/themes/londonlive/?p=624">
+                                                    <a href="/">
 
                                                         <img src="http://www.londonthemes.com/themes/londonlive/wp-content/themes/LondonLive_Demo_1_4/thumb.php?src=/wp-content/uploads/2010/12/heat.jpg&amp;w=106&amp;h=69&amp;zc=1&amp;q=100" alt="Miami Heat thinks they will break records" class="shareimg" border="0" />
                                                     </a>
                                                 </div><!-- #thumb -->
-                                                <div class="description"><h4><a href="http://www.londonthemes.com/themes/londonlive/?p=624">Miami Heat thinks they will break records</a></h4><span class="date">December 10,  2010</span></div><!-- #description -->
+                                                <div class="description"><h4><a href="/">December 10,  2010</span></div><!-- #description -->
 
                                             </div><!-- #small-listing -->
 
@@ -539,7 +539,7 @@
 
                                     <div class="header">
 
-                                        <h1><a href="http://www.londonthemes.com/themes/londonlive/?cat=30">Politics</a></h1>
+                                        <h1><a href="/">Politics</a></h1>
 
                                     </div><!-- #header -->
 
@@ -552,13 +552,13 @@
 
 
 
-                                                <a href="http://www.londonthemes.com/themes/londonlive/?p=477">
+                                                <a href="/">
 
                                                     <img src="http://www.londonthemes.com/themes/londonlive/wp-content/themes/LondonLive_Demo_1_4/thumb.php?src=/wp-content/uploads/2010/12/obama.png&amp;w=276&amp;h=221&amp;zc=1&amp;q=100" alt="Obama stresses to his staff &quot;Failure not option&quot;" class="imgf"  border="0" style="height:213px;" />
 
                                                 </a>
 
-                                                <div class="description"><h3><a href="http://www.londonthemes.com/themes/londonlive/?p=477">Obama stresses to his staff &quot;Failure not option&quot;</a></h3></div><!-- #description -->
+                                                <div class="description"><h3><a href="/">Obama stresses to his staff &quot;Failure not option&quot;</a></h3></div><!-- #description -->
 
                                             </div><!-- #imgholder -->
 
@@ -577,12 +577,12 @@
 
                                             <div class="small-listing">
                                                 <div class="thumb">
-                                                    <a href="http://www.londonthemes.com/themes/londonlive/?p=467">
+                                                    <a href="/">
 
                                                         <img src="http://www.londonthemes.com/themes/londonlive/wp-content/themes/LondonLive_Demo_1_4/thumb.php?src=/wp-content/uploads/2010/12/john-f-kennedy.jpg&amp;w=106&amp;h=69&amp;zc=1&amp;q=100" alt="John F Kennedy Voted one of the best presidents" class="shareimg" border="0" />
                                                     </a>
                                                 </div><!-- #thumb -->
-                                                <div class="description"><h4><a href="http://www.londonthemes.com/themes/londonlive/?p=467">John F Kennedy Voted one of the best presidents</a></h4><span class="date">December 11,  2010</span></div><!-- #description -->
+                                                <div class="description"><h4><a href="/">December 11,  2010</span></div><!-- #description -->
 
                                             </div><!-- #small-listing -->
 
@@ -593,12 +593,12 @@
 
                                             <div class="small-listing">
                                                 <div class="thumb">
-                                                    <a href="http://www.londonthemes.com/themes/londonlive/?p=465">
+                                                    <a href="/">
 
                                                         <img src="http://www.londonthemes.com/themes/londonlive/wp-content/themes/LondonLive_Demo_1_4/thumb.php?src=/wp-content/uploads/2010/12/bill-clinton.jpg&amp;w=106&amp;h=69&amp;zc=1&amp;q=100" alt="Bill Clinton wishes he was still president" class="shareimg" border="0" />
                                                     </a>
                                                 </div><!-- #thumb -->
-                                                <div class="description"><h4><a href="http://www.londonthemes.com/themes/londonlive/?p=465">Bill Clinton wishes he was still president</a></h4><span class="date">December 11,  2010</span></div><!-- #description -->
+                                                <div class="description"><h4><a href="/">December 11,  2010</span></div><!-- #description -->
 
                                             </div><!-- #small-listing -->
 
@@ -609,12 +609,12 @@
 
                                             <div class="small-listing">
                                                 <div class="thumb">
-                                                    <a href="http://www.londonthemes.com/themes/londonlive/?p=462">
+                                                    <a href="/">
 
                                                         <img src="http://www.londonthemes.com/themes/londonlive/wp-content/themes/LondonLive_Demo_1_4/thumb.php?src=/wp-content/uploads/2010/12/george-bush.jpg&amp;w=106&amp;h=69&amp;zc=1&amp;q=100" alt="George Bush tries to past new law" class="shareimg" border="0" />
                                                     </a>
                                                 </div><!-- #thumb -->
-                                                <div class="description"><h4><a href="http://www.londonthemes.com/themes/londonlive/?p=462">George Bush tries to past new law</a></h4><span class="date">December 11,  2010</span></div><!-- #description -->
+                                                <div class="description"><h4><a href="/">December 11,  2010</span></div><!-- #description -->
 
                                             </div><!-- #small-listing -->
 
@@ -649,7 +649,7 @@
 
                                         <div class="left_other_news" style="margin-right:34px;">
 
-                                            <a href="http://www.londonthemes.com/themes/londonlive/?p=326">
+                                            <a href="/">
 
 
                                                 <img src="http://www.londonthemes.com/themes/londonlive/wp-content/themes/LondonLive_Demo_1_4/thumb.php?src=/wp-content/uploads/2010/11/france.png&amp;w=85&amp;h=69&amp;zc=1&amp;q=100" alt="On the streets of france" />
@@ -658,7 +658,7 @@
                                             </a>
 
 
-                                            <div class="content"><h4><a href="http://www.londonthemes.com/themes/londonlive/?p=326">On the streets of france</a></h4> <span class="date">November 01,  2010</span></div><!-- #content -->
+                                            <div class="content"><h4><a href="/">November 01,  2010</span></div><!-- #content -->
 
 
                                         </div><!-- #left_other_news -->
@@ -668,7 +668,7 @@
 
                                         <div class="left_other_news" style="margin-right:0;">
 
-                                            <a href="http://www.londonthemes.com/themes/londonlive/?p=1031">
+                                            <a href="/">
 
 
                                                 <img src="http://www.londonthemes.com/themes/londonlive/wp-content/themes/LondonLive_Demo_1_4/thumb.php?src=/wp-content/uploads/2010/01/sky-diving.png&amp;w=85&amp;h=69&amp;zc=1&amp;q=100" alt="Sky Diving helps relieve stress" />
@@ -677,7 +677,7 @@
                                             </a>
 
 
-                                            <div class="content"><h4><a href="http://www.londonthemes.com/themes/londonlive/?p=1031">Sky Diving helps relieve stress</a></h4> <span class="date">January 03,  2010</span></div><!-- #content -->
+                                            <div class="content"><h4><a href="/">January 03,  2010</span></div><!-- #content -->
 
 
                                         </div><!-- #left_other_news -->
@@ -687,7 +687,7 @@
 
                                         <div class="left_other_news" style="margin-right:34px;">
 
-                                            <a href="http://www.londonthemes.com/themes/londonlive/?p=1049">
+                                            <a href="/">
 
 
                                                 <img src="http://www.londonthemes.com/themes/londonlive/wp-content/themes/LondonLive_Demo_1_4/thumb.php?src=/wp-content/uploads/2010/01/porsche.png&amp;w=85&amp;h=69&amp;zc=1&amp;q=100" alt="Porsche one fast car" />
@@ -696,7 +696,7 @@
                                             </a>
 
 
-                                            <div class="content"><h4><a href="http://www.londonthemes.com/themes/londonlive/?p=1049">Porsche one fast car</a></h4> <span class="date">January 03,  2010</span></div><!-- #content -->
+                                            <div class="content"><h4><a href="/">January 03,  2010</span></div><!-- #content -->
 
 
                                         </div><!-- #left_other_news -->
@@ -706,7 +706,7 @@
 
                                         <div class="left_other_news" style="margin-right:0;">
 
-                                            <a href="http://www.londonthemes.com/themes/londonlive/?p=1018">
+                                            <a href="/">
 
 
                                                 <img src="http://www.londonthemes.com/themes/londonlive/wp-content/themes/LondonLive_Demo_1_4/thumb.php?src=/wp-content/uploads/2010/01/partnership.png&amp;w=85&amp;h=69&amp;zc=1&amp;q=100" alt="Quick and easy partnership tips" />
@@ -715,7 +715,7 @@
                                             </a>
 
 
-                                            <div class="content"><h4><a href="http://www.londonthemes.com/themes/londonlive/?p=1018">Quick and easy partnership tips</a></h4> <span class="date">January 03,  2010</span></div><!-- #content -->
+                                            <div class="content"><h4><a href="/">January 03,  2010</span></div><!-- #content -->
 
 
                                         </div><!-- #left_other_news -->
@@ -725,7 +725,7 @@
 
                                         <div class="left_other_news" style="margin-right:34px;">
 
-                                            <a href="http://www.londonthemes.com/themes/londonlive/?p=467">
+                                            <a href="/">
 
 
                                                 <img src="http://www.londonthemes.com/themes/londonlive/wp-content/themes/LondonLive_Demo_1_4/thumb.php?src=/wp-content/uploads/2010/12/john-f-kennedy.jpg&amp;w=85&amp;h=69&amp;zc=1&amp;q=100" alt="John F Kennedy Voted one of the best presidents" />
@@ -734,7 +734,7 @@
                                             </a>
 
 
-                                            <div class="content"><h4><a href="http://www.londonthemes.com/themes/londonlive/?p=467">John F Kennedy Voted one of the best presidents</a></h4> <span class="date">December 11,  2010</span></div><!-- #content -->
+                                            <div class="content"><h4><a href="/">December 11,  2010</span></div><!-- #content -->
 
 
                                         </div><!-- #left_other_news -->
@@ -744,7 +744,7 @@
 
                                         <div class="left_other_news" style="margin-right:0;">
 
-                                            <a href="http://www.londonthemes.com/themes/londonlive/?p=322">
+                                            <a href="/">
 
 
                                                 <img src="http://www.londonthemes.com/themes/londonlive/wp-content/themes/LondonLive_Demo_1_4/thumb.php?src=/wp-content/uploads/2010/12/lovers.png&amp;w=85&amp;h=69&amp;zc=1&amp;q=100" alt="Love bugs bites majority of world" />
@@ -753,7 +753,7 @@
                                             </a>
 
 
-                                            <div class="content"><h4><a href="http://www.londonthemes.com/themes/londonlive/?p=322">Love bugs bites majority of world</a></h4> <span class="date">December 01,  2010</span></div><!-- #content -->
+                                            <div class="content"><h4><a href="/">December 01,  2010</span></div><!-- #content -->
 
 
                                         </div><!-- #left_other_news -->
@@ -782,64 +782,64 @@
                                     </div><!-- #header -->
                                     <div id="populartab" class="tabdiv"><!-- #popular -->
                                         <div class="tab_inside">
-                                            <a href="http://www.londonthemes.com/themes/londonlive/?p=473">
+                                            <a href="/">
                                                 <img src="http://www.londonthemes.com/themes/londonlive/wp-content/themes/LondonLive_Demo_1_4/thumb.php?src=/wp-content/uploads/2010/12/toy-story-3.jpg&amp;w=53&amp;h=41&amp;zc=1&amp;q=100" alt="Toy Story 3 One of the best movies (Video)" />
                                             </a>
-                                            <div class="content"><h1><a href="http://www.londonthemes.com/themes/londonlive/?p=473">Toy Story 3 One of the best movies (Video)</a></h1> <br  /> <span class="date">December 11,  2010   </span></div><!-- #content closer -->
+                                            <div class="content"><h1><a href="/">December 11,  2010   </span></div><!-- #content closer -->
                                         </div><!-- #tab_inside -->
                                         <div class="tab_inside">
-                                            <a href="http://www.londonthemes.com/themes/londonlive/?p=329">
+                                            <a href="/">
                                                 <img src="http://www.londonthemes.com/themes/londonlive/wp-content/themes/LondonLive_Demo_1_4/thumb.php?src=/wp-content/uploads/2010/12/italy-bo.png&amp;w=53&amp;h=41&amp;zc=1&amp;q=100" alt="Italy gives free boat rides" />
                                             </a>
-                                            <div class="content"><h1><a href="http://www.londonthemes.com/themes/londonlive/?p=329">Italy gives free boat rides</a></h1> <br  /> <span class="date">December 01,  2010   </span></div><!-- #content closer -->
+                                            <div class="content"><h1><a href="/">December 01,  2010   </span></div><!-- #content closer -->
                                         </div><!-- #tab_inside -->
                                         <div class="tab_inside">
-                                            <a href="http://www.londonthemes.com/themes/londonlive/?p=319">
+                                            <a href="/">
                                                 <img src="http://www.londonthemes.com/themes/londonlive/wp-content/themes/LondonLive_Demo_1_4/thumb.php?src=/wp-content/uploads/2010/12/up.png&amp;w=53&amp;h=41&amp;zc=1&amp;q=100" alt="Our review on the movie Up" />
                                             </a>
-                                            <div class="content"><h1><a href="http://www.londonthemes.com/themes/londonlive/?p=319">Our review on the movie Up</a></h1> <br  /> <span class="date">December 01,  2010   </span></div><!-- #content closer -->
+                                            <div class="content"><h1><a href="/">December 01,  2010   </span></div><!-- #content closer -->
                                         </div><!-- #tab_inside -->
                                         <div class="tab_inside">
-                                            <a href="http://www.londonthemes.com/themes/londonlive/?p=467">
+                                            <a href="/">
                                                 <img src="http://www.londonthemes.com/themes/londonlive/wp-content/themes/LondonLive_Demo_1_4/thumb.php?src=/wp-content/uploads/2010/12/john-f-kennedy.jpg&amp;w=53&amp;h=41&amp;zc=1&amp;q=100" alt="John F Kennedy Voted one of the best presidents" />
                                             </a>
-                                            <div class="content"><h1><a href="http://www.londonthemes.com/themes/londonlive/?p=467">John F Kennedy Voted one of the best presidents</a></h1> <br  /> <span class="date">December 11,  2010   </span></div><!-- #content closer -->
+                                            <div class="content"><h1><a href="/">December 11,  2010   </span></div><!-- #content closer -->
                                         </div><!-- #tab_inside -->
                                         <div class="tab_inside">
-                                            <a href="http://www.londonthemes.com/themes/londonlive/?p=322">
+                                            <a href="/">
                                                 <img src="http://www.londonthemes.com/themes/londonlive/wp-content/themes/LondonLive_Demo_1_4/thumb.php?src=/wp-content/uploads/2010/12/lovers.png&amp;w=53&amp;h=41&amp;zc=1&amp;q=100" alt="Love bugs bites majority of world" />
                                             </a>
-                                            <div class="content"><h1><a href="http://www.londonthemes.com/themes/londonlive/?p=322">Love bugs bites majority of world</a></h1> <br  /> <span class="date">December 01,  2010   </span></div><!-- #content closer -->
+                                            <div class="content"><h1><a href="/">December 01,  2010   </span></div><!-- #content closer -->
                                         </div><!-- #tab_inside -->
                                     </div><!--#popular -->
 
 
                                     <div id="recenttab" class="tabdiv"><!-- #recent tab -->
 
-                                        <div class="tab_inside"><a href="http://www.londonthemes.com/themes/londonlive/?p=485">
+                                        <div class="tab_inside"><a href="/">
                                                 <img src="http://www.londonthemes.com/themes/londonlive/wp-content/themes/LondonLive_Demo_1_4/thumb.php?src=/wp-content/uploads/2010/12/sharper-business.png&amp;w=53&amp;h=41&amp;zc=1&amp;q=100" alt="Fresh business tips to stay on top" />
                                             </a>
-                                            <div class="content"><h1><a href="http://www.londonthemes.com/themes/londonlive/?p=485">Fresh business tips to stay on top</a></h1> <br  /> <span class="date">December 11,  2010</span></div><!-- #content closer -->
+                                            <div class="content"><h1><a href="/">December 11,  2010</span></div><!-- #content closer -->
                                         </div><!-- #tab_inside -->
-                                        <div class="tab_inside"><a href="http://www.londonthemes.com/themes/londonlive/?p=482">
+                                        <div class="tab_inside"><a href="/">
                                                 <img src="http://www.londonthemes.com/themes/londonlive/wp-content/themes/LondonLive_Demo_1_4/thumb.php?src=/wp-content/uploads/2010/12/exercise-1.png&amp;w=53&amp;h=41&amp;zc=1&amp;q=100" alt="How much exercise is enough?" />
                                             </a>
-                                            <div class="content"><h1><a href="http://www.londonthemes.com/themes/londonlive/?p=482">How much exercise is enough?</a></h1> <br  /> <span class="date">December 11,  2010</span></div><!-- #content closer -->
+                                            <div class="content"><h1><a href="/">December 11,  2010</span></div><!-- #content closer -->
                                         </div><!-- #tab_inside -->
-                                        <div class="tab_inside"><a href="http://www.londonthemes.com/themes/londonlive/?p=477">
+                                        <div class="tab_inside"><a href="/">
                                                 <img src="http://www.londonthemes.com/themes/londonlive/wp-content/themes/LondonLive_Demo_1_4/thumb.php?src=/wp-content/uploads/2010/12/obama.png&amp;w=53&amp;h=41&amp;zc=1&amp;q=100" alt="Obama stresses to his staff &quot;Failure not option&quot;" />
                                             </a>
-                                            <div class="content"><h1><a href="http://www.londonthemes.com/themes/londonlive/?p=477">Obama stresses to his staff &quot;Failure not option&quot;</a></h1> <br  /> <span class="date">December 11,  2010</span></div><!-- #content closer -->
+                                            <div class="content"><h1><a href="/">December 11,  2010</span></div><!-- #content closer -->
                                         </div><!-- #tab_inside -->
-                                        <div class="tab_inside"><a href="http://www.londonthemes.com/themes/londonlive/?p=475">
+                                        <div class="tab_inside"><a href="/">
                                                 <img src="http://www.londonthemes.com/themes/londonlive/wp-content/themes/LondonLive_Demo_1_4/thumb.php?src=/wp-content/uploads/2010/12/durant.png&amp;w=53&amp;h=41&amp;zc=1&amp;q=100" alt="Kevin Durant set to surpass legends" />
                                             </a>
-                                            <div class="content"><h1><a href="http://www.londonthemes.com/themes/londonlive/?p=475">Kevin Durant set to surpass legends</a></h1> <br  /> <span class="date">December 11,  2010</span></div><!-- #content closer -->
+                                            <div class="content"><h1><a href="/">December 11,  2010</span></div><!-- #content closer -->
                                         </div><!-- #tab_inside -->
-                                        <div class="tab_inside"><a href="http://www.londonthemes.com/themes/londonlive/?p=473">
+                                        <div class="tab_inside"><a href="/">
                                                 <img src="http://www.londonthemes.com/themes/londonlive/wp-content/themes/LondonLive_Demo_1_4/thumb.php?src=/wp-content/uploads/2010/12/toy-story-3.jpg&amp;w=53&amp;h=41&amp;zc=1&amp;q=100" alt="Toy Story 3 One of the best movies (Video)" />
                                             </a>
-                                            <div class="content"><h1><a href="http://www.londonthemes.com/themes/londonlive/?p=473">Toy Story 3 One of the best movies (Video)</a></h1> <br  /> <span class="date">December 11,  2010</span></div><!-- #content closer -->
+                                            <div class="content"><h1><a href="/">December 11,  2010</span></div><!-- #content closer -->
                                         </div><!-- #tab_inside -->
 
                                     </div><!--#recent tab -->
@@ -848,24 +848,24 @@
                                     <div id="commentstab" class="tabdiv"><!-- #commentstab -->
 
                                         <div class="tab_inside">
-                                            <a href="http://www.londonthemes.com/themes/londonlive/?p=319#comment-60"><img alt='' src='http://0.gravatar.com/avatar/207c3a86af3d4725c54de5bb00df6950?s=53&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D53&amp;r=G' class='avatar avatar-53 photo' height='53' width='53' /></a>
-                                            <div class="content"><h1><a href="http://www.londonthemes.com/themes/londonlive/?p=319#comment-60">Our review on the movie Up</a></h1> <br  /> <span class="date">Duis tempor tellus sed magna mollis sed porttitor turpis bibendum. Fus</span></div><!-- #content closer -->
+                                            <a href="/"><img alt='' src='http://0.gravatar.com/avatar/207c3a86af3d4725c54de5bb00df6950?s=53&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D53&amp;r=G' class='avatar avatar-53 photo' height='53' width='53' /></a>
+                                            <div class="content"><h1><a href="/">Duis tempor tellus sed magna mollis sed porttitor turpis bibendum. Fus</span></div><!-- #content closer -->
                                         </div><!-- #tab_inside -->
                                         <div class="tab_inside">
-                                            <a href="http://www.londonthemes.com/themes/londonlive/?p=319#comment-59"><img alt='' src='http://0.gravatar.com/avatar/207c3a86af3d4725c54de5bb00df6950?s=53&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D53&amp;r=G' class='avatar avatar-53 photo' height='53' width='53' /></a>
-                                            <div class="content"><h1><a href="http://www.londonthemes.com/themes/londonlive/?p=319#comment-59">Our review on the movie Up</a></h1> <br  /> <span class="date">Nullam condimentum magna id diam hendrerit facilisis. Donec hendrerit </span></div><!-- #content closer -->
+                                            <a href="/"><img alt='' src='http://0.gravatar.com/avatar/207c3a86af3d4725c54de5bb00df6950?s=53&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D53&amp;r=G' class='avatar avatar-53 photo' height='53' width='53' /></a>
+                                            <div class="content"><h1><a href="/">Nullam condimentum magna id diam hendrerit facilisis. Donec hendrerit </span></div><!-- #content closer -->
                                         </div><!-- #tab_inside -->
                                         <div class="tab_inside">
-                                            <a href="http://www.londonthemes.com/themes/londonlive/?p=467#comment-75"><img alt='' src='http://0.gravatar.com/avatar/207c3a86af3d4725c54de5bb00df6950?s=53&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D53&amp;r=G' class='avatar avatar-53 photo' height='53' width='53' /></a>
-                                            <div class="content"><h1><a href="http://www.londonthemes.com/themes/londonlive/?p=467#comment-75">John F Kennedy Voted one of the best presidents</a></h1> <br  /> <span class="date">Nullam condimentum magna id diam hendrerit facilisis. Donec hendrerit </span></div><!-- #content closer -->
+                                            <a href="/"><img alt='' src='http://0.gravatar.com/avatar/207c3a86af3d4725c54de5bb00df6950?s=53&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D53&amp;r=G' class='avatar avatar-53 photo' height='53' width='53' /></a>
+                                            <div class="content"><h1><a href="/">Nullam condimentum magna id diam hendrerit facilisis. Donec hendrerit </span></div><!-- #content closer -->
                                         </div><!-- #tab_inside -->
                                         <div class="tab_inside">
-                                            <a href="http://www.londonthemes.com/themes/londonlive/?p=467#comment-74"><img alt='' src='http://0.gravatar.com/avatar/207c3a86af3d4725c54de5bb00df6950?s=53&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D53&amp;r=G' class='avatar avatar-53 photo' height='53' width='53' /></a>
-                                            <div class="content"><h1><a href="http://www.londonthemes.com/themes/londonlive/?p=467#comment-74">John F Kennedy Voted one of the best presidents</a></h1> <br  /> <span class="date">Mauris tempor, elit eget viverra lacinia, velit enim vestibulum mi, sc</span></div><!-- #content closer -->
+                                            <a href="/"><img alt='' src='http://0.gravatar.com/avatar/207c3a86af3d4725c54de5bb00df6950?s=53&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D53&amp;r=G' class='avatar avatar-53 photo' height='53' width='53' /></a>
+                                            <div class="content"><h1><a href="/">Mauris tempor, elit eget viverra lacinia, velit enim vestibulum mi, sc</span></div><!-- #content closer -->
                                         </div><!-- #tab_inside -->
                                         <div class="tab_inside">
-                                            <a href="http://www.londonthemes.com/themes/londonlive/?p=473#comment-83"><img alt='' src='http://0.gravatar.com/avatar/207c3a86af3d4725c54de5bb00df6950?s=53&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D53&amp;r=G' class='avatar avatar-53 photo' height='53' width='53' /></a>
-                                            <div class="content"><h1><a href="http://www.londonthemes.com/themes/londonlive/?p=473#comment-83">Toy Story 3 One of the best movies (Video)</a></h1> <br  /> <span class="date">Mauris tempor, elit eget viverra lacinia, velit enim vestibulum mi, sc</span></div><!-- #content closer -->
+                                            <a href="/"><img alt='' src='http://0.gravatar.com/avatar/207c3a86af3d4725c54de5bb00df6950?s=53&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D53&amp;r=G' class='avatar avatar-53 photo' height='53' width='53' /></a>
+                                            <div class="content"><h1><a href="/">Mauris tempor, elit eget viverra lacinia, velit enim vestibulum mi, sc</span></div><!-- #content closer -->
                                         </div><!-- #tab_inside -->
 
                                     </div><!-- #commentstab -->
@@ -909,10 +909,10 @@
                                     <div style="float:left; width:148px; ">
 
                                         <div id="pages-4" class="widget-container widget_pages rightwidget column-left"><h3 class="widget-title"><span class="title">Pages</span></h3>		<ul>
-                                                <li class="page_item page-item-275"><a href="http://www.londonthemes.com/themes/londonlive/?page_id=275">Archives</a></li>
-                                                <li class="page_item page-item-372"><a href="http://www.londonthemes.com/themes/londonlive/?page_id=372">Contact</a></li>
-                                                <li class="page_item page-item-279"><a href="http://www.londonthemes.com/themes/londonlive/?page_id=279">Full Width</a></li>
-                                                <li class="page_item page-item-277"><a href="http://www.londonthemes.com/themes/londonlive/?page_id=277">Page Elements</a></li>
+                                                <li class="page_item page-item-275"><a href="/">Archives</a></li>
+                                                <li class="page_item page-item-372"><a href="/">Contact</a></li>
+                                                <li class="page_item page-item-279"><a href="/">Full Width</a></li>
+                                                <li class="page_item page-item-277"><a href="/">Page Elements</a></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -920,21 +920,21 @@
                                     <div style="float:left; width:148px; margin-left:18px;">
 
                                         <div id="categories-3" class="widget-container widget_categories rightwidget column-right"><h3 class="widget-title"><span class="title">Categories</span></h3>		<ul>
-                                                <li class="cat-item cat-item-26"><a href="http://www.londonthemes.com/themes/londonlive/?cat=26" title="View all posts filed under Business">Business</a>
+                                                <li class="cat-item cat-item-26"><a href="/">Business</a>
                                                 </li>
-                                                <li class="cat-item cat-item-27"><a href="http://www.londonthemes.com/themes/londonlive/?cat=27" title="View all posts filed under Health">Health</a>
+                                                <li class="cat-item cat-item-27"><a href="/">Health</a>
                                                 </li>
-                                                <li class="cat-item cat-item-28"><a href="http://www.londonthemes.com/themes/londonlive/?cat=28" title="View all posts filed under Movies">Movies</a>
+                                                <li class="cat-item cat-item-28"><a href="/">Movies</a>
                                                 </li>
-                                                <li class="cat-item cat-item-29"><a href="http://www.londonthemes.com/themes/londonlive/?cat=29" title="View all posts filed under Opinion">Opinion</a>
+                                                <li class="cat-item cat-item-29"><a href="/">Opinion</a>
                                                 </li>
-                                                <li class="cat-item cat-item-30"><a href="http://www.londonthemes.com/themes/londonlive/?cat=30" title="View all posts filed under Politics">Politics</a>
+                                                <li class="cat-item cat-item-30"><a href="/">Politics</a>
                                                 </li>
-                                                <li class="cat-item cat-item-31"><a href="http://www.londonthemes.com/themes/londonlive/?cat=31" title="View all posts filed under Sports">Sports</a>
+                                                <li class="cat-item cat-item-31"><a href="/">Sports</a>
                                                 </li>
-                                                <li class="cat-item cat-item-32"><a href="http://www.londonthemes.com/themes/londonlive/?cat=32" title="View all posts filed under Technology">Technology</a>
+                                                <li class="cat-item cat-item-32"><a href="/">Technology</a>
                                                 </li>
-                                                <li class="cat-item cat-item-62"><a href="http://www.londonthemes.com/themes/londonlive/?cat=62" title="View all posts filed under World">World</a>
+                                                <li class="cat-item cat-item-62"><a href="/">World</a>
                                                 </li>
                                             </ul>
                                         </div>
@@ -988,9 +988,9 @@
                     <div class="widget_h_m">
 
                         <div id="meta-2" class="widget"><h3 class="widget-title"><span class="title">Meta</span></h3>			<ul>
-                                <li><a href="http://www.londonthemes.com/themes/londonlive/wp-login.php">Log in</a></li>
-                                <li><a href="http://www.londonthemes.com/themes/londonlive/?feed=rss2" title="Syndicate this site using RSS 2.0">Entries <abbr title="Really Simple Syndication">RSS</abbr></a></li>
-                                <li><a href="http://www.londonthemes.com/themes/londonlive/?feed=comments-rss2" title="The latest comments to all posts in RSS">Comments <abbr title="Really Simple Syndication">RSS</abbr></a></li>
+                                <li><a href="/">Log in</a></li>
+                                <li><a href="/">RSS</abbr></a></li>
+                                <li><a href="/">RSS</abbr></a></li>
                                 <li><a href="http://wordpress.org/" title="Powered by WordPress, state-of-the-art semantic personal publishing platform.">WordPress.org</a></li>
                             </ul>
                         </div><!-- #widget -->
