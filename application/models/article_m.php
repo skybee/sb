@@ -102,4 +102,11 @@ class article_m extends CI_Model{
         $text = strip_tags($text);
         return mb_substr($text, 0, $length);
     }
+    
+    function get_like_news( $id, $text, $cntNews, $dayPeriod ){
+        $cleanPattern = "#(['\"\,\.\\\]+|&\w{2,6};)#i";
+        $text = preg_replace($cleanPattern, ' ', $text);
+        
+        echo $text;
+    }
 }
