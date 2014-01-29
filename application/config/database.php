@@ -59,6 +59,11 @@ $db['default']['database'] = 'sb';
 //$db['default']['password'] = '1865tsb';
 //$db['default']['database'] = 'skybee_news';
 
+$db['default']['hostname'] = 'mysql.1freehosting.com';
+$db['default']['username'] = 'u179459769_sb';
+$db['default']['password'] = '1865tsb';
+$db['default']['database'] = 'u179459769_news';
+
 
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = '';

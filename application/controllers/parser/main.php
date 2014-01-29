@@ -1,13 +1,12 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-
 class Main extends CI_Controller
 {
     
     function __construct() {
         parent::__construct();
         
-        set_time_limit( 300 );
+//        set_time_limit( 300 );
         
         $this->load->database();
 //        $this->load->helper('parser/download');
@@ -67,7 +66,7 @@ class Main extends CI_Controller
         
         $parse_list = $this->parser_m->get_news_url_to_parse( $cnt_news );
         
-        if( !$parse_list ){  echo "ERROR Отсутствуют URL для сканирования"; return; }
+        if( count($parse_list) < 1 ){  echo "ERROR Отсутствуют URL для сканирования"; return; }
         
         $i=1;
         foreach( $parse_list as $news_ar ){
@@ -75,7 +74,11 @@ class Main extends CI_Controller
 //            $news_ar['url'] = 'http://www.unn.com.ua/ru/news/1293385-nevidomi-namagalis-vikrasti-prakh-zigmunda-freyda';
         
             $html = $this->news_parser_lib->down_with_curl( $news_ar['url'] );
-            if( empty($html) ) continue;
+            
+            if( empty($html) ){ 
+                $this->parser_m->set_url_scaning( $news_ar['id'] );
+                continue;
+            }
             
             $host                           = $this->news_parser_lib->get_donor_url( $news_ar['url'] );
             $insert_data                    = $this->parse_page_lib->get_data( $html, $host);

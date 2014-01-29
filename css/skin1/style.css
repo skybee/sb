@@ -1630,29 +1630,31 @@ float: left;
 #left div.cat_listing div.content div.left div.imgholder {
 float: left;
 position: relative;
-width: 285px;
-height: 210px;
+width: 290px;
+height: 220px;
 overflow: hidden;
+/*position: relative;
+top: 1px;*/
+box-shadow: #cecece 0px 0px 5px 2px;
 }
 
 #left div.cat_listing div.content div.left div.description {
-left: 0;
-background-image: url(/img/listing-transparent.png);
+/*background-image: url(/img/listing-transparent.png);*/
+background-color: rgba(0,0,0,0.5);
 position: absolute;
-width: 262px;
+left: 0;
+width: 276px;
 height: 48px;
-margin-left: 4px;
-margin-top: 155px;
+margin-top: 153px;
 overflow: hidden;
 font-size: 12px;
-color: 
-white;
-padding: 7px;
+color: white;
+padding: 10px;
 }
 
 #left div.cat_listing div.content div.left img {
     min-width: 280px;
-    min-height: 215px;
+    min-height: 220px;
     float: left;    
 }
 
@@ -2638,9 +2640,9 @@ a img.aligncenter {
 #left div.cat_listing div.content div.left div.description h3 a {
 color: white;
 text-shadow: 1px 1px 1px  black;
-font-size: 17px;
+font-size: 14px;
 text-decoration:none;
-line-height:1.1em;
+line-height:18px;
 }
 
 #left div.cat_listing div.content div.right div.small-listing div.description h4, #left div.cat_listing div.content div.right div.small-listing div.description h4 a {
