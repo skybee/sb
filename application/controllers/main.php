@@ -39,10 +39,11 @@ class main extends CI_Controller {
         $data_ar['doc_data']            = $this->article_m->get_doc_data($doc_id);
         if (!$data_ar['doc_data'])
             show_404();
+        $data_ar['like_articles']       = $this->article_m->get_like_articles( $data_ar['doc_data']['id'], $data_ar['doc_data']['title'], 8, 15, $data_ar['doc_data']['date'] );
         $data_ar['main_cat_ar']         = $this->article_m->get_cat_data_from_url_name($cat_name);
+        $data_ar['s_cat_ar']            = $this->article_m->get_cat_data_from_url_name($s_cat_name);
         $data_ar['main_menu_list']      = $this->list_m->get_cat(0);
         $data_ar['second_menu_list']    = $this->list_m->get_cat($data_ar['main_cat_ar']['id']);
-
 
         $tpl_ar = $data_ar; //== !!! tmp
 

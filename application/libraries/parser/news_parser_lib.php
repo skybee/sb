@@ -33,17 +33,7 @@ class news_parser_lib extends parse_lib{
                                                     SELECT DISTINCT `article_id` FROM `shingles` WHERE `hash` IN ({$hash_list_str}) 
                                                     -- LIMIT {$article_limit}  
                                                 )             
-                                  ");
-                                                    
-
-        echo " SELECT `hash`, `article_id` FROM `shingles`
-                                        WHERE 
-                                            `article_id` IN 
-                                                ( 
-                                                    SELECT DISTINCT `article_id` FROM `shingles` WHERE `hash` IN ({$hash_list_str}) 
-                                                    -- LIMIT {$article_limit}  
-                                                )             
-                                  ";                                                    
+                                  ");                                                
         
         if( $query->num_rows() < 1 ) return FALSE;
         

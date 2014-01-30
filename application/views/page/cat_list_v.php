@@ -15,7 +15,12 @@
             <div class="left">
                 <div class="imgholder">
                     <a href="<?=$news_url?>">
-                        <img src="/upload/images/medium/<?=$news_page_ar['main_img']?>" class="imgf" style="opacity: 1;">
+                        <? if( !empty($news_page_ar['main_img']) ) 
+                                $imgUrl = '/upload/images/medium/'.$news_page_ar['main_img'];
+                           else
+                                $imgUrl = '/img/default_news.jpg';
+                        ?>
+                        <img src="<?=$imgUrl?>" class="imgf" style="opacity: 1;">
                     </a>
                 </div><!-- #imgholder -->
             </div><!-- #left -->

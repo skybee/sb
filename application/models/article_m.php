@@ -103,10 +103,39 @@ class article_m extends CI_Model{
         return mb_substr($text, 0, $length);
     }
     
-    function get_like_news( $id, $text, $cntNews, $dayPeriod ){
+    function get_like_articles( $id, $text, $cntNews = 4, $dayPeriod = false, $newsDate = false  ){
         $cleanPattern = "#(['\"\,\.\\\]+|&\w{2,6};)#i";
         $text = preg_replace($cleanPattern, ' ', $text);
         
-        echo $text;
+        if( $dayPeriod && $newsDate ){
+            
+            $intNewsDate = strtotime( $newsDate );
+            
+            $dateStart  = date("Y-m-d H:i:s", strtotime(" -{$dayPeriod} day", $intNewsDate ) );
+            $dateStop   = date("Y-m-d H:i:s", strtotime(" +{$dayPeriod} day", $intNewsDate ) );
+            
+            $dateSql = " AND (`date` > '{$dateStart}' AND `date` < '{$dateStop}') ";
+        }
+        else
+            $dateSql = '';
+        
+        $sql = "SELECT * FROM "
+                . "(SELECT `id`, `title`, `url_name`, `main_img`, `date` "
+                . "FROM `article` "
+                . "WHERE MATCH (`title`,`text`) AGAINST ('{$text}') "
+                . "AND `id` != '{$id}' "
+                . $dateSql  
+                . "LIMIT {$cntNews} ) AS `t1` ORDER BY `t1`.`date` DESC";
+                
+        $query = $this->db->query( $sql );
+        
+        if( $query->num_rows() < 1 ) return NULL;
+        
+        $result = array();
+        foreach( $query->result_array() as $row ){
+            $result[] = $row;
+        }
+        
+        return $result;
     }
 }
