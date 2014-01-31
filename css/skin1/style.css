@@ -2724,3 +2724,35 @@ img.alignleft,a img.alignleft {
 	width:194px;
 	height:152px;
 }
+
+
+
+/*============== <My> ==============*/
+.news_pager{
+    /*border: 1px #c00 dotted;*/
+    height: 30px;
+    float: left;
+    width: 615px;
+    text-align: center;
+    position: relative;
+    top: 25px;
+}
+.news_pager ul li{
+    display: inline;
+    margin: 0; padding: 0;
+}
+
+.news_pager ul li a, .news_pager ul li .pager_not_link{
+    display: inline-block;
+    text-decoration: none;
+    padding: 5px 5px;
+    background: #f7f7f7;
+    border: 1px solid #e9e9e9;
+    color: #282828;
+}
+.news_pager ul li .pager_not_link{ opacity: 0.5; }
+.news_pager ul li a:hover{
+    color: #ff5b5b;
+}
+
+/*============== </My> ==============*/

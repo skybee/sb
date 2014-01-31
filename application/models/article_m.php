@@ -138,4 +138,43 @@ class article_m extends CI_Model{
         
         return $result;
     }
+    
+    function get_pager_ar( $cat_id, $page = 1, $cnt_on_page = 15, $page_left_right = 3 ){
+                
+        $query_str = "  SELECT 
+                            COUNT(`id`) AS 'count'
+                        FROM 
+                            `article`
+                        WHERE
+                            `cat_id` = {$cat_id}
+                    ";
+                            
+         $query = $this->db->query($query_str);
+         $row   = $query->row();
+         $count_goods = $row->count;
+         
+         $start     = $page - $page_left_right; if( $start < 1 ) $start = 1;
+         $cnt_page  = ceil( $count_goods / $cnt_on_page );
+         $stop      = $page + $page_left_right; if( $stop > $cnt_page ) $stop = $cnt_page;
+         
+         $result_ar = array();
+         
+         if( $page > $page_left_right+1 ){ //дополнение массива первой страницей
+             $result_ar[] = 1;
+             if( $page != $page_left_right+2 )
+                $result_ar[] = '...';
+         }    
+         
+         
+         for($i = $start; $i<=$stop; $i++ ){
+             $result_ar[] = $i;
+         }
+         
+         if($cnt_page > $stop+1 ){ //дополняет масив последней страницей
+             $result_ar[] = '...';
+             $result_ar[] = $cnt_page;
+         }    
+         
+         return $result_ar;
+    }
 }

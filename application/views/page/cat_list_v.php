@@ -34,4 +34,19 @@
     </div><!-- #listing -->
 <? endforeach; ?>
 
+    <div class="news_pager">
+        <ul>
+            <? foreach ($pager_ar as $page): ?>
+            <li>
+                <? if($page != $page_nmbr && $page != '...'): ?>
+                <a href="<?='/'.$main_cat_ar['url_name'].'/'.$s_cat_ar['url_name'].'/'.$page.'/'?>"><?=$page?></a>
+                <? else: ?>
+                <span class="pager_not_link"><?=$page?></span>
+                <? endif;?>
+            </li>
+            <? endforeach; ?>
+        </ul>
+    </div>
+    
 </div>
+

@@ -60,6 +60,13 @@ class main extends CI_Controller {
         $data_ar['main_cat_ar']         = $this->article_m->get_cat_data_from_url_name($cat_name);
         $data_ar['s_cat_ar']            = $this->article_m->get_cat_data_from_url_name($s_cat_name);
         $data_ar['news_page_list']      = $this->article_m->get_page_list($data_ar['s_cat_ar']['id'], $page, 15);
+        $data_ar['pager_ar']            = $this->article_m->get_pager_ar( $data_ar['s_cat_ar']['id'], $page, 15, 4);
+        $data_ar['page_nmbr']           = $page;
+        
+//        echo '<pre>'.  print_r($data_ar, 1).'</pre>';
+        
+        
+        
         if (!$data_ar['news_page_list'])
             show_404();
         $data_ar['main_menu_list']      = $this->list_m->get_cat(0);
