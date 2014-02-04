@@ -20,12 +20,17 @@ class main extends CI_Controller {
         $data_ar['main_menu_list']      = $this->list_m->get_cat(0);
         $data_ar['second_menu_list']    = $this->list_m->get_cat($data_ar['main_cat_ar']['id']);
         $data_ar['mainpage_cat_list']   = $this->article_m->get_mainpage_cat_news($data_ar['second_menu_list']);
-//        echo '<pre>'.print_r($data_ar,1).'</pre>';
+        
+        $top_slider['articles']         = $this->article_m->get_popular_articles(1, 4, 5, 0, 300);
+        
+//        echo '<pre>'.print_r($tmp,1).'</pre>';
 
         $tpl_ar = $data_ar; //== !!! tmp
         $tpl_ar['content']  = $this->load->view('component/main_latest_v', $data_ar, true);
         $tpl_ar['content'] .= $this->load->view('component/cat_listing_v', $data_ar, true);
         $tpl_ar['content'] .= $this->load->view('component/main_other_news_v', $data_ar, true);
+        
+        $tpl_ar['top_slider']   = $this->load->view('component/slider_top_v', $top_slider, true);
 
         $this->load->view('main_v', $tpl_ar);
     }
@@ -48,7 +53,8 @@ class main extends CI_Controller {
         $tpl_ar = $data_ar; //== !!! tmp
 
         $tpl_ar['content'] = $this->load->view('page/doc_v', $data_ar, true);
-//        $tpl_ar['content']     .=  '<pre>'.print_r($data_ar,1).'</pre>';
+        
+        $tpl_ar['top_slider']   = $this->load->view('component/slider_top_v', '', true);
 
         $this->load->view('main_v', $tpl_ar);
     }
@@ -63,10 +69,6 @@ class main extends CI_Controller {
         $data_ar['pager_ar']            = $this->article_m->get_pager_ar( $data_ar['s_cat_ar']['id'], $page, 15, 4);
         $data_ar['page_nmbr']           = $page;
         
-//        echo '<pre>'.  print_r($data_ar, 1).'</pre>';
-        
-        
-        
         if (!$data_ar['news_page_list'])
             show_404();
         $data_ar['main_menu_list']      = $this->list_m->get_cat(0);
@@ -74,8 +76,8 @@ class main extends CI_Controller {
 
         $tpl_ar = $data_ar; //== !!! tmp
 
-        $tpl_ar['content'] = $this->load->view('page/cat_list_v', $data_ar, true);
-//        $tpl_ar['content']             .=  '<pre>'.print_r($data_ar,1).'</pre>';        
+        $tpl_ar['content']      = $this->load->view('page/cat_list_v', $data_ar, true);
+        $tpl_ar['top_slider']   = $this->load->view('component/slider_top_v', '', true);
 
         $this->load->view('main_v', $tpl_ar);
     }

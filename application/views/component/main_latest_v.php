@@ -1,11 +1,11 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed'); ?>
 
 
-<div class="latest_l">
+<!--<div class="latest_l">
     <div class="latest">
         <div class="header">
             <h1>Последнее</h1>
-        </div><!-- #header -->
+        </div> #header 
         <div class="inside">
             <div class="top">
                 <a href="/">
@@ -20,17 +20,17 @@
                     <div class="pholder">
                         <p>Maecenas mattis, tortor ut posuere aliquam, quam enim accumsan purus, auctor placerat orci velit vitae massa. Vivamus non iaculis lectus. [...]</p>
                     </div>
-                </div><!-- #heading -->
-            </div><!-- #top -->
-        </div><!-- #inside -->
-    </div><!-- #latest -->
-</div><!-- #latest_l -->
+                </div> #heading 
+            </div> #top 
+        </div> #inside 
+    </div> #latest 
+</div> #latest_l 
 <div class="latest_r">
     <div class="latest">
         <div class="header">
             <h1>&nbsp;</h1>
         </div>
-        <!-- #header -->
+         #header 
         <div class="inside">
             <div class="top">
                 <a href="/">
@@ -42,8 +42,8 @@
                     <div class="pholder">
                         <p>Maecenas mattis, tortor ut posuere aliquam, quam enim accumsan purus, auctor placerat orci velit vitae massa. Vivamus non iaculis lectus. [...]</p>
                     </div>
-                </div><!-- #heading -->
-            </div><!-- #top -->
-        </div><!-- #inside -->
-    </div><!-- #latest -->
-</div><!-- #latest_r -->
+                </div> #heading 
+            </div> #top 
+        </div> #inside 
+    </div> #latest 
+</div> #latest_r -->

@@ -177,4 +177,35 @@ class article_m extends CI_Model{
          
          return $result_ar;
     }
+    
+    function get_popular_articles($idParentId, $cntNews, $dayAgo, $hourAgo, $textLength = 200, $img = true ){
+        
+        $dateStart  = date("Y-m-d H:i:s", strtotime(" -{$dayAgo} day {$hourAgo} hours" ) );
+        
+        if( $img )
+            $imgSql = " AND `main_img` != '' "; 
+        else
+            $imgSql = '';
+        
+        $sql = "SELECT `date`, `url_name`, `title`, `text`, `main_img` FROM `article` "
+                . "WHERE "
+                . " (`cat_id` = '{$idParentId}' OR `cat_id` IN (SELECT `id` FROM `category` WHERE `parent_id` = '{$idParentId}') )"
+                . " AND "
+                . " `date` > '{$dateStart}' "
+                . $imgSql
+                . " ORDER BY `views` DESC, `date` DESC LIMIT {$cntNews} ";
+                
+        $query = $this->db->query( $sql );        
+        
+        if( $query->num_rows() < 1 ) return NULL;
+        
+        $result = array();
+        
+        foreach( $query->result_array() as $row ){
+            $row['text']    = $this->get_short_txt( $row['text'], $textLength );
+            $result[]       = $row;
+        }
+        
+        return $result;
+    }
 }

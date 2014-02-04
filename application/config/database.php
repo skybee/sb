@@ -59,6 +59,11 @@ $db['default']['database'] = 'sb';
 //$db['default']['password'] = '1865tsb';
 //$db['default']['database'] = 'skybee_news';
 
+//$db['default']['hostname'] = 'localhost';
+//$db['default']['username'] = 'c0sbnews';
+//$db['default']['password'] = '1865tsbqwerty';
+//$db['default']['database'] = 'c0news';
+
 
 
 $db['default']['dbdriver'] = 'mysql';

@@ -6,7 +6,7 @@ class Main extends CI_Controller
     function __construct() {
         parent::__construct();
         
-//        set_time_limit( 300 );
+        set_time_limit( 30 );
         
         $this->load->database();
 //        $this->load->helper('parser/download');
