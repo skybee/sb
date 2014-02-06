@@ -20,12 +20,11 @@ class main extends CI_Controller {
         $data_ar['main_menu_list']      = $this->list_m->get_cat(0);
         $data_ar['second_menu_list']    = $this->list_m->get_cat($data_ar['main_cat_ar']['id']);
         $data_ar['mainpage_cat_list']   = $this->article_m->get_mainpage_cat_news($data_ar['second_menu_list']);
+        $data_ar['meta']['title']       = $data_ar['main_cat_ar']['title'];
         
         $top_slider['articles']         = $this->article_m->get_popular_articles(1, 8, 5, 0, 350);
-        
-//        echo '<pre>'.print_r($tmp,1).'</pre>';
 
-        $tpl_ar = $data_ar; //== !!! tmp
+        $tpl_ar = $data_ar; //== !!! tmp    
         $tpl_ar['content']  = $this->load->view('component/main_latest_v', $data_ar, true);
         $tpl_ar['content'] .= $this->load->view('component/cat_listing_v', $data_ar, true);
         $tpl_ar['content'] .= $this->load->view('component/main_other_news_v', $data_ar, true);
@@ -49,6 +48,7 @@ class main extends CI_Controller {
         $data_ar['s_cat_ar']            = $this->article_m->get_cat_data_from_url_name($s_cat_name);
         $data_ar['main_menu_list']      = $this->list_m->get_cat(0);
         $data_ar['second_menu_list']    = $this->list_m->get_cat($data_ar['main_cat_ar']['id']);
+        $data_ar['meta']['title']       = $data_ar['main_cat_ar']['name'].'/'.$data_ar['s_cat_ar']['name'].': '.$data_ar['doc_data']['title'];
 
         $top_slider['articles']         = $this->article_m->get_popular_articles( $data_ar['s_cat_ar']['id'], 8, 5, 0, 350);
         
@@ -73,6 +73,7 @@ class main extends CI_Controller {
             show_404();
         $data_ar['main_menu_list']      = $this->list_m->get_cat(0);
         $data_ar['second_menu_list']    = $this->list_m->get_cat($data_ar['main_cat_ar']['id']);
+        $data_ar['meta']['title']       = $data_ar['s_cat_ar']['title'].' - страница '.$page;
 
         $top_slider['articles']         = $this->article_m->get_popular_articles( $data_ar['s_cat_ar']['id'], 8, 5, 0, 350);
         
