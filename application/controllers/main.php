@@ -23,6 +23,9 @@ class main extends CI_Controller {
         $data_ar['meta']['title']       = $data_ar['main_cat_ar']['title'];
         
         $top_slider['articles']         = $this->article_m->get_popular_articles(1, 8, 5, 0, 350);
+        $top_slider['main_cat_url']     = $data_ar['main_cat_ar']['url_name'];
+        
+//        echo '<pre>'.print_r($top_slider,1).'</pre>';
 
         $tpl_ar = $data_ar; //== !!! tmp    
         $tpl_ar['content']  = $this->load->view('component/main_latest_v', $data_ar, true);
@@ -51,6 +54,7 @@ class main extends CI_Controller {
         $data_ar['meta']['title']       = $data_ar['main_cat_ar']['name'].'/'.$data_ar['s_cat_ar']['name'].': '.$data_ar['doc_data']['title'];
 
         $top_slider['articles']         = $this->article_m->get_popular_articles( $data_ar['s_cat_ar']['id'], 8, 5, 0, 350);
+        $top_slider['main_cat_url']     = $data_ar['main_cat_ar']['url_name'];
         
         $tpl_ar                 = $data_ar; //== !!! tmp
         $tpl_ar['content']      = $this->load->view('page/doc_v', $data_ar, true);
@@ -76,6 +80,7 @@ class main extends CI_Controller {
         $data_ar['meta']['title']       = $data_ar['s_cat_ar']['title'].' - страница '.$page;
 
         $top_slider['articles']         = $this->article_m->get_popular_articles( $data_ar['s_cat_ar']['id'], 8, 5, 0, 350);
+        $top_slider['main_cat_url']     = $data_ar['main_cat_ar']['url_name'];
         
         $tpl_ar                 = $data_ar; //== !!! tmp
         $tpl_ar['content']      = $this->load->view('page/cat_list_v', $data_ar, true);

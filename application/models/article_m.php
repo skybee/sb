@@ -187,11 +187,13 @@ class article_m extends CI_Model{
         else
             $imgSql = '';
         
-        $sql = "SELECT `date`, `url_name`, `title`, `text`, `main_img` FROM `article` "
+        $sql = "SELECT `article`.`id`, `article`.`date`, `article`.`url_name`, `article`.`title`, `article`.`text`, `article`.`main_img`, `category`.`url_name` AS 'cat_url'  "
+                . "FROM `article`,   `category`  "
                 . "WHERE "
-                . " (`cat_id` = '{$idParentId}' OR `cat_id` IN (SELECT `id` FROM `category` WHERE `parent_id` = '{$idParentId}') )"
-                . " AND "
+                . " (`cat_id` = '{$idParentId}' OR `cat_id` IN (SELECT `id` FROM `category` WHERE `parent_id` = '{$idParentId}') ) "
+                . "AND "
                 . " `date` > '{$dateStart}' "
+                . "AND `article`.`cat_id` = `category`.`id` "
                 . $imgSql
                 . " ORDER BY `views` DESC, `date` DESC LIMIT {$cntNews} ";
                 
