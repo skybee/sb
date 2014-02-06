@@ -45,57 +45,13 @@
                 <a href="<?=$newsUrl?>">
                     <img src="<?=$imgUrl?>" alt="<?=$likeArts['title']?>">
                 </a>
-                <div class="content"><h4><a href="<?=$newsUrl?>"><?=$likeArts['title']?></div>
+                <div class="content"><h4><a href="<?=$newsUrl?>"><?=$likeArts['title']?></a></div>
             </div><!-- #left_other_news -->
             <? endforeach; ?>
-            
-<!--            <div class="left_other_news" style="margin-right:0;">
-                <a href="/">
-                    <img src="http://www.londonthemes.com/themes/londonlive/wp-content/themes/LondonLive_Demo_1_4/thumb.php?src=/wp-content/uploads/2010/12/up.png&amp;w=85&amp;h=69&amp;zc=1&amp;q=100" alt="Our review on the movie Up">
-                </a>
-                <div class="content"><h4><a href="/">December 01,  2010</span></div> #content 
-            </div> #left_other_news 
-            
-            <div class="left_other_news" style="margin-right:34px;">
-                <a href="/">
-                    <img src="http://www.londonthemes.com/themes/londonlive/wp-content/themes/LondonLive_Demo_1_4/thumb.php?src=/wp-content/uploads/2010/12/monster-inc.png&amp;w=85&amp;h=69&amp;zc=1&amp;q=100" alt="Monster inc, Voted Coolest Movie">
-                </a>
-                <div class="content"><h4><a href="/">December 01,  2010</span></div> #content 
-            </div> #left_other_news 
-            
-            <div class="left_other_news" style="margin-right:0;">
-                <a href="/">
-                    <img src="http://www.londonthemes.com/themes/londonlive/wp-content/themes/LondonLive_Demo_1_4/thumb.php?src=/wp-content/uploads/2010/01/cars.png&amp;w=85&amp;h=69&amp;zc=1&amp;q=100" alt="Cars tops editors choice">
-                </a>
-                <div class="content"><h4><a href="/">January 03,  2010</span></div> #content 
-            </div> #left_other_news -->
-            
+                        
             
         </div><!-- #listing -->
     </div><!-- #othernews -->
 
 
-</div>
-
-
-
-<div id="comments">
-    <div id="respond">
-        <h3 id="reply-title">Оставить комментарий</h3>
-        <form action="#" method="post" id="commentform">
-            <p class="comment-form-author">
-                <label for="author">Имя</label> <span class="required">*</span>
-                <input id="author" name="author" type="text" value="" size="30" aria-required="true">
-            </p>
-            <p class="comment-form-comment">
-                <label for="comment">Комментарий</label>
-                <textarea id="comment" name="comment" cols="45" rows="8" aria-required="true"></textarea>
-            </p>												
-            <p class="form-submit">
-                <input name="submit" type="submit" id="submit" value="Добавить">
-                <input type="hidden" name="comment_post_ID" value="470" id="comment_post_ID">
-                <input type="hidden" name="comment_parent" id="comment_parent" value="0">
-            </p>
-        </form>
-    </div><!-- #respond -->
 </div>

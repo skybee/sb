@@ -21,7 +21,7 @@ class main extends CI_Controller {
         $data_ar['second_menu_list']    = $this->list_m->get_cat($data_ar['main_cat_ar']['id']);
         $data_ar['mainpage_cat_list']   = $this->article_m->get_mainpage_cat_news($data_ar['second_menu_list']);
         
-        $top_slider['articles']         = $this->article_m->get_popular_articles(1, 4, 5, 0, 300);
+        $top_slider['articles']         = $this->article_m->get_popular_articles(1, 8, 5, 0, 350);
         
 //        echo '<pre>'.print_r($tmp,1).'</pre>';
 
@@ -50,11 +50,11 @@ class main extends CI_Controller {
         $data_ar['main_menu_list']      = $this->list_m->get_cat(0);
         $data_ar['second_menu_list']    = $this->list_m->get_cat($data_ar['main_cat_ar']['id']);
 
-        $tpl_ar = $data_ar; //== !!! tmp
-
-        $tpl_ar['content'] = $this->load->view('page/doc_v', $data_ar, true);
+        $top_slider['articles']         = $this->article_m->get_popular_articles( $data_ar['s_cat_ar']['id'], 8, 5, 0, 350);
         
-        $tpl_ar['top_slider']   = $this->load->view('component/slider_top_v', '', true);
+        $tpl_ar                 = $data_ar; //== !!! tmp
+        $tpl_ar['content']      = $this->load->view('page/doc_v', $data_ar, true);
+        $tpl_ar['top_slider']   = $this->load->view('component/slider_top_v', $top_slider, true);
 
         $this->load->view('main_v', $tpl_ar);
     }
@@ -74,10 +74,11 @@ class main extends CI_Controller {
         $data_ar['main_menu_list']      = $this->list_m->get_cat(0);
         $data_ar['second_menu_list']    = $this->list_m->get_cat($data_ar['main_cat_ar']['id']);
 
-        $tpl_ar = $data_ar; //== !!! tmp
-
+        $top_slider['articles']         = $this->article_m->get_popular_articles( $data_ar['s_cat_ar']['id'], 8, 5, 0, 350);
+        
+        $tpl_ar                 = $data_ar; //== !!! tmp
         $tpl_ar['content']      = $this->load->view('page/cat_list_v', $data_ar, true);
-        $tpl_ar['top_slider']   = $this->load->view('component/slider_top_v', '', true);
+        $tpl_ar['top_slider']   = $this->load->view('component/slider_top_v', $top_slider, true);
 
         $this->load->view('main_v', $tpl_ar);
     }
