@@ -138,6 +138,6 @@
 }
 
 .top_slide_main_img img{
-    min-width: 275px;
-    min-height: 175px; max-height: 300px;
+    width: 275px;
+    min-height: 175px; max-height: 250px;
 }
