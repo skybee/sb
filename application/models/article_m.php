@@ -205,6 +205,7 @@ class article_m extends CI_Model{
         
         foreach( $query->result_array() as $row ){
             $row['text']    = $this->get_short_txt( $row['text'], $textLength );
+            $row['date']    = get_date_str_ar( $row['date'] );
             $result[]       = $row;
         }
         

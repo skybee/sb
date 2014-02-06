@@ -7,8 +7,10 @@
     </div><!-- #active -->
 
 
-<? foreach( $news_page_list as $news_page_ar ): 
-   $news_url = "/{$main_cat_ar['url_name']}/{$s_cat_ar['url_name']}/-{$news_page_ar['id']}-{$news_page_ar['url_name']}/";
+<?  foreach( $news_page_list as $news_page_ar ):
+        $news_url   = "/{$main_cat_ar['url_name']}/{$s_cat_ar['url_name']}/-{$news_page_ar['id']}-{$news_page_ar['url_name']}/";
+        $dateAr     =& $news_page_ar['date'];
+        $dateStr    = $dateAr['day_str'].' &nbsp;'.$dateAr['time'].', &nbsp;&nbsp;'.$dateAr['day_nmbr'].' '.$dateAr['month_str'].' '.$dateAr['year_nmbr'];
 ?>
     <div class="listing">
         <div class="content">
@@ -27,6 +29,9 @@
             <div class="right">
                 <div class="small-desc">
                     <h3><a href="<?=$news_url?>"><?=$news_page_ar['title']?></a></h3>
+                    <div class="date_source">
+                        <div class="cat-list-date"><?=$dateStr?></div>
+                    </div>
                     <p><?=$news_page_ar['text']?>[...]</p>
                 </div><!-- #small-desc -->
             </div><!-- #right -->

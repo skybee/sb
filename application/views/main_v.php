@@ -80,18 +80,16 @@
                     <!-- WIDGET SPACE -->
                     <div class="widget_h_l">
                         <div id="archives-4" class="widget"><h3 class="widget-title"><span class="title">Archives</span></h3>		<ul>
-                                <li><a href='http://www.londonthemes.com/themes/londonlive/?m=201012' title='December 2010'>December 2010</a></li>
-                                <li><a href='http://www.londonthemes.com/themes/londonlive/?m=201011' title='November 2010'>November 2010</a></li>
-                                <li><a href='http://www.londonthemes.com/themes/londonlive/?m=201010' title='October 2010'>October 2010</a></li>
-                                <li><a href='http://www.londonthemes.com/themes/londonlive/?m=201001' title='January 2010'>January 2010</a></li>
+                                
                             </ul>
                         </div><!-- #widget -->
                     </div><!-- #widget_h -->
 
                     <div class="widget_h_m">
-                        <div id="lt_flickr_widget-4" class="widget">  <div id="flickr">   
+                        <div id="lt_flickr_widget-4" class="widget">  
+                            <div id="flickr">   
                                 <h3 class="widget-title"><span class="title">Flickr Photostream</span></h3>
-                                <script type="text/javascript" src="http://www.flickr.com/badge_code_v2.gne?count=6&amp;display=latest&amp;size=s&amp;layout=x&amp;source=user&amp;user=33062170@N08"></script></div>     
+                            </div>     
                         </div><!-- #widget -->
                     </div><!-- #widget_h -->
 

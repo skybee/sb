@@ -20,7 +20,9 @@
 <?  $i = 1;
     foreach($articles as $article):
         
-    $newsUrl = "/{$main_cat_url}/{$article['cat_url']}/-{$article['id']}-{$article['url_name']}/"; 
+    $newsUrl    = "/{$main_cat_url}/{$article['cat_url']}/-{$article['id']}-{$article['url_name']}/"; 
+    $dateAr     =& $article['date'];
+    $dateStr    = $dateAr['day_str'].', '.$dateAr['day_nmbr'].' '.$dateAr['month_str'].' '.$dateAr['year_nmbr'];
 ?>
     <!-- 1 Content -->
     <div id="fragment-<?=$i?>" class="ui-tabs-panel " style="margin-top:1px; background-color:transparent; float:left;">
@@ -29,7 +31,7 @@
         </a>
         <div class="info">
             <h2><a href="<?=$newsUrl?>" ><?=$article['title']?></a></h2>
-            <span class="date">December 11,  2010 -  <a href="/">(0) comments</a></span>
+            <span class="date"><?=$dateStr?></span>
             <p><?=$article['text']?> [&hellip;]</p>
         </div><!-- #info closer -->
     </div><!-- #fragment-1 closer -->

@@ -98,13 +98,16 @@ function get_next_prev_date_for_payment( $period, $date_ar ){
 
 function get_date_str_ar( $date = '2012-05-07' ){
     $day_ar     = array('Воскресенье','Понедельник','Вторник','Среда','Четверг','Пятница','Суббота');
-    $month_ar   = array( 1=>'январь','февраль','март','апрель','май','июнь','июль','август','сентябрь','октябрь','ноябрь','декабрь');
+    $month_ar   = array( 1=>'января','февраля','мара','апреля','майа','июня','июля','августа','сентября','октября','ноября','декабря');
     
-    $result_ar['day_str']       = $day_ar[date("w", strtotime($date) )];
-    $result_ar['day_nmbr']      = date("d", strtotime($date) );
-    $result_ar['month_str']     = $month_ar[date("n", strtotime($date) )];
-    $result_ar['month_nmbr']    = date("m", strtotime($date) );
-    $result_ar['year_nmbr']     = date("Y", strtotime($date) );
+    $dateInt = strtotime($date);
+    
+    $result_ar['day_str']       = $day_ar[date("w", $dateInt )];
+    $result_ar['day_nmbr']      = date("d", $dateInt );
+    $result_ar['month_str']     = $month_ar[date("n", $dateInt )];
+    $result_ar['month_nmbr']    = date("m", $dateInt );
+    $result_ar['year_nmbr']     = date("Y", $dateInt );
+    $result_ar['time']          = date("H:i", $dateInt );
     
     return $result_ar;
 }
