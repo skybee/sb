@@ -1466,6 +1466,9 @@ margin-top: 6px;
 	line-height:1.3em;
 }
 
+#left div.small-desc a{ float: none; }
+#left div.small-desc a:hover{ text-decoration: underline; }
+
 #left div.listing div.content div.left div.description h3 a {
 	color:#fff;
 	text-shadow:1px 1px 1px #000;
@@ -1524,12 +1527,28 @@ margin-top: 6px;
 #left div.listing div.content div.right div.small-desc {
 	width:383px;
 	float:left;
-	margin-top:9px;
+	margin-top:4px;
 }
 
 #left div.listing div.content div.right div.small-desc p {
 	float:left;
 	color:#6f6f6f;
+        margin-top: 9px;
+        line-height: 18px;
+        text-align: justify;
+}
+
+#left div.listing div.content div.right div.small-desc div.date_source{
+    /*height: 16px;*/
+    margin-top: 10px;
+    /*border: #ccc 1px solid;*/
+    
+} 
+#left div.listing div.content div.right div.small-desc div.date_source .cat-list-date{
+    float: left;
+    width: 250px;
+    font-size: 11px; 
+    color: #999;
 }
 
 #left div.listing div.content div.right div.small-listing div.thumb {
