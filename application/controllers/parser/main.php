@@ -6,7 +6,8 @@ class Main extends CI_Controller
     function __construct() {
         parent::__construct();
         
-        set_time_limit( 30 );
+        set_time_limit( 300 ); 
+//        exit('123');
         
         $this->load->database();
 //        $this->load->helper('parser/download');
@@ -16,6 +17,7 @@ class Main extends CI_Controller
         $this->load->library('parser/news_parser_lib');
         $this->load->library('parser/parse_page_lib');
         $this->load->model('parser_m');
+        $this->load->model('donor_m');
         
         unset( $this->parser_lib );
     }
@@ -24,11 +26,11 @@ class Main extends CI_Controller
     
     function get_url_from_rss(){
         header("Content-type:text/html;Charset=utf-8");
-        $url_ar = array(
-                        'http://ru.tsn.ua/rss/',                                   //== CAT TRUE !--Good
-                        'http://k.img.com.ua/rss/ru/news.xml',                   //== !--Good
-                        'http://www.segodnya.ua/xml/rss.html',                  //== CAT TRUE !--Good
-                        'http://www.unn.com.ua/rss/news_ru.xml',         //== CAT TRUE
+        $urls = array(
+                        array('url'=>'http://ru.tsn.ua/rss/',                   'host'=>'tsn.ua'),              //== CAT TRUE !--Good
+                        array('url'=>'http://k.img.com.ua/rss/ru/news.xml',     'host'=>'korrespondent.net'),   //== !--Good
+                        array('url'=>'http://www.segodnya.ua/xml/rss.html',     'host'=>'segodnya.ua'),         //== CAT TRUE !--Good
+                        array('url'=>'http://www.unn.com.ua/rss/news_ru.xml',   'host'=>'unn.com.ua')           //== CAT TRUE
 //                        //'http://gazeta.ua/export/rss/rss.xml',                  //== CAT !FALSE
 //                        'http://rss.unian.net/site/news_rus.rss',               //== CAT TRUE
 //                        'http://www.interfax.com.ua/rus/rss/',                  //== CAT TRUE
@@ -41,18 +43,21 @@ class Main extends CI_Controller
 //                        'http://isport.ua/hnd/rss.ashx?image=0'                 //== CAT TRUE
                         );
         
-        foreach ($url_ar as $url)
+        foreach ($urls as $urlAr)
         {
-            echo "<b>{$url}</b> <br /> \n\n";
-            $xml_str = $this->news_parser_lib->down_with_curl($url);
+            echo "<b>{$urlAr['url']}</b> <br /> \n\n";
+            $xml_str = $this->news_parser_lib->down_with_curl($urlAr['url']);
             
             $news_ar = $this->rss_url_lib->get_url( $xml_str );
             
             if( is_array($news_ar) && count($news_ar) > 0 ){
                 foreach( $news_ar as $news){
-                    $cat_id = $this->rss_url_lib->get_cat_id( $url, $news['url'], $news['category'] );
+                    $cat_id     = $this->rss_url_lib->get_cat_id( $urlAr['url'], $news['url'], $news['category'] );
+                    $donor_id   = $this->donor_m->getDonorIdFromHost( $urlAr['host'] );
+                    
+                    if( !$donor_id ) echo "<br />! No Donor ID {$urlAr['url']}<br />";
                     if( $cat_id )
-                        $this->parser_m->add_to_scanlist( $news['url'], $cat_id );
+                        $this->parser_m->add_to_scanlist( $news['url'], $cat_id, $donor_id );
                 }
             }
             
@@ -85,6 +90,7 @@ class Main extends CI_Controller
             $insert_data['scan_url_id']     = $news_ar['id'];
             $insert_data['url']             = $news_ar['url'];
             $insert_data['cat_id']          = $news_ar['cat_id'];
+            $insert_data['donor_id']        = $news_ar['donor_id'];
             $insert_data['date']            = date("Y-m-d H:i:s");
             
             echo "<br />\n$i - <i>".$news_ar['url']."</i><br />\n";

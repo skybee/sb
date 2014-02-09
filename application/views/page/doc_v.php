@@ -3,13 +3,17 @@
 
 <div class="single">
     <div class="active"><h1><?=$doc_data['title']?></h1></div>
-    <div class="date">
-        <div class="left">
-            <span class="date">
-                <a href="" title="Перейти к разделу" rel="category"><?=$main_cat_ar['name'].': '.$doc_data['cat_name']?></a>
-                <span class="time"> — 11 December 2010</span>        
-            </span>
-        </div><!-- #left -->
+    <div class="doc-date">
+        <div class="dd_left">
+            <? $dateAr =& $doc_data['date_ar']; ?>
+            Опубликовано: <i><?=' &nbsp;'.$dateAr['day_nmbr'].' '.$dateAr['month_str'].' '.$dateAr['year_nmbr'].'&nbsp; в &nbsp;'.$dateAr['time'];?></i>
+        </div>
+        <div class="dd_right">
+            Источник: &nbsp;&nbsp;
+            <a class="doc-donor-link" href="http://<?=$doc_data['d_host']?>/" target="_blank" style="background-image: url('/img/donor_ico/<?=$doc_data['d_img']?>');">
+                <?=$doc_data['d_name']?>
+            </a>
+        </div>
     </div><!-- #date -->
 
     <div class="content">

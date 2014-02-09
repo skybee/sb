@@ -7,13 +7,13 @@ class parser_m extends CI_Model{
         parent::__construct();
     }
     
-    function add_to_scanlist( $url, $cat_id){
+    function add_to_scanlist( $url, $cat_id, $donor_id){
         $query = $this->db->query("SELECT COUNT(`id`) AS 'cnt' FROM `scan_url` WHERE `url` = '{$url}' ");
         
         $row = $query->row();
         
         if( $row->cnt < 1 )
-            $this->db->query("INSERT INTO `scan_url` SET `url`='{$url}', `cat_id`='{$cat_id}' ");
+            $this->db->query("INSERT INTO `scan_url` SET `url`='{$url}', `cat_id`='{$cat_id}', `donor_id`={$donor_id} ");
     }
     
     function get_news_url_to_parse( $limit ){

@@ -62,27 +62,34 @@ class article_m extends CI_Model{
     
     function get_doc_data( $id ){
         $id = (int) $id;
-        $query = $this->db->query(" SELECT article.*, category.name AS 'cat_name' 
+        $query = $this->db->query(" SELECT  `article`.*, 
+                                            `category`.`name` AS 'cat_name',
+                                            `donor`.`name` AS 'd_name', `donor`.`img` AS 'd_img', `donor`.`host` AS 'd_host' 
                                     FROM 
-                                        `article`, `category`
+                                        `article`, `category`, `donor`
                                     WHERE 
-                                        article.id  = {$id}
+                                        `article`.`id`  = {$id}
                                         AND
-                                        category.id = article.cat_id
+                                        `category`.`id` = `article`.`cat_id`
+                                        AND
+                                        `article`.`donor_id` = `donor`.`id`
                                   ");
         
         if( $query->num_rows() < 1 ) return FALSE; 
         
-        return $query->row_array();
+        $returnAr = $query->row_array();
+        $returnAr['date_ar'] = get_date_str_ar( $returnAr['date'] );
+        
+        return $returnAr;
     }
     
     function get_page_list( $cat_id, $page, $cnt = 15){
         $stop   = $page * $cnt;
         $start  = $stop - $cnt;
         
-        $query = $this->db->query(" SELECT * 
-                                    FROM `article`
-                                    WHERE `cat_id`={$cat_id} 
+        $query = $this->db->query(" SELECT `article`.*, `donor`.`name` AS 'd_name', `donor`.`img` AS 'd_img' 
+                                    FROM `article`, `donor`
+                                    WHERE `cat_id`={$cat_id} AND `article`.`donor_id` = `donor`.`id`
                                     ORDER BY `date` DESC 
                                     LIMIT {$start}, {$cnt} ");
         

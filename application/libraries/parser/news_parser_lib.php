@@ -82,7 +82,8 @@ class news_parser_lib extends parse_lib{
                                     `url_name`      = '{$data_ar['url_name']}',
                                     `donor`         = '{$data_ar['donor']}',
                                     `scan_url_id`   = '{$data_ar['scan_url_id']}',
-                                    `author_id`     = '0'    
+                                    `author_id`     = '0',
+                                    `donor_id`      = '{$data_ar['donor_id']}'
                                ");
         $article_id = $this->CI->db->insert_id();
         

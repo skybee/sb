@@ -31,6 +31,9 @@
                     <h3><a href="<?=$news_url?>"><?=$news_page_ar['title']?></a></h3>
                     <div class="date_source">
                         <div class="cat-list-date"><?=$dateStr?></div>
+                        <div class="cat-list-donor">
+                                <?=$news_page_ar['d_name']?>
+                        </div>
                     </div>
                     <p><?=$news_page_ar['text']?>[...]</p>
                 </div><!-- #small-desc -->
