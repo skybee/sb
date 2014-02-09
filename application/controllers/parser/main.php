@@ -26,6 +26,9 @@ class Main extends CI_Controller
     
     function get_url_from_rss(){
         header("Content-type:text/html;Charset=utf-8");
+        
+        if( $this->single_work( 2, 'get_url_from_rss') == false ) exit('The work temporary Lock');
+        
         $urls = array(
                         array('url'=>'http://ru.tsn.ua/rss/',                   'host'=>'tsn.ua'),              //== CAT TRUE !--Good
                         array('url'=>'http://k.img.com.ua/rss/ru/news.xml',     'host'=>'korrespondent.net'),   //== !--Good
@@ -69,6 +72,8 @@ class Main extends CI_Controller
     function parse_news( $cnt_news = 1 ){
         header("Content-type:text/html;Charset=utf-8");
         
+        if( $this->single_work( 2, 'parse_news') == false ) exit('The work temporary Lock');
+        
         $parse_list = $this->parser_m->get_news_url_to_parse( $cnt_news );
         
         if( count($parse_list) < 1 ){  echo "ERROR Отсутствуют URL для сканирования"; return; }
@@ -102,5 +107,22 @@ class Main extends CI_Controller
             
             flush(); $i++;
         }    
+    }
+    
+    function single_work( $minutes, $fname = 'null' ){
+        $lockFile   = 'lock/'.$fname.'.lock';
+        $lockTime   = time() + (60*$minutes);
+        
+        
+        if( is_file($lockFile) ){
+            $fileTimeLock   = file_get_contents($lockFile);
+            $fileTimeLock   = (int) $fileTimeLock;
+            
+            if( time() < $fileTimeLock ) return FALSE;
+        }
+            
+        file_put_contents($lockFile, $lockTime );
+        
+        return TRUE;
     }
 }
