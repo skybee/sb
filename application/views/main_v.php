@@ -40,8 +40,8 @@
                         <? foreach ($main_menu_list as $main_link): ?>
                             <li class="page_item page-item-372"><a href="/<?= $main_link['url_name'] ?>/"><?= $main_link['name'] ?></a></li>
                         <? endforeach; ?>
-                    </ul>
-                    <div class="icon_holder"><a href="/"><img src="/img/rss.png" alt="Subscribe to our Rss" class="shareimg"  /></a><a href="http://www.twitter.com/#"><img src="/img/twitter.png" alt="Follow us on Twitter!" class="shareimg" /></a><a href="http://www.facebook.com/#"><img src="/img/facebook.png" alt="Follow us on Facebook!" class="shareimg" /></a><a href="http://www.youtube.com/user/#"><img src="/img/youtube.png" alt="Check out our Youtube!" class="shareimg"  /></a></div><!-- #icon holder closer --></div><!-- #navigation closer -->
+                    </ul>    
+                </div><!-- #navigation closer -->
             </div><!-- #headernavigation closer -->
             <div id="content">
                 <div id="white_space">

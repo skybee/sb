@@ -6,7 +6,7 @@ class Main extends CI_Controller
     function __construct() {
         parent::__construct();
         
-        set_time_limit( 300 ); 
+        set_time_limit( 30 ); 
 //        exit('123');
         
         $this->load->database();
@@ -30,12 +30,12 @@ class Main extends CI_Controller
         if( $this->single_work( 2, 'get_url_from_rss') == false ) exit('The work temporary Lock');
         
         $urls = array(
+                        array('url'=>'http://rss.unian.net/site/news_rus.rss',  'host'=>'unian.net'),           //== CAT TRUE        
                         array('url'=>'http://ru.tsn.ua/rss/',                   'host'=>'tsn.ua'),              //== CAT TRUE !--Good
                         array('url'=>'http://k.img.com.ua/rss/ru/news.xml',     'host'=>'korrespondent.net'),   //== !--Good
                         array('url'=>'http://www.segodnya.ua/xml/rss.html',     'host'=>'segodnya.ua'),         //== CAT TRUE !--Good
                         array('url'=>'http://www.unn.com.ua/rss/news_ru.xml',   'host'=>'unn.com.ua')           //== CAT TRUE
-//                        //'http://gazeta.ua/export/rss/rss.xml',                  //== CAT !FALSE
-//                        'http://rss.unian.net/site/news_rus.rss',               //== CAT TRUE
+//                        'http://gazeta.ua/export/rss/rss.xml',                  //== CAT !FALSE !!!OLD
 //                        'http://www.interfax.com.ua/rus/rss/',                  //== CAT TRUE
 //                        'http://delo.ua/news/rss/index.xml',                    //== CAT TRUE
 //                        'http://focus.ua/rss/ru.xml',                           //== CAT TRUE
@@ -81,7 +81,7 @@ class Main extends CI_Controller
         $i=1;
         foreach( $parse_list as $news_ar ){
             
-//            $news_ar['url'] = 'http://www.unn.com.ua/ru/news/1293385-nevidomi-namagalis-vikrasti-prakh-zigmunda-freyda';
+//            $news_ar['url'] = 'http://economics.unian.net/finance/883026-zolotovalyutnyie-rezervyi-nbu-k-kontsu-goda-mogut-snizitsya-do-11-mlrd-ekspertyi.html';
         
             $html = $this->news_parser_lib->down_with_curl( $news_ar['url'] );
             
@@ -90,7 +90,8 @@ class Main extends CI_Controller
                 continue;
             }
             
-            $host                           = $this->news_parser_lib->get_donor_url( $news_ar['url'] );
+//            $host                           = $this->news_parser_lib->get_donor_url( $news_ar['url'] );
+            $host                           = $news_ar['host'];
             $insert_data                    = $this->parse_page_lib->get_data( $html, $host);
             $insert_data['scan_url_id']     = $news_ar['id'];
             $insert_data['url']             = $news_ar['url'];
@@ -100,7 +101,7 @@ class Main extends CI_Controller
             
             echo "<br />\n$i - <i>".$news_ar['url']."</i><br />\n";
             
-//            print_r($insert_data);
+//            echo '<pre>'.print_r($insert_data,1).'</pre>';
 
             $this->news_parser_lib->insert_news( $insert_data );
             $this->parser_m->set_url_scaning( $news_ar['id'] );

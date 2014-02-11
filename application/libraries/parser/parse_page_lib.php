@@ -11,19 +11,17 @@ class parse_page_lib{
         $this->html_obj = str_get_html($html);
         
         switch( $host ){
-            case 'ru.tsn.ua':               $this->tsn();           break;
             case 'tsn.ua':                  $this->tsn();           break;
-            case 'unn.com.ua':              $this->unn();           break;
-            case 'unian.ua' :               $this->unian();         break;
-            case 'unian.net' :              $this->unian();         break;
+            case 'korrespondent.net' :      $this->korrespondent(); break;
+            case 'www.segodnya.ua' :        $this->segodnya();      break;
+            case 'www.unn.com.ua':          $this->unn();           break;
+            case 'www.unian.net' :          $this->unian();         break;
             case 'interfax.com.ua' :        $this->interfax();      break;
-            case 'segodnya.ua' :            $this->segodnya();      break;
             case 'sport.segodnya.ua' :      $this->segodnya();      break;
             case 'delo.ua' :                $this->delo();          break;
             case 'focus.ua' :               $this->focus();         break;
             case 'news.liga.net' :          $this->news_liga();     break;
             case 'isport.ua' :              $this->isport();        break;
-            case 'korrespondent.net' :      $this->korrespondent(); break;
             default:  return FALSE;
         }
         
@@ -91,21 +89,22 @@ class parse_page_lib{
         if( is_object( $this->html_obj->find('h1',0) ) )
             $this->data['title']    = $this->html_obj->find('h1',0)->innertext;
         
-        if( is_object( $this->html_obj->find('.show_detail h2',0) ) )
-            $this->data['text']    .= $this->html_obj->find('.show_detail h2',0)->outertext."\n";
-        
         if( is_object( $this->html_obj->find('.photo_block img',0) ) ){
-            $this->data['text']    .= iconv( 'windows-1251', 'utf-8//IGNORE', $this->html_obj->find('.photo_block img',0)->outertext."\n" );
-            $this->data['img']     .= $this->html_obj->find('.photo_block img',0)->src;
+            $this->data['img']      = $this->html_obj->find('.photo_block img',0)->src;
+            $this->html_obj->find('.photo_block img',0)->outertext = '';
+            
+            if( is_object( $this->html_obj->find('.subscribe_photo_text',0) ) ){
+                $this->html_obj->find('.subscribe_photo_text',0)->outertext = '';
+            }
         }
         
-        if( is_array( $this->html_obj->find('.show_detail p') ) )
-            foreach( $this->html_obj->find('.show_detail p') as $p ){
-                $this->data['text']    .= $p->outertext."\n";
-            }
+        if( is_object( $this->html_obj->find('.read_also',0) ) )
+            $this->data['text']     = $this->html_obj->find('.read_also',0)->outertext = '';
         
-        $this->data['text']         = preg_replace("#<p>[\s]*По теме:[\s\S]*?</p>#iu", '', $this->data['text']);
-        $this->data['title']        = iconv( 'windows-1251', 'utf-8//IGNORE', $this->data['title'] );
+        if( is_object( $this->html_obj->find('.article_body',0) ) )
+            $this->data['text']     = $this->html_obj->find('.article_body',0)->innertext;
+        
+//        $this->data['text']         = preg_replace("#<p>[\s]*По теме:[\s\S]*?</p>#iu", '', $this->data['text']);
         
     }
     

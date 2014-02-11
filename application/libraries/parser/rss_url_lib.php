@@ -71,12 +71,29 @@ class rss_url_lib
             elseif( stripos($cat, 'Спорт')              !== false ) $cat_id = $cat_ar['news']['sport'];
         }
         elseif( $donor_url == 'http://rss.unian.net/site/news_rus.rss' ){
-            if( stripos($cat, 'Политика')               !== false ) $cat_id = $cat_ar['news']['politics'];
-            elseif( stripos($cat, 'Украина')            !== false ) $cat_id = $cat_ar['news']['ukraine'];
-            elseif( stripos($cat, 'Экономика')          !== false ) $cat_id = $cat_ar['news']['finance'];
-            elseif( stripos($cat, 'Мир')                !== false ) $cat_id = $cat_ar['news']['world'];
-            elseif( stripos($cat, "Здоровье")           !== false ) $cat_id = $cat_ar['news']['health']; 
-            elseif( stripos($cat, 'Спорт')              !== false ) $cat_id = $cat_ar['news']['sport'];
+//            if( stripos($cat, 'Политика')               !== false ) $cat_id = $cat_ar['news']['politics'];
+//            elseif( stripos($cat, 'Украина')            !== false ) $cat_id = $cat_ar['news']['ukraine'];
+//            elseif( stripos($cat, 'Экономика')          !== false ) $cat_id = $cat_ar['news']['finance'];
+//            elseif( stripos($cat, 'Мир')                !== false ) $cat_id = $cat_ar['news']['world'];
+//            elseif( stripos($cat, "Здоровье")           !== false ) $cat_id = $cat_ar['news']['health']; 
+//            elseif( stripos($cat, 'Спорт')              !== false ) $cat_id = $cat_ar['news']['sport'];
+            if( stripos($url, '/sport/')                !== false ) $cat_id = $cat_ar['news']['sport'];
+            elseif( stripos($url, '/world/')            !== false ) $cat_id = $cat_ar['news']['world'];
+            elseif( stripos($url, '/society/')          !== false ) $cat_id = $cat_ar['news']['ukraine'];
+            elseif( stripos($url, '/science/')          !== false ) $cat_id = $cat_ar['news']['science'];
+            elseif( stripos($url, '/politics/')         !== false ) $cat_id = $cat_ar['news']['politics'];
+            elseif( stripos($url, '/finance/')          !== false ) $cat_id = $cat_ar['news']['finance'];
+            elseif( stripos($url, '/energetics/')       !== false ) $cat_id = $cat_ar['news']['finance'];
+            elseif( stripos($url, '/stockmarket/')      !== false ) $cat_id = $cat_ar['news']['finance'];
+            elseif( stripos($url, '/transport/')        !== false ) $cat_id = $cat_ar['news']['finance'];
+            elseif( stripos($url, '/realestate/')       !== false ) $cat_id = $cat_ar['news']['finance'];
+            elseif( stripos($url, '/agro/')             !== false ) $cat_id = $cat_ar['news']['finance'];
+            elseif( stripos($url, '/industry/')         !== false ) $cat_id = $cat_ar['news']['finance'];
+            elseif( stripos($url, '/soc/')              !== false ) $cat_id = $cat_ar['news']['finance'];
+            elseif( stripos($url, 'health.unian.net/country/')      !== false ) $cat_id = $cat_ar['news']['health'];
+            elseif( stripos($url, 'health.unian.net/cancer/')       !== false ) $cat_id = $cat_ar['news']['health'];
+            elseif( stripos($url, 'health.unian.net/worldnews/')    !== false ) $cat_id = $cat_ar['news']['health'];
+            
         }
         elseif( $donor_url == 'http://www.interfax.com.ua/rus/rss/' ){
             if( stripos($url, 'rus/eco')                !== false ) $cat_id = $cat_ar['news']['finance'];

@@ -241,6 +241,7 @@ hr {
 	font-weight:bold;
 	z-index:2000;
 }
+#headernavigation div.navigation ul li:first-child a{ padding-left:0px; }
 
 #headernavigation ul {
 	float:left;
