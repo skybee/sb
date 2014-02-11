@@ -22,6 +22,8 @@ body {
 	background:#fff url(/img/bg_noise.png) center repeat!important;
 }
 
+
+
 #left_no_sidebar code,#left_no_sidebar pre {
 	width:910px!important;
 }
@@ -216,6 +218,7 @@ hr {
 	height:34px;
 	float:left;
 	background:#151515;
+        border-top: #009DDB 2px solid; 
 }
 
 #headernavigation div.navigation {
@@ -309,7 +312,7 @@ hr {
 }
 
 #header img.logo {
-	margin-top:25px;
+	margin-top:23px;
 	border:0;
 	float:left;
 }
@@ -324,13 +327,14 @@ hr {
 }
 
 #categories {
-	width:953px;
+	width:954px;
 	height:47px;
 	float:left;
-	margin-left:1px;
+	/*margin-left:1px;*/
 	z-index:89;
 	position:relative;
 	margin-top:25px;
+        margin-bottom: -1px;
 }
 
 
@@ -346,13 +350,14 @@ hr {
 }
 
 .cat_line {
-	margin-left:1px;
-	background:url(/img/cat_line.png);
-	width:953px;
-	height:6px;
+	/*margin-left:1px;*/
+	/*background:url(/img/cat_line.png);*/
+	width:956px;
+	height:4px;
 	float:left;
-	border:1px solid #eeeeee;
+	/*border:1px solid #eeeeee;*/
 	border-top:1px solid #fff;
+        background-color: #009DDB;
 }
 
 #left {
@@ -431,23 +436,22 @@ hr {
     font-weight: normal;
     color: #999;
 }
-#left div.single .doc-date .dd_right a.doc-donor-link:hover{ color: #333; }
+#left div.single .doc-date .dd_right a.doc-donor-link:hover{ color: #009DDB; }
 
 #left div.latest div.heading h2 a:hover {
 text-decoration: underline;
 color: #7D7D7D;
 }
 
-#left div.cat_listing div.content div.right div.small-listing div.description h4 a:hover {
+/*#left div.cat_listing div.content div.right div.small-listing div.description h4 a:hover {
 text-decoration: underline;
 color: 
 #7D7D7D;
-}
+}*/
 
 .left_other_news .content a:hover {
-text-decoration: underline;
-color: 
-#7D7D7D;
+    text-decoration: underline;
+    color: #7D7D7D;
 }
 
 #left div.single div.active,#page div.active {
@@ -1205,8 +1209,7 @@ color:
 }
 
 #left div.cat_listing div.header h1 a:hover{
-    /*opacity: 0.5;*/
-    color: #7d7d7d;
+    color: #009DDB; text-decoration: underline;
 }
 
 #left .readm {
@@ -1507,7 +1510,7 @@ margin-top: 6px;
 }
 
 #left div.listing div.content div.left h3 a:hover,#left #list_categories div.active h2 a:hover,#left div.small-desc a:hover {
-	color:#717171;
+	color: #009DDB; text-decoration: underline;
 }
 
 #left div.listing div.content div.left img {
@@ -2217,7 +2220,7 @@ padding-left: 15px;
 	width:620px;
 	float:left;
 	margin-top:3px;
-	border-bottom:1px solid #e9e9e9;
+	border-bottom:1px solid #009DDB;
 	padding-top:23px;
 }
 
@@ -2694,8 +2697,7 @@ a img.aligncenter {
 }
 
 #left div.latest div.heading h2 a:hover,#left div.listing div.content div.right div.small-listing div.description h4 a:hover,.left_other_news .content a:hover, #left div.cat_listing div.content div.right div.small-listing div.description h4 a:hover {
-	text-decoration:underline;
-	color:#7d7d7d;
+	color: #009DDB; text-decoration: underline;
 }
 
 #left div.cat_listing div.content div.left div.description h3 a {
@@ -2712,7 +2714,7 @@ margin: 0;
 color: 
 #242424;
 text-decoration: none;
-line-height: 17px;
+line-height: 15px;
 font-size: 12px;
 font-weight: bold;
 text-shadow: none;
@@ -2727,10 +2729,17 @@ text-shadow: none;
 	margin:0;
 	color:#242424;
 	text-decoration:none;
-	line-height:1.5em;
+	line-height:15px;
 	font-size:12px;
 	font-weight:bold;
 	text-shadow:none;
+}
+#left div.single div.content a{
+    font-weight: normal !important;
+    font-size: 13px; line-height:16px;
+}
+#left div.single div.content a:hover{
+    color: #009DDB;
 }
 
 .latest_2 div.desc_h div.date a:hover,#list_categories div.content div.list_content a:hover {

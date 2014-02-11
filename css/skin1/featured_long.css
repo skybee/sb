@@ -13,8 +13,7 @@
 	overflow:hidden;
 	/*margin-top:22px;*/
 	float:left;
-
-	
+        /*border-bottom: #009DDB 2px solid;*/
 }
 
 .featured_long_title{float:left; width:412px; background:#006;}
