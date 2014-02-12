@@ -50,6 +50,12 @@
                     <img src="<?=$imgUrl?>" alt="<?=$likeArts['title']?>">
                 </a>
                 <div class="content"><h4><a href="<?=$newsUrl?>"><?=$likeArts['title']?></a></div>
+                <div class="lon_hide_description">
+                    <div class="lon_des_arrow"></div>
+                    <div class="lon_des_txt">
+                        <?=$likeArts['text']?>[...]
+                    </div>
+                </div>
             </div><!-- #left_other_news -->
             <? endforeach; ?>
                         

@@ -1,6 +1,11 @@
 <?php
-
 header("Content-type:text/html;Charset=utf-8");
+
+if( $_SERVER['HTTP_HOST'] == 'news.cheb.su' ){
+    header("HTTP/1.1 301 Moved Permanently");
+    header("Location: http://news.snowboard.ru/");
+    exit();
+}
 
 setlocale(LC_ALL, 'ru_RU.UTF-8');
 

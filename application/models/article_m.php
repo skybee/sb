@@ -127,7 +127,7 @@ class article_m extends CI_Model{
             $dateSql = '';
         
         $sql = "SELECT * FROM "
-                . "(SELECT `id`, `title`, `url_name`, `main_img`, `date` "
+                . "(SELECT `id`, `title`, `url_name`, `main_img`, `date`, `text` "
                 . "FROM `article` "
                 . "WHERE MATCH (`title`,`text`) AGAINST ('{$text}') "
                 . "AND `id` != '{$id}' "
@@ -140,6 +140,7 @@ class article_m extends CI_Model{
         
         $result = array();
         foreach( $query->result_array() as $row ){
+            $row['text']    = $this->get_short_txt( $row['text'], 400 );
             $result[] = $row;
         }
         
