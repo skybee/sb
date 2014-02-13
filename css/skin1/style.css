@@ -19,7 +19,9 @@ html,body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,th,td 
 
 body {
 	line-height:1;
-	background:#fff url(/img/bg_noise.png) center repeat!important;
+	/*background:#fff url(/img/bg_noise.png) center repeat!important;*/
+        background-color: #ececec !important;
+        background-attachment: fixed;
 }
 
 
@@ -204,6 +206,7 @@ hr {
 	height:100%;
 	background:#fff;
 	margin:0 auto;
+        box-shadow: 0px 0px 10px 2px #bbb;
 }
 
 #middle {
