@@ -180,8 +180,8 @@ class parse_page_lib{
             $this->data['text']    .= '<h2>'.$this->html_obj->find('.subheader',0)->innertext."</h2>\n";
         
         if( is_object( $this->html_obj->find('.single-pic img',0) ) ){
-            $this->data['text']    .= $this->html_obj->find('.single-pic img',0)->outertext."\n";
             $this->data['img']      = $this->html_obj->find('.single-pic img',0)->src;
+            $this->html_obj->find('.single-pic',0)->outertext = '';
         }
         
         if( is_object( $this->html_obj->find('#dcontent',0) ) )

@@ -31,19 +31,18 @@ class Main extends CI_Controller
         
         $urls = array(
                         array('url'=>'http://rss.unian.net/site/news_rus.rss',  'host'=>'unian.net'),           //== CAT TRUE        
+                        array('url'=>'http://focus.ua/rss/ru.xml',              'host'=>'focus.ua'),
+                        array('url'=>'http://news.liga.net/all/rss.xml',        'host'=>'liga.net'),
                         array('url'=>'http://ru.tsn.ua/rss/',                   'host'=>'tsn.ua'),              //== CAT TRUE !--Good
                         array('url'=>'http://k.img.com.ua/rss/ru/news.xml',     'host'=>'korrespondent.net'),   //== !--Good
                         array('url'=>'http://www.segodnya.ua/xml/rss.html',     'host'=>'segodnya.ua'),         //== CAT TRUE !--Good
-                        array('url'=>'http://news.liga.net/all/rss.xml',        'host'=>'liga.net'),
                         array('url'=>'http://www.unn.com.ua/rss/news_ru.xml',   'host'=>'unn.com.ua')           //== CAT TRUE
 //                        'http://gazeta.ua/export/rss/rss.xml',                  //== CAT !FALSE !!!OLD
 //                        'http://www.interfax.com.ua/rus/rss/',                  //== CAT TRUE
 //                        'http://delo.ua/news/rss/index.xml',                    //== CAT TRUE
-//                        'http://focus.ua/rss/ru.xml',                           //== CAT TRUE
 //                        //-! 'http://biz.liga.net/all/rss.xml',                      //== CAT TRUE
 //                        //-! 'http://finance.liga.net/export/all.xml',               //== CAT TRUE
 //                        //-! 'http://blog.liga.net/rss.aspx',                        //== CAT !FALSE            
-//                        'http://isport.ua/hnd/rss.ashx?image=0'                 //== CAT TRUE
                         );
         
         foreach ($urls as $urlAr)
@@ -81,7 +80,7 @@ class Main extends CI_Controller
         $i=1;
         foreach( $parse_list as $news_ar ){
             
-//            $news_ar['url'] = 'http://news.liga.net/news/politics/979079-vlasti_gotovyat_silovoy_stsenariy_zayavlenie_batkivshchiny.htm';  
+//            $news_ar['url'] = 'http://focus.ua/politics/297337/';  
         
             $html = $this->news_parser_lib->down_with_curl( $news_ar['url'] );
             

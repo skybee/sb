@@ -107,7 +107,11 @@ class article_m extends CI_Model{
     
     function get_short_txt( $text, $length = 100 ){
         $text = strip_tags($text);
-        return mb_substr($text, 0, $length);
+        $text = mb_substr($text, 0, $length);
+        
+//        $pattern = "# \S+$#i";
+//        $text = preg_replace( $pattern, '', $text );
+        return $text;
     }
     
     function get_like_articles( $id, $text, $cntNews = 4, $dayPeriod = false, $newsDate = false  ){
@@ -140,7 +144,7 @@ class article_m extends CI_Model{
         
         $result = array();
         foreach( $query->result_array() as $row ){
-            $row['text']    = $this->get_short_txt( $row['text'], 400 );
+            $row['text']    = $this->get_short_txt( $row['text'], 500 );
             $result[] = $row;
         }
         

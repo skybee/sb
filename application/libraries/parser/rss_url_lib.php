@@ -116,12 +116,15 @@ class rss_url_lib
             elseif( stripos($cat, 'Общество')           !== false ) $cat_id = $cat_ar['news']['ukraine'];
         }
         elseif( $donor_url == 'http://focus.ua/rss/ru.xml' ){
-            if( stripos($url, 'ua/economy')             !== false ) $cat_id = $cat_ar['news']['finance'];
-            elseif( stripos($url, 'ua/foreign')         !== false ) $cat_id = $cat_ar['news']['world'];
-            elseif( stripos($url, 'ua/sport')           !== false ) $cat_id = $cat_ar['news']['sport'];
-            elseif( stripos($url, 'ua/health')          !== false ) $cat_id = $cat_ar['news']['health'];
-            elseif( stripos($url, 'ua/politics')        !== false ) $cat_id = $cat_ar['news']['politics'];
-            elseif( stripos($url, 'ua/society')         !== false ) $cat_id = $cat_ar['news']['ukraine'];
+            if( stripos($url, 'ua/economy/')            !== false ) $cat_id = $cat_ar['news']['finance'];
+            elseif( stripos($url, 'ua/foreign/')        !== false ) $cat_id = $cat_ar['news']['world'];
+            elseif( stripos($url, 'ua/sport/')          !== false ) $cat_id = $cat_ar['news']['sport'];
+            elseif( stripos($url, 'ua/health/')         !== false ) $cat_id = $cat_ar['news']['health'];
+            elseif( stripos($url, 'ua/politics/')       !== false ) $cat_id = $cat_ar['news']['politics'];
+            elseif( stripos($url, 'ua/incident/')       !== false ) $cat_id = $cat_ar['news']['ukraine'];
+            elseif( stripos($url, 'ua/society/')        !== false ) $cat_id = $cat_ar['news']['ukraine'];
+            elseif( stripos($url, 'ua/culture/')        !== false ) $cat_id = $cat_ar['news']['showbiz'];
+            elseif( stripos($url, 'ua/tech/')           !== false ) $cat_id = $cat_ar['news']['science'];
         }
         elseif( $donor_url == 'http://news.liga.net/all/rss.xml' ){
             if( stripos($url, '/news/culture/')         !== false ) $cat_id = $cat_ar['news']['showbiz'];
