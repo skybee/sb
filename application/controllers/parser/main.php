@@ -6,7 +6,7 @@ class Main extends CI_Controller
     function __construct() {
         parent::__construct();
         
-        set_time_limit( 30 ); 
+        set_time_limit( 60 ); 
 //        exit('123');
         
         $this->load->database();
@@ -34,12 +34,12 @@ class Main extends CI_Controller
                         array('url'=>'http://ru.tsn.ua/rss/',                   'host'=>'tsn.ua'),              //== CAT TRUE !--Good
                         array('url'=>'http://k.img.com.ua/rss/ru/news.xml',     'host'=>'korrespondent.net'),   //== !--Good
                         array('url'=>'http://www.segodnya.ua/xml/rss.html',     'host'=>'segodnya.ua'),         //== CAT TRUE !--Good
+                        array('url'=>'http://news.liga.net/all/rss.xml',        'host'=>'liga.net'),
                         array('url'=>'http://www.unn.com.ua/rss/news_ru.xml',   'host'=>'unn.com.ua')           //== CAT TRUE
 //                        'http://gazeta.ua/export/rss/rss.xml',                  //== CAT !FALSE !!!OLD
 //                        'http://www.interfax.com.ua/rus/rss/',                  //== CAT TRUE
 //                        'http://delo.ua/news/rss/index.xml',                    //== CAT TRUE
 //                        'http://focus.ua/rss/ru.xml',                           //== CAT TRUE
-//                        'http://news.liga.net/all/rss.xml',                     //== CAT !FALSE
 //                        //-! 'http://biz.liga.net/all/rss.xml',                      //== CAT TRUE
 //                        //-! 'http://finance.liga.net/export/all.xml',               //== CAT TRUE
 //                        //-! 'http://blog.liga.net/rss.aspx',                        //== CAT !FALSE            
@@ -81,7 +81,7 @@ class Main extends CI_Controller
         $i=1;
         foreach( $parse_list as $news_ar ){
             
-//            $news_ar['url'] = 'http://economics.unian.net/finance/883026-zolotovalyutnyie-rezervyi-nbu-k-kontsu-goda-mogut-snizitsya-do-11-mlrd-ekspertyi.html';
+//            $news_ar['url'] = 'http://news.liga.net/news/politics/979079-vlasti_gotovyat_silovoy_stsenariy_zayavlenie_batkivshchiny.htm';  
         
             $html = $this->news_parser_lib->down_with_curl( $news_ar['url'] );
             
@@ -100,7 +100,7 @@ class Main extends CI_Controller
             $insert_data['date']            = date("Y-m-d H:i:s");
             
             echo "<br />\n$i - <i>".$news_ar['url']."</i><br />\n";
-            
+           
 //            echo '<pre>'.print_r($insert_data,1).'</pre>';
 
             $this->news_parser_lib->insert_news( $insert_data );

@@ -16,11 +16,11 @@ class parse_page_lib{
             case 'www.segodnya.ua' :        $this->segodnya();      break;
             case 'www.unn.com.ua':          $this->unn();           break;
             case 'www.unian.net' :          $this->unian();         break;
+            case 'liga.net' :               $this->news_liga();     break;
             case 'interfax.com.ua' :        $this->interfax();      break;
             case 'sport.segodnya.ua' :      $this->segodnya();      break;
             case 'delo.ua' :                $this->delo();          break;
             case 'focus.ua' :               $this->focus();         break;
-            case 'news.liga.net' :          $this->news_liga();     break;
             case 'isport.ua' :              $this->isport();        break;
             default:  return FALSE;
         }
@@ -203,12 +203,14 @@ class parse_page_lib{
             $this->data['text']    .= '<h2>'.$this->html_obj->find('.annotation',0)->innertext."</h2>\n";
         
         if( is_object( $this->html_obj->find('.img img',0) ) ){
-            $this->data['text']    .= $this->html_obj->find('.img img',0)->outertext."\n";
             $this->data['img']      = $this->html_obj->find('.img img',0)->src;
+            $this->html_obj->find('.img',0)->outertext = '';
         }
         
-        if( is_object( $this->html_obj->find('.news_detail .clear',0) ) )
-            $this->data['text']    .= $this->html_obj->find('.news_detail .clear',0)->innertext;
+        if( is_object( $this->html_obj->find('.text',0) ) )
+            $this->data['text']    .= $this->html_obj->find('.text',0)->innertext;
+        
+        $this->data['text']         = preg_replace("#<b>Подписывайтесь на аккаунт[\s\S]+?</b>#i", '', $this->data['text']); //удаление "Подписывайтесь***" и т.д.
     }
     
     private function isport(){

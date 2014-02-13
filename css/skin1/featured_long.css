@@ -26,6 +26,7 @@
 #featured ul.ui-tabs-nav{
 	position:absolute;
 	top:214px;
+        left: 11px;
 	/*left:507px;*/
 	list-style:none;
 	padding:0; margin:0;
@@ -73,8 +74,8 @@
 
 #featured ul.ui-tabs-nav li img{
 	float:left; 
-	margin:2px 9px;
-	width:87px;
+	margin:2px 11px;
+	width:93px;
 	height:63px;
 	margin-top:10px;
 }

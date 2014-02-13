@@ -1,8 +1,9 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed'); ?>
 
-
 <div class="single">
-    <div class="active"><h1><?=$doc_data['title']?></h1></div>
+    <div class="active">
+        <h1><?=$doc_data['title']?></h1>
+    </div>
     <div class="doc-date">
         <div class="dd_left">
             <? $dateAr =& $doc_data['date_ar']; ?>

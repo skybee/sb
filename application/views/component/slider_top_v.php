@@ -27,7 +27,7 @@
     <!-- 1 Content -->
     <div id="fragment-<?=$i?>" class="ui-tabs-panel " style="margin-top:1px; background-color:transparent; float:left;">
         <a href="<?=$newsUrl?>" class="top_slide_main_img">
-            <img src="/upload/images/medium/<?=$article['main_img']?>" alt="<?=$article['title']?>" border="0" />
+            <img src="/upload/images/medium/<?=$article['main_img']?>" alt="" border="0" />
         </a>
         <div class="info">
             <h2><a href="<?=$newsUrl?>" ><?=$article['title']?></a></h2>

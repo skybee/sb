@@ -124,12 +124,11 @@ class rss_url_lib
             elseif( stripos($url, 'ua/society')         !== false ) $cat_id = $cat_ar['news']['ukraine'];
         }
         elseif( $donor_url == 'http://news.liga.net/all/rss.xml' ){
-            if( stripos($url, 'news/culture')           !== false ) $cat_id = $cat_ar['news']['showbiz'];
-            elseif( stripos($url, '/politics/')         !== false ) $cat_id = $cat_ar['news']['politics'];
-            elseif( stripos($url, 'foreign/world')      !== false ) $cat_id = $cat_ar['news']['world'];
-            elseif( stripos($url, 'news/sport')         !== false ) $cat_id = $cat_ar['news']['sport'];
-            elseif( stripos($url, 'news/society')       !== false ) $cat_id = $cat_ar['news']['ukraine'];
-            elseif( stripos($url, 'news/health')        !== false ) $cat_id = $cat_ar['news']['health'];
+            if( stripos($url, '/news/culture/')         !== false ) $cat_id = $cat_ar['news']['showbiz'];
+            elseif( stripos($url, '/news/politics/')    !== false ) $cat_id = $cat_ar['news']['politics'];
+            elseif( stripos($url, '/news/world/')       !== false ) $cat_id = $cat_ar['news']['world'];
+            elseif( stripos($url, '/news/sport/')       !== false ) $cat_id = $cat_ar['news']['sport'];
+            elseif( stripos($url, '/news/society/')     !== false ) $cat_id = $cat_ar['news']['ukraine'];
         }
         elseif( $donor_url == 'http://isport.ua/hnd/rss.ashx?image=0' ){
             $cat_id = $cat_ar['news']['sport'];
