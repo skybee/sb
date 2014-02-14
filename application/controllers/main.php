@@ -25,6 +25,7 @@ class main extends CI_Controller {
         $top_slider['articles']         = $this->article_m->get_popular_articles(1, 8, 5, 0, 350);
         $top_slider['main_cat_url']     = $data_ar['main_cat_ar']['url_name'];
         
+        $last_news['last_news']         = $this->article_m->get_last_news( $data_ar['main_cat_ar']['id'], 50, false, true );
 //        echo '<pre>'.print_r($top_slider,1).'</pre>';
 
         $tpl_ar = $data_ar; //== !!! tmp    
@@ -32,6 +33,7 @@ class main extends CI_Controller {
         $tpl_ar['content'] .= $this->load->view('component/cat_listing_v', $data_ar, true);
         $tpl_ar['content'] .= $this->load->view('component/main_other_news_v', $data_ar, true);
         
+        $tpl_ar['right']        = $this->load->view('component/right_last_news_v', $last_news, true);
         $tpl_ar['top_slider']   = $this->load->view('component/slider_top_v', $top_slider, true);
 
         $this->load->view('main_v', $tpl_ar);
@@ -56,9 +58,12 @@ class main extends CI_Controller {
         $top_slider['articles']         = $this->article_m->get_popular_articles( $data_ar['s_cat_ar']['id'], 8, 5, 0, 350);
         $top_slider['main_cat_url']     = $data_ar['main_cat_ar']['url_name'];
         
+        $last_news['last_news']         = $this->article_m->get_last_news( $data_ar['main_cat_ar']['id'], 20, false, true );
+        
         $tpl_ar                 = $data_ar; //== !!! tmp
         $tpl_ar['content']      = $this->load->view('page/doc_v', $data_ar, true);
         $tpl_ar['top_slider']   = $this->load->view('component/slider_top_v', $top_slider, true);
+        $tpl_ar['right']        = $this->load->view('component/right_last_news_v', $last_news, true);
 
         $this->load->view('main_v', $tpl_ar);
     }
@@ -82,9 +87,12 @@ class main extends CI_Controller {
         $top_slider['articles']         = $this->article_m->get_popular_articles( $data_ar['s_cat_ar']['id'], 8, 5, 0, 350);
         $top_slider['main_cat_url']     = $data_ar['main_cat_ar']['url_name'];
         
+        $last_news['last_news']         = $this->article_m->get_last_news( $data_ar['main_cat_ar']['id'], 50, false, true );
+        
         $tpl_ar                 = $data_ar; //== !!! tmp
         $tpl_ar['content']      = $this->load->view('page/cat_list_v', $data_ar, true);
         $tpl_ar['top_slider']   = $this->load->view('component/slider_top_v', $top_slider, true);
+        $tpl_ar['right']        = $this->load->view('component/right_last_news_v', $last_news, true);
 
         $this->load->view('main_v', $tpl_ar);
     }

@@ -70,7 +70,7 @@
                                 <?= $content ?>
                             </div><!-- #left closer -->
                             <div id="right">
-                                123
+                                <?= $right; ?>
                             </div><!-- #right closer -->
                         </div><!-- #content_holder closer -->
                     </div>
