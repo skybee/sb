@@ -37,6 +37,7 @@ class Main extends CI_Controller
                         array('url'=>'http://k.img.com.ua/rss/ru/news.xml',     'host'=>'korrespondent.net'),   //== !--Good
                         array('url'=>'http://www.segodnya.ua/xml/rss.html',     'host'=>'segodnya.ua'),         //== CAT TRUE !--Good
                         array('url'=>'http://www.unn.com.ua/rss/news_ru.xml',   'host'=>'unn.com.ua')           //== CAT TRUE
+//                       http://rian.com.ua/
 //                        'http://gazeta.ua/export/rss/rss.xml',                  //== CAT !FALSE !!!OLD
 //                        'http://www.interfax.com.ua/rus/rss/',                  //== CAT TRUE
 //                        'http://delo.ua/news/rss/index.xml',                    //== CAT TRUE
