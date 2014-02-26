@@ -222,6 +222,8 @@ hr {
 	float:left;
 	background:#151515;
         border-top: #009DDB 2px solid; 
+        
+        position: relative; z-index: 2;
 }
 
 #headernavigation div.navigation {
