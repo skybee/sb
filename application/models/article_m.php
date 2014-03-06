@@ -16,43 +16,60 @@ class article_m extends CI_Model{
     
     function get_last_news( $idParentId, $cnt = 1, $img = false, $formatDate = false ){
         
-        if( $img )  $img_sql = " AND article.main_img != '' ";
-        else        $img_sql = "";
-            
+        if ($img)
+            $img_sql = " AND article.main_img != '' ";
+        else
+            $img_sql = "";
+
         $sql = "    SELECT 
-                        article.id, article.date, article.url_name, article.title, article.main_img,
-                        category1.id AS 's_cat_id', category1.url_name AS 's_cat_uname', category1.name AS 's_cat_name',
-                        category2.id AS 'f_cat_id', category2.url_name AS 'f_cat_uname'
-                    FROM 
-                        `category` AS `category1`,
-                        `category` AS `category2`,
-                        `article`
-                    WHERE
-                        -- article.cat_id  = '$ cat'
-                        (`cat_id` = '{$idParentId}' OR `cat_id` IN (SELECT `id` FROM `category` WHERE `parent_id` = '{$idParentId}') )    
-                    AND
-                        category1.id    = article.cat_id
-                    AND
-                        category2.id    = category1.parent_id
-                        {$img_sql}
-                    ORDER BY article.date DESC
-                    LIMIT {$cnt}   
-              ";
-        
-        
+                            article.id, article.date, article.url_name, article.title, article.main_img,
+                            category1.id AS 's_cat_id', category1.url_name AS 's_cat_uname', category1.name AS 's_cat_name',
+                            category2.id AS 'f_cat_id', category2.url_name AS 'f_cat_uname'
+                        FROM 
+                            `category` AS `category1`,
+                            `category` AS `category2`,
+                            `article`
+                        WHERE
+                            -- article.cat_id  = '$ cat'
+                            (`cat_id` = '{$idParentId}' OR `cat_id` IN (SELECT `id` FROM `category` WHERE `parent_id` = '{$idParentId}') )    
+                        AND
+                            category1.id    = article.cat_id
+                        AND
+                            category2.id    = category1.parent_id
+                            {$img_sql}
+                        ORDER BY article.date DESC
+                        LIMIT {$cnt}   
+                  ";
+
+
         $query = $this->db->query($sql);
-        
-//        echo "<pre>{$sql}</pre><br /><br />";
-                                    
+
+        //        echo "<pre>{$sql}</pre><br /><br />";
+
         $result_ar = array();
-        foreach( $query->result_array() as $row ){
-            if( $formatDate ){
-                $row['date_ar'] = get_date_str_ar( $row['date'] );
+        foreach ($query->result_array() as $row) {
+            if ($formatDate) {
+                $row['date_ar'] = get_date_str_ar($row['date']);
             }
             $result_ar[] = $row;
         }
         
         return $result_ar;
+    }
+    
+    function get_last_left_news( $idParentId, $cnt = 1, $img = false, $formatDate = false ){
+        
+        $cacheName = 'last_news_'.$idParentId.'_'.$cnt.'_'.$img;
+        
+        if( !$lastNewsCache = $this->cache->file->get($cacheName) ){
+            $data = $this->get_last_news($idParentId, $cnt, $img, $formatDate);
+            $this->cache->file->save($cacheName, $data, $this->cacheTime->leftLastNews * 60 );
+        }
+        else
+            $data = $lastNewsCache;
+        
+        return $data;
+        
     }
     
     function get_mainpage_cat_news( $news_cat_list ){ //принимает массив с id & name категорий
@@ -231,4 +248,19 @@ class article_m extends CI_Model{
         
         return $result;
     }
+    
+    function get_top_slider_data( $idParentId, $cntNews, $dayAgo, $hourAgo, $textLength = 200, $img = true ){
+        
+        $topSliderCacheName = 'slider_'.$idParentId;
+        if( !$sliderCache = $this->cache->file->get($topSliderCacheName) ){
+            $data = $this->get_popular_articles( $idParentId, $cntNews, $dayAgo, $hourAgo, $textLength, $img );
+            $this->cache->file->save($topSliderCacheName, $data, $this->cacheTime->topSlider * 60 );
+        }
+        else
+            $data = $sliderCache;
+        
+        return $data;
+    }
+    
+    
 }

@@ -40,8 +40,8 @@
 
 $route['default_controller']            = "main";
 $route['(:any)/(:any)/(-\d+-.*)']      = "main/document/$1/$2/$3"; #/news/ukraine/-id-****/
-$route['(news|articles|blogs)$']        = "main/main_page/$1";
-$route['(news|articles|blogs)/(:any)']  = "main/cat_list/$1/$2";
+$route['(news|articles-|blogs-)$']        = "main/main_page/$1";
+$route['(news|articles-|blogs-)/(:any)']  = "main/cat_list/$1/$2";
 $route['parser/(:any)']                 = "parser/main/$1";
 $route['(:any)']                        = "main/$1";
 $route['404_override'] = '';
