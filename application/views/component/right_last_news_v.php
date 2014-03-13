@@ -4,9 +4,19 @@
     <span class="title">Последние новости</span>
 </h3>
 
+<div class="last_news_one_block">
+    <? $firstNews = &$last_news['first']; ?>
+    <a class="lnob_img_block" href="<?="/{$firstNews['f_cat_uname']}/{$firstNews['s_cat_uname']}/-{$firstNews['id']}-{$firstNews['url_name']}/"?>">
+        <img src="/upload/images/medium/<?=$firstNews['main_img']?>" alt="" />
+        <div class="lnob_title">
+            <?=$firstNews['title']?>
+        </div>
+    </a>
+</div>
+
 <div class="last_news_list">
 <?
-    foreach ($last_news as $lnews ):
+    foreach ($last_news['all'] as $lnews ):
 ?>
     <div class="lnl_news">
         <span><?=$lnews['date_ar']['time']?> </span>

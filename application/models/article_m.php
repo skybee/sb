@@ -62,7 +62,10 @@ class article_m extends CI_Model{
         $cacheName = 'last_news_'.$idParentId.'_'.$cnt.'_'.$img;
         
         if( !$lastNewsCache = $this->cache->file->get($cacheName) ){
-            $data = $this->get_last_news($idParentId, $cnt, $img, $formatDate);
+            $data['first']  = $this->get_last_news($idParentId, 1, true, $formatDate);
+            $data['first']  = $data['first'][0];
+            $data['all']    = $this->get_last_news($idParentId, $cnt, $img, $formatDate);
+            unset($data['all'][0]);
             $this->cache->file->save($cacheName, $data, $this->cacheTime->leftLastNews * 60 );
         }
         else
