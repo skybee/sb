@@ -26,14 +26,26 @@ class news_parser_lib extends parse_lib{
             $hash_list_str .= "'{$new_article_hash_ar[$i]}'";
         }
         
-        $query = $this->CI->db->query(" SELECT `hash`, `article_id` FROM `shingles`
-                                        WHERE 
-                                            `article_id` IN 
-                                                ( 
-                                                    SELECT DISTINCT `article_id` FROM `shingles` WHERE `hash` IN ({$hash_list_str}) 
-                                                    -- LIMIT {$article_limit}  
-                                                )             
-                                  ");                                                
+//        $sql = "SELECT `hash`, `article_id` FROM `shingles`
+//                WHERE 
+//                `article_id` IN 
+//                    ( 
+//                        SELECT DISTINCT `article_id` FROM `shingles` WHERE `hash` IN ({$hash_list_str}) 
+//                        -- LIMIT {$article_limit}  
+//                    )";
+                        
+        $sql = "SELECT `shingles`.`hash`, `shingles`.`article_id` 
+                FROM `shingles`, 
+                ( 	
+                    SELECT DISTINCT `article_id` 
+                    FROM `shingles` 
+                    WHERE `hash` IN ({$hash_list_str}) 
+                ) AS `t1` 
+                WHERE `shingles`.`article_id` = `t1`.`article_id`";                
+                        
+//        echo $sql;
+        
+        $query = $this->CI->db->query($sql);                                                
         
         if( $query->num_rows() < 1 ) return FALSE;
         
