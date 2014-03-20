@@ -48,7 +48,14 @@
                     <div id="content_holder">
                         <div id="header">
                             <a href="/"><img src="/img/logo3.png" border="0" alt="Однако Logo" class="logo"  /></a>
-                            <div class="ad "></div><!-- #ad 468x60 closer -->
+<!--                            <div class="ad "></div> #ad 468x60 closer -->
+
+                        <div class="search_top_block">
+                            <form action="/" method="get" name="search" >
+                                <input type="text" name="top_search" value="" />
+                                <div id="top_search_submit" onclick="document.search.submit();"></div>
+                            </form>
+                        </div>
                         </div><!-- #header closer -->
 
                         <div id="categories">
