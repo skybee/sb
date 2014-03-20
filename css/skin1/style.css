@@ -2941,11 +2941,11 @@ img.alignleft,a img.alignleft {
 .search_top_block input[type="text"]{
     border: 1px solid #009DDB;
     border-radius: 4px;
-    width: 300px; height: 33px;
+    width: 272px; height: 33px;
     padding: 0px 45px 0px 15px;
     font-size: 16px;
     float: right;
-    box-shadow: 0px 0px 4px 1px #CCCCCC;
+    box-shadow: 0px 0px 4px 1px #cfcfcf;
 }
 
 .search_top_block #top_search_submit{
