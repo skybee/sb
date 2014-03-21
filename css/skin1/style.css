@@ -2945,7 +2945,7 @@ img.alignleft,a img.alignleft {
     padding: 0px 45px 0px 15px;
     font-size: 16px;
     float: right;
-    box-shadow: 0px 0px 4px 1px #cfcfcf;
+    box-shadow: 0px 0px 6px 1px #e5e5e5;
 }
 
 .search_top_block #top_search_submit{
