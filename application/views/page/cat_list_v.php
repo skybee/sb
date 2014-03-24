@@ -7,7 +7,9 @@
     </div><!-- #active -->
 
 
-<?  foreach( $news_page_list as $news_page_ar ):
+<?  
+    if( isset($news_page_list) && $news_page_list != NULL ):
+    foreach( $news_page_list as $news_page_ar ):
         $news_url   = "/{$main_cat_ar['url_name']}/{$s_cat_ar['url_name']}/-{$news_page_ar['id']}-{$news_page_ar['url_name']}/";
         $dateAr     =& $news_page_ar['date'];
         $dateStr    = $dateAr['day_str'].' &nbsp;'.$dateAr['time'].', &nbsp;&nbsp;'.$dateAr['day_nmbr'].' '.$dateAr['month_str'].' '.$dateAr['year_nmbr'];
@@ -40,14 +42,27 @@
             </div><!-- #right -->
         </div><!-- #content -->
     </div><!-- #listing -->
-<? endforeach; ?>
+<? 
+    endforeach; 
+    else:
+?>
+    Нет результатов для отображения
+<? 
+    endif;
+?>
 
     <div class="news_pager">
         <ul>
-            <? foreach ($pager_ar as $page): ?>
+            <? 
+                foreach ($pager_ar as $page): 
+                if( !isset($search_url_str) )
+                    $pager_url = '/'.$main_cat_ar['url_name'].'/'.$s_cat_ar['url_name'].'/'.$page.'/';
+                else
+                    $pager_url = '/search/'.$main_cat_ar['url_name'].'/'.$page.'/?q='.$search_url_str;
+            ?>
             <li>
                 <? if($page != $page_nmbr && $page != '...'): ?>
-                <a href="<?='/'.$main_cat_ar['url_name'].'/'.$s_cat_ar['url_name'].'/'.$page.'/'?>"><?=$page?></a>
+                <a href="<?=$pager_url?>"><?=$page?></a>
                 <? else: ?>
                 <span class="pager_not_link"><?=$page?></span>
                 <? endif;?>

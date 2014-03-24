@@ -51,8 +51,8 @@
 <!--                            <div class="ad "></div> #ad 468x60 closer -->
 
                         <div class="search_top_block">
-                            <form action="/" method="get" name="search" >
-                                <input type="text" name="top_search" value="" />
+                            <form action="/search/<?=$main_cat_ar['url_name']?>/1/" method="get" name="search" >
+                                <input type="text" name="q" value="" />
                                 <div id="top_search_submit" onclick="document.search.submit();"></div>
                             </form>
                         </div>

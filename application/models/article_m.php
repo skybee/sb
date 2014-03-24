@@ -265,5 +265,89 @@ class article_m extends CI_Model{
         return $data;
     }
     
+    function get_search_page_list( $searchStr, $page, $cnt = 15){
+        $stop   = $page * $cnt;
+        $start  = $stop - $cnt;
+        
+        $sql = "    SELECT 
+                            article.id, article.date, article.url_name, article.title, article.text, article.main_img,
+                            category1.id AS 's_cat_id', category1.url_name AS 's_cat_uname', category1.name AS 's_cat_name',
+                            category2.id AS 'f_cat_id', category2.url_name AS 'f_cat_uname',
+                            `donor`.`name` AS 'd_name', `donor`.`img` AS 'd_img'
+                        FROM 
+                            `category` AS `category1`,
+                            `category` AS `category2`,
+                            `article`,
+                            `donor`,
+                            (   SELECT `id`, MATCH (`title`,`text`) AGAINST ('{$searchStr}') AS `rank` 
+                                FROM `article` 
+                                WHERE 
+                                MATCH (`title`,`text`) AGAINST ('{$searchStr}')
+                            ) AS `seach`
+                        WHERE
+                            article.id          = seach.id
+                        AND
+                            category1.id        = article.cat_id
+                        AND
+                            category2.id        = category1.parent_id  
+                        AND
+                            article.donor_id    = donor.id
+                        ORDER BY seach.rank DESC
+                        LIMIT {$start}, {$cnt}   
+                  ";
+                        
+        $query = $this->db->query($sql);                
+        
+        if( $query->num_rows() < 1 ) return FALSE;
+        
+        $result_ar = array();
+        foreach( $query->result_array() as $row){
+            $row['text']    = $this->get_short_txt( $row['text'], 200 );
+            $row['date']    = get_date_str_ar( $row['date'] );
+            $result_ar[]    = $row;
+        }
+        
+        return $result_ar;
+    }
+    
+    function get_search_pager_ar( $searchStr, $page = 1, $cnt_on_page = 15, $page_left_right = 3 ){
+                
+        $query_str = "  SELECT 
+                            COUNT(`id`) AS 'count'
+                        FROM 
+                            `article`
+                        WHERE
+                            MATCH (`title`,`text`) AGAINST ('{$searchStr}')
+                    ";
+                            
+         $query = $this->db->query($query_str);
+         $row   = $query->row();
+         $count_goods = $row->count;
+         
+         $start     = $page - $page_left_right; if( $start < 1 ) $start = 1;
+         $cnt_page  = ceil( $count_goods / $cnt_on_page );
+         $stop      = $page + $page_left_right; if( $stop > $cnt_page ) $stop = $cnt_page;
+         
+         $result_ar = array();
+         
+         if( $page > $page_left_right+1 ){ //дополнение массива первой страницей
+             $result_ar[] = 1;
+             if( $page != $page_left_right+2 )
+                $result_ar[] = '...';
+         }    
+         
+         
+         for($i = $start; $i<=$stop; $i++ ){
+             $result_ar[] = $i;
+         }
+         
+         if($cnt_page > $stop+1 ){ //дополняет масив последней страницей
+             $result_ar[] = '...';
+             $result_ar[] = $cnt_page;
+         }    
+         
+         return $result_ar;
+    }
+    
     
 }

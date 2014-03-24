@@ -48,10 +48,10 @@
 $active_group = 'default';
 $active_record = TRUE;
 
-$db['default']['hostname'] = 'localhost';
-$db['default']['username'] = 'root';
-$db['default']['password'] = '';
-$db['default']['database'] = 'sb';
+//$db['default']['hostname'] = 'localhost';
+//$db['default']['username'] = 'root';
+//$db['default']['password'] = '';
+//$db['default']['database'] = 'sb';
 
 
 //$db['default']['hostname'] = 'localhost';
@@ -59,10 +59,10 @@ $db['default']['database'] = 'sb';
 //$db['default']['password'] = '1865tsb';
 //$db['default']['database'] = 'skybee_news';
 
-//$db['default']['hostname'] = 'localhost';
-//$db['default']['username'] = 'admin_sb';
-//$db['default']['password'] = '1865tsbqwerty';
-//$db['default']['database'] = 'admin_news';
+$db['default']['hostname'] = 'localhost';
+$db['default']['username'] = 'admin_sb';
+$db['default']['password'] = '1865tsbqwerty';
+$db['default']['database'] = 'admin_news';
 
 
 
