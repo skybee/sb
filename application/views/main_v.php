@@ -26,6 +26,7 @@
         <script type='text/javascript' src='/js/skin1/custom.js'></script>
         <script type='text/javascript' src='/js/skin1/jquery.jcarousel.min.js'></script>
         <script type='text/javascript' src='/js/skin1/jquery.prettyPhoto.js'></script>
+        <script type='text/javascript' src='/js/skin1/sb.js'></script>
 
     </head>
 

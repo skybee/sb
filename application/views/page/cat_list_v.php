@@ -24,7 +24,7 @@
                            else
                                 $imgUrl = '/img/default_news.jpg';
                         ?>
-                        <img src="<?=$imgUrl?>" class="imgf" style="opacity: 1;">
+                        <img src="<?=$imgUrl?>" class="imgf" style="opacity: 1;" onerror="imgError(this);">
                     </a>
                 </div><!-- #imgholder -->
             </div><!-- #left -->

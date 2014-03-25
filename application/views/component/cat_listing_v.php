@@ -16,7 +16,7 @@
         <div class="left">
             <div class="imgholder">
                 <a href="/<?=$catlist_ar['s_cat_ar']['f_cat_uname']?>/<?=$catlist_ar['s_cat_ar']['url_name']?>/-<?=$catlist_ar[0]['id']?>-<?=$catlist_ar[0]['url_name']?>/">
-                    <img src="/upload/images/medium/<?=$catlist_ar[0]['main_img']?>" alt="<?=$catlist_ar[0]['title']?>" border="0" />
+                    <img src="/upload/images/medium/<?=$catlist_ar[0]['main_img']?>" alt="<?=$catlist_ar[0]['title']?>" border="0" onerror="imgError(this);" />
                 </a>
                 <div class="description"><h3><a href="/<?=$catlist_ar['s_cat_ar']['f_cat_uname']?>/<?=$catlist_ar['s_cat_ar']['url_name']?>/-<?=$catlist_ar[0]['id']?>-<?=$catlist_ar[0]['url_name']?>/"><?=$catlist_ar[0]['title']?></a></h3></div><!-- #description -->
             </div><!-- #imgholder -->
@@ -28,7 +28,7 @@
             <div class="small-listing">
                 <div class="thumb">
                     <a href="/<?=$catlist_ar['s_cat_ar']['f_cat_uname']?>/<?=$catlist_ar['s_cat_ar']['url_name']?>/-<?=$catlist_ar[1]['id']?>-<?=$catlist_ar[1]['url_name']?>/">
-                        <img src="/upload/images/small/<?=$catlist_ar[1]['main_img']?>" alt="<?=$catlist_ar[1]['title']?>"  border="0" />
+                        <img src="/upload/images/small/<?=$catlist_ar[1]['main_img']?>" alt="<?=$catlist_ar[1]['title']?>"  border="0" onerror="imgError(this);" />
                     </a>
                 </div><!-- #thumb -->
                 <div class="description"><h4><a href="/<?=$catlist_ar['s_cat_ar']['f_cat_uname']?>/<?=$catlist_ar['s_cat_ar']['url_name']?>/-<?=$catlist_ar[1]['id']?>-<?=$catlist_ar[1]['url_name']?>/"><?=$catlist_ar[1]['title']?></a></h4></div><!-- #description -->
@@ -39,7 +39,7 @@
             <div class="small-listing">
                 <div class="thumb">
                     <a href="/<?=$catlist_ar['s_cat_ar']['f_cat_uname']?>/<?=$catlist_ar['s_cat_ar']['url_name']?>/-<?=$catlist_ar[2]['id']?>-<?=$catlist_ar[2]['url_name']?>/">
-                        <img src="/upload/images/small/<?=$catlist_ar[2]['main_img']?>" alt="<?=$catlist_ar[2]['title']?>"  border="0" />
+                        <img src="/upload/images/small/<?=$catlist_ar[2]['main_img']?>" alt="<?=$catlist_ar[2]['title']?>"  border="0" onerror="imgError(this);" />
                     </a>
                 </div><!-- #thumb -->
                 <div class="description"><h4><a href="/<?=$catlist_ar['s_cat_ar']['f_cat_uname']?>/<?=$catlist_ar['s_cat_ar']['url_name']?>/-<?=$catlist_ar[2]['id']?>-<?=$catlist_ar[2]['url_name']?>/"><?=$catlist_ar[2]['title']?></a></h4></div><!-- #description -->
@@ -50,7 +50,7 @@
             <div class="small-listing">
                 <div class="thumb">
                     <a href="/<?=$catlist_ar['s_cat_ar']['f_cat_uname']?>/<?=$catlist_ar['s_cat_ar']['url_name']?>/-<?=$catlist_ar[3]['id']?>-<?=$catlist_ar[3]['url_name']?>/">
-                        <img src="/upload/images/small/<?=$catlist_ar[3]['main_img']?>" alt="<?=$catlist_ar[3]['title']?>"  border="0" />
+                        <img src="/upload/images/small/<?=$catlist_ar[3]['main_img']?>" alt="<?=$catlist_ar[3]['title']?>"  border="0" onerror="imgError(this);" />
                     </a>
                 </div><!-- #thumb -->
                 <div class="description"><h4><a href="/<?=$catlist_ar['s_cat_ar']['f_cat_uname']?>/<?=$catlist_ar['s_cat_ar']['url_name']?>/-<?=$catlist_ar[3]['id']?>-<?=$catlist_ar[3]['url_name']?>/"><?=$catlist_ar[3]['title']?></a></h4></div><!-- #description -->

@@ -283,6 +283,7 @@ class article_m extends CI_Model{
                                 FROM `article` 
                                 WHERE 
                                 MATCH (`title`,`text`) AGAINST ('{$searchStr}')
+                                LIMIT 150     
                             ) AS `seach`
                         WHERE
                             article.id          = seach.id
@@ -317,12 +318,14 @@ class article_m extends CI_Model{
                         FROM 
                             `article`
                         WHERE
-                            MATCH (`title`,`text`) AGAINST ('{$searchStr}')
+                            MATCH (`title`,`text`) AGAINST ('{$searchStr}')        
                     ";
                             
          $query = $this->db->query($query_str);
          $row   = $query->row();
          $count_goods = $row->count;
+         
+         if( $count_goods > 150 ) $count_goods = 150;
          
          $start     = $page - $page_left_right; if( $start < 1 ) $start = 1;
          $cnt_page  = ceil( $count_goods / $cnt_on_page );

@@ -7,7 +7,7 @@
 <div class="last_news_one_block">
     <? $firstNews = &$last_news['first']; ?>
     <a class="lnob_img_block" href="<?="/{$firstNews['f_cat_uname']}/{$firstNews['s_cat_uname']}/-{$firstNews['id']}-{$firstNews['url_name']}/"?>">
-        <img src="/upload/images/medium/<?=$firstNews['main_img']?>" alt="" />
+        <img src="/upload/images/medium/<?=$firstNews['main_img']?>" alt="" onerror="imgError(this);" />
         <div class="lnob_title">
             <?=$firstNews['title']?>
         </div>

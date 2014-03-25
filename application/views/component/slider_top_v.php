@@ -10,7 +10,7 @@
         ?>
         <li class="ui-tabs-nav-item ui-tabs-selected" id="nav-fragment-<?=$i?>">
             <a href="#fragment-<?=$i?>">
-                <img src="/upload/images/small/<?=$article['main_img']?>" alt="" />
+                <img src="/upload/images/small/<?=$article['main_img']?>" alt="" onerror="imgError(this);" />
             </a>
         </li>
         <? $i++; endforeach; ?>
@@ -27,7 +27,7 @@
     <!-- 1 Content -->
     <div id="fragment-<?=$i?>" class="ui-tabs-panel " style="margin-top:1px; background-color:transparent; float:left;">
         <a href="<?=$newsUrl?>" class="top_slide_main_img">
-            <img src="/upload/images/medium/<?=$article['main_img']?>" alt="" border="0" />
+            <img src="/upload/images/medium/<?=$article['main_img']?>" alt="" border="0" onerror="imgError(this);" />
         </a>
         <div class="info">
             <h2><a href="<?=$newsUrl?>" ><?=$article['title']?></a></h2>

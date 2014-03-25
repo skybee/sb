@@ -21,7 +21,7 @@
         <?  if( !empty($doc_data['main_img']) ): ?>
         <div class="thumb ">
             <a href="/upload/images/real/<?=$doc_data['main_img']?>" rel="prettyPhoto" title="<?=$doc_data['title']?>">
-                <img src="/upload/images/medium/<?=$doc_data['main_img']?>" alt="<?=$doc_data['title']?>" class="imgf" style="opacity: 1;">
+                <img src="/upload/images/medium/<?=$doc_data['main_img']?>" alt="<?=$doc_data['title']?>" class="imgf" style="opacity: 1;" onerror="imgError(this);" />
             </a>
         </div>
         <?  endif; ?>
@@ -48,7 +48,7 @@
             
             <div class="left_other_news">
                 <a href="<?=$newsUrl?>">
-                    <img src="<?=$imgUrl?>" alt="<?=$likeArts['title']?>">
+                    <img src="<?=$imgUrl?>" alt="<?=$likeArts['title']?>" onerror="imgError(this);">
                 </a>
                 <div class="content"><h4><a href="<?=$newsUrl?>"><?=$likeArts['title']?></a></div>
                 <div class="lon_hide_description">

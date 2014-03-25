@@ -52,7 +52,8 @@ class parse_page_lib{
         if( is_object( $this->html_obj->find('#news_text',0) ) )
             $this->data['text']    .= $this->html_obj->find('#news_text',0)->innertext;
         
-        $this->data['text']         = preg_replace("#<p><strong>[\s\S]{4,20}:[\s]*<a[\s\S]*?</a>[\s]*</strong></p>#iu", '', $this->data['text']); //удаление "Читайте:***" и т.д.
+//        $this->data['text']         = preg_replace("#<p><strong>[\s\S]{4,20}:[\s]*<a[\s\S]*?</a>[\s]*</strong></p>#iu", '', $this->data['text']); //удаление "Читайте:***" и т.д.
+        $this->data['text']         = preg_replace("#>[\s]*Читайте также:[\s\S]+?</a>#iu", '> </a>', $this->data['text']); //удаление Читайте также:
     } #+
     
     private function unn(){
@@ -247,6 +248,7 @@ class parse_page_lib{
         if( is_object( $this->html_obj->find('.post-item__text',0) ) )
             $this->data['text']    = $this->html_obj->find('.post-item__text',0)->innertext;
         
+        $this->data['text']         = preg_replace("#>[\s]*Читайте также:[\s\S]+?</a>#iu", '> </a>', $this->data['text']); //удаление Читайте также:
 //        $this->data['text']     = iconv('utf-8', 'utf-8//IGNORE', $this->data['text']);
 //        $this->data['title']    = iconv('cp1251', 'utf-8//IGNORE', $this->data['title']);
     } #+
