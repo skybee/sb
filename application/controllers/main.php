@@ -16,6 +16,7 @@ class main extends CI_Controller {
         $this->cacheTime->mainPage      = 10; //minutes
         $this->cacheTime->topSlider     = 15;
         $this->cacheTime->leftLastNews  = 5;
+        $this->cacheTime->footerCat     = 60;
     }
 
     function index(){ $this->main_page('news'); }
@@ -26,6 +27,7 @@ class main extends CI_Controller {
         $data_ar['main_cat_ar']         = $this->article_m->get_cat_data_from_url_name($cat_name);
         $data_ar['main_menu_list']      = $this->list_m->get_cat(0);
         $data_ar['second_menu_list']    = $this->list_m->get_cat($data_ar['main_cat_ar']['id']);
+        $data_ar['footer_menu_list']    = $this->list_m->get_footer_cat_link();
         $data_ar['mainpage_cat_list']   = $this->article_m->get_mainpage_cat_news($data_ar['second_menu_list']); // 9.5 sec.
         $data_ar['meta']['title']       = $data_ar['main_cat_ar']['title'];
         
@@ -60,7 +62,10 @@ class main extends CI_Controller {
         $data_ar['s_cat_ar']            = $this->article_m->get_cat_data_from_url_name($s_cat_name);
         $data_ar['main_menu_list']      = $this->list_m->get_cat(0);
         $data_ar['second_menu_list']    = $this->list_m->get_cat($data_ar['main_cat_ar']['id']);
+        $data_ar['footer_menu_list']    = $this->list_m->get_footer_cat_link();
         $data_ar['meta']['title']       = $data_ar['main_cat_ar']['name'].'/'.$data_ar['s_cat_ar']['name'].': '.$data_ar['doc_data']['title'];
+        
+//        echo '<pre>'.print_r($this->list_m->get_footer_cat_link(),1).'</pre>';
 
         $top_slider['articles']         = $this->article_m->get_top_slider_data( $data_ar['s_cat_ar']['id'], 8, 5, 0, 350);
         
@@ -91,6 +96,7 @@ class main extends CI_Controller {
             show_404();
         $data_ar['main_menu_list']      = $this->list_m->get_cat(0);
         $data_ar['second_menu_list']    = $this->list_m->get_cat($data_ar['main_cat_ar']['id']);
+        $data_ar['footer_menu_list']    = $this->list_m->get_footer_cat_link();
         $data_ar['meta']['title']       = $data_ar['s_cat_ar']['title'].' - страница '.$page;
 
         $top_slider['articles']         = $this->article_m->get_top_slider_data( $data_ar['s_cat_ar']['id'], 8, 5, 0, 350);
@@ -123,6 +129,7 @@ class main extends CI_Controller {
             $data_ar['news_page_list'] = NULL; #show_404();
         $data_ar['main_menu_list']      = $this->list_m->get_cat(0);
         $data_ar['second_menu_list']    = $this->list_m->get_cat($data_ar['main_cat_ar']['id']);
+        $data_ar['footer_menu_list']    = $this->list_m->get_footer_cat_link();
         $data_ar['meta']['title']       = 'Поиск: &laquo;'.$searchStr.'&raquo;  - страница '.$page;
         
         $top_slider['articles']         = $this->article_m->get_top_slider_data(1, 8, 5, 0, 350); // 1.5 sec.

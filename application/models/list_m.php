@@ -17,4 +17,26 @@ class list_m extends CI_Model{
         
         return $result_ar;
     }
+    
+    function get_footer_cat_link(){
+        $cacheName = 'footer_cat';
+        
+        if( !$allCatAr = $this->cache->file->get($cacheName) ){
+            $mainCatAr = $this->get_cat(0);
+
+            if( count($mainCatAr) < 1 ) return NULL;
+
+            $allCatAr = array();
+            foreach( $mainCatAr as $mainCat ){
+                $sCat = $this->get_cat( $mainCat['id'] );
+                if( count($sCat) < 1 ) $sCat = NULL;
+                $mainCat['s_cat'] = $sCat;
+
+                $allCatAr[] = $mainCat;
+            }
+            $this->cache->file->save($cacheName, $allCatAr, $this->cacheTime->footerCat * 60 );
+        }
+        
+        return $allCatAr;
+    }
 } 

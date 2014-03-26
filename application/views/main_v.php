@@ -87,49 +87,31 @@
 
             <div id="footer_widget" >
                 <div class="inside">
-                    <!-- WIDGET SPACE -->
-                    <div class="widget_h_l">
-                        <div id="archives-4" class="widget"><h3 class="widget-title"><span class="title">Archives</span></h3>		<ul>
-                                
-                            </ul>
-                        </div><!-- #widget -->
-                    </div><!-- #widget_h -->
-
-                    <div class="widget_h_m">
-                        <div id="lt_flickr_widget-4" class="widget">  
-                            <div id="flickr">   
-                                <h3 class="widget-title"><span class="title">Flickr Photostream</span></h3>
-                            </div>     
-                        </div><!-- #widget -->
-                    </div><!-- #widget_h -->
-
-                    <div class="widget_h_m">
-                        <div id="meta-2" class="widget"><h3 class="widget-title"><span class="title">Meta</span></h3>			<ul>
-                                <li><a href="/">Log in</a></li>
-                                <li><a href="/">RSS</abbr></a></li>
-                                <li><a href="/">RSS</abbr></a></li>
-                                <li><a href="http://wordpress.org/" title="Powered by WordPress, state-of-the-art semantic personal publishing platform.">WordPress.org</a></li>
-                            </ul>
-                        </div><!-- #widget -->
-                    </div><!-- #widget_h -->
-
-                    <div class="widget_h_r">
-                        <div id="text-3" class="widget"><h3 class="widget-title"><span class="title">Text Widget</span></h3>			<div class="textwidget">Maecenas mattis, tortor ut posuere aliquam, quam enim accumsan purus, auctor placerat orci velit vitae massa. Vivamus non iaculis lectus. Sed dignissim metus ac libero sagittis non iaculis lorem mattis.</div>
-                        </div><!-- #widget -->
-                    </div><!-- #widget_h -->
-
-                    <div class="logo">
-                        <img src="/img/london_live_footer.png" alt="London Live" />
-                        <a href="#top" class="toparrow"><img src="/img/top_arrow.png" class="top" /></a>
+                    <div id="footer_all_cat_block">
+                        <? 
+                            foreach($footer_menu_list as $menuList):
+                        ?>
+                        <div class="footer_acb_main_cat">
+                            <a href="/<?=$menuList['url_name']?>/" class="footer_main_cat_a"><?=$menuList['name']?></a><br />
+                            <div class="footer_acb_sec_cat">
+                                <?
+                                    if( $menuList['s_cat'] != NULL ):
+                                        foreach($menuList['s_cat'] as $sCat):
+                                ?>
+                                <a href="/<?=$menuList['url_name']?>/<?=$sCat['url_name']?>/"><?=$sCat['name']?></a>
+                                <? endforeach; endif;?>
+                            </div>
+                        </div>
+                        <?endforeach;?>
+                        
                     </div>
-                    <!-- WIDGET END -->
                 </div><!-- #inside -->
             </div><!-- #footer_widget closer -->
 
             <div id="footer">
                 <div class="inside">
-                    <div class="left">&copy; 2012 London Live. All Rights Reserved.</div><!-- #left -->
-                    <div class="right">Powered by Wordpress. Designed by <a href="http://londonthemes.com/index.php?themeforest=true">Skyali</a></div><!-- #right -->
+                    <div class="left">&copy; 2013 Odnako.su. All Rights Reserved.</div><!-- #left -->
+                    <div class="right"></div><!-- #right -->
                 </div><!-- #inside -->
             </div><!-- #footer -->
         </div><!-- #container closer -->
