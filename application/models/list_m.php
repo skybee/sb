@@ -29,7 +29,7 @@ class list_m extends CI_Model{
             $allCatAr = array();
             foreach( $mainCatAr as $mainCat ){
                 $sCat = $this->get_cat( $mainCat['id'] );
-                if( count($sCat) < 1 ) $sCat = NULL;
+                if( count($sCat) < 1 ) continue;
                 $mainCat['s_cat'] = $sCat;
 
                 $allCatAr[] = $mainCat;
