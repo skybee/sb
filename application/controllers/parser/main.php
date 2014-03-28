@@ -128,7 +128,8 @@ class Main extends CI_Controller
     }
     
     function tmp_clean_doubles(){
-        set_time_limit(1200);
+        exit('lock method');
+        set_time_limit(1800);
         $doubleIdAr = array();        
         $sql     = "SELECT `id`, `title` FROM `article` ";
 
@@ -151,7 +152,20 @@ class Main extends CI_Controller
 
             foreach($query2->result_array() as $row){
                 $doubleIdAr[] = $row['id'];
-                echo '---'.$row['id'].'--'.$row['title'].'<br />';
+                echo '---Удаление--'.$row['id'].'--'.$row['title'].'<br />';
+                $query3 = $this->db->query("SELECT `main_img` FROM `article` WHERE `id` = '{$row['id']}' ");
+                $rowImg     = $query3->row_array();
+                $mainImg    = $rowImg['main_img'];
+                if( !empty($mainImg) ){
+                    if( is_file( 'upload/images/medium/'.$mainImg ) )
+                        if( unlink('upload/images/medium/'.$mainImg) ) echo '---- medium img удалена<br />';
+                    if( is_file( 'upload/images/real/'.$mainImg ) )
+                        if( unlink('upload/images/real/'.$mainImg) ) echo '---- real img удалена<br />';
+                    if( is_file( 'upload/images/small/'.$mainImg ) )
+                        if( unlink('upload/images/small/'.$mainImg) ) echo '---- small img удалена<br />';
+                }
+                if( $this->db->query("DELETE FROM `article`  WHERE `id` = '{$row['id']}' ") ) echo '----- новость удалена<br />';
+                if( $this->db->query("DELETE FROM `shingles` WHERE `article_id` = '{$row['id']}' ") )echo '----- шинглы удалены<br />';
             }
         }
     }
