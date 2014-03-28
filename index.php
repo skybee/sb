@@ -1,9 +1,9 @@
 <?php
 header("Content-type:text/html;Charset=utf-8");
 
-if( $_SERVER['HTTP_HOST'] == 'news.cheb.su' ){
+if( $_SERVER['HTTP_HOST'] == 'news.cheb.su'  || $_SERVER['HTTP_HOST'] == 'news.snowboard.ru' ){
     header("HTTP/1.1 301 Moved Permanently");
-    header("Location: http://news.snowboard.ru/");
+    header("Location: http://odnako.su".$_SERVER['REQUEST_URI']);
     exit();
 }
 

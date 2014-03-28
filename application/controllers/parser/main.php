@@ -126,4 +126,33 @@ class Main extends CI_Controller
         
         return TRUE;
     }
+    
+    function tmp_clean_doubles(){
+        set_time_limit(1200);
+        $doubleIdAr = array();        
+        $sql     = "SELECT `id`, `title` FROM `article` ";
+
+        $query = $this->db->query($sql);
+
+        foreach($query->result_array() as $row){
+            $allAricles[$row['id']] = $row;
+        }
+
+        foreach( $allAricles as $artticleData ){
+            
+            if( in_array($artticleData['id'], $doubleIdAr) ) continue;
+            
+            $artticleData['title'] = mysql_real_escape_string($artticleData['title']);
+            $sql2    = "SELECT `id`, `title` FROM `article` WHERE `title` =  '{$artticleData['title']}' AND `id` != '{$artticleData['id']}' ";
+            
+            echo $artticleData['id'].'-'.$artticleData['title'].'<br />';
+            
+            $query2 = $this->db->query( $sql2 );
+
+            foreach($query2->result_array() as $row){
+                $doubleIdAr[] = $row['id'];
+                echo '---'.$row['id'].'--'.$row['title'].'<br />';
+            }
+        }
+    }
 }
