@@ -75,6 +75,7 @@ class parse_lib{
         $html = preg_replace("#<script[\s\S]*?</script>#i", '', $html);
         $html = preg_replace("#<iframe[\s\S]*?</iframe>#i", '', $html);
         $html = strip_tags($html, '<p> <img> <table> <tr> <td> <h1> <h2> <h3> <em> <i> <b> <strong> <ul> <ol> <li> <br> <center>');
+        $html = parse_lib::uncomment_tags($html); //возврат закомментированного содержимого
         $html = $this->close_tags($html);
         
         return $html;
@@ -374,5 +375,15 @@ class parse_lib{
                                ");
         echo 'ОК - Занесена новая новость ID# '.$this->CI->db->insert_id().' - '.$data_ar['title']."\n";
         return TRUE;
+    }
+    
+    static function comment_tags($str){
+        $str = htmlspecialchars($str, ENT_NOQUOTES, 'UTF-8');
+        return $str;
+    }
+    
+    static function uncomment_tags($str){
+        $str = html_entity_decode($str, ENT_NOQUOTES, 'UTF-8');
+        return $str;
     }
 }

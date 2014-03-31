@@ -38,6 +38,9 @@ class parse_page_lib{
         if( is_object( $this->html_obj->find('.photo_descr',0) ) )
             $this->html_obj->find('.photo_descr',0)->outertext = '';
         
+        if( is_object( $this->html_obj->find('span.v_info',0) ) ) //иконка для видео
+            $this->html_obj->find('span.v_info',0)->outertext = '';
+        
         if( is_object($this->html_obj->find('#news_text .image',0)) ){
             $this->data['img']      = $this->html_obj->find('#news_text .image',0)->href;
             $this->html_obj->find('#news_text .image',0)->outertext = '';
@@ -54,6 +57,12 @@ class parse_page_lib{
         
 //        $this->data['text']         = preg_replace("#<p><strong>[\s\S]{4,20}:[\s]*<a[\s\S]*?</a>[\s]*</strong></p>#iu", '', $this->data['text']); //удаление "Читайте:***" и т.д.
         $this->data['text']         = preg_replace("#>[\s]*Читайте также:[\s\S]+?</a>#iu", '> </a>', $this->data['text']); //удаление Читайте также:
+        
+        #<video>
+        $this->data['text']         = preg_replace( "#<script[\s\S]+?addVariable\('media_id', '([\d]+)'\);[\s\S]+?</script>#i", 
+                                                    parse_lib::comment_tags("<p style='text-align:center;'><embed src='http://ru.tsn.ua/bin/player/embed.php/$1' type='application/x-shockwave-flash' width='600' height='537' allowfullscreen='true' allowscriptaccess='always'></embed></p>"), 
+                                                    $this->data['text']); 
+        #</video>
     } #+
     
     private function unn(){

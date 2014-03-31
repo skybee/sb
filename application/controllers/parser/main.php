@@ -81,7 +81,7 @@ class Main extends CI_Controller
         $i=1;
         foreach( $parse_list as $news_ar ){
             
-//            $news_ar['url'] = 'http://ru.tsn.ua/politika/avakov-nazval-pravyy-sektor-banditami-i-poobeschal-prinyat-vyzov-356930.html';  
+//            $news_ar['url'] = 'http://ru.tsn.ua/politika/eks-gubernator-cherkasskoy-oblasti-obyavlen-v-mezhdunarodnyy-rozysk-358058.html';  
         
             $html = $this->news_parser_lib->down_with_curl( $news_ar['url'] );
             
@@ -127,7 +127,7 @@ class Main extends CI_Controller
         return TRUE;
     }
     
-    function tmp_clean_doubles(){
+    private function tmp_clean_doubles(){
         exit('lock method');
         set_time_limit(1800);
         $doubleIdAr = array();        

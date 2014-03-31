@@ -69,7 +69,7 @@ class news_parser_lib extends parse_lib{
         
         if( $like_hash_list != false ){ //сравнение хешей
             foreach( $like_hash_list as $news_id => $like_hash_ar ){
-                if( $this->comparison_shingles_hash($this_hash_ar, $like_hash_ar, 60) == true ){ //если найденно совпадение текста
+                if( $this->comparison_shingles_hash($this_hash_ar, $like_hash_ar, 50) == true ){ //если найденно совпадение текста
                     echo "error #2 clone text. CloneID-".$news_id.' '.$data_ar['title']."<br />\n";
                     return FALSE;
                 }
