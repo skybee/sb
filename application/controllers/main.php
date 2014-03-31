@@ -57,7 +57,14 @@ class main extends CI_Controller {
         $data_ar['doc_data']            = $this->article_m->get_doc_data($doc_id);
         if (!$data_ar['doc_data'])
             show_404();
-        $data_ar['like_articles']       = $this->article_m->get_like_articles( $data_ar['doc_data']['id'], $data_ar['doc_data']['title'], 8, 15, $data_ar['doc_data']['date'] );
+        
+        if( $data_ar['doc_data']['url_name'] != $doc_urlname ){
+            header("HTTP/1.1 301 Moved Permanently");
+            header("Location: /".$cat_name.'/'.$s_cat_name.'/-'.$doc_id.'-'.$data_ar['doc_data']['url_name'].'/');
+            exit();
+        }
+        
+        $data_ar['like_articles']       = $this->article_m->get_like_articles( $data_ar['doc_data']['id'], $data_ar['doc_data']['title'], $data_ar['doc_data']['cat_id'], 8, 15, $data_ar['doc_data']['date'] );
         $data_ar['main_cat_ar']         = $this->article_m->get_cat_data_from_url_name($cat_name);
         $data_ar['s_cat_ar']            = $this->article_m->get_cat_data_from_url_name($s_cat_name);
         $data_ar['main_menu_list']      = $this->list_m->get_cat(0);
@@ -65,7 +72,10 @@ class main extends CI_Controller {
         $data_ar['footer_menu_list']    = $this->list_m->get_footer_cat_link();
         $data_ar['meta']['title']       = $data_ar['main_cat_ar']['name'].'/'.$data_ar['s_cat_ar']['name'].': '.$data_ar['doc_data']['title'];
         
-//        echo '<pre>'.print_r($this->list_m->get_footer_cat_link(),1).'</pre>';
+        if( $data_ar['s_cat_ar']['id'] != $data_ar['doc_data']['cat_id'] || $data_ar['main_cat_ar']['id'] != $data_ar['s_cat_ar']['parent_id']  ) 
+            show_404 ();
+        
+//        echo '<pre>'.print_r($data_ar['like_articles'],1).'</pre>';
 
         $top_slider['articles']         = $this->article_m->get_top_slider_data( $data_ar['s_cat_ar']['id'], 8, 5, 0, 350);
         

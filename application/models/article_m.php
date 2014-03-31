@@ -142,7 +142,7 @@ class article_m extends CI_Model{
         return $text;
     }
     
-    function get_like_articles( $id, $text, $cntNews = 4, $dayPeriod = false, $newsDate = false  ){
+    function get_like_articles( $id, $text, $catId, $cntNews = 4, $dayPeriod = false, $newsDate = false  ){
         $cleanPattern = "#(['\"\,\.\\\]+|&\w{2,6};)#i";
         $text = preg_replace($cleanPattern, ' ', $text);
         
@@ -162,6 +162,7 @@ class article_m extends CI_Model{
                 . "(SELECT `id`, `title`, `url_name`, `main_img`, `date`, `text` "
                 . "FROM `article` "
                 . "WHERE MATCH (`title`,`text`) AGAINST ('{$text}') "
+                . "AND `cat_id` = '{$catId}' "
                 . "AND `id` != '{$id}' "
                 . $dateSql  
                 . "LIMIT {$cntNews} ) AS `t1` ORDER BY `t1`.`date` DESC";
@@ -173,6 +174,7 @@ class article_m extends CI_Model{
         $result = array();
         foreach( $query->result_array() as $row ){
             $row['text']    = $this->get_short_txt( $row['text'], 500 );
+            $row['date_ar'] = get_date_str_ar( $row['date'] );
             $result[] = $row;
         }
         

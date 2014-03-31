@@ -50,7 +50,13 @@
                 <a href="<?=$newsUrl?>">
                     <img src="<?=$imgUrl?>" alt="<?=$likeArts['title']?>" onerror="imgError(this);">
                 </a>
-                <div class="content"><h4><a href="<?=$newsUrl?>"><?=$likeArts['title']?></a></div>
+                <div class="content">
+                    <span class="like_artcl_date">
+                        <?=$likeArts['date_ar']['day_nmbr'].'.'.$likeArts['date_ar']['month_nmbr'].'&nbsp;'?>
+                    </span>
+<!--                    <h4>-->
+                        <a href="<?=$newsUrl?>"><?=$likeArts['title']?></a>
+                </div>
                 <div class="lon_hide_description">
                     <div class="lon_des_arrow"></div>
                     <div class="lon_des_txt">
