@@ -3,7 +3,7 @@
 
 class parse_page_lib{
     
-    function __construct() {}
+    function __construct(){}
     
     function get_data( $html, $host){
         
@@ -27,6 +27,8 @@ class parse_page_lib{
         
         $this->html_obj->clear();
         unset( $this->html_obj );
+        
+        $this->data['text'] =  video_replace_lib::get_video_tags( $this->data['text'] );
         
         return $this->data;
     }
@@ -52,16 +54,25 @@ class parse_page_lib{
         if( is_object( $this->html_obj->find('h2.descr',0) ) )
             $this->data['text']     = '<h2>'.$this->html_obj->find('h2.descr',0)->innertext.'</h2>';
         
-        if( is_object( $this->html_obj->find('#news_text',0) ) )
+        if( is_object( $this->html_obj->find('#news_text',0) ) ){
             $this->data['text']    .= $this->html_obj->find('#news_text',0)->innertext;
+            
+            //вставка видео из конца текста, если есть
+            if( !is_object( $this->html_obj->find('#news_text',0)->find('.v_player', 0) ) && is_object( $this->html_obj->find('.v_player',0) ) ){
+//                $this->data['text'] .= $this->html_obj->find('.v_player',0)->outertext;
+                $html = $this->html_obj->find('body',0)->innertext;
+                preg_match("#<div class='v_player' id='video_player'></div>[\s]+<script[\s\S]+?addVariable\('media_id', '[\d]+'\);[\s\S]+?</script>#i", $html, $videoJsArr );
+                $this->data['text'] .= "\n\n".$videoJsArr[0];
+            }
+        }
         
 //        $this->data['text']         = preg_replace("#<p><strong>[\s\S]{4,20}:[\s]*<a[\s\S]*?</a>[\s]*</strong></p>#iu", '', $this->data['text']); //удаление "Читайте:***" и т.д.
         $this->data['text']         = preg_replace("#>[\s]*Читайте также:[\s\S]+?</a>#iu", '> </a>', $this->data['text']); //удаление Читайте также:
         
         #<video>
-        $this->data['text']         = preg_replace( "#<script[\s\S]+?addVariable\('media_id', '([\d]+)'\);[\s\S]+?</script>#i", 
-                                                    parse_lib::comment_tags("<p style='text-align:center;'><embed src='http://ru.tsn.ua/bin/player/embed.php/$1' type='application/x-shockwave-flash' width='600' height='537' allowfullscreen='true' allowscriptaccess='always'></embed></p>"), 
-                                                    $this->data['text']); 
+//        $this->data['text']         = preg_replace( "#<script[\s\S]+?addVariable\('media_id', '([\d]+)'\);[\s\S]+?</script>#i", 
+//                                                    parse_lib::comment_tags("<p style='text-align:center;'><embed src='http://ru.tsn.ua/bin/player/embed.php/$1' type='application/x-shockwave-flash' width='600' height='537' allowfullscreen='true' allowscriptaccess='always'></embed></p>"), 
+//                                                    $this->data['text']); 
         #</video>
     } #+
     

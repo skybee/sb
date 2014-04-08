@@ -16,6 +16,7 @@ class Main extends CI_Controller
         $this->load->library('parser/parse_lib');
         $this->load->library('parser/news_parser_lib');
         $this->load->library('parser/parse_page_lib');
+        $this->load->library('parser/video_replace_lib');
         $this->load->model('parser_m');
         $this->load->model('donor_m');
         
@@ -81,7 +82,7 @@ class Main extends CI_Controller
         $i=1;
         foreach( $parse_list as $news_ar ){
             
-//            $news_ar['url'] = 'http://ru.tsn.ua/politika/eks-gubernator-cherkasskoy-oblasti-obyavlen-v-mezhdunarodnyy-rozysk-358058.html';  
+//            $news_ar['url'] = 'http://ru.tsn.ua/politika/v-parlamente-mezhdu-drakami-i-nepristoynymi-zhestami-prinyali-zakon-dlya-nacbezopasnosti-359586.html';  
         
             $html = $this->news_parser_lib->down_with_curl( $news_ar['url'] );
             

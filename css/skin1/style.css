@@ -2923,10 +2923,13 @@ img.alignleft,a img.alignleft {
 }
 .last_news_list .lnl_news span{
     display: inline-block;
-    margin-right: 12px;
-    color: #999;
+    /*margin-right: 12px;*/
+    color: #bebebe;
     font-size: 14px;
+    text-transform: uppercase;
+    font-weight: bold;
 }
+.last_news_list .lnl_news span span{ font-size: 11px;}
 
 .last_news_list .lnl_news a{ text-decoration: none; color:#242424; }
 .last_news_list .lnl_news a:hover{ color: #009DDB; }

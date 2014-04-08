@@ -1,4 +1,4 @@
-<?php ?>
+<?php if (!defined('BASEPATH')) exit('No direct script access allowed'); ?>
 
 <h3 class="widget-title">
     <span class="title">Последние новости</span>
@@ -19,9 +19,12 @@
     foreach ($last_news['all'] as $lnews ):
 ?>
     <div class="lnl_news">
-        <span><?=$lnews['date_ar']['time']?> </span>
+        <span>
+            <?=$lnews['date_ar']['time']?> 
+            <!--<span><?//=$lnews['s_cat_name']?></span>-->
+        </span>
         <a href="<?="/{$lnews['f_cat_uname']}/{$lnews['s_cat_uname']}/-{$lnews['id']}-{$lnews['url_name']}/"?>">
-            <i><?=$lnews['s_cat_name']?></i>: &nbsp;<?=$lnews['title']?>
+            : &nbsp;<?=$lnews['title']?>
         </a>    
     </div>
 <?
