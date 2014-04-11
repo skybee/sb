@@ -157,8 +157,10 @@ class parse_page_lib{
             $this->html_obj->find('.article_cut',0)->outertext = '';
         }
         
-        if( is_object( $this->html_obj->find('h1',0) ) )
+        if( is_object( $this->html_obj->find('h1',0) ) ){
             $this->data['title']    = $this->html_obj->find('h1',0)->innertext;
+            $this->data['title']    = preg_replace("#\(\s*в(и|і)део\s*\)#i", ' ', $this->data['title']); //удаление слова "видео"
+        }
         
         if( is_array( $this->html_obj->find('.article p') ) )
             foreach( $this->html_obj->find('.article p') as $p ){

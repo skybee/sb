@@ -82,7 +82,7 @@ class Main extends CI_Controller
         $i=1;
         foreach( $parse_list as $news_ar ){
             
-//            $news_ar['url'] = 'http://ru.tsn.ua/politika/v-parlamente-mezhdu-drakami-i-nepristoynymi-zhestami-prinyali-zakon-dlya-nacbezopasnosti-359586.html';  
+//            $news_ar['url'] = 'http://ru.tsn.ua/ukrayina/harkovskiy-topaz-obyavilsya-i-zapisal-videoobraschenie-k-ukraincam-359446.html';  
         
             $html = $this->news_parser_lib->down_with_curl( $news_ar['url'] );
             
