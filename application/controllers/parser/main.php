@@ -77,13 +77,19 @@ class Main extends CI_Controller
         
         $parse_list = $this->parser_m->get_news_url_to_parse( $cnt_news );
         
-        if( count($parse_list) < 1 ){  echo "ERROR Отсутствуют URL для сканирования"; return; }
+//        echo '<pre>'.print_r($parse_list,1).'</pre>'; exit();
+        
+        if( $parse_list == null ){  echo "ERROR Отсутствуют URL для сканирования"; return; }
         
         $i=1;
         foreach( $parse_list as $news_ar ){
+            $this->parser_m->set_url_scaning( $news_ar['id'] );
+			
+            #<for test>
+//            $news_ar['url']     = 'http://4pda.ru/2010/07/11/26480/';  
+//            $news_ar['host']    = '4pda.ru';
+            #</for test>
             
-//            $news_ar['url'] = 'http://ru.tsn.ua/ukrayina/harkovskiy-topaz-obyavilsya-i-zapisal-videoobraschenie-k-ukraincam-359446.html';  
-        
             $html = $this->news_parser_lib->down_with_curl( $news_ar['url'] );
             
             if( empty($html) ){ 
@@ -92,26 +98,122 @@ class Main extends CI_Controller
             }
             
 //            $host                           = $this->news_parser_lib->get_donor_url( $news_ar['url'] );
-            $host                           = $news_ar['host'];
-            $insert_data                    = $this->parse_page_lib->get_data( $html, $host);
+            $insert_data                    = $this->parse_page_lib->get_data( $html, $news_ar );
+            if( is_array($insert_data) == false ) continue;
             $insert_data['scan_url_id']     = $news_ar['id'];
             $insert_data['url']             = $news_ar['url'];
             $insert_data['cat_id']          = $news_ar['cat_id'];
             $insert_data['donor_id']        = $news_ar['donor_id'];
-            $insert_data['date']            = date("Y-m-d H:i:s");
+            
+//            if( !isset($insert_data['date']) || $insert_data['date'] == false ){
+                $insert_data['date']            = date("Y-m-d H:i:s");
+//            }
+            
+            if( !empty($news_ar['main_img_url']) && empty($insert_data['img']) ){ 
+                $insert_data['img']         = $news_ar['main_img_url'];
+            }    
+                
             
             echo "<br />\n$i - <i>".$news_ar['url']."</i><br />\n";
-           
+            
+//            echo '<pre>'.print_r($news_ar,1).'</pre>';
 //            echo '<pre>'.print_r($insert_data,1).'</pre>';
 
             $this->news_parser_lib->insert_news( $insert_data );
-            $this->parser_m->set_url_scaning( $news_ar['id'] );
-            
+    
             flush(); $i++;
         }    
     }
     
-    function single_work( $minutes, $fname = 'null' ){
+    function get_articles_url(){
+        if( $this->single_work( 2, 'parse_articles_url') == false ) exit('The work temporary Lock');
+        
+        $this->load->library('parser/articles_lib');
+        
+        $scanUrl    = $this->donor_m->getScanPageListUrl();
+        
+        echo '<pre>'.print_r( $scanUrl, 1 ).'</pre>';
+        
+//        $scanUrl['url']         = 'http://compulenta.computerra.ru/tehnika/internet/';
+//        $scanUrl['host']        = 'compulenta.computerra.ru';
+        
+        $this->articles_lib->setScanUrl( $scanUrl['url'] );
+        $data = $this->articles_lib->getData( $scanUrl['host'] );
+        
+        echo '<pre>'.print_r( $data, 1 ).'</pre>';
+        
+        if( $data == null ) exit("No URLs to add");
+        
+        foreach( $data as $urlAr ){
+            $this->parser_m->add_to_scanlist( $urlAr['url'], $scanUrl['cat_id'], $scanUrl['donor_id'], $urlAr['img'] );
+        }
+        
+        $this->donor_m->updScanUrlTime( $scanUrl['id'] );
+    }
+    
+    
+    function _get_old_articles_url(){
+        $this->load->library('parser/articles_lib');
+        
+        $countPage = 40;
+        
+        for($page=1; $page <= $countPage; $page++){
+            
+//            if( $page == 1 ){
+//            $scanUrl['url']         = 'http://compulenta.computerra.ru/tehnika/computers/';}
+//            else{
+//            $scanUrl['url']         = 'http://compulenta.computerra.ru/tehnika/computers/?PAGEN_1='.$page;}
+//            $scanUrl['host']        = 'compulenta.computerra.ru';
+//            $scanUrl['donor_id']    = 8;
+//            $scanUrl['cat_id']      = 20;
+            
+            if( $page == 1 ){
+                $scanUrl['url']     = 'http://habrahabr.ru/hub/hardware/';
+            }
+            else{
+                $scanUrl['url']     = 'http://habrahabr.ru/hub/hardware/page'.$page.'/';
+            }
+            $scanUrl['host']        = 'habrahabr.ru';
+            $scanUrl['donor_id']    = 9;
+            $scanUrl['cat_id']      = 20;
+            
+//            if( $page == 1 ){
+//                $scanUrl['url']     = 'http://itc.ua/tag/notebook/';
+//            }
+//            else{
+//                $scanUrl['url']     = 'http://itc.ua/tag/notebook/page/'.$page.'/';
+//            }
+//            $scanUrl['host']        = 'itc.ua';
+//            $scanUrl['donor_id']    = 10;
+//            $scanUrl['cat_id']      = 20;
+            
+//            if( $page == 1 ){
+//                $scanUrl['url']     = 'http://4pda.ru/news/';
+//            }
+//            else{
+//                $scanUrl['url']     = 'http://4pda.ru/news/page/'.$page.'/';
+//            }
+//            $scanUrl['host']        = '4pda.ru';
+//            $scanUrl['donor_id']    = 12;
+//            $scanUrl['cat_id']      = 22;
+
+            $this->articles_lib->setScanUrl( $scanUrl['url'] );
+            $data = $this->articles_lib->getData( $scanUrl['host'] );
+
+            echo '<br />-------Page '.$page.' scaning-------<br />';
+            echo '<pre>'.print_r( $data, 1 ).'</pre>';
+            flush();
+
+            if( $data == null ) exit("No URLs to add");
+
+            foreach( $data as $urlAr ){
+                $this->parser_m->add_to_scanlist( $urlAr['url'], $scanUrl['cat_id'], $scanUrl['donor_id'], $urlAr['img'] );
+            }
+            sleep(5);
+        }
+    }
+    
+    private function single_work( $minutes, $fname = 'null' ){
         $lockFile   = 'lock/'.$fname.'.lock';
         $lockTime   = time() + (60*$minutes);
         
@@ -128,7 +230,7 @@ class Main extends CI_Controller
         return TRUE;
     }
     
-    private function tmp_clean_doubles(){
+    private function _tmp_clean_doubles(){
         exit('lock method');
         set_time_limit(1800);
         $doubleIdAr = array();        
