@@ -7,20 +7,20 @@ class parser_m extends CI_Model{
         parent::__construct();
     }
     
-    function add_to_scanlist( $url, $cat_id, $donor_id){
+    function add_to_scanlist( $url, $cat_id, $donor_id, $img_url = null){
         $query = $this->db->query("SELECT COUNT(`id`) AS 'cnt' FROM `scan_url` WHERE `url` = '{$url}' ");
         
         $row = $query->row();
         
         if( $row->cnt < 1 )
-            $this->db->query("INSERT INTO `scan_url` SET `url`='{$url}', `cat_id`='{$cat_id}', `donor_id`={$donor_id} ");
+            $this->db->query("INSERT INTO `scan_url` SET `url`='{$url}', `cat_id`='{$cat_id}', `donor_id`={$donor_id}, `main_img_url` = '{$img_url}' ");
     }
     
     function get_news_url_to_parse( $limit ){
         $query = $this->db->query(" SELECT `scan_url`.*, `donor`.`host` "
                                     . "FROM `scan_url`, `donor` "
                                     . "WHERE `scan_url`.`scan`=0 AND `donor`.`id` = `scan_url`.`donor_id` "
-                                    . "ORDER BY `scan_url`.`date` ASC LIMIT {$limit} ");
+                                    . "ORDER BY `scan_url`.`date` ASC LIMIT {$limit} ");                            
         
         if( $query->num_rows() < 1 ) return FALSE;
         

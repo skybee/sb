@@ -5,13 +5,20 @@
         <h1><?=$doc_data['title']?></h1>
     </div>
     <div class="doc-date">
+        
+        <div class="social_btn">
+            <script type="text/javascript" src="//yandex.st/share/share.js" charset="utf-8"></script>
+            <div class="yashare-auto-init" data-yashareL10n="ru" data-yashareType="none" data-yashareQuickServices="vkontakte,facebook,twitter,odnoklassniki,moimir,gplus"></div> 
+        </div>
+        
         <div class="dd_left">
             <? $dateAr =& $doc_data['date_ar']; ?>
-            Опубликовано: <i><?=' &nbsp;'.$dateAr['day_nmbr'].' '.$dateAr['month_str'].' '.$dateAr['year_nmbr'].'&nbsp; в &nbsp;'.$dateAr['time'];?></i>
+            <?=$dateAr['time'].'&nbsp;&nbsp;&nbsp;'.$dateAr['day_nmbr'].' '.$dateAr['month_str'].' '.$dateAr['year_nmbr'];?>
         </div>
+        
         <div class="dd_right">
             Источник: &nbsp;&nbsp;
-            <a class="doc-donor-link" href="http://<?=$doc_data['d_host']?>/" target="_blank" style="background-image: url('/img/donor_ico/<?=$doc_data['d_img']?>');">
+            <a class="doc-donor-link" href="http://<?=$doc_data['d_host']?>/" target="_blank" style="background-image: url('http://favicon.yandex.net/favicon/<?=$doc_data['d_host']?>');">
                 <?=$doc_data['d_name']?>
             </a>
         </div>
