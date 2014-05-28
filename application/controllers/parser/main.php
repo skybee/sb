@@ -132,6 +132,8 @@ class Main extends CI_Controller
         
         $scanUrl    = $this->donor_m->getScanPageListUrl();
         
+        $this->donor_m->updScanUrlTime( $scanUrl['id'] );
+        
         echo '<pre>'.print_r( $scanUrl, 1 ).'</pre>';
         
 //        $scanUrl['url']         = 'http://compulenta.computerra.ru/tehnika/internet/';
@@ -147,8 +149,6 @@ class Main extends CI_Controller
         foreach( $data as $urlAr ){
             $this->parser_m->add_to_scanlist( $urlAr['url'], $scanUrl['cat_id'], $scanUrl['donor_id'], $urlAr['img'] );
         }
-        
-        $this->donor_m->updScanUrlTime( $scanUrl['id'] );
     }
     
     
