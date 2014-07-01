@@ -40,7 +40,7 @@
     <div class="othernews">
         <div class="listing other_news_listing" style="margin-bottom:10px;">
             <div class="header">
-                <h1>читайте также:</h1>
+                <h1>смотрите также:</h1>
             </div><!-- #header -->
             
             <?  
@@ -76,6 +76,47 @@
             
         </div><!-- #listing -->
     </div><!-- #othernews -->
+    
+    <div class="doc-comments">
+        <div class="listing" style="margin-bottom:10px; margin-top: 15px;">
+            <div class="header">
+                <h1>Комментарии:</h1>
+            </div>
+        </div>
+        
+        <!-- KAMENT -->
+<!--        <div id="kament_comments"></div>
+        <script type="text/javascript">
+                /* * * НАСТРОЙКА * * */
+                var kament_subdomain = 'odnako';
+
+                /* * * НЕ МЕНЯЙТЕ НИЧЕГО НИЖЕ ЭТОЙ СТРОКИ * * */
+                (function() {
+                        var node = document.createElement('script'); node.type = 'text/javascript'; node.async = true;
+                        node.src = 'http://' + kament_subdomain + '.svkament.ru/js/embed.js';
+                        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(node);
+                })();
+        </script>
+        <noscript>Для отображения комментариев нужно включить Javascript</noscript>-->
+        <!-- /KAMENT -->
+        
+        <div id="hypercomments_widget"></div>
+        <script type="text/javascript">
+            _hcwp = window._hcwp || [];
+            _hcwp.push({widget:"Stream", widget_id: 19400});
+            (function() {
+            if("HC_LOAD_INIT" in window)return;
+            HC_LOAD_INIT = true;
+            var lang = (navigator.language || navigator.systemLanguage || navigator.userLanguage || "en").substr(0, 2).toLowerCase();
+            var hcc = document.createElement("script"); hcc.type = "text/javascript"; hcc.async = true;
+            hcc.src = ("https:" == document.location.protocol ? "https" : "http")+"://w.hypercomments.com/widget/hc/19400/"+lang+"/widget.js";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hcc, s.nextSibling);
+            })();
+        </script>
+        <a href="#" class="hc-link" title="comments widget">comments powered by HyperComments</a>
+        
+    </div>
 
 
 </div>
