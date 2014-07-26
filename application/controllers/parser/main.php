@@ -32,8 +32,8 @@ class Main extends CI_Controller
         
         $urls = array(
                         array('url'=>'http://rss.unian.net/site/news_rus.rss',  'host'=>'unian.net'),           //== CAT TRUE        
-                        array('url'=>'http://focus.ua/rss/ru.xml',              'host'=>'focus.ua'),
-                        #array('url'=>'http://news.liga.net/all/rss.xml',        'host'=>'liga.net'),
+                        #array('url'=>'http://focus.ua/rss/ru.xml',              'host'=>'focus.ua'),           //== chenge site, no rss
+                        array('url'=>'http://news.liga.net/all/rss.xml',        'host'=>'liga.net'),   
                         array('url'=>'http://ru.tsn.ua/rss/',                   'host'=>'tsn.ua'),              //== CAT TRUE !--Good
                         array('url'=>'http://k.img.com.ua/rss/ru/news.xml',     'host'=>'korrespondent.net'),   //== !--Good
                         array('url'=>'http://www.segodnya.ua/xml/rss.html',     'host'=>'segodnya.ua'),         //== CAT TRUE !--Good
