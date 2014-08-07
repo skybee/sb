@@ -28,14 +28,6 @@ class news_parser_lib extends parse_lib {
             $hash_list_str .= "'{$new_article_hash_ar[$i]}'";
         }
 
-//        $sql = "SELECT `hash`, `article_id` FROM `shingles`
-//                WHERE 
-//                `article_id` IN 
-//                    ( 
-//                        SELECT DISTINCT `article_id` FROM `shingles` WHERE `hash` IN ({$hash_list_str}) 
-//                        -- LIMIT {$article_limit}  
-//                    )";
-
         $sql = "SELECT `shingles`.`hash`, `shingles`.`article_id` 
                 FROM `shingles`, 
                 ( 	
@@ -91,7 +83,7 @@ class news_parser_lib extends parse_lib {
             $this->resizeImg('small');
         }
         $data_ar['url_name'] = seoUrl($data_ar['title']);
-
+        
         $sql = "   INSERT INTO `article` 
                     SET
                         `title`         = '{$data_ar['title']}', 

@@ -150,8 +150,7 @@ class Main extends CI_Controller
             $this->parser_m->add_to_scanlist( $urlAr['url'], $scanUrl['cat_id'], $scanUrl['donor_id'], $urlAr['img'] );
         }
     }
-    
-    
+      
     function _get_old_articles_url(){
         $this->load->library('parser/articles_lib');
         

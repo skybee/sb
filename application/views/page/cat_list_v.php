@@ -3,14 +3,14 @@
 <div id="list_categories">
 
     <div class="active">
-        <h2><?=$main_cat_ar['name']?>: <span class="highlight_archive"><?=$s_cat_ar['name']?></span></h2>
+        <h2><?=$cat_ar['p_name']?>: <span class="highlight_archive"><?=$cat_ar['name']?></span></h2>
     </div><!-- #active -->
 
 
 <?  
     if( isset($news_page_list) && $news_page_list != NULL ):
     foreach( $news_page_list as $news_page_ar ):
-        $news_url   = "/{$main_cat_ar['url_name']}/{$s_cat_ar['url_name']}/-{$news_page_ar['id']}-{$news_page_ar['url_name']}/";
+        $news_url   = "/{$news_page_ar['full_uri']}-{$news_page_ar['id']}-{$news_page_ar['url_name']}/";
         $dateAr     =& $news_page_ar['date'];
         $dateStr    = $dateAr['day_str'].' &nbsp;'.$dateAr['time'].', &nbsp;&nbsp;'.$dateAr['day_nmbr'].' '.$dateAr['month_str'].' '.$dateAr['year_nmbr'];
 ?>
@@ -56,9 +56,9 @@
             <? 
                 foreach ($pager_ar as $page): 
                 if( !isset($search_url_str) )
-                    $pager_url = '/'.$main_cat_ar['url_name'].'/'.$s_cat_ar['url_name'].'/'.$page.'/';
+                    $pager_url = '/'.$cat_ar['full_uri'].$page.'/';
                 else
-                    $pager_url = '/search/'.$main_cat_ar['url_name'].'/'.$page.'/?q='.$search_url_str;
+                    $pager_url = '/search/'.$page.'/?q='.$search_url_str;
             ?>
             <li>
                 <? if($page != $page_nmbr && $page != '...'): ?>

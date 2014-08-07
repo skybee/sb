@@ -6,7 +6,7 @@
 
 <div class="last_news_one_block">
     <? $firstNews = &$last_news['first']; ?>
-    <a class="lnob_img_block" href="<?="/{$firstNews['f_cat_uname']}/{$firstNews['s_cat_uname']}/-{$firstNews['id']}-{$firstNews['url_name']}/"?>">
+    <a class="lnob_img_block" href="<?="/{$firstNews['full_uri']}-{$firstNews['id']}-{$firstNews['url_name']}/"?>">
         <img src="/upload/images/medium/<?=$firstNews['main_img']?>" alt="" onerror="imgError(this);" />
         <div class="lnob_title">
             <?=$firstNews['title']?>
@@ -23,7 +23,7 @@
             <?=$lnews['date_ar']['time']?> 
             <!--<span><?//=$lnews['s_cat_name']?></span>-->
         </span>
-        <a href="<?="/{$lnews['f_cat_uname']}/{$lnews['s_cat_uname']}/-{$lnews['id']}-{$lnews['url_name']}/"?>">
+        <a href="<?="/{$lnews['full_uri']}-{$lnews['id']}-{$lnews['url_name']}/"?>">
             : &nbsp;<?=$lnews['title']?>
         </a>    
     </div>

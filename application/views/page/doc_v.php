@@ -45,7 +45,7 @@
             
             <?  
                 foreach( $like_articles as $likeArts ): 
-                    $newsUrl = "/{$main_cat_ar['url_name']}/{$s_cat_ar['url_name']}/-{$likeArts['id']}-{$likeArts['url_name']}/";
+                    $newsUrl = "/{$likeArts['full_uri']}-{$likeArts['id']}-{$likeArts['url_name']}/";
                 
                     if( !empty($likeArts['main_img']) ) 
                         $imgUrl = '/upload/images/small/'.$likeArts['main_img'];

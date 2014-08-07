@@ -39,10 +39,13 @@
 */
 
 $route['default_controller']                                    = "main";
-$route['(:any)/(:any)/(-\d+-.*)']                               = "main/document/$1/$2/$3"; #/news/ukraine/-id-****/
+$route['[a-z\d-/]+?/(-\d+-.+)']                                 = "main/document/$1"; #/news/ukraine/-id-****/
 $route['(news|hi-tech|auto-|building-|health-|women-)$']        = "main/main_page/$1";
-$route['(news|hi-tech|auto-|building-|health-|women-)/(:any)']  = "main/cat_list/$1/$2";
+$route['search/(:any)']                                          = "main/search/$1";
+$route['[a-z\d-/]+?/([a-z\d-]+?)/?(\d*)']                       = "main/cat_list/$1/$2";
 $route['parser/(:any)']                                         = "parser/main/$1";
+$route['donor/(:any)']                                          = "donor/$1";
+$route['tmp/(:any)']                                            = "tmp/$1";
 $route['(:any)']                                                = "main/$1";
 $route['404_override'] = '';
 

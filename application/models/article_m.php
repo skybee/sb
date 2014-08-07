@@ -14,37 +14,31 @@ class article_m extends CI_Model{
         return $query->row_array();
     }
     
-    function get_last_news( $idParentId, $cnt = 1, $img = false, $formatDate = false ){
+    function get_last_news( $cat_id, $cnt = 1, $img = false, $formatDate = false, $parentCat = false ){
         
         if ($img)
             $img_sql = " AND article.main_img != '' ";
         else
             $img_sql = "";
+        
+        if( $parentCat ){
+            $idParentId = 'parent_id';
+        }
+        else{
+            $idParentId = 'id';
+        }
 
-        $sql = "    SELECT 
-                            article.id, article.date, article.url_name, article.title, article.main_img,
-                            category1.id AS 's_cat_id', category1.url_name AS 's_cat_uname', category1.name AS 's_cat_name',
-                            category2.id AS 'f_cat_id', category2.url_name AS 'f_cat_uname'
-                        FROM 
-                            `category` AS `category1`,
-                            `category` AS `category2`,
-                            `article`
-                        WHERE
-                            -- article.cat_id  = '$ cat'
-                            (`cat_id` = '{$idParentId}' OR `cat_id` IN (SELECT `id` FROM `category` WHERE `parent_id` = '{$idParentId}') )    
-                        AND
-                            category1.id    = article.cat_id
-                        AND
-                            category2.id    = category1.parent_id
-                            {$img_sql}
-                        ORDER BY article.date DESC
-                        LIMIT {$cnt}   
-                  ";
+        $sql = "SELECT `article`.`id`, `article`.`date`, `article`.`url_name`, `article`.`title`, `article`.`text`, `article`.`main_img`, `category`.`full_uri` "
+                . "FROM `article`,  `category`"
+                . "WHERE "
+                . "`category`.`{$idParentId}`   = '{$cat_id}' "
+                . "AND "
+                . "`article`.`cat_id`           = `category`.`id` "
+                . $img_sql
+                . " ORDER BY `article`.`date` DESC LIMIT {$cnt} ";
 
 
         $query = $this->db->query($sql);
-
-        //        echo "<pre>{$sql}</pre><br /><br />";
 
         $result_ar = array();
         foreach ($query->result_array() as $row) {
@@ -57,14 +51,14 @@ class article_m extends CI_Model{
         return $result_ar;
     }
     
-    function get_last_left_news( $idParentId, $cnt = 1, $img = false, $formatDate = false ){
+    function get_last_left_news( $idParentId, $cnt = 1 ){
         
-        $cacheName = 'last_news_'.$idParentId.'_'.$cnt.'_'.$img;
+        $cacheName = 'last_news_'.$idParentId.'_'.$cnt;
         
         if( !$lastNewsCache = $this->cache->file->get($cacheName) ){
-            $data['first']  = $this->get_last_news($idParentId, 1, true, $formatDate);
+            $data['first']  = $this->get_last_news($idParentId, 1, true, true, true);
             $data['first']  = $data['first'][0];
-            $data['all']    = $this->get_last_news($idParentId, $cnt, $img, $formatDate);
+            $data['all']    = $this->get_last_news($idParentId, $cnt, false, true, true);
             unset($data['all'][0]);
             $this->cache->file->save($cacheName, $data, $this->cacheTime->leftLastNews * 60 );
         }
@@ -78,10 +72,10 @@ class article_m extends CI_Model{
     function get_mainpage_cat_news( $news_cat_list ){ //принимает массив с id & name категорий
         $result_ar = array();
         foreach( $news_cat_list as $s_cat_ar ){
-            $tmp_ar = $this->get_last_news($s_cat_ar['id'], 4, true);
+            $tmp_ar = $this->get_last_news($s_cat_ar['id'], 4, true, false, false);
             if( $tmp_ar == NULL || count($tmp_ar) < 1 ) continue; 
             $tmp_ar['s_cat_ar']                 = $s_cat_ar;
-            $tmp_ar['s_cat_ar']['f_cat_uname']  = $tmp_ar[0]['f_cat_uname'];
+            $tmp_ar['s_cat_ar']['full_uri']     = $tmp_ar[0]['full_uri'];
             $result_ar[]                        = $tmp_ar; 
         }
         
@@ -91,7 +85,7 @@ class article_m extends CI_Model{
     function get_doc_data( $id ){
         $id = (int) $id;
         $query = $this->db->query(" SELECT  `article`.*, 
-                                            `category`.`name` AS 'cat_name',
+                                            `category`.`name` AS 'cat_name', `category`.`full_uri` AS 'cat_full_uri', `category`.`id` AS 'cat_id',
                                             `donor`.`name` AS 'd_name', `donor`.`img` AS 'd_img', `donor`.`host` AS 'd_host' 
                                     FROM 
                                         `article`, `category`, `donor`
@@ -115,11 +109,22 @@ class article_m extends CI_Model{
         $stop   = $page * $cnt;
         $start  = $stop - $cnt;
         
-        $query = $this->db->query(" SELECT `article`.*, `donor`.`name` AS 'd_name', `donor`.`img` AS 'd_img' 
-                                    FROM `article`, `donor`
-                                    WHERE `cat_id`={$cat_id} AND `article`.`donor_id` = `donor`.`id`
-                                    ORDER BY `date` DESC 
-                                    LIMIT {$start}, {$cnt} ");
+        $sql = "SELECT "
+                . "`article`.*, "
+                . "`category`.`full_uri`,"
+                . "`donor`.`name` AS 'd_name', `donor`.`img` AS 'd_img' "
+                . "FROM "
+                . "`article`, `donor`, `category` "
+                . "WHERE "
+                . "`article`.`cat_id`={$cat_id} "
+                . "AND "
+                . "`article`.`donor_id` = `donor`.`id` "
+                . "AND "
+                . "`category`.id = `article`.`cat_id`"
+                . "ORDER BY `date` DESC "
+                . "LIMIT {$start}, {$cnt} ";
+                
+        $query = $this->db->query($sql);
         
         if( $query->num_rows() < 1 ) return FALSE;
         
@@ -142,7 +147,7 @@ class article_m extends CI_Model{
         return $text;
     }
     
-    function get_like_articles( $id, $text, $catId, $cntNews = 4, $dayPeriod = false, $newsDate = false  ){
+    function get_like_articles( $id, $text, $cntNews = 4, $dayPeriod = false, $newsDate = false  ){
         $cleanPattern = "#(['\"\,\.\\\]+|&\w{2,6};)#i";
         $text = preg_replace($cleanPattern, ' ', $text);
         
@@ -159,11 +164,13 @@ class article_m extends CI_Model{
             $dateSql = '';
         
         $sql = "SELECT * FROM "
-                . "(SELECT `id`, `title`, `url_name`, `main_img`, `date`, `text` "
-                . "FROM `article` "
-                . "WHERE MATCH (`title`,`text`) AGAINST ('{$text}') "
-                . "AND `cat_id` = '{$catId}' "
-                . "AND `id` != '{$id}' "
+                . "(SELECT "
+                . "`article`.`id`, `article`.`title`, `article`.`url_name`, `article`.`main_img`, `article`.`date`, `article`.`text`,"
+                . "`category`.`full_uri` "
+                . "FROM `article`,`category` "
+                . "WHERE MATCH (`article`.`title`,`article`.`text`) AGAINST ('{$text}') "
+                . "AND `category`.`id`      = `article`.`cat_id` "
+                . "AND `article`.`id`      != '{$id}' "
                 . $dateSql  
                 . "LIMIT {$cntNews} ) AS `t1` ORDER BY `t1`.`date` DESC";
                 
@@ -220,26 +227,34 @@ class article_m extends CI_Model{
          return $result_ar;
     }
     
-    function get_popular_articles($idParentId, $cntNews, $dayAgo, $hourAgo, $textLength = 200, $img = true ){
+    function get_popular_articles($cat_id, $cntNews, $dayAgo, $hourAgo, $textLength = 200, $img = true, $parentCat = false ){
         
         $dateStart  = date("Y-m-d H:i:s", strtotime(" -{$dayAgo} day {$hourAgo} hours" ) );
         
         if( $img )
-            $imgSql = " AND `main_img` != '' "; 
+            $imgSql = " AND `article`.`main_img` != '' "; 
         else
             $imgSql = '';
         
-        $sql = "SELECT `article`.`id`, `article`.`date`, `article`.`url_name`, `article`.`title`, `article`.`text`, `article`.`main_img`, `category`.`url_name` AS 'cat_url'  "
-                . "FROM `article`,   `category`  "
+        if( $parentCat ){
+            $idParentId = 'parent_id';
+        }
+        else{
+            $idParentId = 'id';
+        }
+        
+        $sql = "SELECT `article`.`id`, `article`.`date`, `article`.`url_name`, `article`.`title`, `article`.`text`, `article`.`main_img`, `category`.`full_uri` "
+                . "FROM `article`,  `category`"
                 . "WHERE "
-                . " (`cat_id` = '{$idParentId}' OR `cat_id` IN (SELECT `id` FROM `category` WHERE `parent_id` = '{$idParentId}') ) "
+                . "`category`.`{$idParentId}`   = '{$cat_id}' "
                 . "AND "
-                . " `date` > '{$dateStart}' "
-                . "AND `article`.`cat_id` = `category`.`id` "
+                . "`article`.`cat_id`           = `category`.`id` "
+                . "AND "
+                . "`date` > '{$dateStart}' "
                 . $imgSql
-                . " ORDER BY `views` DESC, `date` DESC LIMIT {$cntNews} ";
+                . " ORDER BY `article`.`views` DESC, `article`.`date` DESC LIMIT {$cntNews} ";
                 
-        $query = $this->db->query( $sql );        
+        $query = $this->db->query( $sql );
         
         if( $query->num_rows() < 1 ) return NULL;
         
@@ -254,11 +269,11 @@ class article_m extends CI_Model{
         return $result;
     }
     
-    function get_top_slider_data( $idParentId, $cntNews, $dayAgo, $hourAgo, $textLength = 200, $img = true ){
+    function get_top_slider_data( $idParentId, $cntNews, $dayAgo, $hourAgo, $textLength = 200, $img = true, $parentCat = false ){
         
         $topSliderCacheName = 'slider_'.$idParentId;
         if( !$sliderCache = $this->cache->file->get($topSliderCacheName) ){
-            $data = $this->get_popular_articles( $idParentId, $cntNews, $dayAgo, $hourAgo, $textLength, $img );
+            $data = $this->get_popular_articles( $idParentId, $cntNews, $dayAgo, $hourAgo, $textLength, $img, $parentCat );
             $this->cache->file->save($topSliderCacheName, $data, $this->cacheTime->topSlider * 60 );
         }
         else
@@ -271,33 +286,52 @@ class article_m extends CI_Model{
         $stop   = $page * $cnt;
         $start  = $stop - $cnt;
         
-        $sql = "    SELECT 
-                            article.id, article.date, article.url_name, article.title, article.text, article.main_img,
-                            category1.id AS 's_cat_id', category1.url_name AS 's_cat_uname', category1.name AS 's_cat_name',
-                            category2.id AS 'f_cat_id', category2.url_name AS 'f_cat_uname',
-                            `donor`.`name` AS 'd_name', `donor`.`img` AS 'd_img'
-                        FROM 
-                            `category` AS `category1`,
-                            `category` AS `category2`,
-                            `article`,
-                            `donor`,
-                            (   SELECT `id`, MATCH (`title`,`text`) AGAINST ('{$searchStr}') AS `rank` 
-                                FROM `article` 
-                                WHERE 
-                                MATCH (`title`,`text`) AGAINST ('{$searchStr}')
-                                LIMIT 150     
-                            ) AS `seach`
-                        WHERE
-                            article.id          = seach.id
-                        AND
-                            category1.id        = article.cat_id
-                        AND
-                            category2.id        = category1.parent_id  
-                        AND
-                            article.donor_id    = donor.id
-                        ORDER BY seach.rank DESC
-                        LIMIT {$start}, {$cnt}   
-                  ";
+        $sql = "SELECT "
+                . "`article`.*, "
+                . "`category`.`full_uri`,"
+                . "`donor`.`name` AS 'd_name', `donor`.`img` AS 'd_img' "
+                . "FROM "
+                . "`article`, `donor`, `category`, "
+                . " (   SELECT `id`, MATCH (`title`,`text`) AGAINST ('{$searchStr}') AS `rank` "
+                . "     FROM `article`"
+                . "     WHERE MATCH (`title`,`text`) AGAINST ('{$searchStr}') "
+                . "     LIMIT 150 ) AS `seach` "
+                . "WHERE "
+                . "`article`.`id`       = `seach`.`id` "
+                . "AND "
+                . "`article`.`donor_id` = `donor`.`id` "
+                . "AND "
+                . "`category`.id = `article`.`cat_id`"
+                . "ORDER BY `seach`.`rank` DESC "
+                . "LIMIT {$start}, {$cnt} ";
+        
+//        $sql = "    SELECT 
+//                            article.id, article.date, article.url_name, article.title, article.text, article.main_img,
+//                            category1.id AS 's_cat_id', category1.url_name AS 's_cat_uname', category1.name AS 's_cat_name',
+//                            category2.id AS 'f_cat_id', category2.url_name AS 'f_cat_uname',
+//                            `donor`.`name` AS 'd_name', `donor`.`img` AS 'd_img'
+//                        FROM 
+//                            `category` AS `category1`,
+//                            `category` AS `category2`,
+//                            `article`,
+//                            `donor`,
+//                            (   SELECT `id`, MATCH (`title`,`text`) AGAINST ('{$searchStr}') AS `rank` 
+//                                FROM `article` 
+//                                WHERE 
+//                                MATCH (`title`,`text`) AGAINST ('{$searchStr}')
+//                                LIMIT 150     
+//                            ) AS `seach`
+//                        WHERE
+//                            article.id          = seach.id
+//                        AND
+//                            category1.id        = article.cat_id
+//                        AND
+//                            category2.id        = category1.parent_id  
+//                        AND
+//                            article.donor_id    = donor.id
+//                        ORDER BY seach.rank DESC
+//                        LIMIT {$start}, {$cnt}   
+//                  ";
                         
         $query = $this->db->query($sql);                
         

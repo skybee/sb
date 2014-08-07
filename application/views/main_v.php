@@ -53,7 +53,7 @@
                             <!--                            <div class="ad "></div> #ad 468x60 closer -->
 
                             <div class="search_top_block">
-                                <form action="/search/<?= $main_cat_ar['url_name'] ?>/1/" method="get" name="search" >
+                                <form action="/search/1/" method="get" name="search" >
                                     <input type="text" name="q" value="" />
                                     <div id="top_search_submit" onclick="document.search.submit();"></div>
                                 </form>
@@ -64,7 +64,7 @@
                             <ul class="secondnav-menu">
                                 <? foreach ($second_menu_list as $second_menu_ar): ?>
                                     <li class="cat-item cat-item-<?= $second_menu_ar['id'] ?>">
-                                        <a href="/<?= $main_cat_ar['url_name'] ?>/<?= $second_menu_ar['url_name'] ?>/" ><?= $second_menu_ar['name'] ?></a>
+                                        <a href="/<?= $second_menu_ar['full_uri'] ?>" ><?= $second_menu_ar['name'] ?></a>
                                     </li>
                                 <? endforeach; ?>   
                             </ul>

@@ -20,7 +20,7 @@
 <?  $i = 1;
     foreach($articles as $article):
         
-    $newsUrl    = "/{$main_cat_url}/{$article['cat_url']}/-{$article['id']}-{$article['url_name']}/"; 
+    $newsUrl    = "/{$article['full_uri']}-{$article['id']}-{$article['url_name']}/"; 
     $dateAr     =& $article['date'];
     $dateStr    = $dateAr['day_str'].', '.$dateAr['day_nmbr'].' '.$dateAr['month_str'].' '.$dateAr['year_nmbr'];
 ?>
