@@ -32,7 +32,7 @@ $( document ).ready(function(){
     $(
         function($)
         {
-            if (window.getSelection) $('.content').bind(
+            if (window.getSelection) $('.copy-url').bind(
                 'copy',
                 function()
                 {

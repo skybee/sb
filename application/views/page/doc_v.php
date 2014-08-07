@@ -24,7 +24,7 @@
         </div>
     </div><!-- #date -->
 
-    <div class="content">
+    <div class="content copy-url">
         <?  if( !empty($doc_data['main_img']) ): ?>
         <div class="thumb ">
             <a href="/upload/images/real/<?=$doc_data['main_img']?>" rel="prettyPhoto" title="<?=$doc_data['title']?>">
