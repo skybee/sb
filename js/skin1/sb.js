@@ -63,5 +63,26 @@ $( document ).ready(function(){
         }
     );
     // </add url link to copy post>
+    
 });
 
+
+function loadGAd( blockName ){
+        
+        google_ad_client = "ca-pub-6096727633142370";
+        
+        if( blockName == 'content top' ){
+            /* Top Content Block */
+            google_ad_slot = "1019922045";
+            google_ad_width = 468;
+            google_ad_height = 60;
+        }
+        if( blockName == 'content bottom' ){
+            /* Bottom Content Block */
+            google_ad_slot = "7550806846";
+            google_ad_width = 468;
+            google_ad_height = 60;
+        }
+        
+        document.write('<script type="text/javascript" src="//pagead2.googlesyndication.com/pagead/show_ads.js"></script>');
+}

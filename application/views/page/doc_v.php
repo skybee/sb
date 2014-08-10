@@ -23,6 +23,12 @@
             </a>
         </div>
     </div><!-- #date -->
+    
+    <div class="content-gAd">
+        <div class="content-gAd-center">
+            <script type="text/javascript">loadGAd('content top');</script>
+        </div>
+    </div>
 
     <div class="content copy-url">
         <?  if( !empty($doc_data['main_img']) ): ?>
@@ -36,6 +42,23 @@
     <?=$doc_data['text']?>
         
     </div><!-- #content -->
+    
+    <div class="doc-date doc-date-bottom">
+        <div class="social_btn">
+            <!--<script type="text/javascript" src="//yandex.st/share/share.js" charset="utf-8"></script>-->
+            <div class="yashare-auto-init" data-yashareL10n="ru" data-yashareType="none" data-yashareQuickServices="vkontakte,facebook,twitter,odnoklassniki,moimir,gplus"></div> 
+        </div>
+        <div class="dd_left">
+            &mdash; &nbsp; Поделится Новостью в Соц. Сетях
+        </div>
+    </div>
+    
+    <div class="content-gAd content-gAd-bottom">
+        <div class="content-gAd-center">
+            <script type="text/javascript">loadGAd('content bottom');</script>
+        </div>
+    </div>
+    
     <div id="video_holder" style="display:none;"></div>
     <div class="othernews">
         <div class="listing other_news_listing" style="margin-bottom:10px;">

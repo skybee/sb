@@ -425,14 +425,19 @@ hr {
 #left div.single .doc-date{
     height: 12px;
     padding: 5px 10px 5px 0px;
-    border: #c00 1px dashed;
+    /*border: #c00 1px dashed;*/
     margin-top: 12px;
     color: #999;
     border:#eee 1px solid; border-width: 1px 0px;
     background: #fcfcfc;
     font-size: 12px; 
 }
+#left div.single .doc-date-bottom{
+    width: 606px;
+    float: left;
+}
 #left div.single .doc-date .dd_left{ float: left; width: 180px; }
+#left div.single .doc-date-bottom .dd_left{ width: 250px; }
 #left div.single .doc-date .dd_right{ float: right; width: 250px; text-align: right; }
 #left div.single .doc-date .dd_right a.doc-donor-link{
     display: inline-block;
@@ -459,6 +464,23 @@ hr {
 #left div.single .doc-date .social_btn .yashare-auto-init{
     margin-top: -4px;
 }
+
+#left div.single .content-gAd{
+    background: #fcfcfc;
+    border:#eee 1px solid; border-width: 1px 0px;
+    /*height: 100px;*/
+    margin-top: 15px;
+}
+    #left div.single .content-gAd .content-gAd-center{
+        width: 468px;
+        margin: 0 auto;
+    }
+    
+#left div.single .content-gAd-bottom{
+    width: 616px;
+    float: left;
+    margin-bottom: 15px;
+}    
 
 #left div.single table{
     border-collapse: collapse;
