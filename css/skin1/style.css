@@ -2935,6 +2935,14 @@ img.alignleft,a img.alignleft {
     color: #ff5b5b;
 }
 
+
+.right_gad_block{
+    /*border: #c00 1px dashed;*/
+    float: left;
+    padding: 0px 0px 0px 10px;
+    margin-bottom: 30px;    
+}
+
 .last_news_one_block{
     /*border: #c00 1px dashed;*/
     float: left;

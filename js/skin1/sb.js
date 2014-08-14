@@ -83,6 +83,12 @@ function loadGAd( blockName ){
             google_ad_width = 468;
             google_ad_height = 60;
         }
+        if( blockName == 'right top' ){
+            /* Right Top Block */
+            google_ad_slot = "1853866844";
+            google_ad_width = 300;
+            google_ad_height = 250;
+        }
         
         document.write('<script type="text/javascript" src="//pagead2.googlesyndication.com/pagead/show_ads.js"></script>');
 }

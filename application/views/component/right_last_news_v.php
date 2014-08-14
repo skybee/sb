@@ -1,6 +1,14 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed'); ?>
 
 <h3 class="widget-title">
+    <span class="title">Реклама</span>
+</h3>
+
+<div class="right_gad_block">
+    <script type="text/javascript">loadGAd('right top');</script>
+</div>
+
+<h3 class="widget-title">
     <span class="title">Последние новости</span>
 </h3>
 
