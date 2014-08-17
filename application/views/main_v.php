@@ -105,7 +105,10 @@
                                 </div>
                             </div>
                         <? endforeach; ?>
-
+                    </div>
+                    <div class="footer_contact">
+                        <span>Контакты</span><br />
+                        E-mail: <a href="mailto:mail@odnako.su">mail@odnako.su</a>
                     </div>
                 </div><!-- #inside -->
             </div><!-- #footer_widget closer -->

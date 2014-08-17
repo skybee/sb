@@ -1,0 +1,3 @@
+User-Agent: *
+Disallow: /search/
+Host: odnako.su
