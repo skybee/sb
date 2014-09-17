@@ -77,11 +77,23 @@ function loadGAd( blockName ){
             google_ad_width = 468;
             google_ad_height = 60;
         }
+        if( blockName == 'content noImg' ){
+            /* Content NoImg Block */
+            google_ad_slot = "7412278844";
+            google_ad_width = 300;
+            google_ad_height = 250;
+        }
         if( blockName == 'content bottom' ){
             /* Bottom Content Block */
             google_ad_slot = "7550806846";
             google_ad_width = 468;
             google_ad_height = 60;
+        }
+        if( blockName == 'content bottom Netboard' ){
+            /* Bottom Content Netboard */
+            google_ad_slot = "5547096043";
+            google_ad_width = 580;
+            google_ad_height = 400;
         }
         if( blockName == 'right top' ){
             /* Right Top Block */
