@@ -27,11 +27,11 @@
     
     
         <?  if( !empty($doc_data['main_img']) ): ?>
-<!--        <div class="content-gAd">
+        <div class="content-gAd">
             <div class="content-gAd-center">
                 <script type="text/javascript">loadGAd('content top');</script>
             </div>
-        </div>-->
+        </div>
         <?  endif; ?>
     
     
@@ -43,11 +43,11 @@
                 <img src="/upload/images/medium/<?=$doc_data['main_img']?>" alt="<?=$doc_data['title']?>" class="imgf" style="opacity: 1;" onerror="imgError(this);" />
             </a>
         </div>
-        <?  #else: ?> <?  endif; ?>
+        <?  else: ?> 
         <div class="thumb thumb-gAd">
             <script type="text/javascript">loadGAd('content noImg');</script>
         </div>
-        <?  #endif; ?>
+        <?  endif; ?>
         
     <?=$doc_data['text']?>
         
