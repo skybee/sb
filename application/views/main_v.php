@@ -13,6 +13,7 @@
         <link rel="stylesheet" type="text/css" href="/css/skin1/default.css" />
         <link rel="stylesheet" type="text/css" href="/css/skin1/skin.css" />
         <!--<link rel="stylesheet" type="text/css" href="/css/skin1/prettyPhoto.css" />-->
+        <link rel="stylesheet" type="text/css" href="/css/skin1/magnific-popup.css" />
         <link rel="stylesheet" type="text/css" href="/css/skin1/jquery.bxslider.css" />
         <!--[if IE 7]>
                 <link rel="stylesheet" type="text/css" href="/css/skin1/ie7.css">
@@ -28,6 +29,7 @@
         <!--<script type='text/javascript' src='/js/skin1/custom.js'></script>-->
         <!--<script type='text/javascript' src='/js/skin1/jquery.jcarousel.min.js'></script>-->
         <!--<script type='text/javascript' src='/js/skin1/jquery.prettyPhoto.js'></script>-->
+        <script type='text/javascript' src='/js/skin1/jquery.magnific-popup.min.js'></script>
         <script type='text/javascript' src='/js/skin1/jquery.bxslider.min.js'></script>
         <script type='text/javascript' src='/js/skin1/sb.js'></script>
 

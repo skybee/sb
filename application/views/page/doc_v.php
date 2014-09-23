@@ -41,7 +41,7 @@
         <?  if( !empty($doc_data['main_img']) ): ?>
         <div class="thumb thumb-fix-block">
             <div class="thumb-fix-block-bg">
-                <a href="/upload/images/real/<?=$doc_data['main_img']?>" rel="prettyPhoto" title="<?=$doc_data['title']?>">
+                <a href="/upload/images/real/<?=$doc_data['main_img']?>" title="<?=$doc_data['title']?>" class="image-popup-no-margins" >
                     <img src="/upload/images/medium/<?=$doc_data['main_img']?>" alt="<?=$doc_data['title']?>" class="imgf" style="opacity: 1;" onerror="imgError(this);" />
                 </a>
             </div>
