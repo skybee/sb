@@ -422,6 +422,23 @@ hr {
 	text-shadow:none;
 }
 
+#left div.single h1{
+    border-left: 4px solid #009DDB;
+    padding: 3px 0px 2px 10px;
+}
+
+.header h2.doc-cat-title{
+    border-left: 4px solid #009DDB;
+    font-size: 16px!important;
+    font-weight: bold!important;
+    text-transform: uppercase;
+    color: #000;
+    padding: 2px 10px 2px 10px;
+    margin-top: -1px;
+    background: #fff;
+    float: left;
+}
+
 #left div.single .doc-date{
     height: 12px;
     padding: 5px 10px 5px 0px;
@@ -607,6 +624,11 @@ color:
 }
 #left div.single div.content img{
     max-width: 616px;
+}
+#left div.single div.copy-url p{
+    font-size: 14px;
+    line-height: 22px;
+    color: #212121;
 }
 
 #left div.listing div.content div.right {

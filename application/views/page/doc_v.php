@@ -27,11 +27,11 @@
     
     
         <?  if( !empty($doc_data['main_img']) ): ?>
-        <div class="content-gAd">
+<!--        <div class="content-gAd">
             <div class="content-gAd-center">
                 <script type="text/javascript">loadGAd('content top');</script>
             </div>
-        </div>
+        </div>-->
         <?  endif; ?>
     
     
@@ -43,11 +43,11 @@
                 <img src="/upload/images/medium/<?=$doc_data['main_img']?>" alt="<?=$doc_data['title']?>" class="imgf" style="opacity: 1;" onerror="imgError(this);" />
             </a>
         </div>
-        <?  else: ?>
+        <?  #else: ?> <?  endif; ?>
         <div class="thumb thumb-gAd">
             <script type="text/javascript">loadGAd('content noImg');</script>
         </div>
-        <?  endif; ?>
+        <?  #endif; ?>
         
     <?=$doc_data['text']?>
         
@@ -76,7 +76,7 @@
         <!-- likeArticlesSlider -->
         <div id="like-acle-slider" class="listing">
             <div class="header">
-                <h1>смотрите также:</h1>
+                <h2 class="doc-cat-title">смотрите также:</h2>
             </div><!-- #header -->
             
             <div class="slider-block">
@@ -146,7 +146,7 @@
     <div class="doc-comments">
         <div class="listing" style="margin-bottom:10px; margin-top: 15px;">
             <div class="header">
-                <h1>Комментарии:</h1>
+                <h2 class="doc-cat-title">Комментарии:</h2>
             </div>
         </div>
         
