@@ -27,12 +27,12 @@
     
     
         <?  if( !empty($doc_data['main_img']) ): ?>
-        <div class="content-gAd">
-            <div class="content-gAd-center">
-                <script type="text/javascript">loadGAd('content top');</script>
-            </div>
+    <div class="content-gAd">
+        <div class="content-gAd-center">
+            <script type="text/javascript">loadGAd('content top');</script>
         </div>
-        <?  endif; ?>
+    </div>
+    <?  endif; ?>
     
     
 
@@ -71,76 +71,43 @@
     
     <div id="video_holder" style="display:none;"></div>
     <div class="othernews">
-        
-        
-        <!-- likeArticlesSlider -->
-        <div id="like-acle-slider" class="listing">
+        <div class="listing other_news_listing" style="margin-bottom:10px;">
             <div class="header">
                 <h1>смотрите также:</h1>
             </div><!-- #header -->
             
-            <div class="slider-block">
+            <?  
+                foreach( $like_articles as $likeArts ): 
+                    $newsUrl = "/{$likeArts['full_uri']}-{$likeArts['id']}-{$likeArts['url_name']}/";
                 
-                <?  
-                    $cntNews = count($like_articles);
-
-                    for($i   = 1; $i<=$cntNews; $i = $i+3 ):
-                ?>
-
-                <div>
-                    <div class="slider-block-item">    
-
-                        <?
-                            $ii = 0;
-                            foreach( $like_articles as $key=>$likeArts ):
-
-                            $newsUrl    = "/{$likeArts['full_uri']}-{$likeArts['id']}-{$likeArts['url_name']}/";
-                            $dateAr     =& $likeArts['date'];
-                            $dateStr    = $dateAr['day_str'].' &nbsp;'.$dateAr['time'].', &nbsp;&nbsp;'.$dateAr['day_nmbr'].' '.$dateAr['month_str'].' '.$dateAr['year_nmbr'];
-
-                            if (!empty($likeArts['main_img']))
-                                $imgUrl = '/upload/images/medium/' . $likeArts['main_img'];
-                            else
-                                $imgUrl = '/img/default_news.jpg';
-                        ?>
-
-                        <div class="listing">
-                            <div class="content">
-                                <div class="left">
-                                    <div class="imgholder">
-                                        <a href="<?=$newsUrl?>">
-                                            <img src="<?=$imgUrl?>" class="imgf" style="opacity: 1;" onerror="imgError(this);">
-                                        </a>
-                                        <div class="like-art-date"><?=$likeArts['date_ar']['day_nmbr'].' '.$likeArts['date_ar']['month_str'].' '.$likeArts['date_ar']['year_nmbr']?></div>
-                                    </div><!-- #imgholder -->
-                                </div><!-- #left -->
-                                <div class="right">
-                                    <div class="small-desc">
-                                        <h3><a href="<?=$newsUrl?>"><?=$likeArts['title']?></a></h3>
-                                        <p><?=$likeArts['text']?>[...]</p>
-                                    </div><!-- #small-desc -->
-                                </div><!-- #right -->
-                            </div><!-- #content -->
-                        </div><!-- #listing -->
-
-                        <? 
-                            unset( $like_articles[$key] );
-                            $ii++;
-                            if($ii >= 3 ) break;
-                            endforeach; 
-                        ?>
-
+                    if( !empty($likeArts['main_img']) ) 
+                        $imgUrl = '/upload/images/small/'.$likeArts['main_img'];
+                    else
+                        $imgUrl = '/img/default_news.jpg';
+            ?>
+            
+            <div class="left_other_news">
+                <a href="<?=$newsUrl?>">
+                    <img src="<?=$imgUrl?>" alt="<?=$likeArts['title']?>" onerror="imgError(this);">
+                </a>
+                <div class="content">
+                    <span class="like_artcl_date">
+                        <?=$likeArts['date_ar']['day_nmbr'].'.'.$likeArts['date_ar']['month_nmbr'].'&nbsp;'?>
+                    </span>
+<!--                    <h4>-->
+                        <a href="<?=$newsUrl?>"><?=$likeArts['title']?></a>
+                </div>
+                <div class="lon_hide_description">
+                    <div class="lon_des_arrow"></div>
+                    <div class="lon_des_txt">
+                        <?=$likeArts['text']?>[...]
                     </div>
                 </div>
-                <? endfor; ?>
-                
-            </div>
-        </div>
-        <!-- /likeArticlesSlider -->
-        
-        
-        
-        
+            </div><!-- #left_other_news -->
+            <? endforeach; ?>
+                        
+            
+        </div><!-- #listing -->
     </div><!-- #othernews -->
     
     <div class="doc-comments">

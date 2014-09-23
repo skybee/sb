@@ -67,7 +67,7 @@ class main extends CI_Controller {
             exit();
         }
         
-        $data_ar['like_articles']       = $this->article_m->get_like_articles( $data_ar['doc_data']['id'], $data_ar['doc_data']['title'], 8, 15, $data_ar['doc_data']['date'] );
+        $data_ar['like_articles']       = $this->article_m->get_like_articles( $data_ar['doc_data']['id'], $data_ar['doc_data']['title'], 12, 15, $data_ar['doc_data']['date'] );
         $data_ar['cat_ar']              = $this->category_m->get_cat_data_from_id($data_ar['doc_data']['cat_id']);
         
         $data_ar['main_menu_list']      = $this->list_m->get_cat(0);
@@ -77,6 +77,8 @@ class main extends CI_Controller {
 
         $top_slider['articles']         = $this->article_m->get_top_slider_data( $data_ar['cat_ar']['id'], 8, 90, 0, 350, true, false);
         $last_news['last_news']         = $this->article_m->get_last_left_news( $data_ar['cat_ar']['parent_id'], 20 );
+        
+//        print_r($data_ar['like_articles']);
         
         $tpl_ar                 = $data_ar; //== !!! tmp
         $tpl_ar['content']      = $this->load->view('page/doc_v', $data_ar, true);

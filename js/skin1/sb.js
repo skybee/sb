@@ -64,6 +64,15 @@ $( document ).ready(function(){
     );
     // </add url link to copy post>
     
+    $('.slider-block').bxSlider(
+        {
+            speed: 1000,
+            pause: 6000,
+            auto: true,
+            //randomStart: true,
+            pager: false
+        });
+    
 });
 
 

@@ -1507,6 +1507,92 @@ margin-top: 6px;
 	margin-top:5px;
 }
 
+// <like slider>
+
+#left div.othernews #like-acle-slider{
+    
+}
+
+#left div.othernews #like-acle-slider .slider-block{
+    /*margin-top: 18px;*/
+    height: 530px; 
+    /*background: #ddd;*/
+    overflow: hidden;
+}
+
+#left div.othernews #like-acle-slider .slider-block .listing{
+    overflow: hidden;
+    border-bottom: 1px solid #009DDB;
+    width: 608px;
+    margin: 18px 0px 0px 0px;
+}
+
+#left div.othernews #like-acle-slider .slider-block .listing .content .left{
+    width: 227px;
+}
+
+
+#left div.othernews #like-acle-slider .bx-wrapper .bx-viewport{
+    margin: 0px;
+    box-shadow: none;
+    border: 0px;
+    left: 0px;
+}
+#left div.othernews #like-acle-slider .bx-wrapper .bx-controls-direction a{
+    margin-top: -95px;
+}
+#left div.othernews #like-acle-slider .bx-wrapper .bx-prev{ left: 0px; }
+#left div.othernews #like-acle-slider .bx-wrapper .bx-next{ right: 8px; }
+
+#left div.othernews #like-acle-slider .slider-block .right{
+    overflow: hidden;
+    width: 380px;
+}
+
+#left div.othernews #like-acle-slider .slider-block .right .small-desc{
+    margin: 0px;
+    margin-top: 0;
+    height: 138px; width: 380px;
+    overflow: hidden;
+}
+#left div.othernews #like-acle-slider .slider-block .right .small-desc h3{
+    margin: 0px 0px 5px 0px;
+}
+#left div.othernews #like-acle-slider .slider-block .right .small-desc h3 a{
+    color:#009DDB;
+    font-size: 16px;
+    font-weight: bold !important;
+    line-height: 20px;
+}
+#left div.othernews #like-acle-slider .slider-block .right .small-desc p{
+    margin: 0px;
+    font-size: 14px;
+    text-align: left;
+    line-height: 22px;
+    color: #525252;
+}
+#left div.othernews #like-acle-slider .slider-block .right .small-desc div.date_source{
+    margin-top: 0px;
+}
+
+#left div.othernews #like-acle-slider .slider-block .listing .date_source{
+    width: 150px;
+    float: left;
+    display: inline-block;
+}
+
+#left div.othernews #like-acle-slider .slider-block .left .imgholder .like-art-date{
+    position: absolute;
+    bottom: 6px; right: 41px;
+    height: 20px; width: 120px;
+    padding: 5px 0px 4px 12px;
+    background-color: rgba(0,0,0,0.65);
+    color: #fff;
+    font-size: 12px;
+}
+// </like slider>
+
+
 #left div.listing div.news_holder div.link_holder {
 	width:475px;
 	float:left;
