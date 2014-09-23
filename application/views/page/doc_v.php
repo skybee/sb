@@ -26,28 +26,31 @@
     
     
     
-        <?  if( !empty($doc_data['main_img']) ): ?>
-        <div class="content-gAd">
+        <?  #if( !empty($doc_data['main_img']) ): ?>
+<!--        <div class="content-gAd">
             <div class="content-gAd-center">
                 <script type="text/javascript">loadGAd('content top');</script>
             </div>
-        </div>
-        <?  endif; ?>
+        </div>-->
+        <?  #endif; ?>
     
     
 
     <div class="content copy-url">
+        
         <?  if( !empty($doc_data['main_img']) ): ?>
-        <div class="thumb ">
-            <a href="/upload/images/real/<?=$doc_data['main_img']?>" rel="prettyPhoto" title="<?=$doc_data['title']?>">
-                <img src="/upload/images/medium/<?=$doc_data['main_img']?>" alt="<?=$doc_data['title']?>" class="imgf" style="opacity: 1;" onerror="imgError(this);" />
-            </a>
+        <div class="thumb thumb-fix-block">
+            <div class="thumb-fix-block-bg">
+                <a href="/upload/images/real/<?=$doc_data['main_img']?>" rel="prettyPhoto" title="<?=$doc_data['title']?>">
+                    <img src="/upload/images/medium/<?=$doc_data['main_img']?>" alt="<?=$doc_data['title']?>" class="imgf" style="opacity: 1;" onerror="imgError(this);" />
+                </a>
+            </div>
         </div>
-        <?  else: ?> 
+        <?  endif; ?>
+        
         <div class="thumb thumb-gAd">
             <script type="text/javascript">loadGAd('content noImg');</script>
         </div>
-        <?  endif; ?>
         
     <?=$doc_data['text']?>
         

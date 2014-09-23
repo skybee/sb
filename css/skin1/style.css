@@ -572,8 +572,13 @@ color:
 	float:left;
 }
 
-#left div.single div.thumb{float:left;padding-top:17px;padding-right:19px;padding-bottom:20px; 
+#left div.single div.thumb{
+    float:left;
+/*    padding-top:17px;
+    padding-right:0px;
+    padding-bottom:20px; */
       /*width:350px; height:222px;*/
+      margin: 17px 0px 17px 0px;
 }
 #left div.single div.thumb img{
     border:1px solid #DEDBD1; 
@@ -582,14 +587,39 @@ color:
     background:#fff; 
 /*    width:340px; 
     height:192px; */
-    width: 300px;
-    max-height: 400px;
+    width: 295px;
+    max-height: 246px; /*400px;*/
     box-shadow: 0px 2px 7px #dfdfdf;
 }
 
 #left div.single div.thumb-gAd{
-    padding-right: 10px;
-    padding-bottom: 12px;
+/*    padding-right: 0px;
+    padding-bottom: 12px;*/
+}
+
+#left div.single div.thumb-fix-block{
+    height: 242px; 
+    width: 292px;
+    border:1px solid #6f6f6f;
+    padding: 3px;
+    position: relative;
+    margin-right: 10px;
+}
+#left div.single div.thumb-fix-block .thumb-fix-block-bg{
+    background: #000;
+    height: 100%;
+}
+#left div.single div.thumb-fix-block img{
+    border: 0;
+    width: 292px;
+    max-height: 242px;
+    padding:0;
+    box-shadow: none;
+    border-radius: 0;
+    
+    margin: auto;
+    position: absolute;
+    top: 0; left: 0; bottom: 0; right: 0;
 }
 
 #left div.single div.date .date {
@@ -624,6 +654,15 @@ color:
 }
 #left div.single div.content img{
     max-width: 616px;
+}
+#left div.single div.copy-url{
+    font-size: 14px;
+    line-height: 22px;
+}
+#left div.single div.copy-url li,
+#left div.single div.copy-url td{
+    font-size: 12px;
+    line-height: 16px;
 }
 #left div.single div.copy-url p{
     font-size: 14px;
@@ -1434,9 +1473,14 @@ margin-top: 6px;
 	text-shadow:none;
 }
 
-#left div.single div.content,#page div.entry-content {
-	font-size:12px;
-	line-height:1.6em;
+#left div.single div.content, #page div.entry-content {
+	font-size:14px;
+	line-height:22px;
+}
+#left div.single div.content li,
+#left div.single div.content td{
+    font-size: 12px;
+    line-height: 16px;
 }
 
 #left div.single div.content h1,#left div.single div.content h2,#left div.single div.content h3,#left div.single div.content h4,#left div.single div.content h5,#left div.single div.content h6,#page div.entry-content h1,#page div.entry-content h2,#page div.entry-content h3,#page div.entry-content h4,#page div.entry-content h5,#page div.entry-content h6 {
@@ -1447,7 +1491,8 @@ margin-top: 6px;
 }
 
 #left div.single div.content h3, #left div.single div.content h2{
-    font-size: 14px !important;
+    font-size: 16px !important;
+    line-height: 22px !important;
 }
 
 #left div.single div.content ul,#left div.single div.content ol,#page div.entry-content ul,#page div.entry-content ol {
