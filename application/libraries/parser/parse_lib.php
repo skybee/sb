@@ -37,6 +37,7 @@ class parse_lib{
     static function uri2absolute($link, $base){
         
         $link = preg_replace("#^//#i", "http://", $link);
+        $link = str_ireplace('https://', 'http://', $link);
         
         if (!preg_match('~^(http://[^/?#]+)?([^?#]*)?(\?[^#]*)?(#.*)?$~i', $link.'#', $matchesLink)) {
             return false;

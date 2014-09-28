@@ -109,5 +109,41 @@ class news_parser_lib extends parse_lib {
         echo 'ОК - Занесена новая новость ID# ' . $article_id . ' - ' . $data_ar['title'] . "<br />\n";
         return TRUE;
     }
+    
+    function tmp_upd_news($data_ar, $id) { //принимает массив array('url','img','title','text','date') и минимальный размер текста(колличество шинглов/5) ; 
+        
+        $data_ar['text'] = $this->clear_txt($data_ar['text']);
+        $data_ar['title'] = mysql_real_escape_string(strip_tags($data_ar['title']));
+
+        
+        $data_ar['text'] = $this->change_img_in_txt($data_ar['text'], $data_ar['url']); //замена изображений в тексте
+        $data_ar['img_name'] = $this->load_img($data_ar['img'], $data_ar['url']);
+        if ($data_ar['img_name']) {
+            $this->resizeImg('medium');
+            $this->resizeImg('small');
+        }
+        
+        $sql = "   UPDATE `article` 
+                    SET
+                        `title`         = '{$data_ar['title']}', 
+                        `text`          = '" . mysql_real_escape_string($data_ar['text']) . "',
+                        `main_img`      = '{$data_ar['img_name']}'
+                    WHERE `id` = {$id}        
+                ";            
+
+        if( strlen($data_ar['title']) > 20 &&  strlen($data_ar['text']) > 200 ){            
+            $this->CI->db->query($sql);
+        }
+
+//        $article_id = $this->CI->db->insert_id();
+        $article_id = $id;
+
+//        if ($article_id) {
+//            $this->CI->parser_m->add_shingles($this_hash_ar, $article_id);
+//        }
+
+        echo 'ОК - Обновлена новость ID# ' . $article_id . ' - ' . $data_ar['title'] . "<br />\n";
+        return TRUE;
+    }
 
 }

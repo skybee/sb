@@ -6,7 +6,7 @@ class Main extends CI_Controller
     function __construct() {
         parent::__construct();
         
-        set_time_limit( 60 ); 
+        set_time_limit( 300 ); 
 //        exit('123');
         
         $this->load->database();
@@ -93,7 +93,7 @@ class Main extends CI_Controller
             $html = $this->news_parser_lib->down_with_curl( $news_ar['url'] );
             
             if( empty($html) ){ 
-                $this->parser_m->set_url_scaning( $news_ar['id'] );
+                #$this->parser_m->set_url_scaning( $news_ar['id'] );
                 continue;
             }
             
@@ -270,5 +270,68 @@ class Main extends CI_Controller
                 if( $this->db->query("DELETE FROM `shingles` WHERE `article_id` = '{$row['id']}' ") )echo '----- шинглы удалены<br />';
             }
         }
+    }
+    
+    function _upd_news( $cnt_news = 1 ){
+        header("Content-type:text/html;Charset=utf-8");
+        
+//        $parse_list = $this->parser_m->get_news_url_to_parse( $cnt_news );
+        $sql = "SELECT "
+                . "`article`.`id`, `scan_url`.`url`, `scan_url`.`main_img_url`"
+                . " FROM  `article`, `scan_url` "
+                . "WHERE "
+                . "`article`.donor_id = 9 "
+                . "AND"
+                . " `article`.`date` >= '2014-07-30' "
+                . "AND "
+                . " `article`.`date` < '2014-09-27' "
+                . "AND"
+                . " `scan_url`.`id` = `article`.`scan_url_id` "
+                . "AND"
+                . " `article`.`views` = 0 "
+                . "ORDER BY `article`.`date` DESC "
+                . "LIMIT {$cnt_news}";
+        
+        $query = $this->db->query($sql);
+        
+        if( $query->num_rows() < 1 ) return FALSE;
+        
+        $parse_list = array();
+        foreach( $query->result_array() as $row ){
+            $parse_list[] = $row;
+        }
+        
+        
+        
+        if( $parse_list == null ){  echo "ERROR Отсутствуют URL для сканирования"; return; }
+        
+        $i=1;
+        foreach( $parse_list as $news_ar ){
+            $this->db->query("UPDATE `article` SET `views`=1 WHERE `id`='{$news_ar['id']}' LIMIT 1");
+            
+            $news_ar['host'] = 'habrahabr.ru';
+            
+            $html = $this->news_parser_lib->down_with_curl( $news_ar['url'] );
+            
+            $insert_data = $this->parse_page_lib->get_data( $html, $news_ar );
+            
+            if( is_array($insert_data) == false ) continue;
+            $insert_data['url']             = $news_ar['url'];
+            
+            
+            if( !empty($news_ar['main_img_url']) && empty($insert_data['img']) ){ 
+                $insert_data['img']         = $news_ar['main_img_url'];
+            }    
+                
+            
+            echo "<br />\n$i - <i>".$news_ar['url']."</i><br />\n";
+            
+//            echo '<pre>'.print_r($news_ar,1).'</pre>';
+//            echo '<pre>'.print_r($insert_data,1).'</pre>';
+
+            $this->news_parser_lib->tmp_upd_news( $insert_data,  $news_ar['id']);
+    
+            flush(); $i++;
+        }    
     }
 }
