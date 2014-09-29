@@ -1,5 +1,8 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed'); ?>
 
+
+<span id="docId" docId="<?=$doc_data['id']?>" style="display: none" ></span>
+
 <div class="single">
     <div class="active">
         <h1><?=$doc_data['title']?></h1>

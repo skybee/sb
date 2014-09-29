@@ -45,6 +45,7 @@ $route['search/(:any)']                                         = "main/search/$
 $route['[a-z\d-/]+?/([a-z\d-]+?)/?(\d*)']                       = "main/cat_list/$1/$2";
 $route['parser/(:any)']                                         = "parser/main/$1";
 $route['donor/(:any)']                                          = "donor/$1";
+$route['ajax/(:any)']                                           = "ajax/$1";
 $route['tmp/(:any)']                                            = "tmp/$1";
 $route['donor_admin/(:any)']                                    = "donor_admin/$1";
 $route['donor_domain/(:any)']                                   = "donor_domain/$1";

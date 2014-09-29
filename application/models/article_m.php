@@ -388,5 +388,21 @@ class article_m extends CI_Model{
          return $result_ar;
     }
     
+    function set_article_rank($id, $ip, $rank){
+        //проверка наличие записи с таким IP и ID в базе
+        $query = $this->db->query(" SELECT COUNT(*) AS 'cnt' FROM `article_top` WHERE `article_id` = '{$id}' AND `ip` = '{$ip}' "); 
+        $row = $query->row_array();
+        
+        
+        if( $row['cnt'] < 1 ){ //запись новой записи в базу
+            $this->db->query("INSERT INTO `article_top` SET `article_id` = '{$id}', `ip` = '{$ip}', `rank` = {$rank} ");
+            
+            if( rand(1, 1000) <= 50 ){ //удаление старых записей
+                $control_date   = date("Y-m-d H:i:s", strtotime("- 90 day", time() ) ); //дата удаления записи
+                
+                $this->db->query("DELETE FROM `article_top` WHERE `date` < '{$control_date}' ");
+            }
+        }
+    } 
     
 }

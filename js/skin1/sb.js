@@ -89,6 +89,8 @@ $( document ).ready(function(){
 		}
 	});
     // </zoom img>
+    
+    setTimeout('setTop()', 15000);
 });
 
 
@@ -128,4 +130,11 @@ function loadGAd( blockName ){
         }
         
         document.write('<script type="text/javascript" src="//pagead2.googlesyndication.com/pagead/show_ads.js"></script>');
+}
+
+function setTop(){
+    var docId = $('#docId').attr('docId');
+    if( !docId ){ return; }
+    
+    $.post( '/ajax/background/set_top/', {docId: docId, ref: document.referrer} );
 }
