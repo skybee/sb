@@ -18,6 +18,8 @@ class background extends CI_Controller{
         $ref    = $_POST['ref'];
         $rank   = 1;
         
+        if( preg_match("#^66\.249\.\d{1,3}\.\d{1,3}#i", $ip) ) exit('Lock IP');
+        
         if( preg_match("#(google|yandex|mail.ru|Nigma|Rambler|Ukr.net|Bing)#i", $ref) )
             $rank = 3;  
         
