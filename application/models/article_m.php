@@ -105,7 +105,7 @@ class article_m extends CI_Model{
         return $returnAr;
     }
     
-    function get_page_list( $cat_id, $page, $cnt = 15){
+    function get_page_list( $cat_id, $page, $cnt = 15, $text_len = 200 ){
         $stop   = $page * $cnt;
         $start  = $stop - $cnt;
         
@@ -130,7 +130,7 @@ class article_m extends CI_Model{
         
         $result_ar = array();
         foreach( $query->result_array() as $row){
-            $row['text']    = $this->get_short_txt( $row['text'], 200 );
+            $row['text']    = $this->get_short_txt( $row['text'], $text_len );
             $row['date']    = get_date_str_ar( $row['date'] );
             $result_ar[]    = $row;
         }

@@ -15,6 +15,9 @@
         $dateStr    = $dateAr['day_str'].' &nbsp;'.$dateAr['time'].', &nbsp;&nbsp;'.$dateAr['day_nmbr'].' '.$dateAr['month_str'].' '.$dateAr['year_nmbr'];
 ?>
     <div class="listing">
+        <h2 class="cat-list-title">
+            <a href="<?=$news_url?>"><?=$news_page_ar['title']?></a>
+        </h2>
         <div class="content">
             <div class="left">
                 <div class="imgholder">
@@ -30,7 +33,7 @@
             </div><!-- #left -->
             <div class="right">
                 <div class="small-desc">
-                    <h3><a href="<?=$news_url?>"><?=$news_page_ar['title']?></a></h3>
+                    <!--<h3><a href="<?=$news_url?>"><?=$news_page_ar['title']?></a></h3>-->
                     <div class="date_source">
                         <div class="cat-list-date"><?=$dateStr?></div>
                         <div class="cat-list-donor">

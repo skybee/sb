@@ -106,20 +106,22 @@
 	}
 
 #featured .info h2{
-	font-size:21px;
+	font-size:22px;
+        line-height: 24px;
 	font-family:"Arial", Gadget, sans-serif;
-	padding:5px; 
+	padding:0px 5px; 
 	margin:0;
 	overflow:hidden;
+        font-weight: normal;
 }
 #featured .info p{
 	margin-left:5px;
 	margin-top:4px;
 	font-family:Arial, Helvetica, sans-serif;
-	font-size:14px;
-	line-height:20px;
+	font-size:16px;
+	line-height:22px;
         text-align: justify;
-	color:#fff !important;
+	/*color:#fff !important;*/
 	/*width:429px;*/
 	
 }
