@@ -229,10 +229,10 @@ class article_m extends CI_Model{
     
     function get_popular_articles($cat_id, $cntNews, $dayAgo, $hourAgo, $textLength = 200, $img = true, $parentCat = false ){
         
-        $dateStart  = date("Y-m-d H:i:s", strtotime(" -{$dayAgo} day {$hourAgo} hours" ) );
+        $dateStart  = ''; #date("Y-m-d H:i:s", strtotime(" -{$dayAgo} day {$hourAgo} hours" ) );
         
         if( $img )
-            $imgSql = " AND `article`.`main_img` != '' "; 
+            $imgSql = "\n AND `article`.`main_img` != '' "; 
         else
             $imgSql = '';
         
@@ -249,10 +249,15 @@ class article_m extends CI_Model{
                 . "`category`.`{$idParentId}`   = '{$cat_id}' "
                 . "AND "
                 . "`article`.`cat_id`           = `category`.`id` "
-                . "AND "
-                . "`date` > '{$dateStart}' "
+                . "\n -- AND "
+                . "\n -- `date` > '{$dateStart}' "
                 . $imgSql
-                . " ORDER BY `article`.`views` DESC, `article`.`date` DESC LIMIT {$cntNews} ";
+                . " ORDER BY "
+                . "\n -- `article`.`views` DESC, "
+                . "\n `article`.`date` DESC "
+                . "\n LIMIT {$cntNews} ";   
+
+//        echo $sql; exit();
                 
         $query = $this->db->query( $sql );
         
