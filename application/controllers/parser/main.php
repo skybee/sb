@@ -92,8 +92,7 @@ class Main extends CI_Controller
             
             $html = $this->news_parser_lib->down_with_curl( $news_ar['url'] );
             
-            if( empty($html) ){ 
-                #$this->parser_m->set_url_scaning( $news_ar['id'] );
+            if( empty($html) ){
                 continue;
             }
             
@@ -136,13 +135,13 @@ class Main extends CI_Controller
         
         echo '<pre>'.print_r( $scanUrl, 1 ).'</pre>';
         
-//        $scanUrl['url']         = 'http://compulenta.computerra.ru/tehnika/internet/';
-//        $scanUrl['host']        = 'compulenta.computerra.ru';
+//        $scanUrl['url']         = 'http://www.computerra.ru/promzona/';
+//        $scanUrl['host']        = 'www.computerra.ru';
         
         $this->articles_lib->setScanUrl( $scanUrl['url'] );
         $data = $this->articles_lib->getData( $scanUrl['host'] );
         
-        echo '<pre>'.print_r( $data, 1 ).'</pre>';
+//        echo '<pre>'.print_r( $data, 1 ).'</pre>'; exit();
         
         if( $data == null ) exit("No URLs to add");
         

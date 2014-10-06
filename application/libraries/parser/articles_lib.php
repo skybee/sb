@@ -23,6 +23,7 @@ class articles_lib{
             case 'itc.ua':                      return new parseItcList( $this->scanUrl );
             case 'habrahabr.ru':                return new parseHabrList( $this->scanUrl ); 
             case '4pda.ru':                     return new parse4PDAList( $this->scanUrl );   
+            case 'www.computerra.ru':           return new parseComputerraList( $this->scanUrl );     
             default: return false;
         }
     }
@@ -204,5 +205,35 @@ class parse4PDAList extends parseArticleList{
         return $data;
         
     }
+}
 
+class parseComputerraList extends parseArticleList{
+    
+    function __construct($url) {
+        parent::__construct($url);
+    }
+    
+    protected function getUrlTitleImgFomPage() {
+        if( !is_object($this->html_obj->find('.item, .item-dir-ct',0) ) ) return false;
+        
+        $i=0;
+        foreach( $this->html_obj->find('.item, .item-dir-ct') as $list ){
+            
+            if( !is_object( $list->find('h2 a',0) ) ){ 
+                continue;
+            }
+            
+            $data[$i]['url']        =  $list->find('h2 a',0)->href;
+            
+            if( is_object($list->find('.item-pic img',0)) ){
+                $data[$i]['img']    =  $list->find('.item-pic img',0)->src;
+            }        
+            else{
+                $data[$i]['img']    =  '';
+            }
+            $i++;
+        }
+          
+        return $data;
+    }
 }

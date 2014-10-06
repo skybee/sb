@@ -29,6 +29,7 @@ class parse_page_lib{
             case 'itc.ua':                      return 'parseItc';
             case 'habrahabr.ru':                return 'parseHabr'; 
             case '4pda.ru':                     return 'parse4PDA';
+            case 'www.computerra.ru':           return 'parseComputerra';    
             default: return false;
         }
     }
@@ -601,6 +602,46 @@ class parse4PDA extends parse_page{
         }
         
         return $date;
+    }
+}
+
+class parseComputerra extends parse_page{
+    
+    function parseDOM() {
+        
+        if( is_object( $this->html_obj->find('.article h1.title',0) ) ){
+            $this->data['title']    = $this->html_obj->find('.article h1.title',0)->innertext;
+        }
+        
+        if( is_object( $this->html_obj->find('.article .author .user__name',0) ) ){
+            $author = $this->html_obj->find('.article .author .user__name',0)->innertext;
+        }
+        
+//        $this->cleaner->delSingle('.article h1.title', 0);
+//        $this->cleaner->delSingle('.article a.item-section', 0);
+//        $this->cleaner->delSingle('.article .author', 0);
+//        $this->cleaner->delSingle('.article .article-soc', 0);
+//        $this->cleaner->delSingle('.article .article-tags', 0);
+//        $this->cleaner->delSingle('.article .also', 0);
+//        $this->cleaner->delSingle('.article .item-ban-700', 0);
+//        $this->cleaner->delSingle('.article .comments', 0);
+//        $this->cleaner->delAll('.article .item-article', 0);
+        
+        if( is_object( $this->html_obj->find('.article',0) ) ){
+            $article = $this->html_obj->find('.article',0)->innertext;
+            $pattern = "#<!-- start -->[\s\S]+?<!-- fin -->#i";
+            
+            preg_match($pattern, $article, $matches);
+            $this->data['text'] = $matches[0];
+            
+            if( isset($author) ){
+                $this->data['text'] .= '<p><i> Автор: '.$author.'</i></p>';
+            }
+        }
+        
+//        if( is_object( $this->html_obj->find('.published',0) ) ){
+//            $this->data['date'] = $this->getDate( $this->html_obj->find('.published',0)->innertext );
+//        }
     }
 }
 
