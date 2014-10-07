@@ -86,8 +86,8 @@ class Main extends CI_Controller
             $this->parser_m->set_url_scaning( $news_ar['id'] );
 			
             #<for test>
-//            $news_ar['url']     = 'http://4pda.ru/2010/07/11/26480/';  
-//            $news_ar['host']    = '4pda.ru';
+//            $news_ar['url']     = 'http://supreme2.ru/5804-rico/';  
+//            $news_ar['host']    = 'supreme2.ru';
             #</for test>
             
             $html = $this->news_parser_lib->down_with_curl( $news_ar['url'] );
@@ -135,8 +135,8 @@ class Main extends CI_Controller
         
         echo '<pre>'.print_r( $scanUrl, 1 ).'</pre>';
         
-//        $scanUrl['url']         = 'http://www.computerra.ru/promzona/';
-//        $scanUrl['host']        = 'www.computerra.ru';
+//        $scanUrl['url']         = 'http://supreme2.ru/category/science/';
+//        $scanUrl['host']        = 'supreme2.ru';
         
         $this->articles_lib->setScanUrl( $scanUrl['url'] );
         $data = $this->articles_lib->getData( $scanUrl['host'] );
@@ -153,9 +153,9 @@ class Main extends CI_Controller
     function _get_old_articles_url(){
         $this->load->library('parser/articles_lib');
         
-        $countPage = 40;
+        $countPage = 6;
         
-        for($page=1; $page <= $countPage; $page++){
+        for($page=2; $page <= $countPage; $page++){
             
 //            if( $page == 1 ){
 //            $scanUrl['url']         = 'http://compulenta.computerra.ru/tehnika/computers/';}
@@ -165,15 +165,15 @@ class Main extends CI_Controller
 //            $scanUrl['donor_id']    = 8;
 //            $scanUrl['cat_id']      = 20;
             
-            if( $page == 1 ){
-                $scanUrl['url']     = 'http://habrahabr.ru/hub/hardware/';
-            }
-            else{
-                $scanUrl['url']     = 'http://habrahabr.ru/hub/hardware/page'.$page.'/';
-            }
-            $scanUrl['host']        = 'habrahabr.ru';
-            $scanUrl['donor_id']    = 9;
-            $scanUrl['cat_id']      = 20;
+//            if( $page == 1 ){
+//                $scanUrl['url']     = 'http://habrahabr.ru/hub/hardware/';
+//            }
+//            else{
+//                $scanUrl['url']     = 'http://habrahabr.ru/hub/hardware/page'.$page.'/';
+//            }
+//            $scanUrl['host']        = 'habrahabr.ru';
+//            $scanUrl['donor_id']    = 9;
+//            $scanUrl['cat_id']      = 20;
             
 //            if( $page == 1 ){
 //                $scanUrl['url']     = 'http://itc.ua/tag/notebook/';
@@ -194,6 +194,17 @@ class Main extends CI_Controller
 //            $scanUrl['host']        = '4pda.ru';
 //            $scanUrl['donor_id']    = 12;
 //            $scanUrl['cat_id']      = 22;
+            
+            
+            if( $page == 1 ){
+                $scanUrl['url']     = 'http://supreme2.ru/category/cameras/';
+            }
+            else{
+                $scanUrl['url']     = 'http://supreme2.ru/category/cameras/page/'.$page.'/';
+            }
+            $scanUrl['host']        = 'supreme2.ru';
+            $scanUrl['donor_id']    = 14;
+            $scanUrl['cat_id']      = 23;            
 
             $this->articles_lib->setScanUrl( $scanUrl['url'] );
             $data = $this->articles_lib->getData( $scanUrl['host'] );

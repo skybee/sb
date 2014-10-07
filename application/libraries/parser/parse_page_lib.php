@@ -30,6 +30,7 @@ class parse_page_lib{
             case 'habrahabr.ru':                return 'parseHabr'; 
             case '4pda.ru':                     return 'parse4PDA';
             case 'www.computerra.ru':           return 'parseComputerra';    
+            case 'supreme2.ru':                 return 'parseSupreme';    
             default: return false;
         }
     }
@@ -374,9 +375,9 @@ class parseCompulenta extends parse_page{
         if( is_object( $this->html_obj->find('.article-info-author',0) ) )
             $this->data['text']    .= '<p><i>Автор: '.$this->html_obj->find('.article-info-author',0)->innertext.'</i></p>';
         
-        if( is_object( $this->html_obj->find('.article-info-date',0) ) ){
-            $this->data['date'] = $this->getDate( $this->html_obj->find('.article-info-date',0)->innertext );
-        }
+//        if( is_object( $this->html_obj->find('.article-info-date',0) ) ){
+//            $this->data['date'] = $this->getDate( $this->html_obj->find('.article-info-date',0)->innertext );
+//        }
     }
     
     private function getDate( $dateStr ){
@@ -468,9 +469,9 @@ class parseItc extends parse_page{
                 $this->data['text'] = preg_replace($firstImgPattern, '', $this->data['text']);
             }
             
-            if( is_object($this->html_obj->find('time[pubdate]',0)) ){
-                $this->data['date'] = $this->getDate( $this->html_obj->find('time[pubdate]',0)->pubdate );
-            }
+//            if( is_object($this->html_obj->find('time[pubdate]',0)) ){
+//                $this->data['date'] = $this->getDate( $this->html_obj->find('time[pubdate]',0)->pubdate );
+//            }
             
 //            $this->data['text'] = $this->chengeH1( $this->data['text'] );
         }
@@ -518,9 +519,9 @@ class parseHabr extends parse_page{
             }
         }
         
-        if( is_object( $this->html_obj->find('.published',0) ) ){
-            $this->data['date'] = $this->getDate( $this->html_obj->find('.published',0)->innertext );
-        }
+//        if( is_object( $this->html_obj->find('.published',0) ) ){
+//            $this->data['date'] = $this->getDate( $this->html_obj->find('.published',0)->innertext );
+//        }
     }
     
     private function getDate( $dateStr ){
@@ -578,9 +579,9 @@ class parse4PDA extends parse_page{
             $this->data['text'] = $content->innertext;
 //            $this->data['text'] = $this->html_obj->find('.content .content-box',0)->innertext;
             
-            if( is_object( $this->html_obj->find('.info-holder .date',0) ) ){
-                $this->data['date'] = $this->getDate( $this->html_obj->find('.info-holder .date',0)->innertext );
-            }
+//            if( is_object( $this->html_obj->find('.info-holder .date',0) ) ){
+//                $this->data['date'] = $this->getDate( $this->html_obj->find('.info-holder .date',0)->innertext );
+//            }
         }
     }
     
@@ -617,16 +618,6 @@ class parseComputerra extends parse_page{
             $author = $this->html_obj->find('.article .author .user__name',0)->innertext;
         }
         
-//        $this->cleaner->delSingle('.article h1.title', 0);
-//        $this->cleaner->delSingle('.article a.item-section', 0);
-//        $this->cleaner->delSingle('.article .author', 0);
-//        $this->cleaner->delSingle('.article .article-soc', 0);
-//        $this->cleaner->delSingle('.article .article-tags', 0);
-//        $this->cleaner->delSingle('.article .also', 0);
-//        $this->cleaner->delSingle('.article .item-ban-700', 0);
-//        $this->cleaner->delSingle('.article .comments', 0);
-//        $this->cleaner->delAll('.article .item-article', 0);
-        
         if( is_object( $this->html_obj->find('.article',0) ) ){
             $article = $this->html_obj->find('.article',0)->innertext;
             $pattern = "#<!-- start -->[\s\S]+?<!-- fin -->#i";
@@ -638,10 +629,51 @@ class parseComputerra extends parse_page{
                 $this->data['text'] .= '<p><i> Автор: '.$author.'</i></p>';
             }
         }
+    }
+}
+
+class parseSupreme extends parse_page{
+    
+    function parseDOM() {
         
-//        if( is_object( $this->html_obj->find('.published',0) ) ){
-//            $this->data['date'] = $this->getDate( $this->html_obj->find('.published',0)->innertext );
-//        }
+        if( is_object( $this->html_obj->find('.newszagp h1',0) ) ){
+            $this->cleaner->delSingle('.newszagp h1 img', 0)->outertext = '';
+            $this->data['title']    = $this->html_obj->find('.newszagp h1',0)->innertext;
+        }
+        
+        if( is_object( $this->html_obj->find('#newsbody',0) ) ){
+            $this->data['text']    = $this->html_obj->find('#newsbody',0)->innertext;
+            
+            if( is_object( $this->html_obj->find('#newsman',0) ) ){
+                $author = $this->html_obj->find('#newsman',0)->innertext;
+                
+                $this->data['text'] .= '<p><i>'.$author.'</i></p>';
+            }
+        }
+        
+        if( is_object( $this->html_obj->find('#newstime',0) ) ){
+            $this->data['date'] = $this->getDate( $this->html_obj->find('#newstime',0)->innertext );
+        }
+    }
+    
+    private function getDate( $dateStr ){
+        $date = false;
+        $pattern = "#(\d{1,2})\.(\d{1,2})\.(\d{4})#i";
+        if( preg_match($pattern, $dateStr, $matches) ){
+//            echo '<pre>'.print_r($matches,1).'</pre>';
+            
+            $day = $matches[1];
+            if( strlen($day) < 2 ) $day = '0'.$day;
+            
+            $month = $matches[2];
+            if( strlen($month) < 2 ) $month = '0'.$month;
+            
+            $year = $matches[3];
+            
+            $date = $year.'-'.$month.'-'.$day.' '.rand(10,22).':00:00';
+        }
+        
+        return $date;
     }
 }
 

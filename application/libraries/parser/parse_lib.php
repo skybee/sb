@@ -30,7 +30,7 @@ class parse_lib{
 
 	$content = curl_exec($ch);
 	curl_close($ch);
-
+        
 	return $content;
     }
     
@@ -142,8 +142,11 @@ class parse_lib{
         $pattern = "#/([^/]+\.[a-z]{2,5})$#i";
         preg_match($pattern, $url, $fname_ar );
         
-        if( isset($fname_ar[1]) )
+        if( isset($fname_ar[1]) ){
+            $fname_ar[1] = preg_replace("#[^a-zA-Z\d\.-]#i", '', $fname_ar[1]);
+            
             return $fname_ar[1];
+        }
         else 
             return FALSE;
     }

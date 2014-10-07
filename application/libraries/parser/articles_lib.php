@@ -24,6 +24,7 @@ class articles_lib{
             case 'habrahabr.ru':                return new parseHabrList( $this->scanUrl ); 
             case '4pda.ru':                     return new parse4PDAList( $this->scanUrl );   
             case 'www.computerra.ru':           return new parseComputerraList( $this->scanUrl );     
+            case 'supreme2.ru':                 return new parseSupreme2List( $this->scanUrl );    
             default: return false;
         }
     }
@@ -237,3 +238,31 @@ class parseComputerraList extends parseArticleList{
         return $data;
     }
 }
+
+class  parseSupreme2List extends parseArticleList{
+    
+    function __construct($url) {
+        parent::__construct($url);
+    }
+    
+    protected function getUrlTitleImgFomPage() {
+        if( !is_object($this->html_obj->find('.ximpost',0) ) ) return false;
+        
+        $i=0;
+        foreach( $this->html_obj->find('.ximpost') as $list ){
+            
+            $data[$i]['url']        =  $list->find(' a',0)->href;
+            
+            if( is_object($list->find('img',0)) ){
+                $data[$i]['img']    =  $list->find('img',0)->src;
+            }        
+            else{
+                $data[$i]['img']    =  '';
+            }
+            $i++;
+        }
+          
+        return $data;
+    }
+}
+
