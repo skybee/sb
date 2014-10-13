@@ -12,6 +12,7 @@ class main extends CI_Controller {
         $this->load->model('article_m');
         $this->load->model('category_m');
         $this->load->helper('date_convert');
+        $this->load->helper('doc_helper');
         $this->load->driver('cache');
         $this->load->config('category');
         
@@ -76,6 +77,7 @@ class main extends CI_Controller {
         $data_ar['second_menu_list']    = $this->list_m->get_cat($data_ar['cat_ar']['parent_id']);
         $data_ar['footer_menu_list']    = $this->list_m->get_footer_cat_link();
         $data_ar['meta']['title']       = $data_ar['cat_ar']['name'].': '.$data_ar['doc_data']['title'].' - Odnako.su';
+        $data_ar['donor_rel']           = botRelNofollow();
 
         $top_slider['articles']         = $this->article_m->get_top_slider_data( $data_ar['cat_ar']['id'], 8, 90, 0, $this->topSliderTxtLength, true, false);
         $last_news['last_news']         = $this->article_m->get_last_left_news( $data_ar['cat_ar']['parent_id'], 20 );

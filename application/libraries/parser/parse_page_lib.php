@@ -30,7 +30,7 @@ class parse_page_lib{
             case 'habrahabr.ru':                return 'parseHabr'; 
             case '4pda.ru':                     return 'parse4PDA';
             case 'www.computerra.ru':           return 'parseComputerra';    
-            case 'supreme2.ru':                 return 'parseSupreme';    
+            case 'supreme2.ru':                 return 'parseSupreme';
             default: return false;
         }
     }

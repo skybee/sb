@@ -24,7 +24,7 @@ class articles_lib{
             case 'habrahabr.ru':                return new parseHabrList( $this->scanUrl ); 
             case '4pda.ru':                     return new parse4PDAList( $this->scanUrl );   
             case 'www.computerra.ru':           return new parseComputerraList( $this->scanUrl );     
-            case 'supreme2.ru':                 return new parseSupreme2List( $this->scanUrl );    
+            case 'supreme2.ru':                 return new parseSupreme2List( $this->scanUrl );
             default: return false;
         }
     }
