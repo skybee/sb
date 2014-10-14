@@ -408,6 +408,6 @@ class article_m extends CI_Model{
                 $this->db->query("DELETE FROM `article_top` WHERE `date` < '{$control_date}' ");
             }
         }
-    } 
+    }
     
 }

@@ -86,8 +86,8 @@ class Main extends CI_Controller
             $this->parser_m->set_url_scaning( $news_ar['id'] );
 			
             #<for test>
-            $news_ar['url']     = 'http://www.easycom.com.ua/news/mobilne_apu_amd_carrizo-l_v_dekabre_2014/?lang=ru';  
-            $news_ar['host']    = 'www.easycom.com.ua';
+//            $news_ar['url']     = 'http://supreme2.ru/5804-rico/';  
+//            $news_ar['host']    = 'supreme2.ru';
             #</for test>
             
             $html = $this->news_parser_lib->down_with_curl( $news_ar['url'] );
@@ -115,10 +115,10 @@ class Main extends CI_Controller
             
             echo "<br />\n$i - <i>".$news_ar['url']."</i><br />\n";
             
-            echo '<pre>'.print_r($news_ar,1).'</pre>';
-            echo '<pre>'.print_r($insert_data,1).'</pre>';
+//            echo '<pre>'.print_r($news_ar,1).'</pre>';
+//            echo '<pre>'.print_r($insert_data,1).'</pre>';
 
-//            $this->news_parser_lib->insert_news( $insert_data );
+            $this->news_parser_lib->insert_news( $insert_data );
     
             flush(); $i++;
         }    
