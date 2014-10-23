@@ -20,9 +20,25 @@ class background extends CI_Controller{
         
         if( preg_match("#^66\.249\.\d{1,3}\.\d{1,3}#i", $ip) ) exit('Lock IP');
         
-        if( preg_match("#(google|yandex|mail.ru|Nigma|Rambler|Ukr.net|Bing)#i", $ref) )
-            $rank = 3;  
+        if( preg_match("#(google|yandex|mail.ru|Nigma|Rambler|Ukr.net|Bing)#i", $ref) ){
+            $rank = 3;
+//            $this->steSearchQuery( $id, $ref );
+        }
         
         $this->article_m->set_article_rank($id, $ip, $rank);
     }
+    
+//    private function steSearchQuery( $id, $ref ){
+//        
+//        echo $id."\n".$ref;
+//        
+//        if( preg_match("#yandex#i", $ref) ){
+//            $refAr      = parse_url($ref);
+//            parse_str($refAr['query'], $refUriAr);
+//            print_r($refAr);
+//            print_r($refUriAr);
+//            
+//            echo base64_decode($refUriAr['etext']);
+//        }
+//    }
 }

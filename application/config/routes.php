@@ -49,6 +49,7 @@ $route['ajax/(:any)']                                           = "ajax/$1";
 $route['tmp/(:any)']                                            = "tmp/$1";
 $route['donor_admin/(:any)']                                    = "donor_admin/$1";
 $route['donor_domain/(:any)']                                   = "donor_domain/$1";
+$route['cron/(:any)']                                           = "cron/$1";
 $route['(:any)']                                                = "main/$1";
 $route['404_override'] = '';
 
