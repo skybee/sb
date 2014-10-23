@@ -1494,6 +1494,15 @@ margin-top: 6px;
 	text-shadow:none;
 }
 
+#left div.single div.content a{
+    color: #009DDB;
+    text-decoration: underline;
+}
+
+#left div.single div.content a:hover{
+    color: #4c8296;
+}
+
 #left div.single div.content, #page div.entry-content {
 	font-size:14px;
 	line-height:22px;
