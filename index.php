@@ -27,8 +27,13 @@ setlocale(LC_ALL, 'ru_RU.UTF-8');
  * NOTE: If you change these, also change the error_reporting() code below
  *
  */
+    if( $_SERVER['HTTP_HOST'] == 'sb.lh' ){
 	define('ENVIRONMENT', 'development');
-//        define('ENVIRONMENT', 'production');
+    }
+    else{
+        define('ENVIRONMENT', 'production');
+    }
+        
 /*
  *---------------------------------------------------------------
  * ERROR REPORTING

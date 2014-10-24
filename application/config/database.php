@@ -66,6 +66,11 @@ if( $_SERVER['HTTP_HOST'] == 'sb.lh' ){
     $db['default']['username'] = 'mysql';
     $db['default']['password'] = 'mysql';
     $db['default']['database'] = 'sb';
+    
+    $db['default']['hostname'] = 'odnako.su';
+    $db['default']['username'] = 'admin_sb';
+    $db['default']['password'] = '1865tsbqwerty';
+    $db['default']['database'] = 'admin_news';
 }
 
 

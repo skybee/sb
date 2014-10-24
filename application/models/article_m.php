@@ -60,7 +60,7 @@ class article_m extends CI_Model{
             $data['first']  = $data['first'][0];
             $data['all']    = $this->get_last_news($idParentId, $cnt, false, true, true);
             unset($data['all'][0]);
-            $this->cache->file->save($cacheName, $data, $this->cacheTime->leftLastNews * 60 );
+            $this->cache->file->save($cacheName, $data, $this->catConfig['cache_time']['right_last_news'] * 60 );
         }
         else
             $data = $lastNewsCache;
@@ -279,7 +279,7 @@ class article_m extends CI_Model{
         $topSliderCacheName = 'slider_'.$idParentId;
         if( !$sliderCache = $this->cache->file->get($topSliderCacheName) ){
             $data = $this->get_popular_articles( $idParentId, $cntNews, $dayAgo, $hourAgo, $textLength, $img, $parentCat );
-            $this->cache->file->save($topSliderCacheName, $data, $this->cacheTime->topSlider * 60 );
+            $this->cache->file->save($topSliderCacheName, $data, $this->catConfig['cache_time']['top_slider'] * 60 );
         }
         else
             $data = $sliderCache;

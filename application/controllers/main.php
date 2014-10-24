@@ -15,11 +15,12 @@ class main extends CI_Controller {
         $this->load->helper('doc_helper');
         $this->load->driver('cache');
         $this->load->config('category');
+        $this->load->library('cat_lib');
         
-        $this->cacheTime->mainPage      = 5; //minutes
-        $this->cacheTime->topSlider     = 15;
-        $this->cacheTime->leftLastNews  = 5;
-        $this->cacheTime->footerCat     = 180;
+        $this->catNameAr = $this->cat_lib->getCatFromUri();
+        $this->catConfig = $this->cat_lib->getCatConfig();
+        
+        $this->cacheTime->footerCat     = 180; //minutes
         
         $this->topSliderTxtLength       = 290;
     }
@@ -27,7 +28,7 @@ class main extends CI_Controller {
     function index(){ $this->main_page('news'); }
 
     function main_page($cat_name) {
-        $this->output->cache( $this->cacheTime->mainPage );
+        $this->output->cache( $this->catConfig['cache_time']['main_page'] );
 
         $data_ar['main_cat_ar']         = $this->article_m->get_cat_data_from_url_name($cat_name);
         $data_ar['main_menu_list']      = $this->list_m->get_cat(0);
@@ -59,8 +60,9 @@ class main extends CI_Controller {
         $doc_urlname = $url_id_name_ar[2];
 
         $data_ar['doc_data']            = $this->article_m->get_doc_data($doc_id);
-        if (!$data_ar['doc_data'])
+        if (!$data_ar['doc_data']){
             show_404();
+        }
         
         $true_url = '/'.$data_ar['doc_data']['cat_full_uri'].'-'.$data_ar['doc_data']['id'].'-'.$data_ar['doc_data']['url_name'].'/';
         
@@ -70,7 +72,7 @@ class main extends CI_Controller {
             exit();
         }
         
-        $data_ar['like_articles']       = $this->article_m->get_like_articles( $data_ar['doc_data']['id'], $data_ar['doc_data']['title'], 12, 15, $data_ar['doc_data']['date'] );
+        $data_ar['like_articles']       = $this->article_m->get_like_articles( $data_ar['doc_data']['id'], $data_ar['doc_data']['title'], 12, $this->catConfig['like_news_day'], $data_ar['doc_data']['date'] );
         $data_ar['cat_ar']              = $this->category_m->get_cat_data_from_id($data_ar['doc_data']['cat_id']);
         
         $data_ar['main_menu_list']      = $this->list_m->get_cat(0);
@@ -82,7 +84,7 @@ class main extends CI_Controller {
         $top_slider['articles']         = $this->article_m->get_top_slider_data( $data_ar['cat_ar']['id'], 8, 90, 0, $this->topSliderTxtLength, true, false);
         $last_news['last_news']         = $this->article_m->get_last_left_news( $data_ar['cat_ar']['parent_id'], 20 );
         
-//        print_r($data_ar['like_articles']);
+//        print_r($data_ar['cat_ar']);
         
         $tpl_ar                 = $data_ar; //== !!! tmp
         $tpl_ar['content']      = $this->load->view('page/doc_v', $data_ar, true);
