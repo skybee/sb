@@ -4,7 +4,7 @@
 //	$('#featuredvid > ul').tabs();
 //});
 	$(document).ready(function(){
-		$("#featured > ul").tabs( {fx:{opacity: "toggle", duration: 200}} ).tabs("rotate", 2800, false );
+		$("#featured > ul").tabs( {fx:{opacity: "toggle", duration: 200}} ).tabs("rotate", 3000, false );
 	});
 	
 /*window.onload = function() {$('#Picture').hide().fadeIn(3000);};*/

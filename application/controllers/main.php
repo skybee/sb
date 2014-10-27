@@ -37,7 +37,7 @@ class main extends CI_Controller {
         $data_ar['mainpage_cat_list']   = $this->article_m->get_mainpage_cat_news($data_ar['second_menu_list']); // 9.5 sec.
         $data_ar['meta']['title']       = $data_ar['main_cat_ar']['title'];
         
-        $top_slider['articles']         = $this->article_m->get_top_slider_data($data_ar['main_cat_ar']['id'], 8, 90, 0, $this->topSliderTxtLength, true, true); // 1.5 sec.
+        $top_slider['articles']         = $this->article_m->get_top_slider_data($data_ar['main_cat_ar']['id'], 8, $this->catConfig['top_news_time'], $this->topSliderTxtLength, true, true); // 1.5 sec.
         $top_slider['main_cat_url']     = $data_ar['main_cat_ar']['url_name'];
         
         $last_news['last_news']         = $this->article_m->get_last_left_news( $data_ar['main_cat_ar']['id'], 50 ); // 1.5 sec.
@@ -81,7 +81,7 @@ class main extends CI_Controller {
         $data_ar['meta']['title']       = $data_ar['cat_ar']['name'].': '.$data_ar['doc_data']['title'].' - Odnako.su';
         $data_ar['donor_rel']           = botRelNofollow();
 
-        $top_slider['articles']         = $this->article_m->get_top_slider_data( $data_ar['cat_ar']['id'], 8, 90, 0, $this->topSliderTxtLength, true, false);
+        $top_slider['articles']         = $this->article_m->get_top_slider_data( $data_ar['cat_ar']['id'], 8, $this->catConfig['top_news_time'], $this->topSliderTxtLength, true, false);
         $last_news['last_news']         = $this->article_m->get_last_left_news( $data_ar['cat_ar']['parent_id'], 20 );
         
 //        print_r($data_ar['cat_ar']);
@@ -115,7 +115,7 @@ class main extends CI_Controller {
         $data_ar['footer_menu_list']    = $this->list_m->get_footer_cat_link();
         $data_ar['meta']['title']       = $data_ar['cat_ar']['title'].' - страница '.$page;
 
-        $top_slider['articles']         = $this->article_m->get_top_slider_data( $data_ar['cat_ar']['id'], 8, 90, 0, $this->topSliderTxtLength, true, false);
+        $top_slider['articles']         = $this->article_m->get_top_slider_data( $data_ar['cat_ar']['id'], 8, $this->catConfig['top_news_time'], $this->topSliderTxtLength, true, false);
         
         $last_news['last_news']         = $this->article_m->get_last_left_news( $data_ar['cat_ar']['parent_id'], 50 );
         

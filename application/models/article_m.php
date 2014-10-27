@@ -227,9 +227,10 @@ class article_m extends CI_Model{
          return $result_ar;
     }
     
-    function get_popular_articles($cat_id, $cntNews, $dayAgo, $hourAgo, $textLength = 200, $img = true, $parentCat = false ){
+    function get_popular_articles($cat_id, $cntNews, $hourAgo, $textLength = 200, $img = true, $parentCat = false ){
         
-        $dateStart  = ''; #date("Y-m-d H:i:s", strtotime(" -{$dayAgo} day {$hourAgo} hours" ) );
+//        $dateStart  = date("Y-m-d H:i:s", strtotime(" -{$dayAgo} day {$hourAgo} hours" ) );
+        $dateStart  = date("Y-m-d H:i:s", strtotime(" - {$hourAgo} hours" ) );
         
         if( $img )
             $imgSql = "\n AND `article`.`main_img` != '' "; 
@@ -243,19 +244,33 @@ class article_m extends CI_Model{
             $idParentId = 'id';
         }
         
+//        $sql = "SELECT `article`.`id`, `article`.`date`, `article`.`url_name`, `article`.`title`, `article`.`text`, `article`.`main_img`, `category`.`full_uri` "
+//                . "FROM `article`,  `category`"
+//                . "WHERE "
+//                . "`category`.`{$idParentId}`   = '{$cat_id}' "
+//                . "AND "
+//                . "`article`.`cat_id`           = `category`.`id` "
+//                . "\n -- AND "
+//                . "\n -- `date` > '{$dateStart}' "
+//                . $imgSql
+//                . " ORDER BY "
+//                . "\n -- `article`.`views` DESC, "
+//                . "\n `article`.`date` DESC "
+//                . "\n LIMIT {$cntNews} ";   
+                
         $sql = "SELECT `article`.`id`, `article`.`date`, `article`.`url_name`, `article`.`title`, `article`.`text`, `article`.`main_img`, `category`.`full_uri` "
-                . "FROM `article`,  `category`"
+                . "FROM `article`,  `category` "
                 . "WHERE "
                 . "`category`.`{$idParentId}`   = '{$cat_id}' "
                 . "AND "
                 . "`article`.`cat_id`           = `category`.`id` "
-                . "\n -- AND "
-                . "\n -- `date` > '{$dateStart}' "
+                . "AND "
+                . "`date` > '{$dateStart}' "
                 . $imgSql
                 . " ORDER BY "
-                . "\n -- `article`.`views` DESC, "
-                . "\n `article`.`date` DESC "
-                . "\n LIMIT {$cntNews} ";   
+                . "`article`.`views` DESC, "
+                . "`article`.`date` DESC "
+                . "LIMIT {$cntNews} ";        
 
 //        echo $sql; exit();
                 
@@ -274,11 +289,11 @@ class article_m extends CI_Model{
         return $result;
     }
     
-    function get_top_slider_data( $idParentId, $cntNews, $dayAgo, $hourAgo, $textLength = 200, $img = true, $parentCat = false ){
+    function get_top_slider_data( $idParentId, $cntNews, $hourAgo, $textLength = 200, $img = true, $parentCat = false ){
         
         $topSliderCacheName = 'slider_'.$idParentId;
         if( !$sliderCache = $this->cache->file->get($topSliderCacheName) ){
-            $data = $this->get_popular_articles( $idParentId, $cntNews, $dayAgo, $hourAgo, $textLength, $img, $parentCat );
+            $data = $this->get_popular_articles( $idParentId, $cntNews, $hourAgo, $textLength, $img, $parentCat );
             $this->cache->file->save($topSliderCacheName, $data, $this->catConfig['cache_time']['top_slider'] * 60 );
         }
         else
