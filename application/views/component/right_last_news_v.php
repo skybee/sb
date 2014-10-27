@@ -39,5 +39,21 @@
     endforeach;
 ?>
     
-    <!--<pre><? //print_r($last_news)?></pre>-->
+    <!-- HC Link -->
+    <? if( $_SERVER['REQUEST_URI'] == '/' ): ?>
+        <div class="lnl_news">
+            <span>
+            </span>
+            <a href="http://house-control.org.ua/category/cctv-systems/" > Видеонаблюдение - система IP камер</a>
+        </div>
+    <? elseif( $_SERVER['REQUEST_URI'] == '/hi-tech/' ): ?>
+        <div class="lnl_news">
+            <span>
+            </span>
+            <a href="http://house-control.org.ua/category/kamera/" > Камеры для видеонаблюдения </a>
+        </div>
+    <? endif; ?>
+    <!-- /HC Link -->
+    
 </div>
+
