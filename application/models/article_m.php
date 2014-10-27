@@ -147,9 +147,11 @@ class article_m extends CI_Model{
         return $text;
     }
     
-    function get_like_articles( $id, $text, $cntNews = 4, $dayPeriod = false, $newsDate = false  ){
+    function get_like_articles( $id, $catParentId, $text, $cntNews = 4, $dayPeriod = false, $newsDate = false  ){
         $cleanPattern = "#(['\"\,\.\\\]+|&\w{2,6};)#i";
         $text = preg_replace($cleanPattern, ' ', $text);
+        
+        $cntLikeNewsSelect = $cntNews * 3;
         
         if( $dayPeriod && $newsDate ){
             
@@ -163,16 +165,24 @@ class article_m extends CI_Model{
         else
             $dateSql = '';
         
-        $sql = "SELECT * FROM "
-                . "(SELECT "
-                . "`article`.`id`, `article`.`title`, `article`.`url_name`, `article`.`main_img`, `article`.`date`, `article`.`text`,"
-                . "`category`.`full_uri` "
-                . "FROM `article`,`category` "
-                . "WHERE MATCH (`article`.`title`,`article`.`text`) AGAINST ('{$text}') "
-                . "AND `category`.`id`      = `article`.`cat_id` "
-                . "AND `article`.`id`      != '{$id}' "
-                . $dateSql  
-                . "LIMIT {$cntNews} ) AS `t1` ORDER BY `t1`.`date` DESC";
+        $sql = " SELECT * FROM "
+                . "(SELECT * FROM "
+                    . "( "
+                    . "SELECT "
+                    . "`article`.`id`, `article`.`title`, `article`.`url_name`, `article`.`main_img`, `article`.`date`, `article`.`text`, `article`.`views`, "
+                    . "`category`.`full_uri` "
+                    . "FROM `article`,`category` "
+                    . "WHERE "
+                    . "MATCH (`article`.`title`,`article`.`text`) AGAINST ('{$text}') "
+                    . "AND `category`.`parent_id` = '{$catParentId}' "
+                    . "AND `category`.`id`      = `article`.`cat_id` "
+                    . "AND `article`.`id`      != '{$id}' "
+                    . $dateSql  
+                    . "LIMIT {$cntLikeNewsSelect} "
+                    . ") AS `t1` ORDER BY `t1`.`views` DESC LIMIT {$cntNews} "
+                . ") AS `t2` ORDER BY `t2`.`date` DESC ";
+                
+//        echo $sql;        
                 
         $query = $this->db->query( $sql );
         
