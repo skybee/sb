@@ -123,7 +123,7 @@
                                 <div class="right">
                                     <div class="small-desc">
                                         <h3><a href="<?=$newsUrl?>"><?=$likeArts['title']?></a></h3>
-                                        <p><?=$likeArts['text']?>[...]</p>
+                                        <p><?=$likeArts['text']?></p>
                                     </div><!-- #small-desc -->
                                 </div><!-- #right -->
                             </div><!-- #content -->

@@ -138,12 +138,21 @@ class article_m extends CI_Model{
         return $result_ar;
     }
     
-    function get_short_txt( $text, $length = 100 ){
+    function get_short_txt( $text, $length = 100, $txtFin = 'word' ){
         $text = strip_tags($text);
         $text = mb_substr($text, 0, $length);
         
-//        $pattern = "# \S+$#i";
-//        $text = preg_replace( $pattern, '', $text );
+        if( $txtFin == 'word' ){
+            $replacePattern = "# \S+$#i";
+            $replace = '';
+        }
+        elseif( $txtFin == 'dot' ){
+            $replacePattern = "#\. [^\.]+$#i";
+            $replace = '.';
+        }
+        
+        $text = preg_replace( $replacePattern, $replace, $text );
+        
         return $text;
     }
     
@@ -190,7 +199,7 @@ class article_m extends CI_Model{
         
         $result = array();
         foreach( $query->result_array() as $row ){
-            $row['text']    = $this->get_short_txt( $row['text'], 500 );
+            $row['text']    = $this->get_short_txt( $row['text'], 600, 'dot' );
             $row['date_ar'] = get_date_str_ar( $row['date'] );
             $result[] = $row;
         }
