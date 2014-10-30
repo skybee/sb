@@ -90,6 +90,17 @@ $( document ).ready(function(){
 	});
     // </zoom img>
     
+    // <show this cat>
+    if( $('span').is('#opt-tag-main-cat') ){ 
+        $mainCatName = $('#opt-tag-main-cat').text();
+        $('.firstnav-menu li[catname='+$mainCatName+']').addClass('main-nav-cat-active');
+    }
+     if( $('span').is('#opt-tag-sub-cat') ){ 
+        $subCatName = $('#opt-tag-sub-cat').text();
+        $('.secondnav-menu li[catname='+$subCatName+']').addClass('sub-nav-cat-active');
+    }
+    // </show this cat>
+    
     setTimeout('setTop()', 15000);
 });
 

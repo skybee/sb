@@ -28,6 +28,9 @@
 
     <body>
 
+        <?  if( isset($this->catNameAr[0]) ): ?> <span style="display:none;" id="opt-tag-main-cat" ><?=$this->catNameAr[0]?></span> <? endif; ?>
+        <?  if( isset($this->catNameAr[1]) ): ?> <span style="display:none;" id="opt-tag-sub-cat"  ><?=$this->catNameAr[1]?></span> <? endif; ?>
+        
         <div id="container">
 
             <div id="headernavigation">
@@ -35,7 +38,10 @@
                 <div class="navigation">
                     <ul class="firstnav-menu">
                         <? foreach ($main_menu_list as $main_link): ?>
-                            <li class="page_item page-item-372"><a href="/<?= $main_link['url_name'] ?>/"><?= $main_link['name'] ?></a></li>
+                            <li class="page_item page-item-372" catname="<?=$main_link['url_name']?>">
+                                <a href="/<?= $main_link['url_name'] ?>/"><?= $main_link['name'] ?></a>
+                                <div class="firstnav-menu-arrow"></div>
+                            </li>
                         <? endforeach; ?>
                     </ul>    
                 </div><!-- #navigation closer -->
@@ -58,8 +64,9 @@
                         <div id="categories">
                             <ul class="secondnav-menu">
                                 <? foreach ($second_menu_list as $second_menu_ar): ?>
-                                    <li class="cat-item cat-item-<?= $second_menu_ar['id'] ?>">
+                                    <li class="cat-item cat-item-<?= $second_menu_ar['id'] ?>" catname="<?=$second_menu_ar['url_name']?>">
                                         <a href="/<?= $second_menu_ar['full_uri'] ?>" ><?= $second_menu_ar['name'] ?></a>
+                                        <div class="secondnav-menu-arrow"></div>
                                     </li>
                                 <? endforeach; ?>   
                             </ul>
