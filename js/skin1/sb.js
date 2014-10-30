@@ -64,7 +64,7 @@ $( document ).ready(function(){
     );
     // </add url link to copy post>
     
-    $('.slider-block').bxSlider(
+    $('.slider-block, #right-top-news-slider').bxSlider(
         {
             speed: 1000,
             pause: 6000,

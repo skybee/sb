@@ -38,16 +38,16 @@ class main extends CI_Controller {
         $data_ar['meta']['title']       = $data_ar['main_cat_ar']['title'];
         
         $top_slider['articles']         = $this->article_m->get_top_slider_data($data_ar['main_cat_ar']['id'], 8, $this->catConfig['top_news_time'], $this->topSliderTxtLength, true, true); // 1.5 sec.
+        $right['right_top']             = $this->article_m->get_top_slider_data($data_ar['main_cat_ar']['id'], 5, $this->catConfig['right_top_news_time'], $this->topSliderTxtLength, true, true, 'right_top');
         $top_slider['main_cat_url']     = $data_ar['main_cat_ar']['url_name'];
-        
-        $last_news['last_news']         = $this->article_m->get_last_left_news( $data_ar['main_cat_ar']['id'], 50 ); // 1.5 sec.
+        $right['last_news']             = $this->article_m->get_last_left_news( $data_ar['main_cat_ar']['id'], 50 ); // 1.5 sec.
 
         $tpl_ar = $data_ar; //== !!! tmp    
         $tpl_ar['content']  = $this->load->view('component/main_latest_v', $data_ar, true);
         $tpl_ar['content'] .= $this->load->view('component/cat_listing_v', $data_ar, true);
         $tpl_ar['content'] .= $this->load->view('component/main_other_news_v', $data_ar, true);
         
-        $tpl_ar['right']        = $this->load->view('component/right_last_news_v', $last_news, true);
+        $tpl_ar['right']        = $this->load->view('component/right_last_news_v', $right, true);
         $tpl_ar['top_slider']   = $this->load->view('component/slider_top_v', $top_slider, true);
 
         $this->load->view('main_v', $tpl_ar);
@@ -83,14 +83,15 @@ class main extends CI_Controller {
         $data_ar['donor_rel']           = botRelNofollow();
 
         $top_slider['articles']         = $this->article_m->get_top_slider_data( $data_ar['cat_ar']['id'], 8, $this->catConfig['top_news_time'], $this->topSliderTxtLength, true, false);
-        $last_news['last_news']         = $this->article_m->get_last_left_news( $data_ar['cat_ar']['parent_id'], 20 );
+        $right['right_top']             = $this->article_m->get_top_slider_data( $data_ar['cat_ar']['parent_id'], 5, $this->catConfig['right_top_news_time'], $this->topSliderTxtLength, true, true, 'right_top');
+        $right['last_news']             = $this->article_m->get_last_left_news( $data_ar['cat_ar']['parent_id'], 20 );
         
 //        "<pre>".print_r($data_ar['cat_ar'])."</pre>\n";
         
         $tpl_ar                 = $data_ar; //== !!! tmp
         $tpl_ar['content']      = $this->load->view('page/doc_v', $data_ar, true);
         $tpl_ar['top_slider']   = $this->load->view('component/slider_top_v', $top_slider, true);
-        $tpl_ar['right']        = $this->load->view('component/right_last_news_v', $last_news, true);
+        $tpl_ar['right']        = $this->load->view('component/right_last_news_v', $right, true);
         $tpl_ar['meta']['og']   = $this->load->view('component/meta_og_v', $data_ar['doc_data'], true);
 
         $this->load->view('main_v', $tpl_ar);
@@ -117,13 +118,13 @@ class main extends CI_Controller {
         $data_ar['meta']['title']       = $data_ar['cat_ar']['title'].' - страница '.$page;
 
         $top_slider['articles']         = $this->article_m->get_top_slider_data( $data_ar['cat_ar']['id'], 8, $this->catConfig['top_news_time'], $this->topSliderTxtLength, true, false);
-        
-        $last_news['last_news']         = $this->article_m->get_last_left_news( $data_ar['cat_ar']['parent_id'], 50 );
+        $right['right_top']             = $this->article_m->get_top_slider_data( $data_ar['cat_ar']['parent_id'], 5, $this->catConfig['right_top_news_time'], $this->topSliderTxtLength, true, true, 'right_top');
+        $right['last_news']             = $this->article_m->get_last_left_news( $data_ar['cat_ar']['parent_id'], 50 );
         
         $tpl_ar                 = $data_ar; //== !!! tmp
         $tpl_ar['content']      = $this->load->view('page/cat_list_v', $data_ar, true);
         $tpl_ar['top_slider']   = $this->load->view('component/slider_top_v', $top_slider, true);
-        $tpl_ar['right']        = $this->load->view('component/right_last_news_v', $last_news, true);
+        $tpl_ar['right']        = $this->load->view('component/right_last_news_v', $right, true);
 
         $this->load->view('main_v', $tpl_ar);
     }
@@ -146,20 +147,21 @@ class main extends CI_Controller {
         $data_ar['footer_menu_list']    = $this->list_m->get_footer_cat_link();
         $data_ar['meta']['title']       = 'Поиск: &laquo;'.$searchStr.'&raquo;  - страница '.$page;
         
-        $top_slider['articles']         = $this->article_m->get_top_slider_data(1, 8, 90, 0, 350, true, true); // 1.5 sec.
+        $top_slider['articles']         = $this->article_m->get_top_slider_data(1, 8, $this->catConfig['right_top_news_time'], $this->topSliderTxtLength, true, true); // 1.5 sec.
+        $right['right_top']             = $this->article_m->get_top_slider_data(1, 5, $this->catConfig['right_top_news_time'], $this->topSliderTxtLength, true, true, 'right_top');
         
-        $last_news['last_news']         = $this->article_m->get_last_left_news( 1, 50 );
+        $right['last_news']              = $this->article_m->get_last_left_news( 1, 50 );
         
         //<Rename for cat list view>
         $data_ar['cat_ar']['p_name']    = 'Поиск';
         $data_ar['cat_ar']['name']      = $searchStr;
-        $data_ar['search_url_str']          = str_replace(' ', '+', $searchStr);
+        $data_ar['search_url_str']      = str_replace(' ', '+', $searchStr);
         //</Rename for cat list view>
         
         $tpl_ar                 = $data_ar; //== !!! tmp
         $tpl_ar['content']      = $this->load->view('page/cat_list_v', $data_ar, true);
         $tpl_ar['top_slider']   = $this->load->view('component/slider_top_v', $top_slider, true);
-        $tpl_ar['right']        = $this->load->view('component/right_last_news_v', $last_news, true);
+        $tpl_ar['right']        = $this->load->view('component/right_last_news_v', $right, true);
 
         $this->load->view('main_v', $tpl_ar);
     }

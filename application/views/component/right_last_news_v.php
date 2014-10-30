@@ -1,8 +1,35 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed'); ?>
 
 <h3 class="widget-title">
-    <span class="title">Реклама</span>
+    <span class="title">TOP News</span>
 </h3>
+
+<div class="right-top-news">
+    <div id="right-top-news-slider">
+        
+        <?
+            foreach($right_top as $article):
+                $newsUrl    = "/{$article['full_uri']}-{$article['id']}-{$article['url_name']}/";
+        ?>
+        
+        <div>
+            <div class="right-top-news-item">
+                <a href="<?=$newsUrl?>">
+                    <img src="/upload/images/medium/<?=$article['main_img']?>" onerror="imgError(this);" alt="" />
+                </a>
+                <div class="right-top-news-title">
+                    <?=$article['title']?>
+                </div>
+            </div>
+        </div>
+        
+        <?  endforeach; ?>
+    </div>
+</div>
+
+<!--<h3 class="widget-title">
+    <span class="title">Реклама</span>
+</h3>-->
 
 <div class="right_gad_block">
     <script type="text/javascript">loadGAd('right top');</script>

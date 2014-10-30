@@ -7,12 +7,8 @@
         <link rel="stylesheet" type="text/css" href="/css/skin1/style.css" />
         <link rel="stylesheet" type="text/css" href="/css/skin1/featured_long_style.css" />
         <link rel="stylesheet" type="text/css" href="/css/skin1/featured_long.css" />
-        <!--<link rel="stylesheet" type="text/css" href="/css/skin1/tabs.css" />-->
-        <!--<link rel="stylesheet" type="text/css" href="/css/skin1/firstnavigation.css" />-->
-        <!--<link rel="stylesheet" type="text/css" href="/css/skin1/secondnavigation.css" />-->
         <link rel="stylesheet" type="text/css" href="/css/skin1/default.css" />
         <link rel="stylesheet" type="text/css" href="/css/skin1/skin.css" />
-        <!--<link rel="stylesheet" type="text/css" href="/css/skin1/prettyPhoto.css" />-->
         <link rel="stylesheet" type="text/css" href="/css/skin1/magnific-popup.css" />
         <link rel="stylesheet" type="text/css" href="/css/skin1/jquery.bxslider.css" />
         <!--[if IE 7]>
@@ -24,11 +20,6 @@
         <script type='text/javascript' src='/js/skin1/jquery-1.8.3.min.js'></script>
         <script type='text/javascript' src='/js/skin1/jquery-ui.min.js'></script>
         <script type='text/javascript' src='/js/skin1/tabs.js'></script>
-        <!--<script type='text/javascript' src='/js/skin1/superfish.js'></script>-->
-        <!--<script type='text/javascript' src='/js/skin1/hoverIntent.js'></script>-->
-        <!--<script type='text/javascript' src='/js/skin1/custom.js'></script>-->
-        <!--<script type='text/javascript' src='/js/skin1/jquery.jcarousel.min.js'></script>-->
-        <!--<script type='text/javascript' src='/js/skin1/jquery.prettyPhoto.js'></script>-->
         <script type='text/javascript' src='/js/skin1/jquery.magnific-popup.min.js'></script>
         <script type='text/javascript' src='/js/skin1/jquery.bxslider.min.js'></script>
         <script type='text/javascript' src='/js/skin1/sb.js'></script>
