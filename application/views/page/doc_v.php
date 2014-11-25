@@ -21,7 +21,7 @@
         
         <div class="dd_right">
             Источник: &nbsp;&nbsp;
-            <a class="doc-donor-link" href="http://<?=$doc_data['d_host']?>/" target="_blank" style="background-image: url('http://favicon.yandex.net/favicon/<?=$doc_data['d_host']?>');">
+            <a class="doc-donor-link" href="http://<?=$doc_data['d_host']?>/" <?=$donor_rel;?> target="_blank" style="background-image: url('http://favicon.yandex.net/favicon/<?=$doc_data['d_host']?>');">
                 <?=$doc_data['d_name']?>
             </a>
         </div>

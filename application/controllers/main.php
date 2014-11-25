@@ -80,7 +80,7 @@ class main extends CI_Controller {
         $data_ar['second_menu_list']    = $this->list_m->get_cat($data_ar['cat_ar']['parent_id']);
         $data_ar['footer_menu_list']    = $this->list_m->get_footer_cat_link();
         $data_ar['meta']['title']       = $data_ar['cat_ar']['name'].': '.$data_ar['doc_data']['title'].' - Odnako.su';
-//        $data_ar['donor_rel']           = botRelNofollow();
+        $data_ar['donor_rel']           = botRelNofollow();
 
         $top_slider['articles']         = $this->article_m->get_top_slider_data( $data_ar['cat_ar']['id'], 8, $this->catConfig['top_news_time'], $this->topSliderTxtLength, true, false);
         $right['right_top']             = $this->article_m->get_top_slider_data( $data_ar['cat_ar']['parent_id'], 5, $this->catConfig['right_top_news_time'], $this->topSliderTxtLength, true, true, 'right_top');
