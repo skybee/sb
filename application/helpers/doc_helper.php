@@ -10,9 +10,9 @@ function getDescriptionFromText( string &$text, integer $length ){
 
 function botRelNofollow(){
     
-    $ip = $_SERVER['REMOTE_ADDR'];
+//    $ip = $_SERVER['REMOTE_ADDR'];
 //    $pattern    = "#^(127\.0|66\.249|203\.208|72\.14|209\.85)\.\d{1,3}\.\d{1,3}#i";
-    $parrent = "#(Yandex|google|rogerbot|Exabot|MJ12bot|DotBot|Gigabot|AhrefsBot|Yahoo|msnbot|bingbot|SolomonoBot|SemrushBot|Blekkobot)#i";
+    $pattern = "#(Yandex|google|rogerbot|Exabot|MJ12bot|DotBot|Gigabot|AhrefsBot|Yahoo|msnbot|bingbot|SolomonoBot|SemrushBot|Blekkobot)#i";
  
     $rel = '';
     
