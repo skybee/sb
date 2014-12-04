@@ -425,6 +425,7 @@ hr {
 #left div.single h1{
     border-left: 4px solid #009DDB;
     padding: 3px 0px 2px 10px;
+    line-height: 24px;
 }
 
 .header h2.doc-cat-title{
@@ -665,8 +666,9 @@ color:
     line-height: 16px;
 }
 #left div.single div.copy-url p{
-    font-size: 14px;
-    line-height: 22px;
+    font-size: 16px;
+    line-height: 24px;
+    /*margin: 20px 0px;*/
     color: #212121;
 }
 
@@ -1504,8 +1506,8 @@ margin-top: 6px;
 }
 
 #left div.single div.content, #page div.entry-content {
-	font-size:14px;
-	line-height:22px;
+	font-size:16px;
+	line-height:24px;
 }
 #left div.single div.content li,
 #left div.single div.content td{
@@ -1522,7 +1524,7 @@ margin-top: 6px;
 
 #left div.single div.content h3, #left div.single div.content h2{
     font-size: 16px !important;
-    line-height: 22px !important;
+    line-height: 26px !important;
 }
 
 #left div.single div.content ul,#left div.single div.content ol,#page div.entry-content ul,#page div.entry-content ol {
