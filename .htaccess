@@ -2,6 +2,11 @@
     RewriteEngine On
     RewriteBase /
     
+	#www redirect
+	RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
+	RewriteRule ^(.*)$ http://%1/$1 [R=301,L]
+	
+	#Close slash 
     RewriteRule ^([a-z_-\d/]*[^/])$ $1/ [NC,L,R=301]
     
     #load img from server
