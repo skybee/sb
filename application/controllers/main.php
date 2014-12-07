@@ -41,6 +41,9 @@ class main extends CI_Controller {
         $right['right_top']             = $this->article_m->get_top_slider_data($data_ar['main_cat_ar']['id'], 5, $this->catConfig['right_top_news_time'], $this->topSliderTxtLength, true, true, 'right_top');
         $top_slider['main_cat_url']     = $data_ar['main_cat_ar']['url_name'];
         $right['last_news']             = $this->article_m->get_last_left_news( $data_ar['main_cat_ar']['id'], 50 ); // 1.5 sec.
+        
+//        $this->load->helper('sape');
+//        $right['sape_link']    = getSapeLink();
 
         $tpl_ar = $data_ar; //== !!! tmp    
         $tpl_ar['content']  = $this->load->view('component/main_latest_v', $data_ar, true);
@@ -85,6 +88,9 @@ class main extends CI_Controller {
         $top_slider['articles']         = $this->article_m->get_top_slider_data( $data_ar['cat_ar']['id'], 8, $this->catConfig['top_news_time'], $this->topSliderTxtLength, true, false);
         $right['right_top']             = $this->article_m->get_top_slider_data( $data_ar['cat_ar']['parent_id'], 5, $this->catConfig['right_top_news_time'], $this->topSliderTxtLength, true, true, 'right_top');
         $right['last_news']             = $this->article_m->get_last_left_news( $data_ar['cat_ar']['parent_id'], 20 );
+        
+        $this->load->helper('sape');
+        $right['sape_link']    = getSapeLink();
         
 //        "<pre>".print_r($data_ar['cat_ar'])."</pre>\n";
         

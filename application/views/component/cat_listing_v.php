@@ -63,3 +63,13 @@
 
 <? endforeach; ?>
 
+<?
+//    if($_SERVER['REQUEST_URI'] == '/'){
+//        echo '<div style="display:none;">'."\n";
+//        for($i=1; $i<=20; $i++){
+//            echo '<a href="/sitemap/'.$i.'.html">Sitemap '.$i.'</a>'."\n";
+//        }
+//        echo '</div>';
+//    }
+?>
+

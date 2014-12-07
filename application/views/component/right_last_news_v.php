@@ -66,8 +66,8 @@
     endforeach;
 ?>
     
-    <!-- HC Link -->
-    <? if( $_SERVER['REQUEST_URI'] == '/' ): ?>
+    
+    <? if( $_SERVER['REQUEST_URI'] == '/' ): //HC Link ?>
         <div class="lnl_news">
             <span>
             </span>
@@ -80,7 +80,16 @@
             <a href="http://house-control.org.ua/category/kamera/" > Камеры для видеонаблюдения </a>
         </div>
     <? endif; ?>
-    <!-- /HC Link -->
+    
+    
+    <? if( isset($sape_link) && !empty($sape_link) ): //SPE Link?>
+        <div class="lnl_news">
+            <span>
+            </span>
+            <?=$sape_link?>
+        </div>
+    <? endif; ?>
+    
     
 </div>
 
