@@ -1,0 +1,23 @@
+
+@import url(http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300&subset=cyrillic,latin-ext);
+
+
+#featured .info a{
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-size: 28px;
+    line-height: 28px;
+}
+
+/*#left div.othernews #like-acle-slider .slider-block .right .small-desc h3 a{
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-size: 24px;
+    line-height: 26px;
+}
+#left div.othernews #like-acle-slider .slider-block .right .small-desc h3{
+    margin-bottom: 8px;
+}
+#left div.othernews #like-acle-slider .slider-block .right .small-desc p{
+    line-height: 20px;
+}*/
+
+

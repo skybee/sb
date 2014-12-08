@@ -106,6 +106,11 @@ $( document ).ready(function(){
 
 
 function loadGAd( blockName ){
+    
+        function getRandomInt(min, max){
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+    
         
         google_ad_client = "ca-pub-6096727633142370";
         
@@ -134,10 +139,22 @@ function loadGAd( blockName ){
             google_ad_height = 400;
         }
         if( blockName == 'right top' ){
-            /* Right Top Block */
-            google_ad_slot = "1853866844";
-            google_ad_width = 300;
-            google_ad_height = 250;
+            
+            // == A/B Test == //
+            var rndInt = getRandomInt(0,1000);
+            
+            if( rndInt < 500 ){
+                /* Right Top Big Block */
+                google_ad_slot = "4927119649";
+                google_ad_width = 300;
+                google_ad_height = 600;
+            }
+            else{
+                /* Right Top Block */
+                google_ad_slot = "1853866844";
+                google_ad_width = 300;
+                google_ad_height = 250;
+            }
         }
         
         document.write('<script type="text/javascript" src="//pagead2.googlesyndication.com/pagead/show_ads.js"></script>');

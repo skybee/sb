@@ -9,6 +9,7 @@
         <link rel="stylesheet" type="text/css" href="/css/skin1/featured_long.css" />
         <link rel="stylesheet" type="text/css" href="/css/skin1/default.css" />
         <link rel="stylesheet" type="text/css" href="/css/skin1/skin.css" />
+        <link rel="stylesheet" type="text/css" href="/css/skin1/font.css" />
         <link rel="stylesheet" type="text/css" href="/css/skin1/magnific-popup.css" />
         <link rel="stylesheet" type="text/css" href="/css/skin1/jquery.bxslider.css" />
         <!--[if IE 7]>
