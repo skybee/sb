@@ -141,20 +141,20 @@ function loadGAd( blockName ){
         if( blockName == 'right top' ){
             
             // == A/B Test == //
-            var rndInt = getRandomInt(0,1000);
+//            var rndInt = getRandomInt(0,1000);
             
-            if( rndInt < 500 ){
+//            if( rndInt < 500 ){
                 /* Right Top Big Block */
                 google_ad_slot = "4927119649";
                 google_ad_width = 300;
                 google_ad_height = 600;
-            }
-            else{
-                /* Right Top Block */
-                google_ad_slot = "1853866844";
-                google_ad_width = 300;
-                google_ad_height = 250;
-            }
+//            }
+//            else{
+//                /* Right Top Block */
+//                google_ad_slot = "1853866844";
+//                google_ad_width = 300;
+//                google_ad_height = 250;
+//            }
         }
         
         document.write('<script type="text/javascript" src="//pagead2.googlesyndication.com/pagead/show_ads.js"></script>');
