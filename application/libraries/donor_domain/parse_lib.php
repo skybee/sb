@@ -129,6 +129,7 @@ class parse_lib{
     
     function get_fname_from_url( $url ){
         $url = trim($url);
+        $url = preg_replace("#\.(jpg|jpeg|gif|png|bmp|tiff|js|css)\?\S+#i", ".$1", $url);
         $pattern = "#/([^/]+\.[a-z]{2,5})$#i";
         preg_match($pattern, $url, $fname_ar );
         

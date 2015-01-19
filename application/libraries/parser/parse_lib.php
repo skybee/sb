@@ -139,6 +139,7 @@ class parse_lib{
     
     function get_fname_from_url( $url ){
         $url = trim($url);
+        $url = preg_replace("#\.(jpg|jpeg|gif|png|bmp|tiff|js|css)\?\S+#i", ".$1", $url);
         $pattern = "#/([^/]+\.[a-z]{2,5})$#i";
         preg_match($pattern, $url, $fname_ar );
         
@@ -164,16 +165,10 @@ class parse_lib{
         $img_buffer     = $this->down_with_curl($absolute_url); //скачивание изображения
         file_put_contents( $savePathName, $img_buffer ); //сохранение изображения
         
-//        $absolute_url   = $this->uri2absolute($img_url, $base_url);
-//        $new_img_name   = rand(100,999999).'_'.$this->get_fname_from_url($absolute_url);
-//            
-//        $img_buffer     = $this->down_with_curl($absolute_url); //скачивание изображения
-//        file_put_contents( $this->real_img_dir.$new_img_name, $img_buffer ); //сохранение изображения
-        
         return $imgNameWithDatePath;
     }
     
-    function resizeImg( $resize = 'medium' ){
+    function resizeImg( $resize = 'medium', $sizeAr = false ){
         
         $pathToImg = $this->CI->dir_lib->getImgRdir().$this->lastLoadImgName;
         
@@ -200,45 +195,40 @@ class parse_lib{
         $config['width']            = $width;
         $config['height']           = $height;
         
-        $this->CI->image_lib->initialize($config);
-        $this->CI->image_lib->resize();
-    }
-    
-    function change_img_in_txt( $text, $base_url ){
-        $pattern = "#src=['\"]([\s\S]*?)['\"]#i";
-        preg_match_all($pattern, $text, $img_url_ar);
-        $img_url_ar = $img_url_ar[1];
-        
-        if( count($img_url_ar) < 1 )  return $text; //прекращение обработки текста и возврат оригинала, в случае если карттинки не найдены
-        
-        foreach( $img_url_ar as $img_url ){
-            $absolute_url   = $this->uri2absolute($img_url, $base_url);
-            $img_name       = $this->get_fname_from_url($absolute_url);
-            
-            if( empty($img_name) )  continue;
-            
-            
-            $imgPathName    = $this->CI->dir_lib->getImgRdir().rand(100,999999).'_'.$img_name;
-            $img_buffer     = $this->down_with_curl($absolute_url); //скачивание изображения
-            file_put_contents( $imgPathName, $img_buffer ); //сохранение изображения
-
-            $replace_img_ar['search'][]     = $img_url;
-            $replace_img_ar['replace'][]    = '/'.$imgPathName;
-            
-//            $new_img_name   = rand(100,999999).'_'.$img_name;
-//            $img_buffer     = $this->down_with_curl($absolute_url); //скачивание изображения
-//            file_put_contents( $this->real_img_dir.$new_img_name, $img_buffer ); //сохранение изображения
-//
-//            $replace_img_ar['search'][]     = $img_url;
-//            $replace_img_ar['replace'][]    = $this->img_dir.$new_img_name;
+        if( $sizeAr != false && $sizeAr['width'] > 10 && $sizeAr['height'] > 10 ){
+            $config['width']        = $sizeAr['width'];
+            $config['height']       = $sizeAr['height'];
         }
         
-        if( isset($replace_img_ar) )
-        $text = str_ireplace($replace_img_ar['search'], $replace_img_ar['replace'], $text);
+        $this->CI->image_lib->initialize($config);
+        $this->CI->image_lib->resize();
+    }  
+    
+    function change_img_in_txt( $text, $base_url ){
         
-        return $text;
+        $html_obj   = str_get_html($text);
+        $imgList    = $html_obj->find('img'); 
+        
+        if( count($imgList) < 1 ) return $text; //прекращение обработки текста и возврат оригинала, в случае если карттинки не найдены
+        
+        foreach($imgList as $imgObj){
+             $imgPathName   = $this->load_img($imgObj->src, $base_url);
+             $imgPathName   = '/upload/images/real/'.$imgPathName; //!-- get from dir_lib
+             
+             if( isset($imgObj->slider) && $imgObj->slider == 'slider' ){
+                 $this->resizeImg('small', array('width'=>110, 'height'=>300) );
+                 $smallImgUri       = $this->CI->dir_lib->getImgSdir().$this->lastLoadImgName;
+                 $imgObj->src       = '/'.$smallImgUri;
+                 $imgObj->realimg   = $imgPathName;
+             }
+             else{
+                 $imgObj->src       = $imgPathName; 
+             }
+        }
+        
+        return $html_obj->save();
     }
-        
+    
     function get_shingles_hash( $text, $shingle_length = 7 ){ //возвращает массив хэшей шинглов
         $text = mb_strtolower($text);
 //        $text = iconv('utf-8', 'cp1251//IGNORE', $text);
@@ -334,57 +324,57 @@ class parse_lib{
     }
     
     function insert_news( $data_ar, $count_word = 80 ){ //принимает массив array('url','img','title','text','date') и минимальный размер текста(колличество слов более 4 букв) ; 
-        $data_ar['text']    = $this->clear_txt( $data_ar['text'] );
-        $data_ar['title']   = mysql_real_escape_string( strip_tags( trim($data_ar['title']) ) );
-        $data_ar['donor']   = $this->get_donor_url( $data_ar['url'] );
-        $this_hash_ar       = $this->get_shingles_hash( $data_ar['text'] );
-        
-        if( count($this_hash_ar) < $count_word ){ echo "error #1 small text \n"; return FALSE;}
-        
-        $like_hash_list     = $this->get_like_news_hash( $this_hash_ar );
-        
-        if( $like_hash_list != false ){ //сравнение хешей
-            foreach( $like_hash_list as $news_id => $like_hash_ar ){
-                if( $this->comparison_shingles_hash($this_hash_ar, $like_hash_ar, 60) == true ){ //если найденно совпадение текста
-                    
-                    if( count($this_hash_ar) > count($like_hash_ar) ){ //если новый текст больше старого, то перезапись старого текста новым
-                        
-                        $data_ar['text'] = $this->change_img_in_txt($data_ar['text'], $data_ar['url']); //замена изображений в тексте
-                        $this->CI->db->query("  UPDATE `articles` 
-                                                SET 
-                                                    `title`         = '{$data_ar['title']}', 
-                                                    `text`          = '".mysql_real_escape_string($data_ar['text'])."',
-                                                    `donor_url`     = '{$data_ar['url']}',
-                                                    `donor_host`    = '{$data_ar['donor']}',    
-                                                    `shingles_hash` = '".serialize($this_hash_ar)."' 
-                                                WHERE `id`='{$news_id}' 
-                                             ");
-                        echo 'ОК - Запись перезаписана ID-'.$news_id.' - '.$data_ar['title']."\n";                        
-                    }
-                    echo "error #2 clone text. CloneID-".$news_id.' '.$data_ar['title']."\n";
-                    return FALSE;
-                }
-            }
-         }   
-         $data_ar['text']        = $this->change_img_in_txt($data_ar['text'], $data_ar['url']); //замена изображений в тексте
-         $data_ar['img_name']    = $this->load_img( $data_ar['img'], $data_ar['url']  );
-         $data_ar['url_name']    = seoUrl( $data_ar['title'] );
-            
-         $this->CI->db->query("  INSERT INTO `articles` 
-                                 SET
-                                    `title`         = '{$data_ar['title']}', 
-                                    `text`          = '".mysql_real_escape_string($data_ar['text'])."',
-                                    `img`           = '{$data_ar['img_name']}',
-                                    `date`          = '{$data_ar['date']}',
-                                    `url_name`      = '{$data_ar['url_name']}',
-                                    `donor_url`     = '{$data_ar['url']}',
-                                    `donor_host`    = '{$data_ar['donor']}',    
-                                    `shingles_hash` = '".serialize($this_hash_ar)."'  
-                               ");
-        echo 'ОК - Занесена новая новость ID# '.$this->CI->db->insert_id().' - '.$data_ar['title']."\n";
-        return TRUE;
+//        $data_ar['text']    = $this->clear_txt( $data_ar['text'] );
+//        $data_ar['title']   = mysql_real_escape_string( strip_tags( trim($data_ar['title']) ) );
+//        $data_ar['donor']   = $this->get_donor_url( $data_ar['url'] );
+//        $this_hash_ar       = $this->get_shingles_hash( $data_ar['text'] );
+//        
+//        if( count($this_hash_ar) < $count_word ){ echo "error #1 small text \n"; return FALSE;}
+//        
+//        $like_hash_list     = $this->get_like_news_hash( $this_hash_ar );
+//        
+//        if( $like_hash_list != false ){ //сравнение хешей
+//            foreach( $like_hash_list as $news_id => $like_hash_ar ){
+//                if( $this->comparison_shingles_hash($this_hash_ar, $like_hash_ar, 60) == true ){ //если найденно совпадение текста
+//                    
+//                    if( count($this_hash_ar) > count($like_hash_ar) ){ //если новый текст больше старого, то перезапись старого текста новым
+//                        
+//                        $data_ar['text'] = $this->change_img_in_txt($data_ar['text'], $data_ar['url']); //замена изображений в тексте
+//                        $this->CI->db->query("  UPDATE `articles` 
+//                                                SET 
+//                                                    `title`         = '{$data_ar['title']}', 
+//                                                    `text`          = '".mysql_real_escape_string($data_ar['text'])."',
+//                                                    `donor_url`     = '{$data_ar['url']}',
+//                                                    `donor_host`    = '{$data_ar['donor']}',    
+//                                                    `shingles_hash` = '".serialize($this_hash_ar)."' 
+//                                                WHERE `id`='{$news_id}' 
+//                                             ");
+//                        echo 'ОК - Запись перезаписана ID-'.$news_id.' - '.$data_ar['title']."\n";                        
+//                    }
+//                    echo "error #2 clone text. CloneID-".$news_id.' '.$data_ar['title']."\n";
+//                    return FALSE;
+//                }
+//            }
+//         }   
+//         $data_ar['text']        = $this->change_img_in_txt($data_ar['text'], $data_ar['url']); //замена изображений в тексте
+//         $data_ar['img_name']    = $this->load_img( $data_ar['img'], $data_ar['url']  );
+//         $data_ar['url_name']    = seoUrl( $data_ar['title'] );
+//            
+//         $this->CI->db->query("  INSERT INTO `articles` 
+//                                 SET
+//                                    `title`         = '{$data_ar['title']}', 
+//                                    `text`          = '".mysql_real_escape_string($data_ar['text'])."',
+//                                    `img`           = '{$data_ar['img_name']}',
+//                                    `date`          = '{$data_ar['date']}',
+//                                    `url_name`      = '{$data_ar['url_name']}',
+//                                    `donor_url`     = '{$data_ar['url']}',
+//                                    `donor_host`    = '{$data_ar['donor']}',    
+//                                    `shingles_hash` = '".serialize($this_hash_ar)."'  
+//                               ");
+//        echo 'ОК - Занесена новая новость ID# '.$this->CI->db->insert_id().' - '.$data_ar['title']."\n";
+//        return TRUE;
     }
-    
+        
     static function comment_tags($str){
         $str = htmlspecialchars($str, ENT_NOQUOTES, 'UTF-8');
         return $str;

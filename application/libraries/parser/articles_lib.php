@@ -25,6 +25,7 @@ class articles_lib{
             case '4pda.ru':                     return new parse4PDAList( $this->scanUrl );   
             case 'www.computerra.ru':           return new parseComputerraList( $this->scanUrl );     
             case 'supreme2.ru':                 return new parseSupreme2List( $this->scanUrl );
+            case 'hochu.ua':                    return new parseHochuList( $this->scanUrl );
             default: return false;
         }
     }
@@ -265,4 +266,33 @@ class  parseSupreme2List extends parseArticleList{
         return $data;
     }
 }
+
+class  parseHochuList extends parseArticleList{
+    
+    function __construct($url) {
+        parent::__construct($url);
+    }
+    
+    protected function getUrlTitleImgFomPage() {
+        if( !is_object($this->html_obj->find('.ca__item',0) ) ) return false;
+        
+        $i=0;
+        foreach( $this->html_obj->find('.ca__item') as $list ){
+            
+            $data[$i]['url']        =  $list->find('h2.ca__title a',0)->href;
+            
+            if( is_object($list->find('.ca__image img',0)) ){
+                $data[$i]['img']    =  $list->find('.ca__image img',0)->src;
+                $data[$i]['img']    =  preg_replace("#\.(jpg|jpeg|gif|png)\?\S+#i", ".$1", $data[$i]['img']);
+            }        
+            else{
+                $data[$i]['img']    =  '';
+            }
+            $i++;
+        }
+          
+        return $data;
+    }
+}
+
 

@@ -20,7 +20,7 @@ class parser_m extends CI_Model{
         $query = $this->db->query(" SELECT `scan_url`.*, `donor`.`host` "
                                     . "FROM `scan_url`, `donor` "
                                     . "WHERE `scan_url`.`scan`=0 AND `donor`.`id` = `scan_url`.`donor_id` "
-                                    . "ORDER BY `scan_url`.`date` ASC LIMIT {$limit} ");                            
+                                    . "ORDER BY `scan_url`.`date` DESC LIMIT {$limit} ");                            
         
         if( $query->num_rows() < 1 ) return FALSE;
         

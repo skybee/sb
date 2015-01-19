@@ -13,7 +13,19 @@ class Tmp extends CI_Controller{
         echo 'Tmp Index Controller';
     }
     
-    function chenge_cat_uri( $cat_id ){
+    function _chenge_all_cat_uri(){
+        $query = $this->db->query("SELECT `id` FROM  `category` ORDER BY  `id`");
+        
+        foreach ($query->result_array() as $row){
+            $this->chenge_cat_uri( $row['id'] );
+        }
+        
+        echo '<br /> Все изменения завершены<br /><br />';
+        
+        $this->change_sub_cat_id();
+    }
+      
+    private function chenge_cat_uri( $cat_id ){
         $this->load->model('category_m');
         
         $cat_url = $this->category_m->change_cat_full_uri( $cat_id );
@@ -25,14 +37,36 @@ class Tmp extends CI_Controller{
             echo 'URL не изменен ID: '.$cat_id.'<br />';
         }
     }
-    
-    function chenge_all_cat_uri(){
-        $query = $this->db->query("SELECT `id` FROM  `category` ORDER BY  `id`");
+       
+    private function get_sub_cat_id( $id = 0 ){
+        $sql        = "SELECT `id` FROM `category` WHERE `parent_id` = '{$id}' ";
+        $query      = $this->db->query( $sql );
+        $pIdList    = '';
         
-        foreach ($query->result_array() as $row){
-            $this->chenge_cat_uri( $row['id'] );
+        if( $query->num_rows() < 1 ) return ''; 
+        
+        foreach( $query->result_array() as $row){
+            $pIdList   .= ','.$row['id'];
+            $query2     = $this->db->query("SELECT `id` FROM `category` WHERE `parent_id` = '{$row['id']}'");
+            if( $query2->num_rows() > 0 ){
+                $pIdList .= ','.$this->get_sub_cat_id( $row['id'] );
+            }
         }
         
-        echo '<br /> Все изменения завершены';
+        return trim( $pIdList, ',');
+    }
+    
+    private function change_sub_cat_id(){
+        $sql = "SELECT `id` FROM `category` ORDER BY `id` ";
+        $query = $this->db->query($sql);
+        
+        foreach( $query->result_array() as $row ){
+            $subId = $this->get_sub_cat_id($row['id']);
+            
+            if( !empty($subId) ){
+                $this->db->query("UPDATE `category` SET `sub_cat_id`='{$subId}' WHERE `id` = '{$row['id']}' ");
+                echo 'ID: '.$row['id']."<br />\n".$subId."<br /><br />\n\n";
+            }
+        }
     }
 }

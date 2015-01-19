@@ -31,8 +31,9 @@ class main extends CI_Controller {
         $this->output->cache( $this->catConfig['cache_time']['main_page'] );
 
         $data_ar['main_cat_ar']         = $this->article_m->get_cat_data_from_url_name($cat_name);
+        
         $data_ar['main_menu_list']      = $this->list_m->get_cat(0);
-        $data_ar['second_menu_list']    = $this->list_m->get_cat($data_ar['main_cat_ar']['id']);
+        $data_ar['second_menu_list']    = $this->list_m->get_sCat_from_name($this->catNameAr[0]);
         $data_ar['footer_menu_list']    = $this->list_m->get_footer_cat_link();
         $data_ar['mainpage_cat_list']   = $this->article_m->get_mainpage_cat_news($data_ar['second_menu_list']); // 9.5 sec.
         $data_ar['meta']['title']       = $data_ar['main_cat_ar']['title'];
@@ -42,13 +43,10 @@ class main extends CI_Controller {
         $top_slider['main_cat_url']     = $data_ar['main_cat_ar']['url_name'];
         $right['last_news']             = $this->article_m->get_last_left_news( $data_ar['main_cat_ar']['id'], 50 ); // 1.5 sec.
         
-//        $this->load->helper('sape');
-//        $right['sape_link']    = getSapeLink();
-
         $tpl_ar = $data_ar; //== !!! tmp    
         $tpl_ar['content']  = $this->load->view('component/main_latest_v', $data_ar, true);
         $tpl_ar['content'] .= $this->load->view('component/cat_listing_v', $data_ar, true);
-        $tpl_ar['content'] .= $this->load->view('component/main_other_news_v', $data_ar, true);
+        $tpl_ar['content'] .= $this->load->view('component/main_other_news_v', $data_ar, true);// .'<div>'.$msg.'</div>';
         
         $tpl_ar['right']        = $this->load->view('component/right_last_news_v', $right, true);
         $tpl_ar['top_slider']   = $this->load->view('component/slider_top_v', $top_slider, true);
@@ -75,12 +73,11 @@ class main extends CI_Controller {
             exit();
         }
         
-        
         $data_ar['cat_ar']              = $this->category_m->get_cat_data_from_id($data_ar['doc_data']['cat_id']);
-        $data_ar['like_articles']       = $this->article_m->get_like_articles( $data_ar['doc_data']['id'], $data_ar['cat_ar']['parent_id'], $data_ar['doc_data']['title'], 9, $this->catConfig['like_news_day'], $data_ar['doc_data']['date'] );
+        $data_ar['like_articles']       = $this->article_m->get_like_articles( $data_ar['doc_data']['id'], $data_ar['doc_data']['cat_id'] /*$data_ar['cat_ar']['parent_id']*/, $data_ar['doc_data']['title'], 9, $this->catConfig['like_news_day'], $data_ar['doc_data']['date'] );
         
         $data_ar['main_menu_list']      = $this->list_m->get_cat(0);
-        $data_ar['second_menu_list']    = $this->list_m->get_cat($data_ar['cat_ar']['parent_id']);
+        $data_ar['second_menu_list']    = $this->list_m->get_sCat_from_name($this->catNameAr[0]);
         $data_ar['footer_menu_list']    = $this->list_m->get_footer_cat_link();
         $data_ar['meta']['title']       = $data_ar['cat_ar']['name'].': '.$data_ar['doc_data']['title'].' - Odnako.su';
         $data_ar['donor_rel']           = botRelNofollow();
@@ -92,10 +89,8 @@ class main extends CI_Controller {
         $this->load->helper('sape');
         $right['sape_link']    = getSapeLink();
         
-//        "<pre>".print_r($data_ar['cat_ar'])."</pre>\n";
-        
         $tpl_ar                 = $data_ar; //== !!! tmp
-        $tpl_ar['content']      = $this->load->view('page/doc_v', $data_ar, true);
+        $tpl_ar['content']      = $this->load->view('page/doc_v', $data_ar, true); // .'<div>'.$msg.'</div>';
         $tpl_ar['top_slider']   = $this->load->view('component/slider_top_v', $top_slider, true);
         $tpl_ar['right']        = $this->load->view('component/right_last_news_v', $right, true);
         $tpl_ar['meta']['og']   = $this->load->view('component/meta_og_v', $data_ar['doc_data'], true);
@@ -115,11 +110,11 @@ class main extends CI_Controller {
         $data_ar['news_page_list']      = $this->article_m->get_page_list($data_ar['cat_ar']['id'], $page, 15, 250 );
         $data_ar['pager_ar']            = $this->article_m->get_pager_ar( $data_ar['cat_ar']['id'], $page, 15, 4);
         $data_ar['page_nmbr']           = $page;
-        
+                
         if (!$data_ar['news_page_list'])
             show_404();
         $data_ar['main_menu_list']      = $this->list_m->get_cat(0);
-        $data_ar['second_menu_list']    = $this->list_m->get_cat($data_ar['cat_ar']['parent_id']);
+        $data_ar['second_menu_list']    = $this->list_m->get_sCat_from_name($this->catNameAr[0]);
         $data_ar['footer_menu_list']    = $this->list_m->get_footer_cat_link();
         $data_ar['meta']['title']       = $data_ar['cat_ar']['title'].' - страница '.$page;
 

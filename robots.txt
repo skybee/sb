@@ -3,6 +3,7 @@ Disallow: /search/
 
 User-agent: Yandex
 Disallow: /search/
+Disallow: /women/
 Host: odnako.su
 
 User-agent: Mediapartners-Google

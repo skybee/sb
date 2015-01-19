@@ -33,3 +33,9 @@ $config['category']['hi-tech']['top_news_time']                     = 24*30; // 
 $config['category']['hi-tech']['right_top_news_time']               = 24*10; // hour
 // </hi-tech>
 
+// <women>
+$config['category']['women'] = $config['category']['hi-tech'];
+$config['category']['women']['top_news_time']                       = 24*90; // hour
+$config['category']['women']['right_top_news_time']                 = 24*90; // hour
+// </women>
+

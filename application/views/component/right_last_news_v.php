@@ -54,12 +54,13 @@
     foreach ($last_news['all'] as $lnews ):
 ?>
     <div class="lnl_news">
+        <!--
         <span>
-            <?=$lnews['date_ar']['time']?> 
-            <!--<span><?//=$lnews['s_cat_name']?></span>-->
+            <?#=$lnews['date_ar']['time']?> 
         </span>
+        -->
         <a href="<?="/{$lnews['full_uri']}-{$lnews['id']}-{$lnews['url_name']}/"?>">
-            : &nbsp;<?=$lnews['title']?>
+            <?=$lnews['title']?>
         </a>    
     </div>
 <?

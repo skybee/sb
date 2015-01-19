@@ -667,7 +667,7 @@ color:
 }
 #left div.single div.copy-url p{
     font-size: 16px;
-    line-height: 24px;
+    line-height: 1.5em;
     /*margin: 20px 0px;*/
     color: #212121;
 }
@@ -1507,7 +1507,7 @@ margin-top: 6px;
 
 #left div.single div.content, #page div.entry-content {
 	font-size:16px;
-	line-height:24px;
+	line-height: 1.5em;
 }
 #left div.single div.content li,
 #left div.single div.content td{
@@ -1524,7 +1524,7 @@ margin-top: 6px;
 
 #left div.single div.content h3, #left div.single div.content h2{
     font-size: 16px !important;
-    line-height: 26px !important;
+    line-height: 1.5em !important;
 }
 
 #left div.single div.content ul,#left div.single div.content ol,#page div.entry-content ul,#page div.entry-content ol {
@@ -3382,5 +3382,43 @@ img.alignleft,a img.alignleft {
 }
 .secondnav-menu li.sub-nav-cat-active .secondnav-menu-arrow{ display: block; }
 /* </nav cat arrow> */ 
+
+/* <sub cat> */
+.secondnav-menu ul.secondnav-drop-cat{
+/*    width: 100px; 
+    height: 180px; */
+    /*overflow: hidden;*/ 
+    /*background-color: #ff5b5b;*/
+    
+    /*border: #009DDB 1px dashed;*/
+    position: absolute;
+    display: none;
+    padding-top: 5px;
+}
+.secondnav-menu li:hover  ul.secondnav-drop-cat{ display: block;}
+#categories .secondnav-menu ul.secondnav-drop-cat li{
+    border: 0 !important;
+    float: none;
+    position: static;
+    white-space: nowrap;
+    background-color: #0e0e0e;
+    opacity: 0.9;
+    border-bottom: #009DDB 1px solid !important;
+}
+#categories .secondnav-menu ul.secondnav-drop-cat li a:hover{ 
+    background-image: none; 
+}
+#categories .secondnav-menu ul.secondnav-drop-cat li:hover a{
+    padding-left: 21px;
+    padding-right: 21px;
+}
+#categories .secondnav-menu ul.secondnav-drop-cat li:hover{
+    background: none;
+    background-color: #0e0e0e;
+    border-left: #009DDB 3px solid !important;
+    border-right: #009DDB 3px solid !important;
+    opacity: 0.95;
+}
+/* </sub cat> */
 
 /*============== </My> ==============*/

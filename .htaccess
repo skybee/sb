@@ -10,8 +10,8 @@
     RewriteRule ^([a-z_-\d/]*[^/])$ $1/ [NC,L,R=301]
     
     #load img from server
-    RewriteCond %{HTTP_HOST} ^sb\.lh$ [NC]
-    RewriteRule ^(.*?\.(png|jpg|jpeg|gif))$ http://odnako.su/$1 [L]
+#    RewriteCond %{HTTP_HOST} ^sb\.lh$ [NC]
+#    RewriteRule ^(.*?\.(png|jpg|jpeg|gif))$ http://odnako.su/$1 [L]
 
     #Removes access to the system folder by users.
     #Additionally this will allow you to create a System.php controller,

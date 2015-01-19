@@ -31,6 +31,7 @@ class parse_page_lib{
             case '4pda.ru':                     return 'parse4PDA';
             case 'www.computerra.ru':           return 'parseComputerra';    
             case 'supreme2.ru':                 return 'parseSupreme';
+            case 'hochu.ua':                    return 'parseHochu';    
             default: return false;
         }
     }
@@ -674,6 +675,64 @@ class parseSupreme extends parse_page{
         }
         
         return $date;
+    }
+}
+
+class parseHochu extends parse_page{
+    
+    function parseDOM() {
+        
+        if( is_object( $this->html_obj->find('.maintext h1',0) ) ){
+            $this->data['title']    = $this->html_obj->find('.maintext h1',0)->innertext;
+        }
+        
+        $this->cleaner->delAll('#block_similar');
+        
+        if( is_object($this->html_obj->find('.scrollable-photo-slide .items .one-photo .photo_link img',0) ) ){
+            $this->sliderImgReplace();
+        }
+        
+        if( is_object( $this->html_obj->find('.article-content',0) ) ){
+            $this->data['text']     = $this->html_obj->find('.article-content',0)->innertext;
+            $this->data['text']     = preg_replace("#<em[\s\S]*?>\s*Следите за нашими новостями в соцсетях[\s\S]*?</em>#i", '', $this->data['text']);
+        }
+        
+        if( is_object( $this->html_obj->find('span.date',0) ) ){
+            $this->data['date'] = $this->getDate( $this->html_obj->find('span.date',0)->innertext );
+        }
+    }
+    
+    private function getDate( $dateStr ){
+        $date = false;
+        $pattern = "#(\d{1,2})\.(\d{1,2})\.(\d{4})#i";
+        if( preg_match($pattern, $dateStr, $matches) ){
+//            echo '<pre>'.print_r($matches,1).'</pre>';
+            
+            $day = $matches[1];
+            if( strlen($day) < 2 ) $day = '0'.$day;
+            
+            $month = $matches[2];
+            if( strlen($month) < 2 ) $month = '0'.$month;
+            
+            $year = $matches[3];
+            
+            $date = $year.'-'.$month.'-'.$day.' '.rand(10,22).':00:00';
+            
+            $date = date("Y-m-d H:i:s", strtotime( "-2 day", strtotime($date) ) );
+        }
+        
+        return $date;
+    }
+    
+    private function sliderImgReplace( ){
+        $imgList = $this->html_obj->find('.scrollable-photo-slide .items .one-photo .photo_link img');
+        
+        foreach($imgList as $imgObj){
+            $smallImgSrc    = $imgObj->src;
+            $bigImgSrc      = str_ireplace('cropr_102x102', 'cropm_568x568', $smallImgSrc);
+            $imgObj->src    = $bigImgSrc;
+            $imgObj->slider = 'slider';
+        }
     }
 }
 

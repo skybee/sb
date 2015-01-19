@@ -68,6 +68,14 @@
                                     <li class="cat-item cat-item-<?= $second_menu_ar['id'] ?>" catname="<?=$second_menu_ar['url_name']?>">
                                         <a href="/<?= $second_menu_ar['full_uri'] ?>" ><?= $second_menu_ar['name'] ?></a>
                                         <div class="secondnav-menu-arrow"></div>
+                                        
+                                        <? if( isset($second_menu_ar['sub_cat_list']) ): ?>
+                                        <ul class="secondnav-drop-cat">
+                                            <? foreach($second_menu_ar['sub_cat_list'] as $third_menu_ar): ?>
+                                            <li><a href="/<?= $third_menu_ar['full_uri'] ?>" ><?= $third_menu_ar['name'] ?></a></li>
+                                            <? endforeach; ?>
+                                        </ul>
+                                        <? endif; ?>
                                     </li>
                                 <? endforeach; ?>   
                             </ul>

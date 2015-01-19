@@ -18,6 +18,36 @@ class list_m extends CI_Model{
         return $result_ar;
     }
     
+    function get_sCat_from_name( $catName ){
+        
+        if( empty($catName) ) $catName = 'news';
+        
+        $cacheName = 's_cat_'.$catName;
+        
+        if( !$result_ar = $this->cache->file->get($cacheName) ){
+            $query = $this->db->query(" SELECT `category`.* "
+                                        . " FROM `category`, `category` AS `p_cat` "
+                                        . " WHERE "
+                                        . " `p_cat`.`url_name`='{$catName}'  "
+                                        . " AND "
+                                        . " `category`.`parent_id` = `p_cat`.id "
+                                        . " ORDER BY `category`.`sort` " );
+
+            $result_ar = array();
+
+            foreach( $query->result_array() as $row ){
+                if( !empty($row['sub_cat_id']) ){
+                    $row['sub_cat_list'] = $this->get_cat( $row['id'] );
+                }
+                $result_ar[] = $row;
+            }
+            
+            $this->cache->file->save($cacheName, $result_ar, 600 );
+        }
+        
+        return $result_ar;
+    }
+    
     function get_footer_cat_link(){
         $cacheName = 'footer_cat';
         

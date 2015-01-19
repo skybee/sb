@@ -1,12 +1,13 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
+set_time_limit( 60 ); 
+
 class Main extends CI_Controller
 {
     
     function __construct() {
         parent::__construct();
         
-        set_time_limit( 60 ); 
 //        exit('123');
         
         $this->load->database();
@@ -86,8 +87,8 @@ class Main extends CI_Controller
             $this->parser_m->set_url_scaning( $news_ar['id'] );
 			
             #<for test>
-//            $news_ar['url']     = 'http://supreme2.ru/5804-rico/';  
-//            $news_ar['host']    = 'supreme2.ru';
+//            $news_ar['url']     = 'http://hochu.ua/cat-fashion/news/article-56880-chto-novogo-kollektsiya-sayya-resort-2015/';  
+//            $news_ar['host']    = 'hochu.ua';
             #</for test>
             
             $html = $this->news_parser_lib->down_with_curl( $news_ar['url'] );
@@ -104,9 +105,9 @@ class Main extends CI_Controller
             $insert_data['cat_id']          = $news_ar['cat_id'];
             $insert_data['donor_id']        = $news_ar['donor_id'];
             
-//            if( !isset($insert_data['date']) || $insert_data['date'] == false ){
+            if( !isset($insert_data['date']) || $insert_data['date'] == false ){
                 $insert_data['date']            = date("Y-m-d H:i:s");
-//            }
+            }
             
             if( !empty($news_ar['main_img_url']) && empty($insert_data['img']) ){ 
                 $insert_data['img']         = $news_ar['main_img_url'];
@@ -121,6 +122,7 @@ class Main extends CI_Controller
             $this->news_parser_lib->insert_news( $insert_data );
     
             flush(); $i++;
+//            sleep(5);
         }    
     }
     
@@ -135,8 +137,8 @@ class Main extends CI_Controller
         
         echo '<pre>'.print_r( $scanUrl, 1 ).'</pre>';
         
-//        $scanUrl['url']         = 'http://www.easycom.com.ua/storag/';
-//        $scanUrl['host']        = 'www.easycom.com.ua';
+//        $scanUrl['url']         = 'http://hochu.ua/cat-beauty/face/';
+//        $scanUrl['host']        = 'hochu.ua';
         
         $this->articles_lib->setScanUrl( $scanUrl['url'] );
         $data = $this->articles_lib->getData( $scanUrl['host'] );
@@ -151,11 +153,14 @@ class Main extends CI_Controller
     }
       
     function _get_old_articles_url(){
+        set_time_limit(1800);
+        if( $_SERVER['REMOTE_ADDR'] != '109.86.165.207' && $_SERVER['REMOTE_ADDR'] != '127.0.0.1' ) exit('IP Not Allow');
+        
         $this->load->library('parser/articles_lib');
         
-        $countPage = 6;
+        $countPage = 22; 
         
-        for($page=2; $page <= $countPage; $page++){
+        for($page=1; $page <= $countPage; $page++){
             
 //            if( $page == 1 ){
 //            $scanUrl['url']         = 'http://compulenta.computerra.ru/tehnika/computers/';}
@@ -196,15 +201,26 @@ class Main extends CI_Controller
 //            $scanUrl['cat_id']      = 22;
             
             
+//            if( $page == 1 ){
+//                $scanUrl['url']     = 'http://supreme2.ru/category/cameras/';
+//            }
+//            else{
+//                $scanUrl['url']     = 'http://supreme2.ru/category/cameras/page/'.$page.'/';
+//            }
+//            $scanUrl['host']        = 'supreme2.ru';
+//            $scanUrl['donor_id']    = 14;
+//            $scanUrl['cat_id']      = 23;  
+            
+            
             if( $page == 1 ){
-                $scanUrl['url']     = 'http://supreme2.ru/category/cameras/';
+                $scanUrl['url']     = 'http://hochu.ua/cat-specprojects/hochu-svadebnyi-sezon/';
             }
             else{
-                $scanUrl['url']     = 'http://supreme2.ru/category/cameras/page/'.$page.'/';
+                $scanUrl['url']     = 'http://hochu.ua/cat-specprojects/hochu-svadebnyi-sezon/order-date/period-all/page-'.$page.'/';
             }
-            $scanUrl['host']        = 'supreme2.ru';
-            $scanUrl['donor_id']    = 14;
-            $scanUrl['cat_id']      = 23;            
+            $scanUrl['host']        = 'hochu.ua';
+            $scanUrl['donor_id']    = 16;
+            $scanUrl['cat_id']      = 48; 
 
             $this->articles_lib->setScanUrl( $scanUrl['url'] );
             $data = $this->articles_lib->getData( $scanUrl['host'] );
