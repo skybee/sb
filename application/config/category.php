@@ -24,7 +24,7 @@ $config['category']['news']['science']                              = $config['c
 
 
 // <hi-tech>
-$config['category']['hi-tech']['cache_time']['main_page']           = 30; //minutes
+$config['category']['hi-tech']['cache_time']['main_page']           = 10; //minutes
 $config['category']['hi-tech']['cache_time']['top_slider']          = 60;
 //$config['category']['hi-tech']['cache_time']['right_top_news']      = 60;
 $config['category']['hi-tech']['cache_time']['right_last_news']     = 10;
@@ -34,8 +34,12 @@ $config['category']['hi-tech']['right_top_news_time']               = 24*10; // 
 // </hi-tech>
 
 // <women>
-$config['category']['women'] = $config['category']['hi-tech'];
-$config['category']['women']['top_news_time']                       = 24*90; // hour
-$config['category']['women']['right_top_news_time']                 = 24*90; // hour
+$config['category']['women']['cache_time']['main_page']           = 10; //minutes
+$config['category']['women']['cache_time']['top_slider']          = 60;
+//$config['category']['women']['cache_time']['right_top_news']      = 60;
+$config['category']['women']['cache_time']['right_last_news']     = 10;
+$config['category']['women']['like_news_day']                     = 730; // +/- cnt day
+$config['category']['women']['top_news_time']                     = 24*730; // hour
+$config['category']['women']['right_top_news_time']               = 24*730; // hour
 // </women>
 
