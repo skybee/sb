@@ -26,6 +26,8 @@ class articles_lib{
             case 'www.computerra.ru':           return new parseComputerraList( $this->scanUrl );     
             case 'supreme2.ru':                 return new parseSupreme2List( $this->scanUrl );
             case 'hochu.ua':                    return new parseHochuList( $this->scanUrl );
+            case 'www.goodhouse.ru':            return new parseGoodhousList( $this->scanUrl );
+            case 'lady.tsn.ua':                 return new parseLadyTsnUaList( $this->scanUrl );    
             default: return false;
         }
     }
@@ -288,6 +290,53 @@ class  parseHochuList extends parseArticleList{
             else{
                 $data[$i]['img']    =  '';
             }
+            $i++;
+        }
+          
+        return $data;
+    }
+}
+
+class parseGoodhousList extends parseArticleList{
+    
+    function __construct($url) {
+        parent::__construct($url);
+    }
+    
+    protected function getUrlTitleImgFomPage() {
+        if( !is_object($this->html_obj->find('.b-catalog',0) ) ) return false;
+        
+        $i=0;
+        foreach( $this->html_obj->find('.b-catalog a.section__item__pic') as $list ){
+            $data[$i]['url']        =  $list->href;
+            
+            if( is_object($list->find('img',0)) ){
+                $data[$i]['img']    =  $list->find('img',0)->src;
+            }        
+            else{
+                $data[$i]['img']    =  '';
+            }
+            $i++;
+        }
+          
+        return $data;
+    }
+}
+
+class parseLadyTsnUaList extends parseArticleList{
+    
+    function __construct($url) {
+        parent::__construct($url);
+    }
+    
+    protected function getUrlTitleImgFomPage() {
+        if( !is_object($this->html_obj->find('.content ul.list li.item',0) ) ) return false;
+        
+        $i=0;
+        foreach( $this->html_obj->find('.content ul.list li.item h2.title a') as $list ){
+            $data[$i]['url']    =  $list->href;
+            $data[$i]['img']    =  '';
+            
             $i++;
         }
           

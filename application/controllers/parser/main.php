@@ -87,8 +87,8 @@ class Main extends CI_Controller
             $this->parser_m->set_url_scaning( $news_ar['id'] );
 			
             #<for test>
-//            $news_ar['url']     = 'http://hochu.ua/cat-fashion/news/article-56880-chto-novogo-kollektsiya-sayya-resort-2015/';  
-//            $news_ar['host']    = 'hochu.ua';
+//            $news_ar['url']     = 'http://lady.tsn.ua/krasota/fitnes/kak-izbavitsya-ot-zhira-na-bokah-spine-i-plechah-308322.html';  
+//            $news_ar['host']    = 'lady.tsn.ua';
             #</for test>
             
             $html = $this->news_parser_lib->down_with_curl( $news_ar['url'] );
@@ -137,13 +137,15 @@ class Main extends CI_Controller
         
         echo '<pre>'.print_r( $scanUrl, 1 ).'</pre>';
         
-//        $scanUrl['url']         = 'http://hochu.ua/cat-beauty/face/';
-//        $scanUrl['host']        = 'hochu.ua';
+//        $scanUrl['url']         = 'http://lady.tsn.ua/krasota/fitnes';
+//        $scanUrl['host']        = 'lady.tsn.ua';
+//        $scanUrl['cat_id']      = 43;
+//        $scanUrl['donor_id']    = 18;
         
         $this->articles_lib->setScanUrl( $scanUrl['url'] );
         $data = $this->articles_lib->getData( $scanUrl['host'] );
         
-//        echo '<pre>'.print_r( $data, 1 ).'</pre>'; exit();
+        echo '<pre>'.print_r( $data, 1 ).'</pre>'; 
         
         if( $data == null ) exit("No URLs to add");
         
@@ -158,9 +160,9 @@ class Main extends CI_Controller
         
         $this->load->library('parser/articles_lib');
         
-        $countPage = 22; 
+        $countPage = 21; 
         
-        for($page=1; $page <= $countPage; $page++){
+        for($page=2; $page <= $countPage; $page++){
             
 //            if( $page == 1 ){
 //            $scanUrl['url']         = 'http://compulenta.computerra.ru/tehnika/computers/';}
@@ -212,15 +214,37 @@ class Main extends CI_Controller
 //            $scanUrl['cat_id']      = 23;  
             
             
+//            if( $page == 1 ){
+//                $scanUrl['url']     = 'http://hochu.ua/cat-specprojects/hochu-svadebnyi-sezon/';
+//            }
+//            else{
+//                $scanUrl['url']     = 'http://hochu.ua/cat-specprojects/hochu-svadebnyi-sezon/order-date/period-all/page-'.$page.'/';
+//            }
+//            $scanUrl['host']        = 'hochu.ua';
+//            $scanUrl['donor_id']    = 16;
+//            $scanUrl['cat_id']      = 48;
+            
+            
+//            if( $page == 1 ){
+//                $scanUrl['url']     = 'http://www.goodhouse.ru/style/trend/';
+//            }
+//            else{
+//                $scanUrl['url']     = 'http://www.goodhouse.ru/style/trend/?PAGEN_1='.$page;
+//            }
+//            $scanUrl['host']        = 'www.goodhouse.ru';
+//            $scanUrl['donor_id']    = 17;
+//            $scanUrl['cat_id']      = 25; 
+            
+            
             if( $page == 1 ){
-                $scanUrl['url']     = 'http://hochu.ua/cat-specprojects/hochu-svadebnyi-sezon/';
+                $scanUrl['url']     = 'http://lady.tsn.ua/dom_i_deti/deti';
             }
             else{
-                $scanUrl['url']     = 'http://hochu.ua/cat-specprojects/hochu-svadebnyi-sezon/order-date/period-all/page-'.$page.'/';
+                $scanUrl['url']     = 'http://lady.tsn.ua/dom_i_deti/deti/?page='.$page;
             }
-            $scanUrl['host']        = 'hochu.ua';
-            $scanUrl['donor_id']    = 16;
-            $scanUrl['cat_id']      = 48; 
+            $scanUrl['host']        = 'lady.tsn.ua';
+            $scanUrl['donor_id']    = 18;
+            $scanUrl['cat_id']      = 38;
 
             $this->articles_lib->setScanUrl( $scanUrl['url'] );
             $data = $this->articles_lib->getData( $scanUrl['host'] );

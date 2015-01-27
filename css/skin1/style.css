@@ -665,6 +665,13 @@ color:
     font-size: 12px;
     line-height: 16px;
 }
+#left div.single div.copy-url li,
+#left div.single div.copy-url ul,
+#left div.single div.copy-url ol{
+    float: none !important;
+    font-size: 14px !important;
+    padding: 1em 0 !important;
+}
 #left div.single div.copy-url p{
     font-size: 16px;
     line-height: 1.5em;

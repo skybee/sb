@@ -16,12 +16,12 @@
 ?>
     <div class="listing">
         <h2 class="cat-list-title">
-            <a href="<?=$news_url?>"><?=$news_page_ar['title']?></a>
+            <a href="<?=$news_url?>" target="_blank" ><?=$news_page_ar['title']?></a>
         </h2>
         <div class="content">
             <div class="left">
                 <div class="imgholder">
-                    <a href="<?=$news_url?>">
+                    <a href="<?=$news_url?>" target="_blank" >
                         <? if( !empty($news_page_ar['main_img']) ) 
                                 $imgUrl = '/upload/images/medium/'.$news_page_ar['main_img'];
                            else

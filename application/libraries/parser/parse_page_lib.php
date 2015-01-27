@@ -32,6 +32,8 @@ class parse_page_lib{
             case 'www.computerra.ru':           return 'parseComputerra';    
             case 'supreme2.ru':                 return 'parseSupreme';
             case 'hochu.ua':                    return 'parseHochu';    
+            case 'www.goodhouse.ru':            return 'parseGoodhous';
+            case 'lady.tsn.ua':                 return 'parseLadyTsnUa';
             default: return false;
         }
     }
@@ -652,9 +654,9 @@ class parseSupreme extends parse_page{
             }
         }
         
-        if( is_object( $this->html_obj->find('#newstime',0) ) ){
-            $this->data['date'] = $this->getDate( $this->html_obj->find('#newstime',0)->innertext );
-        }
+//        if( is_object( $this->html_obj->find('#newstime',0) ) ){
+//            $this->data['date'] = $this->getDate( $this->html_obj->find('#newstime',0)->innertext );
+//        }
     }
     
     private function getDate( $dateStr ){
@@ -697,9 +699,9 @@ class parseHochu extends parse_page{
             $this->data['text']     = preg_replace("#<em[\s\S]*?>\s*Следите за нашими новостями в соцсетях[\s\S]*?</em>#i", '', $this->data['text']);
         }
         
-        if( is_object( $this->html_obj->find('span.date',0) ) ){
-            $this->data['date'] = $this->getDate( $this->html_obj->find('span.date',0)->innertext );
-        }
+//        if( is_object( $this->html_obj->find('span.date',0) ) ){
+//            $this->data['date'] = $this->getDate( $this->html_obj->find('span.date',0)->innertext );
+//        }
     }
     
     private function getDate( $dateStr ){
@@ -733,6 +735,157 @@ class parseHochu extends parse_page{
             $imgObj->src    = $bigImgSrc;
             $imgObj->slider = 'slider';
         }
+    }
+}
+
+class parseGoodhous extends parse_page{
+    
+    function predParseHTML( $html ){
+        return iconv('cp1251', 'utf-8//IGNORE', $html );
+    }
+    
+    function parseDOM() {
+        
+        if( is_object($this->html_obj->find('.center-col .b-paging',0)) ) return false; //разбивка на несколько страниц
+        
+        if( is_object( $this->html_obj->find('.center-col .header-holder h1',0) ) ){
+            $this->data['title']    = $this->html_obj->find('.center-col .header-holder h1',0)->innertext;
+        }
+        
+        if( is_object($this->html_obj->find('.b-article-text .hgallery, .b-article-text .vgallery',0) ) ){
+            $this->sliderImgReplace();
+        }
+        
+        
+//        $this->data['date'] = $this->getDate( $this->html_obj->find('.b-article-text',0)->innertext );
+        $this->cleaner->delAll('.b-article-text .b-article-text-autor');
+        
+        if( is_object( $this->html_obj->find('.b-article',0) ) ){
+            if( is_object( $this->html_obj->find('.header-holder .lead',0) ) ){
+                $this->data['text'] = '<h2>'.$this->html_obj->find('.header-holder .lead',0)->innertext.'</h2>';
+            }
+            $this->data['text']    .= $this->html_obj->find('.b-article .b-article-text',0)->innertext;
+        }
+    }
+    
+    private function getDate( $dateStr ){
+        $date = false;
+        $pattern = "#<p class=\"b-article-text-autor\">[\s\S]*?(\d{2})\s+([а-яёА-ЯЁ]+)\s+(20\d{2})#iu";
+        if( preg_match($pattern, $dateStr, $matches) ){
+//            echo '<pre>'.print_r($matches,1).'</pre>';
+            $date = $matches[3].'-'.$this->getNbrMonthFromStr( $matches[2] ).'-'.$matches[1].' '.rand(10,22).':00:00';
+        }
+        
+        $date = date("Y-m-d H:i:s", strtotime( "-2 day", strtotime($date) ) );
+        
+        return $date;
+    }
+    
+    private function sliderImgReplace( ){
+        $galleryList = $this->html_obj->find('.b-article-text .hgallery, .b-article-text .vgallery');
+        
+        foreach($galleryList as $galleryObj){
+            
+            $imgLinkList = $galleryObj->find('.small-holder li a');
+            $newHtml = '';
+            if( count($imgLinkList) > 0 ){
+                foreach($imgLinkList as $imgLink){
+                    $title      = $imgLink->title;
+                    $url        = $imgLink->href;
+                    $newHtml   .= '<img src="'.$url.'" alt="'.$title.'" slider="slider" />'."\n";
+                }
+            }
+            
+            $galleryObj->outertext = '<p>'.$newHtml.'</p>'."\n\n";
+        }
+    }
+}
+
+class parseLadyTsnUa extends parse_page{
+        
+    function parseDOM() {
+        
+        if( is_object( $this->html_obj->find('.box_content .block_news h1.title',0) ) ){
+            $this->data['title']    = $this->html_obj->find('.box_content .block_news h1.title',0)->innertext;
+        }
+        
+        $sliderImg = '';
+        if( is_object($this->html_obj->find('.box_content .block_news .scrollpane_gallery',0) ) ){
+            $sliderImg = $this->sliderImgReplace();
+        }
+
+        
+        if( is_object( $this->html_obj->find('.box_content .block_news',0) ) ){
+            
+            $this->cleaner->delAll('.box_content .picture .info'); //подпись к фото
+            
+            if( is_object( $this->html_obj->find('.box_content .block_news .news_content .news_text .picture a',0) ) ){
+                $this->data['img']  = $this->html_obj->find('.box_content .block_news .news_content .news_text .picture a',0)->href;
+                $this->cleaner->delSingle('.box_content .block_news .news_content .news_text .picture',0);
+            }
+            
+            if( is_object( $this->html_obj->find('.box_content .block_news .news_text .quote',0) ) ){ //цитаты
+                $quote = $this->html_obj->find('.box_content .block_news .news_text .quote');
+                
+                foreach($quote as $quoteObj){
+                    $HtmlText = $quoteObj->innertext; 
+                    $quoteObj->outertext = "\n".'<p style="text-align:center;"><i> " '.$HtmlText.' " </i></p>'."\n";
+                }
+            }
+            
+            $this->data['text'] = '';
+            
+            if( is_object( $this->html_obj->find('.box_content .block_news h2.descr',0) ) ){
+                $this->data['text'] .= '<h2>'.$this->html_obj->find('.box_content .block_news h2.descr',0)->innertext.'</h2>';
+            }
+            
+            $this->data['text']    .= $sliderImg;
+            $this->data['text']    .= $this->html_obj->find('.box_content .block_news .news_content .news_text ',0)->innertext;
+        }
+        
+        $this->data['date'] = $this->getDate( $this->html_obj->find('.info_top .date',0)->innertext );
+    }
+    
+    private function getDate( $dateStr ){
+        $date = false;
+        $pattern = "#(\d{1,2})\s+([а-яёА-ЯЁ]+)\s+(20\d{2})#iu";
+        if( preg_match($pattern, $dateStr, $matches) ){
+//            echo '<pre>'.print_r($matches,1).'</pre>';
+            if( strlen($matches[1]) < 2 ) $matches[1] = '0'.$matches[1];
+            $date = $matches[3].'-'.$this->getNbrMonthFromStr( $matches[2] ).'-'.$matches[1].' '.rand(10,22).':00:00';
+        }
+        else{
+            $date = date("Y-m-d H:i:s");
+        }
+        
+        $date = date("Y-m-d H:i:s", strtotime( "-2 day", strtotime($date) ) );
+        
+        return $date;
+    }
+    
+    private function sliderImgReplace( ){
+        $galleryList = $this->html_obj->find('.box_content .block_news .scrollpane_gallery');
+        
+        $allImgHtml = '';
+        
+        foreach($galleryList as $galleryObj){
+            
+            $imgLinkList = $galleryObj->find('li.item a');
+            $newHtml = '';
+            if( count($imgLinkList) > 0 ){
+                foreach($imgLinkList as $imgLink){
+                    $title      = $imgLink->title;
+                    $url        = $imgLink->href;
+                    $newHtml   .= '<img src="'.$url.'" alt="'.$title.'" slider="slider" />'."\n";
+                }
+            }
+            
+//            $galleryObj->outertext = '<p>'.$newHtml.'</p>'."\n\n";
+            
+            $allImgHtml .= '<p>'.$newHtml.'</p>'."\n\n";
+        }
+        
+        return $allImgHtml;
     }
 }
 
