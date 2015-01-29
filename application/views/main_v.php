@@ -17,6 +17,10 @@
         <![endif]-->
         
         <? if(isset($meta['og'])) echo $meta['og']; ?>
+        
+        <? if(isset($meta['noindex']) && $meta['noindex'] == true ): ?>
+            <meta name="robots" content="noindex, follow" />
+        <? endif; ?>
 
         <script type='text/javascript' src='/js/skin1/jquery-1.8.3.min.js'></script>
         <script type='text/javascript' src='/js/skin1/jquery-ui.min.js'></script>

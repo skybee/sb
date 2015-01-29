@@ -116,7 +116,11 @@ class main extends CI_Controller {
         $data_ar['main_menu_list']      = $this->list_m->get_cat(0);
         $data_ar['second_menu_list']    = $this->list_m->get_sCat_from_name($this->catNameAr[0]);
         $data_ar['footer_menu_list']    = $this->list_m->get_footer_cat_link();
-        $data_ar['meta']['title']       = $data_ar['cat_ar']['title'].' - страница '.$page;
+        $data_ar['meta']['title']       = $data_ar['cat_ar']['title']; 
+        if( $page > 1){
+            $data_ar['meta']['title']  .= ' - страница '.$page;
+            $data_ar['meta']['noindex'] = true;
+        }
 
         $top_slider['articles']         = $this->article_m->get_top_slider_data( $data_ar['cat_ar']['id'], 8, $this->catConfig['top_news_time'], $this->topSliderTxtLength, true, false);
         $right['right_top']             = $this->article_m->get_top_slider_data( $data_ar['cat_ar']['parent_id'], 5, $this->catConfig['right_top_news_time'], $this->topSliderTxtLength, true, true, 'right_top');
