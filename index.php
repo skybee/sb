@@ -52,6 +52,7 @@ if (defined('ENVIRONMENT'))
 		break;
 		case 'production':
 			error_reporting(0);
+                        set_time_limit(10);
 		break;
 		default:
 			exit('The application environment is not set correctly.');
