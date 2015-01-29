@@ -696,7 +696,7 @@ class parseHochu extends parse_page{
         
         if( is_object( $this->html_obj->find('.article-content',0) ) ){
             $this->data['text']     = $this->html_obj->find('.article-content',0)->innertext;
-            $this->data['text']     = preg_replace("#<em[\s\S]*?>\s*Следите за нашими новостями в соцсетях[\s\S]*?</em>#i", '', $this->data['text']);
+            $this->data['text']     = preg_replace("#<em>Следите за нашими новостями в соцсетях[\s\S]*?</em>#i", '', $this->data['text']);
         }
         
 //        if( is_object( $this->html_obj->find('span.date',0) ) ){

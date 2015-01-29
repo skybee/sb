@@ -87,8 +87,8 @@ class Main extends CI_Controller
             $this->parser_m->set_url_scaning( $news_ar['id'] );
 			
             #<for test>
-//            $news_ar['url']     = 'http://lady.tsn.ua/krasota/fitnes/kak-izbavitsya-ot-zhira-na-bokah-spine-i-plechah-308322.html';  
-//            $news_ar['host']    = 'lady.tsn.ua';
+//            $news_ar['url']     = 'http://hochu.ua/cat-beauty/hair/article-57335-kak-izbavitsya-ot-zheltiznyi-v-volosah/';  
+//            $news_ar['host']    = 'hochu.ua';
             #</for test>
             
             $html = $this->news_parser_lib->down_with_curl( $news_ar['url'] );
