@@ -86,8 +86,9 @@
                         </div><!-- #categories closer -->
 
                         <div class="cat_line"></div>
+                        
 
-                        <?= $top_slider; ?>
+                        <!-- !!! Top Slider Here-->
 
                         <div id="middle">
                             <div id="left">
@@ -97,6 +98,9 @@
                                 <?= $right; ?>
                             </div><!-- #right closer -->
                         </div><!-- #content_holder closer -->
+                        
+                        <?= $top_slider; ?>
+                        
                     </div>
                 </div><!-- #content closer -->
             </div>
