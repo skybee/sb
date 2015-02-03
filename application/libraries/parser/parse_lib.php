@@ -9,7 +9,8 @@ class parse_lib{
     function __construct() {
         $this->CI = & get_instance();
         $this->CI->load->database();
-        $this->CI->load->helper('parser/url_name_helper');
+//        $this->CI->load->helper('parser/url_name_helper');
+        $this->CI->load->helper('parser/url_name2_helper');
         $this->CI->load->library('dir_lib');
         $this->CI->load->library('image_lib');
         $this->img_dir = '/upload/news/';

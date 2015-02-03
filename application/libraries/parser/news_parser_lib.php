@@ -82,7 +82,8 @@ class news_parser_lib extends parse_lib {
             $this->resizeImg('medium');
             $this->resizeImg('small');
         }
-        $data_ar['url_name'] = seoUrl($data_ar['title']);
+//        $data_ar['url_name'] = seoUrl($data_ar['title']);
+        $data_ar['url_name']    = url_slug( $data_ar['title'] ,array('transliterate' => true));
         
         $sql = "   INSERT INTO `article` 
                     SET

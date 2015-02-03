@@ -305,7 +305,8 @@ class parse_lib{
          }   
          $data_ar['text']        = $this->change_img_in_txt($data_ar['text'], $data_ar['url']); //замена изображений в тексте
          $data_ar['img_name']    = $this->load_img( $data_ar['img'], $data_ar['url']  );
-         $data_ar['url_name']    = seoUrl( $data_ar['title'] );
+//         $data_ar['url_name']    = seoUrl( $data_ar['title'] );
+         $data_ar['url_name']    = url_slug( $data_ar['title'] ,array('transliterate' => true));
             
          $this->CI->db->query("  INSERT INTO `articles` 
                                  SET
