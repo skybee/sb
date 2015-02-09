@@ -28,6 +28,7 @@ class articles_lib{
             case 'hochu.ua':                    return new parseHochuList( $this->scanUrl );
             case 'www.goodhouse.ru':            return new parseGoodhousList( $this->scanUrl );
             case 'lady.tsn.ua':                 return new parseLadyTsnUaList( $this->scanUrl );    
+            case 'www.womenshealthmag.com':     return new parseWomensHealthMagList( $this->scanUrl );     
             default: return false;
         }
     }
@@ -335,6 +336,35 @@ class parseLadyTsnUaList extends parseArticleList{
         $i=0;
         foreach( $this->html_obj->find('.content ul.list li.item h2.title a') as $list ){
             $data[$i]['url']    =  $list->href;
+            $data[$i]['img']    =  '';
+            
+            $i++;
+        }
+          
+        return $data;
+    }
+}
+
+
+class parseWomensHealthMagList extends parseArticleList{
+    
+    function __construct($url) {
+        $this->ci       = &get_instance();
+        
+        $json           = $this->ci->news_parser_lib->down_with_curl( $url );
+        $jsonObj        = json_decode($json);
+        $html           = '<html>'.$jsonObj->html.'</html>';
+        $this->html_obj = str_get_html($html);
+        $this->data     = $this->getUrlTitleImgFomPage();
+        $this->data     = $this->convertToRealUrl( $this->data, $url );
+    }
+    
+    protected function getUrlTitleImgFomPage() {
+        if( !is_object($this->html_obj->find('.item',0) ) ) return false;
+        
+        $i=0;
+        foreach( $this->html_obj->find('div.item') as $list ){
+            $data[$i]['url']    = $list->find('a',0)->href .'?fullpage=1';
             $data[$i]['img']    =  '';
             
             $i++;
