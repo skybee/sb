@@ -41,4 +41,27 @@ class background extends CI_Controller{
 //            echo base64_decode($refUriAr['etext']);
 //        }
 //    }
+    
+    function get_right_hc(){
+        if( isset($_COOKIE['country']) && mb_strlen($_COOKIE['country']) == 2  ){
+            $country = $_COOKIE['country'];
+        }
+        else{
+            $country = $this->getCountrySetCoockie();
+        }
+        
+        if( $country == 'UA'){
+            $this->load->view('ads/house_v');
+        }
+    }
+    
+    private function getCountrySetCoockie(){
+        $this->load->helper('geoip/geoip_helper');
+        
+        $country = get_country();
+        
+        setcookie('country', $country, time()+3600*24 );
+        
+        return $country;
+    }
 }
