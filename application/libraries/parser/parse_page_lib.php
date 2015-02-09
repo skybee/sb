@@ -34,6 +34,7 @@ class parse_page_lib{
             case 'hochu.ua':                    return 'parseHochu';    
             case 'www.goodhouse.ru':            return 'parseGoodhous';
             case 'lady.tsn.ua':                 return 'parseLadyTsnUa';
+            case 'www.womenshealthmag.com':     return 'parseWomensHealthMag';
             default: return false;
         }
     }
@@ -886,6 +887,37 @@ class parseLadyTsnUa extends parse_page{
         }
         
         return $allImgHtml;
+    }
+}
+
+class parseWomensHealthMag extends parse_page{
+    
+    function parseDOM() {
+        
+        if( is_object( $this->html_obj->find('.mid-content-mod h2',0) ) ){
+            $this->data['title']    = $this->html_obj->find('.mid-content-mod h2',0)->innertext;
+        }
+        
+        if( is_object( $this->html_obj->find('.article-image img',0) ) ){
+            $this->data['img']      = $this->html_obj->find('.article-image img',0)->src;
+            $this->cleaner->delSingle('.article-image', 0);
+        }
+        
+        $this->data['text'] = '';
+        
+        if( is_object( $this->html_obj->find('.mid-content-mod h3.tagline',0) ) ){
+            $this->data['text']    .= '<h2>'.$this->html_obj->find('.mid-content-mod h3.tagline',0)->innertext.'</h2>';
+        }
+        
+        if( is_object( $this->html_obj->find('.article-content',0) ) ){
+            $this->data['text']    .= $this->html_obj->find('.article-content',0)->innertext;
+            
+            $pattern = "/<p>[<>bistrong]*?(MORE|RELATED):[\s\S]*?<\/p>/i";
+            $this->data['text'] = preg_replace($pattern, '', $this->data['text']);
+            
+            $pattern = "/<p><strong>More from[\s\S]*?:[\s\S]*?<\/p>/i";
+            $this->data['text'] = preg_replace($pattern, '', $this->data['text']);
+        }
     }
 }
 
