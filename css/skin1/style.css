@@ -3432,4 +3432,25 @@ img.alignleft,a img.alignleft {
 }
 /* </sub cat> */
 
+
+/*<Right ADS>*/
+#right-ajax-block{ float: left;}
+.hc250x600{
+    margin: 0 0 30px 33px;
+}
+.hc250x600 a{ display: block; position: relative;}
+.hc250x600 a .house-hover{
+    position: absolute;
+    background: #00375B;
+    opacity: 0;
+    width: 242px; 
+    left: 4px;
+}
+
+.hc250x600 a .house-hover:hover{ opacity: 0.05}
+
+.hc250x600 a .house-hover-1{ top: 50px; height: 175px;}
+.hc250x600 a .house-hover-2{ top: 227px; height: 182px;}
+.hc250x600 a .house-hover-3{ top: 411px; height: 185px;}
+/*</Right ADS>*/
 /*============== </My> ==============*/
