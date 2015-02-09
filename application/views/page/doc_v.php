@@ -7,6 +7,11 @@
     <div class="active">
         <h1><?=$doc_data['title']?></h1>
     </div>
+    
+    <div style="height: 15px; margin-top: 10px; ">
+        <script type="text/javascript">loadGAd('text link blue');</script>
+    </div>
+    
     <div class="doc-date">
         
         <div class="social_btn">
@@ -74,6 +79,15 @@
             <script type="text/javascript">loadGAd('content bottom Netboard');</script>
         </div>
     </div>
+    
+<!--    <div style="float:left;">
+        <script language="Javascript">
+            var bntuniqid = 'bPq7TNrWAhoDdq97yDX3';
+            var bntuniqsid = '73768';
+            var async = 0;
+        </script>
+        <script type="text/javascript" src="http://herefegedef.net/viewt.js"></script>
+    </div>-->
     
     <div id="video_holder" style="display:none;"></div>
     <div class="othernews">
