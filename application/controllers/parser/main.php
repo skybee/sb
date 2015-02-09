@@ -87,8 +87,8 @@ class Main extends CI_Controller
             $this->parser_m->set_url_scaning( $news_ar['id'] );
 			
             #<for test>
-//            $news_ar['url']     = 'http://hochu.ua/cat-beauty/hair/article-57335-kak-izbavitsya-ot-zheltiznyi-v-volosah/';  
-//            $news_ar['host']    = 'hochu.ua';
+//            $news_ar['url']     = 'http://www.womenshealthmag.com/weight-loss/how-to-prevent-binge-eating?fullpage=1';  
+//            $news_ar['host']    = 'www.womenshealthmag.com';
             #</for test>
             
             $html = $this->news_parser_lib->down_with_curl( $news_ar['url'] );
@@ -137,10 +137,10 @@ class Main extends CI_Controller
         
         echo '<pre>'.print_r( $scanUrl, 1 ).'</pre>';
         
-//        $scanUrl['url']         = 'http://lady.tsn.ua/krasota/fitnes';
-//        $scanUrl['host']        = 'lady.tsn.ua';
+//        $scanUrl['url']         = 'http://www.womenshealthmag.com/channel_ui/ajax/1/5/';
+//        $scanUrl['host']        = 'www.womenshealthmag.com';
 //        $scanUrl['cat_id']      = 43;
-//        $scanUrl['donor_id']    = 18;
+//        $scanUrl['donor_id']    = 19;
         
         $this->articles_lib->setScanUrl( $scanUrl['url'] );
         $data = $this->articles_lib->getData( $scanUrl['host'] );
