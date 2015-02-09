@@ -35,6 +35,9 @@
     <script type="text/javascript">loadGAd('right top');</script>
 </div>
 
+<div id="right-ajax-block">
+</div>
+
 <h3 class="widget-title">
     <span class="title">Последние новости</span>
 </h3>
