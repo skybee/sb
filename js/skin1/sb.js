@@ -102,6 +102,8 @@ $( document ).ready(function(){
     // </show this cat>
     
     setTimeout('setTop()', 15000);
+    
+    $('#right-ajax-block').load('/ajax/background/get_right_hc/');
 });
 
 
@@ -159,6 +161,12 @@ function loadGAd( blockName ){
             }
             google_ad_width     = 300;
             google_ad_height    = 600;
+        }
+        if( blockName == 'text link blue' ){
+            /* Content Blue Link */
+            google_ad_slot = "6371985643";
+            google_ad_width = 480;
+            google_ad_height = 15;
         }
         
         document.write('<script type="text/javascript" src="//pagead2.googlesyndication.com/pagead/show_ads.js"></script>');
