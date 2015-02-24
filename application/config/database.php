@@ -61,16 +61,16 @@ $db['default']['database'] = 'admin_news';
 
 
 if( $_SERVER['HTTP_HOST'] == 'sb.lh' ){
-    $db['default']['hostname'] = '127.0.0.1';
-    //$db['default']['hostname'] = 'localhost';
-    $db['default']['username'] = 'mysql';
-    $db['default']['password'] = 'mysql';
-    $db['default']['database'] = 'sb';
+//    $db['default']['hostname'] = '127.0.0.1';
+//    //$db['default']['hostname'] = 'localhost';
+//    $db['default']['username'] = 'mysql';
+//    $db['default']['password'] = 'mysql';
+//    $db['default']['database'] = 'sb';
     
-//    $db['default']['hostname'] = 'odnako.su';
-//    $db['default']['username'] = 'admin_sb';
-//    $db['default']['password'] = '1865tsbqwerty';
-//    $db['default']['database'] = 'admin_news';
+    $db['default']['hostname'] = 'odnako.su';
+    $db['default']['username'] = 'admin_sb';
+    $db['default']['password'] = '1865tsbqwerty';
+    $db['default']['database'] = 'admin_news';
 }
 
 

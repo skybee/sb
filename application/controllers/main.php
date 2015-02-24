@@ -170,5 +170,52 @@ class main extends CI_Controller {
 
         $this->load->view('main_v', $tpl_ar);
     }
+    
+    
+    
+    
+    function _sitemap_link_page( $cat, $page = 1 ){
+        $this->output->cache( 3600*24*10 );
+        
+        $query      = $this->db->query(" SELECT `sub_cat_id`, `name` FROM `category` WHERE `url_name` = '{$cat}' LIMIT 1 ");
+        $row        = $query->row_array();
+        $subCatId   = $row['sub_cat_id'];
+        $catNmae    = $row['name'];
+        
+        if( empty($subCatId) ) exit("<h1>Cat Name Error</h1>");
+        
+        $cnt    = 150;
+        $stop   = $page * $cnt;
+        $start  = $stop - $cnt;
+        
+        $sql = "SELECT "
+                . "`article`.`url_name`, `article`.`title`, `article`.`id`, `article`.`views`, "
+                . "`category`.`full_uri` "
+                . "FROM "
+                . "`article`, `category` "
+                . "WHERE "
+                . "`article`.`cat_id` IN ({$subCatId}) "
+                . "AND "
+                . "`category`.`id` = `article`.`cat_id` "
+                . "ORDER BY `article`.`views` DESC "
+                . "LIMIT {$start}, {$cnt} ";
+        
+        $query = $this->db->query($sql);
+        
+        if( $query->num_rows() < 1 ) exit("<h1>No link</h1>\n".$sql);
+        
+        $html   = '<html><head><title>'.$catNmae.' страница - '.$page.'</title></head><body>';
+        
+        foreach( $query->result_array() as $catData ){
+            $html   .= $catData['views'].' - '.$catData['title']."<br />\n";
+            $html   .= "<a href=\"/{$catData['full_uri']}-{$catData['id']}-{$catData['url_name']}/\" >".$catData['title'].'</a>'."<br /><br />\n\n";
+        }
+        
+        $html  .= '</body></html>';
+        
+        $data['html'] = $html;
+        
+        $this->load->view('page/spe_link_v', $data );
+    }
 
 }

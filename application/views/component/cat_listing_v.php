@@ -66,9 +66,17 @@
 <?
 //    if($_SERVER['REQUEST_URI'] == '/'){
 //        echo '<div style="display:none;">'."\n";
-//        for($i=1; $i<=20; $i++){
-//            echo '<a href="/sitemap/'.$i.'.html">Sitemap '.$i.'</a>'."\n";
+//        
+//        echo '<a href="/sitemap_link_page/news/">Sitemap 1</a>'."\n";
+//        for($i=2; $i<=100; $i++){
+//            echo '<a href="/sitemap_link_page/news/'.$i.'/">Sitemap '.$i.'</a>'."\n";
 //        }
+//        
+//        echo '<a href="/sitemap_link_page/hi-tech/">Sitemap 1</a>'."\n";
+//        for($i=2; $i<=50; $i++){
+//            echo '<a href="/sitemap_link_page/hi-tech/'.$i.'/">Sitemap '.$i.'</a>'."\n";
+//        }
+//        
 //        echo '</div>';
 //    }
 ?>

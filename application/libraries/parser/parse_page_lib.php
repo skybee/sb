@@ -690,19 +690,21 @@ class parseHochu extends parse_page{
         }
         
         $this->cleaner->delAll('#block_similar');
+        $this->cleaner->delAll('.like_bar');
+        $this->cleaner->delSingle('.follow_us', 0);
         
-        if( is_object($this->html_obj->find('.scrollable-photo-slide .items .one-photo .photo_link img',0) ) ){
-            $this->sliderImgReplace();
-        }
+//        if( is_object($this->html_obj->find('.scrollable-photo-slide .items .one-photo .photo_link img',0) ) ){
+//            $this->sliderImgReplace();
+//        }
         
         if( is_object( $this->html_obj->find('.article-content',0) ) ){
             $this->data['text']     = $this->html_obj->find('.article-content',0)->innertext;
             $this->data['text']     = preg_replace("#<em>Следите за нашими новостями в соцсетях[\s\S]*?</em>#i", '', $this->data['text']);
         }
         
-//        if( is_object( $this->html_obj->find('span.date',0) ) ){
-//            $this->data['date'] = $this->getDate( $this->html_obj->find('span.date',0)->innertext );
-//        }
+        if( is_object( $this->html_obj->find('span.date',0) ) ){
+            $this->data['date'] = $this->getDate( $this->html_obj->find('span.date',0)->innertext );
+        }
     }
     
     private function getDate( $dateStr ){

@@ -87,8 +87,8 @@ class Main extends CI_Controller
             $this->parser_m->set_url_scaning( $news_ar['id'] );
 			
             #<for test>
-//            $news_ar['url']     = 'http://www.womenshealthmag.com/weight-loss/how-to-prevent-binge-eating?fullpage=1';  
-//            $news_ar['host']    = 'www.womenshealthmag.com';
+//            $news_ar['url']     = 'http://hochu.ua/cat-sex/we-and-men/article-56119-kak-reagirovat-esli-kenu-perestali-nravitsya-barbi/';  
+//            $news_ar['host']    = 'hochu.ua';
             #</for test>
             
             $html = $this->news_parser_lib->down_with_curl( $news_ar['url'] );
@@ -160,7 +160,7 @@ class Main extends CI_Controller
         
         $this->load->library('parser/articles_lib');
         
-        $countPage = 21; 
+        $countPage = 5; 
         
         for($page=2; $page <= $countPage; $page++){
             
@@ -214,15 +214,15 @@ class Main extends CI_Controller
 //            $scanUrl['cat_id']      = 23;  
             
             
-//            if( $page == 1 ){
-//                $scanUrl['url']     = 'http://hochu.ua/cat-specprojects/hochu-svadebnyi-sezon/';
-//            }
-//            else{
-//                $scanUrl['url']     = 'http://hochu.ua/cat-specprojects/hochu-svadebnyi-sezon/order-date/period-all/page-'.$page.'/';
-//            }
-//            $scanUrl['host']        = 'hochu.ua';
-//            $scanUrl['donor_id']    = 16;
-//            $scanUrl['cat_id']      = 48;
+            if( $page == 1 ){
+                $scanUrl['url']     = 'http://hochu.ua/cat-sex/we-and-men/';
+            }
+            else{
+                $scanUrl['url']     = 'http://hochu.ua/cat-sex/we-and-men/order-date/period-all/page-'.$page.'/';
+            }
+            $scanUrl['host']        = 'hochu.ua';
+            $scanUrl['donor_id']    = 16;
+            $scanUrl['cat_id']      = 46;
             
             
 //            if( $page == 1 ){
@@ -236,15 +236,15 @@ class Main extends CI_Controller
 //            $scanUrl['cat_id']      = 25; 
             
             
-            if( $page == 1 ){
-                $scanUrl['url']     = 'http://lady.tsn.ua/dom_i_deti/deti';
-            }
-            else{
-                $scanUrl['url']     = 'http://lady.tsn.ua/dom_i_deti/deti/?page='.$page;
-            }
-            $scanUrl['host']        = 'lady.tsn.ua';
-            $scanUrl['donor_id']    = 18;
-            $scanUrl['cat_id']      = 38;
+//            if( $page == 1 ){
+//                $scanUrl['url']     = 'http://lady.tsn.ua/dom_i_deti/deti';
+//            }
+//            else{
+//                $scanUrl['url']     = 'http://lady.tsn.ua/dom_i_deti/deti/?page='.$page;
+//            }
+//            $scanUrl['host']        = 'lady.tsn.ua';
+//            $scanUrl['donor_id']    = 18;
+//            $scanUrl['cat_id']      = 38;
 
             $this->articles_lib->setScanUrl( $scanUrl['url'] );
             $data = $this->articles_lib->getData( $scanUrl['host'] );
@@ -384,4 +384,98 @@ class Main extends CI_Controller
             flush(); $i++;
         }    
     }
+    
+    function _del_articles( $cnt = 10 ){
+        set_time_limit(300);
+        header("Content-type:text/plain;Charset=utf-8");
+        
+        if( $_SERVER['REMOTE_ADDR'] != '109.86.165.207' && $_SERVER['REMOTE_ADDR'] != '127.0.0.1' ) exit('IP Not Allow');
+        
+        $cnt = (int) $cnt;
+        
+        $sql = "SELECT `id`, `donor_id`, `scan_url_id`, `title`, `text`, `main_img` "
+                . "FROM `article` "
+                . "WHERE "
+                . "`donor_id` = '16' "
+                . "AND "
+                . "`date` > '2014-11-01 00:00:00' "
+                . "LIMIT {$cnt} ";
+        
+        $query = $this->db->query( $sql );
+        
+        if( $query->num_rows() < 1 ) exit("No Articles to Delete ");
+        
+        $i = 1;
+        foreach( $query->result_array() as $row ){
+            
+            echo "ID: ".$row['id']." - ".$row['title']." \n";
+            
+            // Delete Main Image 
+            echo "\nDelete Main Image \n";
+            if( !empty($row['main_img']) ){
+                $this->delAllImg( $row['main_img'] );
+            }
+            
+            // Delete Images from Text 
+            echo "\nDelete All Images \n";
+            $imgDatePathNameAr = $this->getImgNameFromTxt( $row['text'] );
+            if( $imgDatePathNameAr ){
+                foreach($imgDatePathNameAr as $imgDatePathName ){
+                    $this->delAllImg( $imgDatePathName );
+                }
+            } 
+            
+            // Delete `scan_url`
+            if( $this->db->query("DELETE FROM `scan_url` WHERE `id` = '{$row['scan_url_id']}' LIMIT 1 ") ){
+                echo "\n\t Scan URL Deleted \n";
+            }
+            // Delete `shingles`
+            if( $this->db->query("DELETE FROM `shingles` WHERE `article_id` = '{$row['id']}' ") ){
+                echo "\n\t Shingles Deleted \n";
+            }
+            
+            if( $this->db->query("DELETE FROM `article` WHERE `id` = '{$row['id']}' LIMIT 1 ") ){
+                echo "\n\t Article Deleted \n";
+            }
+            
+            $i++;
+            echo "\n{$i} ----------------------------------------------------------------------- \n\n\n";
+            flush();
+        }
+    }
+    
+    private function delAllImg( $imgDatePathName ){
+        echo "\t Удаление: ".$imgDatePathName."\n";
+        
+        $imgFolderAr = array('small','medium','real');
+        
+        foreach( $imgFolderAr as $imgFolder ){
+            
+            $filePathName = 'upload/images/'.$imgFolder.'/'.$imgDatePathName;
+            if( is_file($filePathName) ){
+                if( unlink($filePathName) ){
+                    echo "\t\t File was deleted: ".$filePathName."\n";
+                }
+                else{
+                    echo "\t\t Delete ERROR: ".$filePathName."\n";
+                }
+            }
+            
+        }
+    }
+    
+    private function getImgNameFromTxt( $text ){ //return 'yyyy/mm/dd/img_name.xxx'
+        $pattern = "#src=\"/upload/images/[a-z]+/([\S]*?\.[a-z]{3,4})\"#i";
+        
+        preg_match_all($pattern, $text, $matches);
+        
+        if( isset($matches[1]) && count($matches[1]) >= 1 ){
+            return $matches[1];
+        }
+        else{
+            return FALSE;
+        }
+    }
+    
+    
 }

@@ -81,4 +81,25 @@ class Tmp extends CI_Controller{
 //        
 //        print_r($jsonAr);
 //    }
+    
+    function _create_cache_page_on_server($cat_name, $cnt_page = 1){
+        set_time_limit(7200);
+        
+        $this->load->helper('parser/download_helper');
+        
+        for($i=1; $i<=$cnt_page; $i++){
+            $url = "http://odnako.su/sitemap_link_page/{$cat_name}/{$i}/";
+            
+            $html = down_with_curl($url);
+            
+            if( !empty($html) ){
+                echo $cat_name." page - {$i} OK <br />\n";
+            }
+            else{
+                echo $cat_name." page - {$i} Error <br />\n";
+            }
+        }
+        flush();
+        sleep(1);
+    }
 }
