@@ -97,3 +97,25 @@
     
 </div>
 
+
+
+<? if( isset($serp_list) && $serp_list != false): ?>
+
+<h3 class="widget-title" style="margin-top: 30px;">
+    <span class="title">Похожее на других сайтах</span>
+</h3>
+
+<div class="serp_block">
+
+    <? foreach($serp_list as $serp): ?>
+    <h4 rel="<?=$serp['url']?>">
+        <?=$serp['title']?>
+        <span>- <?=$serp['host']?></span>
+    </h4>
+    <p><?=$serp['text']?></p>
+    <? endforeach; ?>
+
+</div>
+
+<? endif; ?>
+

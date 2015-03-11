@@ -26,3 +26,14 @@ function botRelNofollow(){
     
     return $rel;
 }
+
+function serpDataFromJson($json)
+{
+    if(empty($json)){
+        return false;
+    }
+
+    $data = json_decode($json, true);
+
+    return $data;
+}

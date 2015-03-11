@@ -64,6 +64,9 @@ class main extends CI_Controller {
         if (!$data_ar['doc_data']){
             show_404();
         }
+
+        $right['serp_list'] = serpDataFromJson($data_ar['doc_data']['serp_object']);
+        unset($data_ar['doc_data']['serp_object']);
         
         $true_url = '/'.$data_ar['doc_data']['cat_full_uri'].'-'.$data_ar['doc_data']['id'].'-'.$data_ar['doc_data']['url_name'].'/';
         
