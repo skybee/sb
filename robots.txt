@@ -4,7 +4,6 @@ Crawl-delay: 3
 
 User-agent: Yandex
 Disallow: /search/
-Disallow: /women/
 Crawl-delay: 3
 Host: odnako.su
 
