@@ -143,6 +143,12 @@ function loadGAd( blockName ){
             google_ad_width = 480;
             google_ad_height = 15;
         }
+        if( blockName == 'under slider'){
+            /* Under Slider */
+            google_ad_slot = "7088605248";
+            google_ad_width = 956;
+            google_ad_height = 120;
+        }
         
         document.write('<script type="text/javascript" src="//pagead2.googlesyndication.com/pagead/show_ads.js"></script>');
 }

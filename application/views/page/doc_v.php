@@ -8,9 +8,9 @@
         <h1><?=$doc_data['title']?></h1>
     </div>
     
-    <div style="height: 15px; margin-top: 10px; ">
+<!--    <div style="height: 15px; margin-top: 10px; ">
         <script type="text/javascript">loadGAd('text link blue');</script>
-    </div>
+    </div>-->
     
     <div class="doc-date">
         

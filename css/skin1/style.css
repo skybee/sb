@@ -3523,4 +3523,15 @@ img.alignleft,a img.alignleft {
         color: #209C00;
         font-size: 14px;
     }
+    
+    
+    /*<top gAds>*/
+.top_gads{
+    background-color: #2e2e2e;
+    border-top: 2px solid #009DDB;
+    /*height: 90px;*/
+    float: left;
+    width: 956px;
+}    
+    
 /*============== </My> ==============*/

@@ -86,7 +86,10 @@
                         </div><!-- #categories closer -->
 
                         <div class="cat_line"></div>
-                        
+
+                        <div class="top_gads">
+                            <script type="text/javascript">loadGAd('under slider');</script>
+                        </div>
 
                         <!-- !!! Top Slider Here-->
 
