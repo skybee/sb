@@ -104,6 +104,10 @@ $( document ).ready(function(){
     setTimeout('setTop()', 15000);
     
     $('#right-ajax-block').load('/ajax/background/get_right_hc/');
+    
+    // <likeArt in Text Add Link>
+    likeInTxtLink = $('h2.look_more_hdn').attr('rel');
+    $('h2.look_more_hdn').wrapInner('<a href="'+likeInTxtLink+'"></a>');
 });
 
 

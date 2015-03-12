@@ -44,8 +44,16 @@ function insertLikeArticleInTxt($text, $likeList)
         return $text;
     }
 
-    $search     = "/([\s\S]{20,200}<\/p>)/i";
-    $replace = "$1 \n".'<h2 class="look_more_hdn"><span>Смотрите также:</span> '.$likeList[0]['title']."</h2>\n".'<p class="look_more_hdn">'."\n".$likeList[0]['text']."\n</p>\n";
+    $newsUrl    = "/{$likeList[0]['full_uri']}-{$likeList[0]['id']}-{$likeList[0]['url_name']}/";
+
+    $search     = "/([\s\S]{500}(<\/p>|<br.{0,2}>\s*<br.{0,2}>))/i";
+    $replace    = "$1 \n".'<h2 class="look_more_hdn" rel="'.$newsUrl.'"><span>Смотрите также:</span> '.$likeList[0]['title']."</h2>\n";
+    $replace   .= '<p class="look_more_hdn">'."\n";
+
+    if(!empty($likeList[0]['main_img'])){
+        $replace .= '<img src="/upload/images/small/'.$likeList[0]['main_img'].'" alt="'.$likeList[0]['title'].'" onerror="imgError(this);" />'."\n";
+    }
+    $replace   .= $likeList[0]['text']."\n</p>\n";
 
     $text = preg_replace($search, $replace, $text, 1);
 

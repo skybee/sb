@@ -3491,17 +3491,36 @@ img.alignleft,a img.alignleft {
     padding: 15px 15px !important;
     margin: 0 !important;
     
-    display: none;
+    /*display: none;*/
 }
+    p.look_more_hdn{
+        padding-top: 10px !important;
+    }
+        p.look_more_hdn img{
+            float: left;
+            width: 90px;
+            padding: 0 10px 5px 0;
+        }
 #left div.single div.content h2.look_more_hdn{
-    font-size: 13px !important;
+    font-size: 14px !important;
     color: #4c8296 !important;
     line-height: 1.2em !important;
     margin: 0 !important;
     width: auto !important;
     padding-bottom: 0px !important;
 }
-#left div.single div.content h2.look_more_hdn span{
-    color: #209C00;
-}
+    #left div.single div.content h2.look_more_hdn a{
+        font-size: 14px !important;
+        color: #4c8296 !important;
+        line-height: 1.2em !important;
+        text-decoration: none;
+        font-weight: bold !important;
+    }
+        #left div.single div.content h2.look_more_hdn a:hover{
+            text-decoration: underline;
+        }
+    #left div.single div.content h2.look_more_hdn span{
+        color: #209C00;
+        font-size: 14px;
+    }
 /*============== </My> ==============*/
