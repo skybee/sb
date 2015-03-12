@@ -18,7 +18,7 @@ class serp_parse extends CI_Controller
     {
         header("Content-type:text/plain; Charset=utf-8");
 
-        if( $this->single_work( 2, 'upd_article_view') == false ){
+        if( $this->single_work( 2, 'serp_parse') == false ){
             exit('The work temporary Lock');
         }
 

@@ -85,6 +85,9 @@ class main extends CI_Controller {
         $data_ar['meta']['title']       = $data_ar['cat_ar']['name'].': '.$data_ar['doc_data']['title'].' - Odnako.su';
         $data_ar['donor_rel']           = botRelNofollow();
 
+        //вставка like_articles[0] в текст
+        $data_ar['doc_data']['text'] = insertLikeArticleInTxt($data_ar['doc_data']['text'], $data_ar['like_articles']);
+
         $top_slider['articles']         = $this->article_m->get_top_slider_data( $data_ar['cat_ar']['id'], 8, $this->catConfig['top_news_time'], $this->topSliderTxtLength, true, false);
         $right['right_top']             = $this->article_m->get_top_slider_data( $data_ar['cat_ar']['parent_id'], 5, $this->catConfig['right_top_news_time'], $this->topSliderTxtLength, true, true, 'right_top');
         $right['last_news']             = $this->article_m->get_last_left_news( $data_ar['cat_ar']['parent_id'], 20 );

@@ -37,3 +37,17 @@ function serpDataFromJson($json)
 
     return $data;
 }
+
+function insertLikeArticleInTxt($text, $likeList)
+{
+    if(!isset($likeList[0])){
+        return $text;
+    }
+
+    $search     = "/([\s\S]{20,200}<\/p>)/i";
+    $replace = "$1 \n".'<h2 class="look_more_hdn"><span>Смотрите также:</span> '.$likeList[0]['title']."</h2>\n".'<p class="look_more_hdn">'."\n".$likeList[0]['text']."\n</p>\n";
+
+    $text = preg_replace($search, $replace, $text, 1);
+
+    return $text;
+}
