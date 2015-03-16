@@ -24,8 +24,9 @@ class serp_parse_lib
         }
 
         $data = $this->getDataFromXml($xmlObj);
-
-        $data = $this->delThisHostFromResult($data, $this->thisHost);
+        if($data){
+            $data = $this->delThisHostFromResult($data, $this->thisHost);
+        }
 
         return $data;
     }
@@ -68,7 +69,7 @@ class serp_parse_lib
             $thisHost = $_SERVER['HTTP_HOST'];
         }
 
-        if(count($results) < 1){
+        if(is_array($results) && count($results) < 1){
             return $results;
         }
 

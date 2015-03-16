@@ -108,6 +108,20 @@ $( document ).ready(function(){
     // <likeArt in Text Add Link>
     likeInTxtLink = $('h2.look_more_hdn').attr('rel');
     $('h2.look_more_hdn').wrapInner('<a href="'+likeInTxtLink+'"></a>');
+    
+    // <serp result add link>
+    if($('.serp_block').length > 0){
+        $('.serp_block').mouseover(function(){
+            var serp_h4 = $('.serp_block h4');
+            var serp_length = serp_h4.length;
+            
+            for(i=0; i<serp_length; i++)
+            {
+                $('.serp_block h4').eq(i).wrap('<a href="'+$('.serp_block h4').eq(i).attr('rel')+'" target="_blank"></a>')
+            }
+        });
+    }
+    // <serp result add link>
 });
 
 
@@ -149,6 +163,13 @@ function loadGAd( blockName ){
             google_ad_width = 956;
             google_ad_height = 120;
         }
+        if( blockName == 'under slider grey'){
+            /* Under Slider Gray */
+            google_ad_slot = "4454379644";
+            google_ad_width = 956;
+            google_ad_height = 120;
+        }
+        
         
         document.write('<script type="text/javascript" src="//pagead2.googlesyndication.com/pagead/show_ads.js"></script>');
 }

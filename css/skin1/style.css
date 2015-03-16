@@ -3468,12 +3468,14 @@ img.alignleft,a img.alignleft {
     border-bottom: 1px solid #009DDB;
     margin-bottom: 20px;
 }
+    .serp_block a{ text-decoration: none; }
     .serp_block h4{
         font-size: 12px;
         font-weight: bold;
         line-height: 1.2em !important;
         color: #009DDB;
     }
+        .serp_block h4:hover{ text-decoration: underline;}
         .serp_block h4 span{
             font-weight: normal;
             color: #209C00;
@@ -3527,8 +3529,9 @@ img.alignleft,a img.alignleft {
     
     /*<top gAds>*/
 .top_gads{
-    background-color: #2e2e2e;
-    border-top: 2px solid #009DDB;
+    background-color: #F7F7F7;
+    border-top: 3px solid #009DDB;
+    border-bottom: 1px solid #009DDB;
     /*height: 90px;*/
     float: left;
     width: 956px;
