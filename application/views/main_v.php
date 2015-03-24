@@ -90,11 +90,7 @@
                         <div class="cat_line"></div>
 
                         <div class="top_gads">
-                            <? if(mt_rand(1, 1000) <= 500): ?>
                             <script type="text/javascript">loadGAd('under slider');</script>
-                            <? else: ?>
-                            <script type="text/javascript">loadGAd('under slider grey');</script>
-                            <? endif; ?>
                         </div>
 
                         <!-- !!! Top Slider Here-->
