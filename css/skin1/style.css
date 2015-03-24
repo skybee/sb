@@ -321,9 +321,12 @@ hr {
 }
 
 #header img.logo {
-	margin-top:23px;
-	border:0;
-	float:left;
+    margin-top: 23px;
+    border:0;
+    float:left;
+    
+/*    width: 210px;
+    margin-top: 16px;*/
 }
 
 #header div.ad {
@@ -3529,9 +3532,11 @@ img.alignleft,a img.alignleft {
     
     /*<top gAds>*/
 .top_gads{
-    background-color: #F7F7F7;
+    background-image: url('/img/slider-bg-long.png');
+    background-position: 0px 0px;
+    /*background-color: #F7F7F7;*/
     border-top: 3px solid #009DDB;
-    border-bottom: 1px solid #009DDB;
+    border-bottom: 2px solid #009DDB;
     /*height: 90px;*/
     float: left;
     width: 956px;
