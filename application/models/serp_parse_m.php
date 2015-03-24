@@ -13,8 +13,8 @@ class serp_parse_m extends CI_Model
         $sql = "SELECT `id`, `title`, `donor` "
             . "FROM `article` "
             . "WHERE "
-            . "`cat_id` NOT IN (4,5,6,7,8,9,10,11) "
-            . "AND "
+//            . "`cat_id` NOT IN (4,5,6,7,8,9,10,11) "
+//            . "AND "
             . "`serp_update` <= 0 "
             . "ORDER BY `id` DESC "
             . "LIMIT {$cnt} ";
