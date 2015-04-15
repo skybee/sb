@@ -384,7 +384,7 @@ class Article_m extends CI_Model{
     function get_search_pager_ar( $searchStr, $page = 1, $cnt_on_page = 15, $page_left_right = 3 ){
                 
         $query_str = "  SELECT 
-                            COUNT(`id`) AS 'count'
+                            COUNT(*) AS 'count'
                         FROM 
                             `article`
                         WHERE

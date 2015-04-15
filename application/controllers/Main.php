@@ -108,25 +108,17 @@ class Main extends CI_Controller {
         
         $page = (int) $page;
         if (!$page) $page = 1;
-        
-        
-        
+
         $data_ar['cat_ar']              = $this->category_m->get_cat_data_from_url( $cat_name );
         if( !isset($data_ar['cat_ar']['id']) ){
             show_404();
         }
-        
         $data_ar['news_page_list']      = $this->article_m->get_page_list($data_ar['cat_ar']['id'], $page, 15, 250 );
         $data_ar['pager_ar']            = $this->article_m->get_pager_ar( $data_ar['cat_ar']['id'], $page, 15, 4);
         $data_ar['page_nmbr']           = $page;
                 
         if (!$data_ar['news_page_list'])
-        {
             show_404();
-        }
-        
-        
-        
         $data_ar['main_menu_list']      = $this->list_m->get_cat(0);
         $data_ar['second_menu_list']    = $this->list_m->get_sCat_from_name($this->catNameAr[0]);
         $data_ar['footer_menu_list']    = $this->list_m->get_footer_cat_link();
@@ -146,8 +138,6 @@ class Main extends CI_Controller {
         $tpl_ar['right']        = $this->load->view('component/right_last_news_v', $right, true);
 
         $this->load->view('main_v', $tpl_ar);
-        
-        echo $this->benchmark->elapsed_time('code_start', 'code_end');
     }
     
     function search( $page=1 ){
@@ -157,12 +147,12 @@ class Main extends CI_Controller {
         $searchStr   = preg_replace("#[^a-z а-яё]#iu", ' ', $searchStr);
         
 //        $data_ar['main_cat_ar']         = $this->article_m->get_cat_data_from_url_name($cat_name);
-        $data_ar['news_page_list']      = $this->article_m->get_search_page_list($searchStr, $page, 15 );
-        $data_ar['pager_ar']            = $this->article_m->get_search_pager_ar( $searchStr, $page, 15, 4);
-        $data_ar['page_nmbr']           = $page;
+        #$data_ar['news_page_list']      = $this->article_m->get_search_page_list($searchStr, $page, 15 );
+        #$data_ar['pager_ar']            = $this->article_m->get_search_pager_ar( $searchStr, $page, 15, 4);
+        #$data_ar['page_nmbr']           = $page;
         
-        if (!$data_ar['news_page_list'])
-            $data_ar['news_page_list'] = NULL; #show_404();
+        #if (!$data_ar['news_page_list'])
+        #    $data_ar['news_page_list'] = NULL; #show_404();
         $data_ar['main_menu_list']      = $this->list_m->get_cat(0);
         $data_ar['second_menu_list']    = $this->list_m->get_cat(1);
         $data_ar['footer_menu_list']    = $this->list_m->get_footer_cat_link();
@@ -174,8 +164,8 @@ class Main extends CI_Controller {
         $right['last_news']              = $this->article_m->get_last_left_news( 1, 50 );
         
         //<Rename for cat list view>
-        $data_ar['cat_ar']['p_name']    = 'Поиск';
-        $data_ar['cat_ar']['name']      = $searchStr;
+        $data_ar['cat_ar']['p_name']    = 'Поиск временно отключен';
+        $data_ar['cat_ar']['name']      = '';#$searchStr;
         $data_ar['search_url_str']      = str_replace(' ', '+', $searchStr);
         //</Rename for cat list view>
         
