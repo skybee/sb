@@ -1,6 +1,6 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed'); ?>
 
-<? foreach( $mainpage_cat_list as $catlist_ar ): ?>
+<?php foreach( $mainpage_cat_list as $catlist_ar ): ?>
 
 <div class="cat_listing">
 
@@ -24,7 +24,7 @@
         
         
         <div class="right">
-            <? if( isset($catlist_ar[1]) ): ?>
+            <?php if( isset($catlist_ar[1]) ): ?>
             <div class="small-listing">
                 <div class="thumb">
                     <a href="<?="/{$catlist_ar[1]['full_uri']}-{$catlist_ar[1]['id']}-{$catlist_ar[1]['url_name']}/"?>">
@@ -33,9 +33,9 @@
                 </div><!-- #thumb -->
                 <div class="description"><h4><a href="<?="/{$catlist_ar[1]['full_uri']}-{$catlist_ar[1]['id']}-{$catlist_ar[1]['url_name']}/"?>"><?=$catlist_ar[1]['title']?></a></h4></div><!-- #description -->
             </div><!-- #small-listing -->
-            <? endif; ?>
+            <?php endif; ?>
             
-            <? if( isset($catlist_ar[2]) ): ?>
+            <?php if( isset($catlist_ar[2]) ): ?>
             <div class="small-listing">
                 <div class="thumb">
                     <a href="<?="/{$catlist_ar[2]['full_uri']}-{$catlist_ar[2]['id']}-{$catlist_ar[2]['url_name']}/"?>">
@@ -44,9 +44,9 @@
                 </div><!-- #thumb -->
                 <div class="description"><h4><a href="<?="/{$catlist_ar[2]['full_uri']}-{$catlist_ar[2]['id']}-{$catlist_ar[2]['url_name']}/"?>"><?=$catlist_ar[2]['title']?></a></h4></div><!-- #description -->
             </div><!-- #small-listing -->
-            <? endif; ?>
+            <?php endif; ?>
             
-            <? if( isset($catlist_ar[3]) ): ?>
+            <?php if( isset($catlist_ar[3]) ): ?>
             <div class="small-listing">
                 <div class="thumb">
                     <a href="<?="/{$catlist_ar[3]['full_uri']}-{$catlist_ar[3]['id']}-{$catlist_ar[3]['url_name']}/"?>">
@@ -55,15 +55,15 @@
                 </div><!-- #thumb -->
                 <div class="description"><h4><a href="<?="/{$catlist_ar[3]['full_uri']}-{$catlist_ar[3]['id']}-{$catlist_ar[3]['url_name']}/"?>"><?=$catlist_ar[3]['title']?></a></h4></div><!-- #description -->
             </div><!-- #small-listing -->
-            <? endif; ?>
+            <?php endif; ?>
             
         </div><!-- #right -->
     </div><!-- #content -->
 </div><!-- #listing -->
 
-<? endforeach; ?>
+<?php endforeach; ?>
 
-<?
+<?php
 //    if($_SERVER['REQUEST_URI'] == '/'){
 //        echo '<div style="display:none;">'."\n";
 //        

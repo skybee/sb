@@ -18,11 +18,11 @@
                 <link rel="stylesheet" type="text/css" href="/css/skin1/ie7.css">
         <![endif]-->
         
-        <? if(isset($meta['og'])) echo $meta['og']; ?>
+        <?php if(isset($meta['og'])) echo $meta['og']; ?>
         
-        <? if(isset($meta['noindex']) && $meta['noindex'] == true ): ?>
+        <?php if(isset($meta['noindex']) && $meta['noindex'] == true ): ?>
             <meta name="robots" content="noindex, follow" />
-        <? endif; ?>
+        <?php endif; ?>
 
         <script type='text/javascript' src='/js/skin1/jquery-1.8.3.min.js'></script>
         <script type='text/javascript' src='/js/skin1/jquery-ui.min.js'></script>
@@ -35,8 +35,8 @@
 
     <body>
 
-        <?  if( isset($this->catNameAr[0]) ): ?> <span style="display:none;" id="opt-tag-main-cat" ><?=$this->catNameAr[0]?></span> <? endif; ?>
-        <?  if( isset($this->catNameAr[1]) ): ?> <span style="display:none;" id="opt-tag-sub-cat"  ><?=$this->catNameAr[1]?></span> <? endif; ?>
+        <?php  if( isset($this->catNameAr[0]) ): ?> <span style="display:none;" id="opt-tag-main-cat" ><?=$this->catNameAr[0]?></span> <?php endif; ?>
+        <?php  if( isset($this->catNameAr[1]) ): ?> <span style="display:none;" id="opt-tag-sub-cat"  ><?=$this->catNameAr[1]?></span> <?php endif; ?>
         
         <div id="container">
 
@@ -44,12 +44,12 @@
 
                 <div class="navigation">
                     <ul class="firstnav-menu">
-                        <? foreach ($main_menu_list as $main_link): ?>
+                        <?php foreach ($main_menu_list as $main_link): ?>
                             <li class="page_item page-item-372" catname="<?=$main_link['url_name']?>">
                                 <a href="/<?= $main_link['url_name'] ?>/"><?= $main_link['name'] ?></a>
                                 <div class="firstnav-menu-arrow"></div>
                             </li>
-                        <? endforeach; ?>
+                        <?php endforeach; ?>
                     </ul>    
                 </div><!-- #navigation closer -->
             </div><!-- #headernavigation closer -->
@@ -70,20 +70,20 @@
 
                         <div id="categories">
                             <ul class="secondnav-menu">
-                                <? foreach ($second_menu_list as $second_menu_ar): ?>
+                                <?php foreach ($second_menu_list as $second_menu_ar): ?>
                                     <li class="cat-item cat-item-<?= $second_menu_ar['id'] ?>" catname="<?=$second_menu_ar['url_name']?>">
                                         <a href="/<?= $second_menu_ar['full_uri'] ?>" ><?= $second_menu_ar['name'] ?></a>
                                         <div class="secondnav-menu-arrow"></div>
                                         
-                                        <? if( isset($second_menu_ar['sub_cat_list']) ): ?>
+                                        <?php if( isset($second_menu_ar['sub_cat_list']) ): ?>
                                         <ul class="secondnav-drop-cat">
-                                            <? foreach($second_menu_ar['sub_cat_list'] as $third_menu_ar): ?>
+                                            <?php foreach($second_menu_ar['sub_cat_list'] as $third_menu_ar): ?>
                                             <li><a href="/<?= $third_menu_ar['full_uri'] ?>" ><?= $third_menu_ar['name'] ?></a></li>
-                                            <? endforeach; ?>
+                                            <?php endforeach; ?>
                                         </ul>
-                                        <? endif; ?>
+                                        <?php endif; ?>
                                     </li>
-                                <? endforeach; ?>   
+                                <?php endforeach; ?>
                             </ul>
                         </div><!-- #categories closer -->
 
@@ -113,22 +113,22 @@
             <div id="footer_widget" >
                 <div class="inside">
                     <div id="footer_all_cat_block">
-                        <?
+                        <?php
                         foreach ($footer_menu_list as $menuList):
                             ?>
                             <div class="footer_acb_main_cat">
                                 <a href="/<?= $menuList['url_name'] ?>/" class="footer_main_cat_a"><?= $menuList['name'] ?></a><br />
                                 <div class="footer_acb_sec_cat">
-                                    <?
+                                    <?php
                                     if ($menuList['s_cat'] != NULL):
                                         foreach ($menuList['s_cat'] as $sCat):
                                             ?>
                                             <a href="/<?= $menuList['url_name'] ?>/<?= $sCat['url_name'] ?>/"><?= $sCat['name'] ?></a>
-                                        <? endforeach;
+                                        <?php endforeach;
                                     endif; ?>
                                 </div>
                             </div>
-                        <? endforeach; ?>
+                        <?php endforeach; ?>
                     </div>
                     <div class="footer_contact">
                         <span>Контакты</span><br />

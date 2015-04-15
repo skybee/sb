@@ -7,7 +7,7 @@
 <div class="right-top-news">
     <div id="right-top-news-slider">
         
-        <?
+        <?php
             foreach($right_top as $article):
                 $newsUrl    = "/{$article['full_uri']}-{$article['id']}-{$article['url_name']}/";
         ?>
@@ -23,7 +23,7 @@
             </div>
         </div>
         
-        <?  endforeach; ?>
+        <?php  endforeach; ?>
     </div>
 </div>
 
@@ -43,7 +43,7 @@
 </h3>
 
 <div class="last_news_one_block">
-    <? $firstNews = &$last_news['first']; ?>
+    <?php $firstNews = &$last_news['first']; ?>
     <a class="lnob_img_block" href="<?="/{$firstNews['full_uri']}-{$firstNews['id']}-{$firstNews['url_name']}/"?>">
         <img src="/upload/images/medium/<?=$firstNews['main_img']?>" alt="" onerror="imgError(this);" />
         <div class="lnob_title">
@@ -53,7 +53,7 @@
 </div>
 
 <div class="last_news_list">
-<?
+<?php
     foreach ($last_news['all'] as $lnews ):
 ?>
     <div class="lnl_news">
@@ -66,40 +66,40 @@
             <?=$lnews['title']?>
         </a>    
     </div>
-<?
+<?php
     endforeach;
 ?>
     
     
-    <? if( $_SERVER['REQUEST_URI'] == '/' ): //HC Link ?>
+    <?php if( $_SERVER['REQUEST_URI'] == '/' ): //HC Link ?>
         <div class="lnl_news">
             <span>
             </span>
             <a href="http://house-control.org.ua/category/cctv-systems/" > Видеонаблюдение - система IP камер</a>
         </div>
-    <? elseif( $_SERVER['REQUEST_URI'] == '/hi-tech/' ): ?>
+    <?php elseif( $_SERVER['REQUEST_URI'] == '/hi-tech/' ): ?>
         <div class="lnl_news">
             <span>
             </span>
             <a href="http://house-control.org.ua/category/kamera/" > Камеры для видеонаблюдения </a>
         </div>
-    <? endif; ?>
+    <?php endif; ?>
     
     
-    <? if( isset($sape_link) && !empty($sape_link) ): //SPE Link?>
+    <?php if( isset($sape_link) && !empty($sape_link) ): //SPE Link?>
         <div class="lnl_news">
             <span>
             </span>
             <?=$sape_link?>
         </div>
-    <? endif; ?>
+    <?php endif; ?>
     
     
 </div>
 
 
 
-<? if( isset($serp_list) && $serp_list != false): ?>
+<?php if( isset($serp_list) && $serp_list != false): ?>
 
 <h3 class="widget-title" style="margin-top: 30px;">
     <span class="title">Похожее на других сайтах</span>
@@ -107,15 +107,15 @@
 
 <div class="serp_block">
 
-    <? foreach($serp_list as $serp): ?>
+    <?php foreach($serp_list as $serp): ?>
     <h4 rel="<?=$serp['url']?>">
         <?=$serp['title']?>
         <span>- <?=$serp['host']?></span>
     </h4>
     <p><?=$serp['text']?></p>
-    <? endforeach; ?>
+    <?php endforeach; ?>
 
 </div>
 
-<? endif; ?>
+<?php endif; ?>
 

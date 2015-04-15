@@ -7,7 +7,7 @@
     </div><!-- #active -->
 
 
-<?  
+<?php
     if( isset($news_page_list) && $news_page_list != NULL ):
     foreach( $news_page_list as $news_page_ar ):
         $news_url   = "/{$news_page_ar['full_uri']}-{$news_page_ar['id']}-{$news_page_ar['url_name']}/";
@@ -22,7 +22,7 @@
             <div class="left">
                 <div class="imgholder">
                     <a href="<?=$news_url?>" target="_blank" >
-                        <? if( !empty($news_page_ar['main_img']) ) 
+                        <?php if( !empty($news_page_ar['main_img']) )
                                 $imgUrl = '/upload/images/medium/'.$news_page_ar['main_img'];
                            else
                                 $imgUrl = '/img/default_news.jpg';
@@ -45,18 +45,18 @@
             </div><!-- #right -->
         </div><!-- #content -->
     </div><!-- #listing -->
-<? 
+<?php
     endforeach; 
     else:
 ?>
     Нет результатов для отображения
-<? 
+<?php
     endif;
 ?>
 
     <div class="news_pager">
         <ul>
-            <? 
+            <?php
                 foreach ($pager_ar as $page): 
                 if( !isset($search_url_str) )
                     $pager_url = '/'.$cat_ar['full_uri'].$page.'/';
@@ -64,13 +64,13 @@
                     $pager_url = '/search/'.$page.'/?q='.$search_url_str;
             ?>
             <li>
-                <? if($page != $page_nmbr && $page != '...'): ?>
+                <?php if($page != $page_nmbr && $page != '...'): ?>
                 <a href="<?=$pager_url?>"><?=$page?></a>
-                <? else: ?>
+                <?php else: ?>
                 <span class="pager_not_link"><?=$page?></span>
-                <? endif;?>
+                <?php endif;?>
             </li>
-            <? endforeach; ?>
+            <?php endforeach; ?>
         </ul>
     </div>
     

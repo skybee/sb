@@ -5,7 +5,7 @@
 <div id="featured" >
     
     <ul class="ui-tabs-nav">
-        <?  $i = 1;
+        <?php  $i = 1;
             foreach($articles as $article):
         ?>
         <li class="ui-tabs-nav-item ui-tabs-selected" id="nav-fragment-<?=$i?>">
@@ -13,11 +13,11 @@
                 <img src="/upload/images/small/<?=$article['main_img']?>" alt="" onerror="imgError(this);" />
             </a>
         </li>
-        <? $i++; endforeach; ?>
+        <?php $i++; endforeach; ?>
     </ul>
 
     
-<?  $i = 1;
+<?php  $i = 1;
     foreach($articles as $article):
         
     $newsUrl    = "/{$article['full_uri']}-{$article['id']}-{$article['url_name']}/"; 
@@ -35,7 +35,7 @@
             <p><?=$article['text']?> [&hellip;]</p>
         </div><!-- #info closer -->
     </div><!-- #fragment-1 closer -->
-<? $i++; endforeach; ?>
+<?php $i++; endforeach; ?>
     
 </div><!-- #featured closer -->
 <!-- SLIDER END -->

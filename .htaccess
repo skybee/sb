@@ -7,13 +7,13 @@
 	RewriteRule ^(.*)$ http://%1/$1 [R=301,L]
 	
 	#Close slash 
-    RewriteRule ^([a-z_-\d/]*[^/])$ $1/ [NC,L,R=301]
+    RewriteRule ^(-_[a-z\d/]*[^/])$ $1/ [NC,L,R=301]
 
     #first page in cat pagination
     RewriteRule ^(.*)/1/$ $1/ [NC,L,R=301] 
     
     #load img from server
-    RewriteCond %{HTTP_HOST} ^sb\.lh$ [NC]
+    RewriteCond %{HTTP_HOST} ^(sb|sb5)\.lh$ [NC]
     RewriteRule ^(.*?\.(png|jpg|jpeg|gif))$ http://odnako.su/$1 [L]
 
     #Removes access to the system folder by users.

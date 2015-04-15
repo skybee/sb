@@ -12,7 +12,7 @@
         </div>
         
         <div class="dd_left">
-            <? $dateAr =& $doc_data['date_ar']; ?>
+            <?php $dateAr =& $doc_data['date_ar']; ?>
             <?=$dateAr['time'].'&nbsp;&nbsp;&nbsp;'.$dateAr['day_nmbr'].' '.$dateAr['month_str'].' '.$dateAr['year_nmbr'];?>
         </div>
         
@@ -26,28 +26,28 @@
     
     
     
-        <?  if( !empty($doc_data['main_img']) ): ?>
+        <?php  if( !empty($doc_data['main_img']) ): ?>
     <div class="content-gAd">
         <div class="content-gAd-center">
             <script type="text/javascript">loadGAd('content top');</script>
         </div>
     </div>
-    <?  endif; ?>
+    <?php  endif; ?>
     
     
 
     <div class="content copy-url">
-        <?  if( !empty($doc_data['main_img']) ): ?>
+        <?php  if( !empty($doc_data['main_img']) ): ?>
         <div class="thumb ">
             <a href="/upload/images/real/<?=$doc_data['main_img']?>" rel="prettyPhoto" title="<?=$doc_data['title']?>">
                 <img src="/upload/images/medium/<?=$doc_data['main_img']?>" alt="<?=$doc_data['title']?>" class="imgf" style="opacity: 1;" onerror="imgError(this);" />
             </a>
         </div>
-        <?  else: ?>
+        <?php  else: ?>
         <div class="thumb thumb-gAd">
             <script type="text/javascript">loadGAd('content noImg');</script>
         </div>
-        <?  endif; ?>
+        <?php  endif; ?>
         
     <?=$doc_data['text']?>
         
@@ -76,7 +76,7 @@
                 <h1>смотрите также:</h1>
             </div><!-- #header -->
             
-            <?  
+            <?php
                 foreach( $like_articles as $likeArts ): 
                     $newsUrl = "/{$likeArts['full_uri']}-{$likeArts['id']}-{$likeArts['url_name']}/";
                 
@@ -104,7 +104,7 @@
                     </div>
                 </div>
             </div><!-- #left_other_news -->
-            <? endforeach; ?>
+            <?php endforeach; ?>
                         
             
         </div><!-- #listing -->

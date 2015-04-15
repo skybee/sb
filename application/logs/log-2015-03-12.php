@@ -298,3 +298,6 @@ ERROR - 2015-03-12 23:04:10 --> Severity: Warning  --> mysql_pconnect() [<a href
 ERROR - 2015-03-12 23:04:11 --> Severity: Warning  --> mysql_pconnect() [<a href='function.mysql-pconnect'>function.mysql-pconnect</a>]: MySQL server has gone away S:\OpenServer\domains\sb.lh\system\database\drivers\mysql\mysql_driver.php 91
 ERROR - 2015-03-12 23:04:11 --> 404 Page Not Found --> main/upload
 ERROR - 2015-03-12 23:04:25 --> Severity: Warning  --> mysql_pconnect() [<a href='function.mysql-pconnect'>function.mysql-pconnect</a>]: MySQL server has gone away S:\OpenServer\domains\sb.lh\system\database\drivers\mysql\mysql_driver.php 91
+ERROR - 2015-03-12 23:55:03 --> Severity: Warning  --> mysql_pconnect() [<a href='function.mysql-pconnect'>function.mysql-pconnect</a>]: MySQL server has gone away S:\OpenServer\domains\sb.lh\system\database\drivers\mysql\mysql_driver.php 91
+ERROR - 2015-03-12 23:55:07 --> Severity: Warning  --> mysql_pconnect() [<a href='function.mysql-pconnect'>function.mysql-pconnect</a>]: MySQL server has gone away S:\OpenServer\domains\sb.lh\system\database\drivers\mysql\mysql_driver.php 91
+ERROR - 2015-03-12 23:55:22 --> Severity: Warning  --> mysql_pconnect() [<a href='function.mysql-pconnect'>function.mysql-pconnect</a>]: MySQL server has gone away S:\OpenServer\domains\sb.lh\system\database\drivers\mysql\mysql_driver.php 91

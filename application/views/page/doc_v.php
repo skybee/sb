@@ -20,7 +20,7 @@
         </div>
         
         <div class="dd_left">
-            <? $dateAr =& $doc_data['date_ar']; ?>
+            <?php $dateAr =& $doc_data['date_ar']; ?>
             <?=$dateAr['time'].'&nbsp;&nbsp;&nbsp;'.$dateAr['day_nmbr'].' '.$dateAr['month_str'].' '.$dateAr['year_nmbr'];?>
         </div>
         
@@ -34,19 +34,19 @@
     
     
     
-        <?  #if( !empty($doc_data['main_img']) ): ?>
+        <?php  #if( !empty($doc_data['main_img']) ): ?>
 <!--        <div class="content-gAd">
             <div class="content-gAd-center">
                 <script type="text/javascript">loadGAd('content top');</script>
             </div>
         </div>-->
-        <?  #endif; ?>
+        <?php  #endif; ?>
     
     
 
     <div class="content copy-url">
         
-        <?  if( !empty($doc_data['main_img']) ): ?>
+        <?php  if( !empty($doc_data['main_img']) ): ?>
         <div class="thumb thumb-fix-block">
             <div class="thumb-fix-block-bg">
                 <a href="/upload/images/real/<?=$doc_data['main_img']?>" title="<?=$doc_data['title']?>" class="image-popup-no-margins" >
@@ -54,7 +54,7 @@
                 </a>
             </div>
         </div>
-        <?  endif; ?>
+        <?php  endif; ?>
         
         <div class="thumb thumb-gAd">
             <script type="text/javascript">loadGAd('content noImg');</script>
@@ -101,7 +101,7 @@
             
             <div class="slider-block">
                 
-                <?  
+                <?php
                     $cntNews = count($like_articles);
 
                     for($i   = 1; $i<=$cntNews; $i = $i+3 ):
@@ -110,12 +110,12 @@
                 <div>
                     <div class="slider-block-item">    
 
-                        <?
+                        <?php
                             $ii = 0;
                             foreach( $like_articles as $key=>$likeArts ):
 
                             $newsUrl    = "/{$likeArts['full_uri']}-{$likeArts['id']}-{$likeArts['url_name']}/";
-                            $dateAr     =& $likeArts['date'];
+                            $dateAr     =& $likeArts['date_ar'];
                             $dateStr    = $dateAr['day_str'].' &nbsp;'.$dateAr['time'].', &nbsp;&nbsp;'.$dateAr['day_nmbr'].' '.$dateAr['month_str'].' '.$dateAr['year_nmbr'];
 
                             if (!empty($likeArts['main_img']))
@@ -143,7 +143,7 @@
                             </div><!-- #content -->
                         </div><!-- #listing -->
 
-                        <? 
+                        <?php
                             unset( $like_articles[$key] );
                             $ii++;
                             if($ii >= 3 ) break;
@@ -152,7 +152,7 @@
 
                     </div>
                 </div>
-                <? endfor; ?>
+                <?php endfor; ?>
                 
             </div>
         </div>
