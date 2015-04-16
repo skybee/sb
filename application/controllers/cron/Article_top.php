@@ -10,9 +10,9 @@ class Article_top extends CI_Controller{
     
     function upd_article_view(){
         
-        if( $this->single_work( 20, 'upd_article_view') == false ) exit('The work temporary Lock');
+        if( $this->single_work( 45, 'upd_article_view') == false ) exit('The work temporary Lock');
         
-        $sql = "UPDATE  `article` ,
+        $sql = "UPDATE LOW_PRIORITY `article` ,
                 (
                     SELECT  `article_id` , SUM(`rank`) AS  `rank` 
                     FROM  `article_top` 

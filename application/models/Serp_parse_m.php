@@ -37,7 +37,7 @@ class Serp_parse_m extends CI_Model
     {
         $jsonStr = $this->db->escape_str($jsonStr);
 
-        $sql = "UPDATE `article` SET `serp_object` = '{$jsonStr}', `serp_update` = NOW() WHERE `id` = '{$id}' LIMIT 1 ";
+        $sql = "UPDATE LOW_PRIORITY `article` SET `serp_object` = '{$jsonStr}', `serp_update` = NOW() WHERE `id` = '{$id}' LIMIT 1 ";
 
         if( $this->db->query($sql) ){
             return true;

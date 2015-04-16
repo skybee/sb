@@ -113,6 +113,12 @@ class Main extends CI_Controller {
         if( !isset($data_ar['cat_ar']['id']) ){
             show_404();
         }
+        
+        if($page > 300) { // temp redirect 
+            header("Location: /{$data_ar['cat_ar']['full_uri']}", true, 302);
+            exit();
+        }
+        
         $data_ar['news_page_list']      = $this->article_m->get_page_list($data_ar['cat_ar']['id'], $page, 15, 250 );
         $data_ar['pager_ar']            = $this->article_m->get_pager_ar( $data_ar['cat_ar']['id'], $page, 15, 4);
         $data_ar['page_nmbr']           = $page;

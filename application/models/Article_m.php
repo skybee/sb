@@ -102,6 +102,7 @@ class Article_m extends CI_Model{
                                         `category`.`id` = `article`.`cat_id`
                                         AND
                                         `article`.`donor_id` = `donor`.`id`
+                                    LIMIT 1    
                                   ");
         
         if( $query->num_rows() < 1 ) return FALSE; 

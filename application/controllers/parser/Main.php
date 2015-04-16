@@ -72,15 +72,18 @@ class Main extends CI_Controller
     }
     
     function parse_news( $cnt_news = 1 ){
+        set_time_limit( 300 );
         header("Content-type:text/html;Charset=utf-8");
         
-        if( $this->single_work( 2, 'parse_news') == false ) exit('The work temporary Lock');
+        
+        if( $this->single_work( 15, 'parse_news') == false ) exit('The work temporary Lock');
         
         $parse_list = $this->parser_m->get_news_url_to_parse( $cnt_news );
         
 //        echo '<pre>'.print_r($parse_list,1).'</pre>'; exit();
         
         if( $parse_list == null ){  echo "ERROR Отсутствуют URL для сканирования"; return; }
+         
         
         $i=1;
         foreach( $parse_list as $news_ar ){
@@ -112,7 +115,7 @@ class Main extends CI_Controller
             if( !empty($news_ar['main_img_url']) && empty($insert_data['img']) ){ 
                 $insert_data['img']         = $news_ar['main_img_url'];
             }    
-                
+            
             
             echo "<br />\n$i - <i>".$news_ar['url']."</i><br />\n";
             
@@ -123,7 +126,8 @@ class Main extends CI_Controller
     
             flush(); $i++;
 //            sleep(5);
-        }    
+        }
+
     }
     
     function get_articles_url(){
