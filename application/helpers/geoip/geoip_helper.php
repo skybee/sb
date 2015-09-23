@@ -6,7 +6,7 @@ function get_country(){
     
     $gi = geoip_open("application/helpers/geoip/files/GeoIP.dat",GEOIP_STANDARD);
     
-    $country_code = geoip_country_code_by_addr($gi, $_SERVER['REMOTE_ADDR']);
+    $country_code = geoip_country_code_by_addr($gi, $_SERVER['HTTP_X_REAL_IP']);
     geoip_close($gi);
     
     return $country_code;

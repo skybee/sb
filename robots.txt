@@ -1,6 +1,6 @@
 User-Agent: *
 Disallow: /search/
-Disallow: /js/skin1/sb.js
+#Disallow: /js/skin1/sb.js
 Crawl-delay: 3
 
 User-agent: Yandex

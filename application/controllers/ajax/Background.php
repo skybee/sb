@@ -14,7 +14,7 @@ class Background extends CI_Controller{
         if( $_SERVER["REQUEST_METHOD"] != 'POST' ) exit('! Wrong Method');
         
         $id     = (int) $_POST['docId'];
-        $ip     = $_SERVER['REMOTE_ADDR'];
+        $ip     = $_SERVER['HTTP_X_REAL_IP'];
         $ref    = $_POST['ref'];
         $rank   = 1;
         
@@ -42,7 +42,7 @@ class Background extends CI_Controller{
 //        }
 //    }
     
-    function get_right_hc(){
+    function get_right_hc(){        
         if( isset($_COOKIE['country']) && mb_strlen($_COOKIE['country']) == 2  ){
             $country = $_COOKIE['country'];
         }

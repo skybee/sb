@@ -31,12 +31,13 @@
     <span class="title">Реклама</span>
 </h3>-->
 
+<div id="right-ajax-block">
+</div>
+
 <div class="right_gad_block">
     <script type="text/javascript">loadGAd('right top');</script>
 </div>
 
-<div id="right-ajax-block">
-</div>
 
 <h3 class="widget-title">
     <span class="title">Последние новости</span>
@@ -71,17 +72,25 @@
 ?>
     
     
+    <?php 
+        $hcRel = '';
+        if(preg_match("/YandexBot/i", $_SERVER['HTTP_USER_AGENT']))
+        {
+            $hcRel = ' rel="nofollow" ';
+        }
+    ?>
+    
     <?php if( $_SERVER['REQUEST_URI'] == '/' ): //HC Link ?>
         <div class="lnl_news">
             <span>
             </span>
-            <a href="http://house-control.org.ua/category/cctv-systems/" > Видеонаблюдение - система IP камер</a>
+            <a <?=$hcRel?> href="http://house-control.org.ua/category/cctv-systems/" > Видеонаблюдение - система IP камер</a>
         </div>
     <?php elseif( $_SERVER['REQUEST_URI'] == '/hi-tech/' ): ?>
         <div class="lnl_news">
             <span>
             </span>
-            <a href="http://house-control.org.ua/category/kamera/" > Камеры для видеонаблюдения </a>
+            <a <?=$hcRel?> href="http://house-control.org.ua/category/kamera/" > Камеры для видеонаблюдения </a>
         </div>
     <?php endif; ?>
     
