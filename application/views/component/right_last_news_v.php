@@ -94,16 +94,6 @@
         </div>
     <?php endif; ?>
     
-    
-    <?php if( isset($sape_link) && !empty($sape_link) ): //SPE Link?>
-        <div class="lnl_news">
-            <span>
-            </span>
-            <?=$sape_link?>
-        </div>
-    <?php endif; ?>
-    
-    
 </div>
 
 

@@ -92,8 +92,8 @@ class Main extends CI_Controller {
         $right['right_top']             = $this->article_m->get_top_slider_data( $data_ar['cat_ar']['parent_id'], 5, $this->catConfig['right_top_news_time'], $this->topSliderTxtLength, true, true, 'right_top');
         $right['last_news']             = $this->article_m->get_last_left_news( $data_ar['cat_ar']['parent_id'], 20 );
         
-        $this->load->helper('sape');
-        $right['sape_link']    = getSapeLink();
+//        $this->load->helper('sape');
+//        $right['sape_link']    = getSapeLink();
         
         $tpl_ar                 = $data_ar; //== !!! tmp
         $tpl_ar['content']      = $this->load->view('page/doc_v', $data_ar, true); // .'<div>'.$msg.'</div>';
