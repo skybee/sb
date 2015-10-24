@@ -167,6 +167,12 @@ function loadGAd( blockName ){
             google_ad_width = 956;
             google_ad_height = 120;
         }
+        if( blockName == 'content greyInTxt'){
+            /* Grey in Text */
+            google_ad_slot = "2811858046";
+            google_ad_width = 468;
+            google_ad_height = 60;
+        }
         
         
         document.write('<script type="text/javascript" src="//pagead2.googlesyndication.com/pagead/show_ads.js"></script>');
