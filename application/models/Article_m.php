@@ -177,6 +177,13 @@ class Article_m extends CI_Model{
     }
     
     function get_like_articles( $id, $cat_id /*$catParentId*/, $text, $cntNews = 4, $dayPeriod = false, $newsDate = false  ){
+        
+        $likeIds = $this->get_like_articles_id($id, $newsDate);
+        if($likeIds !== false)
+        {
+            return $this->get_like_articles_from_ids($likeIds);
+        }
+        
         $cleanPattern = "#(['\"\,\.\\\]+|&\w{2,6};)#i";
         $text = preg_replace($cleanPattern, ' ', $text);
         
@@ -228,6 +235,8 @@ class Article_m extends CI_Model{
             $row['date_ar'] = get_date_str_ar( $row['date'] );
             $result[] = $row;
         }
+        
+        $this->insert_like_article_id($id,$result);
         
         return $result;
     }
@@ -438,6 +447,97 @@ class Article_m extends CI_Model{
                 $this->db->query("DELETE FROM `article_top` WHERE `date` < '{$control_date}' ");
             }
         }
+    }
+    
+    private function insert_like_article_id($articleId, $likeArticlesAr){
+        $cntLike = count($likeArticlesAr);
+        if($cntLike<1) {return false;}
+        
+        $likeStr = '(';
+        for($i=0;$i<$cntLike;$i++)
+        {
+            $likeStr .= $likeArticlesAr[$i]['id'];
+            if($i<$cntLike-1)
+            {
+                $likeStr .= ', ';
+            }
+        }
+        $likeStr .= ')';
+        
+        $updTime = date("Y-m-d H:i:s");
+        
+        $sql = "REPLACE INTO `article_like_id` SET `article_id`='{$articleId}', `like_id`='{$likeStr}', `upd_time`='$updTime'";
+        if($this->db->query($sql))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    
+    private function get_like_articles_id($articleId, $newsDate){
+        $sql    = "SELECT * FROM `article_like_id` WHERE `article_id`='{$articleId}' ORDER BY `upd_time` DESC LIMIT 1 ";
+        $query  = $this->db->query($sql);
+        if($query->num_rows()<1) {return false;}
+        
+        $row = $query->row_array();
+        
+        $timeNow        = time();
+        
+        $timeCreateNews = strtotime($newsDate); 
+        $timeOldNews    = strtotime('+ '.$this->catConfig['like_news_day'].' day', $timeCreateNews);
+        
+        $timeLastUpd    = strtotime($row['upd_time']);
+        
+        if($timeOldNews > $timeNow)
+        {
+            $timeNewUpd     = strtotime('+ '.$this->catConfig['like_news_cache'].' hour', $timeLastUpd);
+        }
+        else //время обновления для старой новости
+        {
+            $timeNewUpd     = strtotime('+ '.$this->catConfig['like_news_cache_for_old'].' hour', $timeLastUpd);
+        }
+        
+//        echo "timeCreateNews\t\t".date("Y-m-d H-i", $timeCreateNews).' - '.$timeCreateNews."\n";
+//        echo "timeOldNews\t\t".date("Y-m-d H-i",$timeOldNews).' - '.$timeOldNews."\n\n";
+//        echo "timeLastUpd\t\t".date("Y-m-d H-i",$timeLastUpd).' - '.$timeLastUpd."\n";
+//        echo "timeNewUpd\t\t".date("Y-m-d H-i",$timeNewUpd).' - '.$timeNewUpd."\n\n";
+        
+        if($timeNow < $timeNewUpd)
+        {
+            return $row['like_id'];
+        }
+        else
+        {
+            return false;
+        }
+    }
+    
+    private function get_like_articles_from_ids($idsStr){
+        $sql = "SELECT 
+                    `article`.`id`, `article`.`title`, `article`.`url_name`, `article`.`main_img`, `article`.`date`, `article`.`text`, `article`.`views`, `category`.`full_uri` 
+                FROM 
+                    `article`, `category`
+                WHERE
+                    `article`.`id` IN {$idsStr}
+                     AND
+                     `category`.`id` = `article`.`cat_id`
+                LIMIT 9     
+                ";
+        $query = $this->db->query($sql); 
+        
+        if( $query->num_rows() < 1 ) return NULL;
+        
+        $result = array();
+        foreach( $query->result_array() as $row ){
+            $row['text']    = $this->get_short_txt( $row['text'], 600, 'dot' );
+            $row['date_ar'] = get_date_str_ar( $row['date'] );
+            $result[] = $row;
+        }
+        
+        return $result;
     }
     
 }
