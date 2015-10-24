@@ -53,7 +53,11 @@ function insertLikeArticleInTxt($text, $likeList)
     if(!empty($likeList[0]['main_img'])){
         $replace .= '<img src="/upload/images/small/'.$likeList[0]['main_img'].'" alt="'.$likeList[0]['title'].'" onerror="imgError(this);" />'."\n";
     }
-    $replace   .= $likeList[0]['text']."\n</p>\n";
+    $replace   .= $likeList[0]['text']."\n "
+            . "<span style=\"display:block; margin-top:15px;\"> \n"
+            . "<script type=\"text/javascript\">loadGAd('content greyInTxt');</script> \n "
+            . "</span> \n"
+            . "</p>\n";
 
     $text = preg_replace($search, $replace, $text, 1);
 
