@@ -91,7 +91,7 @@ $db['default']['password'] = '1865tsbqwerty';
 $db['default']['database'] = 'admin_news';
 
 
-if( $_SERVER['HTTP_HOST'] == 'sb.lh' || $_SERVER['HTTP_HOST'] == 'sb5.lh' || $_SERVER['HTTP_HOST'] == 'odnako.lh' ){
+if( $_SERVER['HTTP_HOST'] != 'odnako.su' ){
 //    $db['default']['hostname'] = '127.0.0.1';
 //    //$db['default']['hostname'] = 'localhost';
 //    $db['default']['username'] = 'mysql';
