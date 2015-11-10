@@ -8,6 +8,7 @@
     <div id="right-top-news-slider">
         
         <?php
+            $i=0;
             foreach($right_top as $article):
                 $newsUrl    = "/{$article['full_uri']}-{$article['id']}-{$article['url_name']}/";
         ?>
@@ -15,7 +16,11 @@
         <div>
             <div class="right-top-news-item">
                 <a href="<?=$newsUrl?>">
-                    <img src="/upload/images/medium/<?=$article['main_img']?>" onerror="imgError(this);" alt="" />
+                    <?php if($i==0): ?>
+                    <img src="/upload/images/medium/<?=$article['main_img']?>" alt="" onerror="imgError(this);" />
+                    <?php else: ?>
+                    <img data-src="/upload/images/medium/<?=$article['main_img']?>" src="/img/default_news.jpg" alt="" onerror="imgError(this);" />
+                    <?php endif;?>
                 </a>
                 <div class="right-top-news-title">
                     <?=$article['title']?>
@@ -23,7 +28,10 @@
             </div>
         </div>
         
-        <?php  endforeach; ?>
+        <?php  
+            $i++;
+            endforeach; 
+        ?>
     </div>
 </div>
 

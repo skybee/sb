@@ -21,14 +21,24 @@
         
         <div class="dd_left">
             <?php $dateAr =& $doc_data['date_ar']; ?>
-            <?=$dateAr['time'].'&nbsp;&nbsp;&nbsp;'.$dateAr['day_nmbr'].' '.$dateAr['month_str'].' '.$dateAr['year_nmbr'];?>
+            <span class="long_date_str">
+            <?=$dateAr['time'].'&nbsp;&nbsp;'.$dateAr['day_nmbr'].'&nbsp;'.$dateAr['month_str'].'&nbsp; '.$dateAr['year_nmbr'];?>
+            </span>
+<!--            <span class="short_date_str">
+                <?=$dateAr['time'].'&nbsp;&nbsp;'.$dateAr['day_nmbr'].'.'.$dateAr['month_nmbr'].'.'.$dateAr['year_short_nmbr'];?>
+            </span>-->
         </div>
         
         <div class="dd_right">
-            Источник: &nbsp;&nbsp;
+            <span class="short_date_str">
+            <?=$dateAr['time'].'&nbsp;&nbsp;'.$dateAr['day_nmbr'].'&nbsp;'.$dateAr['month_str'].'&nbsp; '.$dateAr['year_nmbr'];?>
+            </span>
+            <span class="long_date_str">
+            Источник:&nbsp;&nbsp;
             <a class="doc-donor-link" href="http://<?=$doc_data['d_host']?>/" <?=$donor_rel;?> target="_blank" style="background-image: url('http://favicon.yandex.net/favicon/<?=$doc_data['d_host']?>');">
                 <?=$doc_data['d_name']?>
             </a>
+            </span>
         </div>
     </div><!-- #date -->
     
@@ -69,7 +79,7 @@
             <!--<script type="text/javascript" src="//yandex.st/share/share.js" charset="utf-8"></script>-->
             <div class="yashare-auto-init" data-yashareL10n="ru" data-yashareType="none" data-yashareQuickServices="vkontakte,facebook,twitter,odnoklassniki,moimir,gplus"></div> 
         </div>
-        <div class="dd_left">
+        <div class="dd_left long_date_str">
             &mdash; &nbsp; Поделится Новостью в Соц. Сетях
         </div>
     </div>

@@ -1,4 +1,4 @@
-<?php
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 if (!defined('BASEPATH')) exit('No direct script access allowed');
 
@@ -35,6 +35,7 @@ class Main extends CI_Controller {
         $data_ar['main_menu_list']      = $this->list_m->get_cat(0);
         $data_ar['second_menu_list']    = $this->list_m->get_sCat_from_name($this->catNameAr[0]);
         $data_ar['footer_menu_list']    = $this->list_m->get_footer_cat_link();
+        $mobile_menu_list               = $this->list_m->getMenuListForMobile();
         $data_ar['mainpage_cat_list']   = $this->article_m->get_mainpage_cat_news($data_ar['second_menu_list']); // 9.5 sec.
         $data_ar['meta']['title']       = $data_ar['main_cat_ar']['title'];
         
@@ -50,6 +51,7 @@ class Main extends CI_Controller {
         
         $tpl_ar['right']        = $this->load->view('component/right_last_news_v', $right, true);
         $tpl_ar['top_slider']   = $this->load->view('component/slider_top_v', $top_slider, true);
+        $tpl_ar['mobile_menu']  = $this->load->view('component/mobile_menu_v', array('mobile_menu_list'=>$mobile_menu_list), true);
 
         $this->load->view('main_v', $tpl_ar);
     }
@@ -82,11 +84,13 @@ class Main extends CI_Controller {
         $data_ar['main_menu_list']      = $this->list_m->get_cat(0);
         $data_ar['second_menu_list']    = $this->list_m->get_sCat_from_name($this->catNameAr[0]);
         $data_ar['footer_menu_list']    = $this->list_m->get_footer_cat_link();
+        $mobile_menu_list               = $this->list_m->getMenuListForMobile();
         $data_ar['meta']['title']       = $data_ar['cat_ar']['name'].': '.$data_ar['doc_data']['title'].' - Odnako.su';
         $data_ar['donor_rel']           = ' rel="nofollow" '; #botRelNofollow();
 
         //вставка like_articles[0] в текст
         $data_ar['doc_data']['text'] = insertLikeArticleInTxt($data_ar['doc_data']['text'], $data_ar['like_articles']);
+        $data_ar['doc_data']['text'] = addResponsiveVideoTag($data_ar['doc_data']['text']);
 
         $top_slider['articles']         = $this->article_m->get_top_slider_data( $data_ar['cat_ar']['id'], 8, $this->catConfig['top_news_time'], $this->topSliderTxtLength, true, false);
         $right['right_top']             = $this->article_m->get_top_slider_data( $data_ar['cat_ar']['parent_id'], 5, $this->catConfig['right_top_news_time'], $this->topSliderTxtLength, true, true, 'right_top');
@@ -100,6 +104,7 @@ class Main extends CI_Controller {
         $tpl_ar['top_slider']   = $this->load->view('component/slider_top_v', $top_slider, true);
         $tpl_ar['right']        = $this->load->view('component/right_last_news_v', $right, true);
         $tpl_ar['meta']['og']   = $this->load->view('component/meta_og_v', $data_ar['doc_data'], true);
+        $tpl_ar['mobile_menu']  = $this->load->view('component/mobile_menu_v', array('mobile_menu_list'=>$mobile_menu_list), true);
 
         $this->load->view('main_v', $tpl_ar);
     }
@@ -114,7 +119,7 @@ class Main extends CI_Controller {
             show_404();
         }
         
-        if($page > 300) { // temp redirect 
+        if($page > 100) { // temp redirect 
             header("Location: /{$data_ar['cat_ar']['full_uri']}", true, 302);
             exit();
         }
@@ -128,6 +133,7 @@ class Main extends CI_Controller {
         $data_ar['main_menu_list']      = $this->list_m->get_cat(0);
         $data_ar['second_menu_list']    = $this->list_m->get_sCat_from_name($this->catNameAr[0]);
         $data_ar['footer_menu_list']    = $this->list_m->get_footer_cat_link();
+        $mobile_menu_list               = $this->list_m->getMenuListForMobile();
         $data_ar['meta']['title']       = $data_ar['cat_ar']['title']; 
         if( $page > 1){
             $data_ar['meta']['title']  .= ' - страница '.$page;
@@ -142,6 +148,7 @@ class Main extends CI_Controller {
         $tpl_ar['content']      = $this->load->view('page/cat_list_v', $data_ar, true);
         $tpl_ar['top_slider']   = $this->load->view('component/slider_top_v', $top_slider, true);
         $tpl_ar['right']        = $this->load->view('component/right_last_news_v', $right, true);
+        $tpl_ar['mobile_menu']  = $this->load->view('component/mobile_menu_v', array('mobile_menu_list'=>$mobile_menu_list), true);
 
         $this->load->view('main_v', $tpl_ar);
     }
@@ -162,6 +169,7 @@ class Main extends CI_Controller {
         $data_ar['main_menu_list']      = $this->list_m->get_cat(0);
         $data_ar['second_menu_list']    = $this->list_m->get_cat(1);
         $data_ar['footer_menu_list']    = $this->list_m->get_footer_cat_link();
+        $mobile_menu_list               = $this->list_m->getMenuListForMobile();
         $data_ar['meta']['title']       = 'Поиск: &laquo;'.$searchStr.'&raquo;  - страница '.$page;
         
         $top_slider['articles']         = $this->article_m->get_top_slider_data(1, 8, $this->catConfig['right_top_news_time'], $this->topSliderTxtLength, true, true); // 1.5 sec.
@@ -179,6 +187,7 @@ class Main extends CI_Controller {
         $tpl_ar['content']      = $this->load->view('page/cat_list_v', $data_ar, true);
         $tpl_ar['top_slider']   = $this->load->view('component/slider_top_v', $top_slider, true);
         $tpl_ar['right']        = $this->load->view('component/right_last_news_v', $right, true);
+        $tpl_ar['mobile_menu']  = $this->load->view('component/mobile_menu_v', array('mobile_menu_list'=>$mobile_menu_list), true);
 
         $this->load->view('main_v', $tpl_ar);
     }

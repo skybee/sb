@@ -84,6 +84,11 @@ $db['default'] = array(
 	'save_queries' => TRUE
 );
 
+if( $_SERVER['HTTP_HOST'] == 'odnako.su')
+{
+    $db['default']['pconnect'] = TRUE;
+}
+
 
 $db['default']['hostname'] = 'localhost';
 $db['default']['username'] = 'admin_sb';

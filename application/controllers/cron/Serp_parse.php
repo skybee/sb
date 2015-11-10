@@ -1,6 +1,6 @@
 <?php
 
-set_time_limit(60);
+set_time_limit(900);
 
 class Serp_parse extends CI_Controller
 {
@@ -14,18 +14,30 @@ class Serp_parse extends CI_Controller
         $this->load->library('parser/serp_parse_lib');
     }
 
-    function yandex_xml($cnt_scan = 1)
+    function yandex_xml($cnt_scan = 1, $action)
     {
         header("Content-type:text/plain; Charset=utf-8");
+        
+        if($action != 'add' && $action != 'upd' ){ exit('ERROR Action Name'); }
 
-        if( $this->single_work( 2, 'serp_parse') == false ){
+        if( $this->single_work( 2, 'serp_parse_'.$action) == false ){
             exit('The work temporary Lock');
         }
 
         $cnt_scan = (int) $cnt_scan;
         
-        $articlesList = $this->serp_parse_m->getArticles($cnt_scan);
+        if($action == 'add')
+        {
+            $articlesList = $this->serp_parse_m->getArticles($cnt_scan);
+        }
+        elseif ($action == 'upd') 
+        {
+            $articlesList = $this->serp_parse_m->getSerpList($cnt_scan);
+        }
 
+//        print_r($articlesList);
+//        exit;
+        
         if(!$articlesList){
             exit('No Articles');
         }
@@ -40,8 +52,17 @@ class Serp_parse extends CI_Controller
                 continue;
             }
             $jsonData = json_encode($serpData);
-
-            if( $this->serp_parse_m->updateSerpData($articleData['id'], $jsonData) ){
+            
+            if($action == 'add')
+            {
+                $res = $this->serp_parse_m->addSerpData($articleData['id'], $jsonData);
+            }
+            elseif ($action == 'upd') 
+            {
+                $res = $this->serp_parse_m->updateSerpData($articleData['id'], $jsonData);
+            }
+            
+            if( $res ){
                 echo "OK: ID-".$articleData['id'].' '.$articleData['title']."\n\n";
             }
             else{

@@ -127,6 +127,17 @@ body{
 	color:#fff;
 }
 
+#featured .bx-wrapper .bx-viewport{
+    box-shadow: none;
+    border: none;
+    background: none;
+}
+
+#featured #bx-pager a.active{
+    background:url('/img/selected_item.png') top left ;
+}
+
+
 /*** Featured Post ***/
 #featured_post{
 	border:1px solid #090909;

@@ -102,12 +102,13 @@ function get_date_str_ar( $date = '2012-05-07' ){
     
     $dateInt = strtotime($date);
     
-    $result_ar['day_str']       = $day_ar[date("w", $dateInt )];
-    $result_ar['day_nmbr']      = date("d", $dateInt );
-    $result_ar['month_str']     = $month_ar[date("n", $dateInt )];
-    $result_ar['month_nmbr']    = date("m", $dateInt );
-    $result_ar['year_nmbr']     = date("Y", $dateInt );
-    $result_ar['time']          = date("H:i", $dateInt );
+    $result_ar['day_str']           = $day_ar[date("w", $dateInt )];
+    $result_ar['day_nmbr']          = date("d", $dateInt );
+    $result_ar['month_str']         = $month_ar[date("n", $dateInt )];
+    $result_ar['month_nmbr']        = date("m", $dateInt );
+    $result_ar['year_nmbr']         = date("Y", $dateInt );
+    $result_ar['year_short_nmbr']   = date("y", $dateInt );
+    $result_ar['time']              = date("H:i", $dateInt );
     
     return $result_ar;
 }

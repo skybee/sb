@@ -6,7 +6,7 @@
         <title><?= $meta['title'] ?></title>
         <link rel="shortcut icon" href="/img/favico.png" type="image/png" />
         
-        <link rel="stylesheet" type="text/css" href="/css/skin1/style.css" />
+<!--        <link rel="stylesheet" type="text/css" href="/css/skin1/style.css" />
         <link rel="stylesheet" type="text/css" href="/css/skin1/featured_long_style.css" />
         <link rel="stylesheet" type="text/css" href="/css/skin1/featured_long.css" />
         <link rel="stylesheet" type="text/css" href="/css/skin1/default.css" />
@@ -14,9 +14,12 @@
         <link rel="stylesheet" type="text/css" href="/css/skin1/font.css" />
         <link rel="stylesheet" type="text/css" href="/css/skin1/magnific-popup.css" />
         <link rel="stylesheet" type="text/css" href="/css/skin1/jquery.bxslider.css" />
-        <!--[if IE 7]>
-                <link rel="stylesheet" type="text/css" href="/css/skin1/ie7.css">
-        <![endif]-->
+        <link rel="stylesheet" type="text/css" href="/css/skin1/mobile.css" />
+        <link rel="stylesheet" type="text/css" href="/css/skin1/media-queries.css" />-->
+        
+        <link rel="stylesheet" type="text/css" href="/css/all-style.min.css" />
+        
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         
         <?php if(isset($meta['og'])) echo $meta['og']; ?>
         
@@ -24,12 +27,13 @@
             <meta name="robots" content="noindex, follow" />
         <?php endif; ?>
 
-        <script type='text/javascript' src='/js/skin1/jquery-1.8.3.min.js'></script>
-        <script type='text/javascript' src='/js/skin1/jquery-ui.min.js'></script>
-        <script type='text/javascript' src='/js/skin1/tabs.js'></script>
+<!--        <script type='text/javascript' src='/js/skin1/jquery-1.11.3.min.js'></script>
+        <script type='text/javascript' src='/js/skin1/jquery-ui.min-tabs.js'></script>
         <script type='text/javascript' src='/js/skin1/jquery.magnific-popup.min.js'></script>
         <script type='text/javascript' src='/js/skin1/jquery.bxslider.min.js'></script>
-        <script type='text/javascript' src='/js/skin1/sb.js'></script>
+        <script type='text/javascript' src='/js/skin1/sb.js'></script>-->
+        
+            <script type='text/javascript' src='/js/all-files.min.js'></script>
 
     </head>
 
@@ -52,6 +56,14 @@
                         <?php endforeach; ?>
                     </ul>    
                 </div><!-- #navigation closer -->
+                
+                <a href="/" title="Odnako.su" id="mobile_logo"></a>
+                
+                <!-- Mobile Menu -->
+                <?=$mobile_menu;?>
+                <!-- Mobile Menu -->
+                
+                
             </div><!-- #headernavigation closer -->
             <div id="content">
                 <div id="white_space">

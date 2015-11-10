@@ -102,4 +102,115 @@ class Tmp extends CI_Controller{
         flush();
         sleep(1);
     }
+    
+    function migrate_to_like_serp_tbl(){
+        set_time_limit(7200);
+        header("Content-type:text/plain;Charset=utf-8");
+        
+        $i = 1;
+        while($i<=12000)
+        {
+            $sql = "SELECT "
+                    . "`article`.`id`, `article`.`serp_object`, `article`.`serp_update` "
+                    . "FROM `article` "
+                    . "WHERE "
+                    . "`article`.`id`  NOT IN (SELECT `article_like_serp`.`article_id`  FROM `article_like_serp`) "
+                    . "LIMIT 3000";
+
+            $query  = $this->db->query($sql);
+            if( $query->num_rows() < 1 )
+            { 
+                echo "\n\n-== ERROR (SELECT) ==-\n\n".$sql;
+                break;
+            }
+            
+            $value = 'VALUES '; $ii = 0;
+            foreach( $query->result_array() as $row)
+            {
+                if($ii){
+                    $value .= ", \n";
+                }
+                $value .= " ('{$row['id']}', '".$this->db->escape_str($row['serp_object'])."', '{$row['serp_update']}' )";
+                $i++;
+                $ii++;
+            }
+            $query->free_result();
+            
+            
+//            $row    = $query->row_array();
+
+//            $sql_insert = "INSERT INTO `article_like_serp` "
+//                        . "SET `article_id`='{$row['id']}', `serp_object`='".$this->db->escape_str($row['serp_object'])."', `serp_update`='{$row['serp_update']}' ";
+            $sql_insert = "INSERT IGNORE INTO `article_like_serp` (`article_id`, `serp_object`, `serp_update`) {$value} ";            
+                        
+            if( $this->db->query($sql_insert) )
+            {
+                echo "{$i}.\tID:\t{$row['id']}\t-OK\n";
+            }
+            else
+            {
+                echo "\n\n-== ERROR (INSERT) ==-\n\n".$sql_insert;
+            }
+//            $i++;
+            flush();
+//            sleep(3);
+        }
+        
+        echo "\n\n-== END ==-\n\n";
+    }
+    
+    function migrate_to_like_serp_tbl_second(){
+        set_time_limit(7200);
+        header("Content-type:text/plain;Charset=utf-8");
+        
+        $sql_id = "SELECT "
+                    . "`article`.`id` "
+                    . "FROM `article` "
+                    . "WHERE "
+                    . "`article`.`id`  NOT IN (SELECT `article_like_serp`.`article_id`  FROM `article_like_serp`) "
+                    . "LIMIT 30000";
+        
+        $query = $this->db->query($sql_id);
+        
+        if($query->num_rows()<1){ exit("\n\n-== ROW NOT EXIST ==-\n\n");}
+        
+        $idAr = array();
+        
+        foreach( $query->result_array() as $row )
+        {
+            $idAr[] = $row['id'];
+        }
+        $query->free_result();
+        unset($row);
+        
+        $cntId = count($idAr);
+        
+        for($i=0;$i<$cntId;$i++)
+        {
+            $sql = "SELECT `id`, `serp_object`, `serp_update` "
+                    . "FROM "
+                    . "`article` "
+                    . "WHERE `id`='{$idAr[$i]}' "
+                    . "LIMIT 1";
+                    
+            $query = $this->db->query($sql);
+            if( $query->num_rows() < 1) { continue;}
+            
+            $row    = $query->row_array();
+            $query->free_result();
+            
+            $sql_insert = "INSERT IGNORE INTO `article_like_serp` "
+                        . "SET `article_id`='{$row['id']}', `serp_object`='".$this->db->escape_str($row['serp_object'])."', `serp_update`='{$row['serp_update']}' ";
+                        
+            if( $this->db->query($sql_insert) )
+            {
+                echo "{$i}.\tID:\t{$row['id']}\t-OK\n";
+            }
+            else
+            {
+                echo "{$i}.\tID:\t{$row['id']}\t-ERROR\n";
+            }
+            flush();           
+        }
+    }
 }

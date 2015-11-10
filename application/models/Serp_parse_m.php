@@ -10,15 +10,35 @@ class Serp_parse_m extends CI_Model
 
     function getArticles($cnt = 10)
     {
-        $sql = "SELECT `id`, `title`, `donor` "
+        $sql = "SELECT `article`.`id`, `article`.`title` "
             . "FROM `article` "
-            . "WHERE "
-//            . "`cat_id` NOT IN (4,5,6,7,8,9,10,11) "
-//            . "AND "
-            . "`serp_update` <= 0 "
-            . "ORDER BY `id` DESC "
+            . "LEFT JOIN  `article_like_serp` ON  `article`.`id` =  `article_like_serp`.`article_id` "
+            . "WHERE `article_like_serp`.`article_id` IS NULL "
+            . "ORDER BY `id` "
             . "LIMIT {$cnt} ";
 
+        $query = $this->db->query($sql);
+
+        if( $query->num_rows() < 1 ) {
+            return false;
+        }
+
+        $result = array();
+        foreach ($query->result_array() as $row) {
+            $result[] = $row;
+        }
+
+        return $result;
+    }
+    
+    function getSerpList($cnt = 10)
+    {
+        $sql = "SELECT `article_like_serp`.`article_id` AS 'id', `article`.`title` "
+                . "FROM `article_like_serp` "
+                . "LEFT JOIN `article` ON `article_like_serp`.`article_id` = `article`.`id` "
+                . "ORDER BY `serp_update` ASC "
+                . "LIMIT {$cnt}";
+        
         $query = $this->db->query($sql);
 
         if( $query->num_rows() < 1 ) {
@@ -37,8 +57,22 @@ class Serp_parse_m extends CI_Model
     {
         $jsonStr = $this->db->escape_str($jsonStr);
 
-        $sql = "UPDATE LOW_PRIORITY `article` SET `serp_object` = '{$jsonStr}', `serp_update` = NOW() WHERE `id` = '{$id}' LIMIT 1 ";
+        $sql = "UPDATE `article_like_serp` SET `serp_object`='{$jsonStr}', `serp_update` = NOW() WHERE `article_id` = '{$id}' LIMIT 1 ";
 
+        if( $this->db->query($sql) ){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+    
+    function addSerpData($id, $jsonStr)
+    {
+        $jsonStr = $this->db->escape_str($jsonStr);
+        
+        $sql = "INSERT IGNORE INTO `article_like_serp` SET `article_id`='{$id}', `serp_object`='{$jsonStr}', `serp_update` = NOW() ";
+        
         if( $this->db->query($sql) ){
             return true;
         }

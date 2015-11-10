@@ -42,7 +42,7 @@ class List_m extends CI_Model{
                 $result_ar[] = $row;
             }
             
-            $this->cache->file->save($cacheName, $result_ar, 600 );
+            $this->cache->file->save($cacheName, $result_ar, 3600*24 );
         }
         
         return $result_ar;
@@ -68,5 +68,23 @@ class List_m extends CI_Model{
         }
         
         return $allCatAr;
+    }
+    
+    function getMenuListForMobile(){
+        $cacheName = 'mobile_menu';
+        
+        if( !$mainList = $this->cache->file->get($cacheName) ){
+            $mainList = $this->get_cat(0);
+
+            $cntMainList = count($mainList);
+
+            for($i=0;$i<$cntMainList;$i++){
+                $mainList[$i]['sub_menu'] = $this->get_sCat_from_name($mainList[$i]['url_name']) ;
+            }
+            
+            $this->cache->file->save($cacheName, $mainList, 3600*24 );
+        }
+        
+        return $mainList;
     }
 } 

@@ -32,9 +32,15 @@ function serpDataFromJson($json)
     if(empty($json)){
         return false;
     }
-
+    
     $data = json_decode($json, true);
-
+    
+    if(count($data)<1)
+    {
+        $json = stripcslashes($json);
+        $data = json_decode($json, true); 
+    }
+    
     return $data;
 }
 
@@ -61,5 +67,13 @@ function insertLikeArticleInTxt($text, $likeList)
 
     $text = preg_replace($search, $replace, $text, 1);
 
+    return $text;
+}
+
+function addResponsiveVideoTag($text){
+    $pattern = "#(<(iframe|embed)[\s\S]+?(youtube.com|vimeo.com|tsn.ua)[\s\S]+?</(iframe|embed)>)#i";
+    
+    $text = preg_replace($pattern, "<div class=\"respon_video\">$1</div>", $text);
+    
     return $text;
 }
