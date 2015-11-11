@@ -31,6 +31,7 @@
     #page div.entry-content ul, 
     #page div.entry-content ol{ margin-left: 0; list-style: none;}
     #mobile_logo{ display: block;}
+    #left div.single div.thumb{ float: none;}
     /*===============================*/
     
     
@@ -110,7 +111,8 @@
     
     /*========== TMP ============*/
     #categories, #header, #featured, #footer_widget{ display: none;}
-    #left div.single .content-gAd-bottom{display:none;}
+    #left div.single .content-gAd-bottom{width: 100%;}
+    #left div.single .content-gAd-bottom .content-gAd-center{width: 100%;}
     
     
     /*==== <Video> ====*/

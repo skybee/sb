@@ -15,9 +15,11 @@
         <link rel="stylesheet" type="text/css" href="/css/skin1/magnific-popup.css" />
         <link rel="stylesheet" type="text/css" href="/css/skin1/jquery.bxslider.css" />
         <link rel="stylesheet" type="text/css" href="/css/skin1/mobile.css" />
-        <link rel="stylesheet" type="text/css" href="/css/skin1/media-queries.css" />-->
+        <link rel="stylesheet" type="text/css" href="/css/skin1/media-queries.css" />
+        <link rel="stylesheet" type="text/css" href="/css/skin1/mobile_gads.css" />-->
         
         <link rel="stylesheet" type="text/css" href="/css/all-style.min.css" />
+        
         
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         
@@ -32,9 +34,10 @@
         <script type='text/javascript' src='/js/skin1/jquery.magnific-popup.min.js'></script>
         <script type='text/javascript' src='/js/skin1/jquery.bxslider.min.js'></script>
         <script type='text/javascript' src='/js/skin1/sb.js'></script>-->
+            
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <script type='text/javascript' src='/js/all-files.min.js'></script>
         
-            <script type='text/javascript' src='/js/all-files.min.js'></script>
-
     </head>
 
     <body>
@@ -206,7 +209,5 @@
             <!-- /Yandex.Metrika counter -->            
         </div>
         
-
-
     </body>
 </html>

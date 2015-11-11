@@ -61,67 +61,107 @@ $( document ).ready(function(){
 
 
 function loadGAd( blockName ){
-    
-    if(!$('#right').is(':visible')){
-        return loadGAdMobile(blockName);
+    width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+    if( width <= 980 ){
+        loadGAdMobile(blockName);
     }
+    else{
+        loadGAdDesctop(blockName);
+    }  
+}
+
+
+function loadGAdMobile(blockName){
+    toWrite = '<!-- No Ads -->';
+    
+    if( blockName == 'content noImg' || blockName == 'content bottom Netboard' ){
+        /* Grey in Text */
+        toWrite = "<!-- mobile -->\
+                    <ins class=\"adsbygoogle mobile-noimg\"\
+                         style=\"display:block\"\
+                         data-ad-client=\"ca-pub-6096727633142370\"\
+                         data-ad-slot=\"8859464449\"\
+                         data-ad-format=\"rectangle\"></ins>\
+                    <script>\
+                    (adsbygoogle = window.adsbygoogle || []).push({});\
+                    </script>";
+    }
+    
+    if(blockName == 'mobile greyInTxt'){
+        /* Grey in Text */
+        toWrite = " <div class=\"mobile-in-txt\"> \n\
+                        <!-- Mobile In Text -->\
+                        <ins class=\"adsbygoogle mobile-intxt-grey\"\
+                             style=\"display:block\"\
+                             data-ad-client=\"ca-pub-6096727633142370\"\
+                             data-ad-slot=\"8410309242\"\
+                             data-ad-format=\"horizontal\"></ins>\
+                        <script>\
+                        (adsbygoogle = window.adsbygoogle || []).push({});\
+                        </script> \n\
+                    </div> ";
+    }
+    
+    document.write(toWrite);
+}
+
+
+function loadGAdDesctop(blockName){
     
     function getRandomInt(min, max){
         return Math.floor(Math.random() * (max - min + 1)) + min;
     }
-
-
-    google_ad_client = "ca-pub-6096727633142370";
-
+    
+    writeCheck      = false;
+    dataAdClient    = "ca-pub-6096727633142370";
+    
     if( blockName == 'content noImg' ){
         /* Content NoImg Block */
-        google_ad_slot = "7412278844";
-        google_ad_width = 300;
-        google_ad_height = 250;
+        adStyle         = "display:inline-block;width:300px;height:250px";
+        dataAdSlot      = "7412278844";
+        writeCheck      = true;
     }
     if( blockName == 'content bottom Netboard' ){
         /* Bottom Content Netboard */
-        google_ad_slot = "5547096043";
-        google_ad_width = 580;
-        google_ad_height = 400;
+        adStyle         = "display:inline-block;width:580px;height:400px";
+        dataAdSlot      = "5547096043";
+        writeCheck      = true;
     }
     if( blockName == 'right top' ){
-        google_ad_slot = "4927119649";
-        google_ad_width     = 300;
-        google_ad_height    = 600;
-    }
-    if( blockName == 'text link blue' ){
-        /* Content Blue Link */
-        google_ad_slot = "6371985643";
-        google_ad_width = 480;
-        google_ad_height = 15;
+        adStyle         = "display:inline-block;width:300px;height:600px";
+        dataAdSlot      = "4927119649";
+        writeCheck      = true;
     }
     if( blockName == 'under slider'){
         /* Under Slider */
-        google_ad_slot = "7088605248";
-        google_ad_width = 956;
-        google_ad_height = 120;
-    }
-    if( blockName == 'under slider grey'){
-        /* Under Slider Gray */
-        google_ad_slot = "4454379644";
-        google_ad_width = 956;
-        google_ad_height = 120;
+        adStyle         = "display:inline-block;width:956px;height:120px";
+        dataAdSlot      = "7088605248";
+        writeCheck      = true;
     }
     if( blockName == 'content greyInTxt'){
-        /* Grey in Text */
-        google_ad_slot = "2811858046";
-        google_ad_width = 468;
-        google_ad_height = 60;
+        /* Grey in Text */        
+        adStyle         = "display:inline-block;width:468px;height:60px";
+        dataAdSlot      = "2811858046";
+        writeCheck      = true;
     }
 
-
-    document.write('<script type="text/javascript" src="//pagead2.googlesyndication.com/pagead/show_ads.js"></script>');
+    if( writeCheck == true ){
+        toWrite = "<ins class=\"adsbygoogle mobile-noimg\"\
+                         style=\""+adStyle+"\"\
+                         data-ad-client=\""+dataAdClient+"\"\
+                         data-ad-slot=\""+dataAdSlot+"\"\
+                    </ins>\
+                    <script>\
+                    (adsbygoogle = window.adsbygoogle || []).push({});\
+                    </script>";
+        
+        document.write(toWrite);
+    }
 }
 
-function loadGAdMobile(blockName){
-    
-}
+
+
+
 
 function setTop(){
     var docId = $('#docId').attr('docId');

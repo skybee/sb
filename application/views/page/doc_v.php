@@ -8,14 +8,10 @@
         <h1><?=$doc_data['title']?></h1>
     </div>
     
-<!--    <div style="height: 15px; margin-top: 10px; ">
-        <script type="text/javascript">loadGAd('text link blue');</script>
-    </div>-->
-    
     <div class="doc-date">
         
         <div class="social_btn">
-            <script type="text/javascript" src="//yandex.st/share/share.js" charset="utf-8"></script>
+            <script async type="text/javascript" src="//yandex.st/share/share.js" charset="utf-8"></script>
             <div class="yashare-auto-init" data-yashareL10n="ru" data-yashareType="none" data-yashareQuickServices="vkontakte,facebook,twitter,odnoklassniki,moimir,gplus"></div> 
         </div>
         
@@ -41,17 +37,7 @@
             </span>
         </div>
     </div><!-- #date -->
-    
-    
-    
-        <?php  #if( !empty($doc_data['main_img']) ): ?>
-<!--        <div class="content-gAd">
-            <div class="content-gAd-center">
-                <script type="text/javascript">loadGAd('content top');</script>
-            </div>
-        </div>-->
-        <?php  #endif; ?>
-    
+   
     
 
     <div class="content copy-url">
@@ -65,6 +51,11 @@
             </div>
         </div>
         <?php  endif; ?>
+        
+        <style>
+            @media(max-width: 980px){ #left div.single div.thumb-gAd .mobile-noimg{width: 336px; height: 280px;} }
+            @media(max-width: 340px){ #left div.single div.thumb-gAd .mobile-noimg{width: 300px; height: 250px;} }
+        </style>
         
         <div class="thumb thumb-gAd">
             <script type="text/javascript">loadGAd('content noImg');</script>
@@ -84,6 +75,11 @@
         </div>
     </div>
     
+    
+    <style>
+        @media(max-width: 980px){ #left div.single div.content-gAd-bottom .mobile-noimg{width: 336px; height: 280px;} }
+        @media(max-width: 340px){ #left div.single div.content-gAd-bottom .mobile-noimg{width: 300px; height: 250px;} }
+    </style>
     <div class="content-gAd content-gAd-bottom">
         <div class="content-gAd-center">
             <script type="text/javascript">loadGAd('content bottom Netboard');</script>

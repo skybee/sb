@@ -53,7 +53,16 @@ function insertLikeArticleInTxt($text, $likeList)
     $newsUrl    = "/{$likeList[0]['full_uri']}-{$likeList[0]['id']}-{$likeList[0]['url_name']}/";
 
     $search     = "/([\s\S]{500}(<\/p>|<br.{0,2}>\s*<br.{0,2}>))/i";
-    $replace    = "$1 \n".'<h2 class="look_more_hdn" rel="'.$newsUrl.'"><span>Смотрите также:</span> '.$likeList[0]['title']."</h2>\n";
+    $replace    = "$1 \n "
+                . '<style> '
+                    . '@media(max-width: 980px){ #left div.single div.mobile-in-txt .mobile-intxt-grey{width: 468px; height: 60px;} } '
+                    . '@media(max-width: 540px){ #left div.single div.mobile-in-txt .mobile-intxt-grey{width: 320px; height: 100px;} } '
+                    . '@media(max-width: 340px){ #left div.single div.mobile-in-txt .mobile-intxt-grey{width: 234px; height: 60px;} } '
+                . '</style> '
+                .'<h2 class="look_more_hdn" rel="'.$newsUrl.'"><span>Смотрите также:</span> '.$likeList[0]['title']
+                    ." <script type=\"text/javascript\">loadGAd('mobile greyInTxt');</script> \n  "
+                . "</h2>\n";
+    
     $replace   .= '<p class="look_more_hdn">'."\n";
 
     if(!empty($likeList[0]['main_img'])){
