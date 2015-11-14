@@ -556,8 +556,8 @@ class parse4PDA extends parse_page{
     }
     
     function parseDOM() {
-        if( is_object( $this->html_obj->find('#content .description h1',0) ) ){
-            $this->data['title']    = $this->html_obj->find('#content .description h1',0)->innertext;
+        if( is_object( $this->html_obj->find('.product-detail .description h1',0) ) ){
+            $this->data['title']    = $this->html_obj->find('.product-detail .description h1',0)->innertext;
         }
         
         $this->cleaner->delAll('.table4site');

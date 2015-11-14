@@ -58,7 +58,7 @@
         </style>
         
         <div class="thumb thumb-gAd">
-            <script type="text/javascript">loadGAd('content noImg');</script>
+            <span class="gAd" data="content noImg"></span>
         </div>
         
     <?=$doc_data['text']?>
@@ -67,7 +67,6 @@
     
     <div class="doc-date doc-date-bottom">
         <div class="social_btn">
-            <!--<script type="text/javascript" src="//yandex.st/share/share.js" charset="utf-8"></script>-->
             <div class="yashare-auto-init" data-yashareL10n="ru" data-yashareType="none" data-yashareQuickServices="vkontakte,facebook,twitter,odnoklassniki,moimir,gplus"></div> 
         </div>
         <div class="dd_left long_date_str">
@@ -82,18 +81,15 @@
     </style>
     <div class="content-gAd content-gAd-bottom">
         <div class="content-gAd-center">
-            <script type="text/javascript">loadGAd('content bottom Netboard');</script>
+            <span class="gAd" data="content bottom Netboard"></span>
         </div>
     </div>
     
-<!--    <div style="float:left;">
-        <script language="Javascript">
-            var bntuniqid = 'bPq7TNrWAhoDdq97yDX3';
-            var bntuniqsid = '73768';
-            var async = 0;
-        </script>
-        <script type="text/javascript" src="http://herefegedef.net/viewt.js"></script>
-    </div>-->
+    <div class="content-gAd content-gAd-bottom" id="bottom-games" style="padding: 20px 0;margin:40px 0;border-color:#009ddb;" >
+        <div style="height:32px;line-height:32px;font-size:16px;padding-left:37px;margin:5px 0px 5px 240px;display:inline-block;background-image:url('/img/slider/bx_loader.gif');background-repeat:no-repeat;">
+            Game loading...
+        </div>
+    </div>
     
     <div id="video_holder" style="display:none;"></div>
     <div class="othernews">

@@ -18,7 +18,7 @@
         <link rel="stylesheet" type="text/css" href="/css/skin1/media-queries.css" />
         <link rel="stylesheet" type="text/css" href="/css/skin1/mobile_gads.css" />-->
         
-        <link rel="stylesheet" type="text/css" href="/css/all-style.min.css" />
+        <link rel="stylesheet" type="text/css" href="/css/all-style.min.css?v=13-11-01-50" />
         
         
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -36,7 +36,7 @@
         <script type='text/javascript' src='/js/skin1/sb.js'></script>-->
             
         <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-        <script type='text/javascript' src='/js/all-files.min.js'></script>
+        <script async type='text/javascript' src='/js/all-files.min.js?v=13-11-02-25'></script>
         
     </head>
 
@@ -105,7 +105,7 @@
                         <div class="cat_line"></div>
 
                         <div class="top_gads">
-                            <script type="text/javascript">loadGAd('under slider');</script>
+                            <span class="gAd" data="under slider"></span>
                         </div>
 
                         <!-- !!! Top Slider Here-->

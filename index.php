@@ -53,8 +53,13 @@
  *
  * NOTE: If you change these, also change the error_reporting() code below
  */
-//	define('ENVIRONMENT', isset($_SERVER['CI_ENV']) ? $_SERVER['CI_ENV'] : 'development');
-        define('ENVIRONMENT', 'production');
+        if($_SERVER['HTTP_HOST'] != 'odnako.su')
+        {
+            define('ENVIRONMENT', isset($_SERVER['CI_ENV']) ? $_SERVER['CI_ENV'] : 'development');
+        }
+        else{
+            define('ENVIRONMENT', 'production');
+        }
 
 /*
  *---------------------------------------------------------------

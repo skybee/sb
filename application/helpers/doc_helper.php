@@ -60,7 +60,7 @@ function insertLikeArticleInTxt($text, $likeList)
                     . '@media(max-width: 340px){ #left div.single div.mobile-in-txt .mobile-intxt-grey{width: 234px; height: 60px;} } '
                 . '</style> '
                 .'<h2 class="look_more_hdn" rel="'.$newsUrl.'"><span>Смотрите также:</span> '.$likeList[0]['title']
-                    ." <script type=\"text/javascript\">loadGAd('mobile greyInTxt');</script> \n  "
+                    ."<span class=\"gAd\" data=\"mobile greyInTxt\"></span> \n  "
                 . "</h2>\n";
     
     $replace   .= '<p class="look_more_hdn">'."\n";
@@ -70,7 +70,7 @@ function insertLikeArticleInTxt($text, $likeList)
     }
     $replace   .= $likeList[0]['text']."\n "
             . "<span style=\"display:block; margin-top:15px;\"> \n"
-            . "<script type=\"text/javascript\">loadGAd('content greyInTxt');</script> \n "
+            . "<span class=\"gAd\" data=\"content greyInTxt\"></span> \n "
             . "</span> \n"
             . "</p>\n";
 

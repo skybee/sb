@@ -103,7 +103,7 @@ class Tmp extends CI_Controller{
         sleep(1);
     }
     
-    function migrate_to_like_serp_tbl(){
+    function _migrate_to_like_serp_tbl(){
         set_time_limit(7200);
         header("Content-type:text/plain;Charset=utf-8");
         
@@ -159,7 +159,7 @@ class Tmp extends CI_Controller{
         echo "\n\n-== END ==-\n\n";
     }
     
-    function migrate_to_like_serp_tbl_second(){
+    function _migrate_to_like_serp_tbl_second(){
         set_time_limit(7200);
         header("Content-type:text/plain;Charset=utf-8");
         
@@ -211,6 +211,42 @@ class Tmp extends CI_Controller{
                 echo "{$i}.\tID:\t{$row['id']}\t-ERROR\n";
             }
             flush();           
+        }
+    }
+    
+    function _change_title_in_pda(){
+        set_time_limit(300);
+        $this->load->helper('parser/download');
+        $this->load->helper('parser/simple_html_dom');
+        $this->load->helper('parser/url_name2');
+        $this->load->library('parser/Parse_page_lib');
+        $this->load->library('parser/Parse_lib');
+         $this->load->library('parser/Video_replace_lib');
+        
+        $sql = "SELECT `article`.`id`, `article`.`donor`, `scan_url`.`url` "
+                . "FROM `article` "
+                . "LEFT JOIN `scan_url` ON `article`.`scan_url_id` = `scan_url`.`id` "
+                . "WHERE "
+                . "`article`.`donor` = '4pda.ru' "
+                . "AND "
+                . "`article`.`title` = '' "
+                . "LIMIT 50";
+        
+        $query = $this->db->query($sql);
+        
+        foreach($query->result_array() as $row){
+            echo $row['id'].' - '.$row['donor'].' - '.$row['url']."<br />\n";
+            
+            $html = down_with_curl($row['url']);
+            
+            $data = $this->parse_page_lib->get_data($html, array('host'=>$row['donor']));
+            
+            $title      = $data['title'];
+            $urlName    = url_slug( $title ,array('transliterate' => true));
+            
+            $this->db->query("UPDATE `article` SET `title`='{$title}', `url_name`='{$urlName}' WHERE `id`='{$row['id']}' LIMIT 1 ");
+            
+            sleep(3);
         }
     }
 }

@@ -43,7 +43,7 @@
 </div>
 
 <div class="right_gad_block">
-    <script type="text/javascript">loadGAd('right top');</script>
+    <span class="gAd" data="right top"></span>
 </div>
 
 

@@ -57,16 +57,24 @@ $( document ).ready(function(){
     else{
         ifDesktop();
     }
+    
+    
+    $('span.gAd').each(function(){
+        blockName = $(this).attr('data');
+        toWrite = loadGAd(blockName);
+        $(this).replaceWith(toWrite);
+    });
+    
 });
 
 
 function loadGAd( blockName ){
     width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
     if( width <= 980 ){
-        loadGAdMobile(blockName);
+        return loadGAdMobile(blockName);
     }
     else{
-        loadGAdDesctop(blockName);
+        return loadGAdDesctop(blockName);
     }  
 }
 
@@ -102,7 +110,8 @@ function loadGAdMobile(blockName){
                     </div> ";
     }
     
-    document.write(toWrite);
+//    document.write(toWrite);
+    return toWrite;
 }
 
 
@@ -112,9 +121,10 @@ function loadGAdDesctop(blockName){
         return Math.floor(Math.random() * (max - min + 1)) + min;
     }
     
+    toWrite         = '<!-- No Ads -->';
     writeCheck      = false;
     dataAdClient    = "ca-pub-6096727633142370";
-    
+
     if( blockName == 'content noImg' ){
         /* Content NoImg Block */
         adStyle         = "display:inline-block;width:300px;height:250px";
@@ -146,17 +156,19 @@ function loadGAdDesctop(blockName){
     }
 
     if( writeCheck == true ){
-        toWrite = "<ins class=\"adsbygoogle mobile-noimg\"\
-                         style=\""+adStyle+"\"\
-                         data-ad-client=\""+dataAdClient+"\"\
-                         data-ad-slot=\""+dataAdSlot+"\"\
-                    </ins>\
-                    <script>\
-                    (adsbygoogle = window.adsbygoogle || []).push({});\
-                    </script>";
+        toWrite = '<ins class="adsbygoogle" \
+                         style="'+adStyle+'" \
+                         data-ad-client="'+dataAdClient+'" \
+                         data-ad-slot="'+dataAdSlot+'" \
+                    </ins> \
+                    <script> \
+                    (adsbygoogle = window.adsbygoogle || []).push({}); \
+                    </script>';
         
-        document.write(toWrite);
+//        document.write(toWrite);
     }
+    
+    return toWrite;
 }
 
 
@@ -215,7 +227,7 @@ function ifDesktop(){
         {
             speed: 1000,
             pause: 6000,
-            auto: true,
+            auto: false,
             //randomStart: true,
             pager: false
         });
@@ -282,5 +294,9 @@ function ifDesktop(){
         }
     }
     // <serp result add link>
+    
+    
+    //Load Games
+    setTimeout('$("#bottom-games").load("/html/bottom-games.html");', 10000);
 }
 //===================== <if Desktop> =====================//
