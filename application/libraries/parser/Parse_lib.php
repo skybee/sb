@@ -254,7 +254,8 @@ class Parse_lib{
                 $shingle_str .= $word_ar[$ii].' ';
             }
             if( $i%5 == 0)
-                $shingle_hash_ar[] = crc32($shingle_str);
+//                $shingle_hash_ar[] = crc32($shingle_str);
+                $shingle_hash_ar[] = sha1($shingle_str);
             $shingle_str = '';
         }
         

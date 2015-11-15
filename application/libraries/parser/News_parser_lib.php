@@ -85,7 +85,7 @@ class News_parser_lib extends parse_lib {
 //        $data_ar['url_name'] = seoUrl($data_ar['title']);
         $data_ar['url_name']    = url_slug( $data_ar['title'] ,array('transliterate' => true));
         
-        $sql = "   INSERT DELAYED INTO `article` 
+        $sql = "   INSERT INTO `article` 
                     SET
                         `title`         = '{$data_ar['title']}', 
                         `text`          = '" . $this->CI->db->escape_str($data_ar['text']) . "',
@@ -99,11 +99,11 @@ class News_parser_lib extends parse_lib {
                         `donor_id`      = '{$data_ar['donor_id']}'
                 ";            
 
-        $this->CI->db->query($sql);
-
+        $this->CI->db->query($sql);               
+                        
         $article_id = $this->CI->db->insert_id();
 
-        if ($article_id) {
+        if ($article_id) { #ID is "0" becouse "INSERT DELAYED INTO"
             $this->CI->parser_m->add_shingles($this_hash_ar, $article_id);
         }
 

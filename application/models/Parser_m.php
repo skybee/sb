@@ -45,9 +45,9 @@ class Parser_m extends CI_Model{
             $i++;
         }
         
-        $this->db->query(" REPLACE INTO `shingles` (`hash`,`article_id`) VALUES {$values} ");
-        
-        
+        $sql = "INSERT INTO `shingles` (`hash`,`article_id`) VALUES {$values} ";
+
+        $this->db->query($sql);    
     }
     
     function get_like_shingles(){}
