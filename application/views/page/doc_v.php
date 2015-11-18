@@ -79,13 +79,13 @@
         @media(max-width: 980px){ #left div.single div.content-gAd-bottom .mobile-noimg{width: 336px; height: 280px;} }
         @media(max-width: 340px){ #left div.single div.content-gAd-bottom .mobile-noimg{width: 300px; height: 250px;} }
     </style>
-    <div class="content-gAd content-gAd-bottom">
+    <div class="content-gAd content-gAd-bottom" style="padding: 15px 0;border-color:#009ddb;" >
         <div class="content-gAd-center">
             <span class="gAd" data="content bottom Netboard"></span>
         </div>
     </div>
     
-    <div class="content-gAd content-gAd-bottom" id="bottom-games" style="padding: 20px 0;margin:40px 0;border-color:#009ddb;" >
+    <div class="content-gAd content-gAd-bottom" id="bottom-games" style="padding: 15px 0;margin:40px 0;border-color:#009ddb;" >
         <div style="height:32px;line-height:32px;font-size:16px;padding-left:37px;margin:5px 0px 5px 240px;display:inline-block;background-image:url('/img/slider/bx_loader.gif');background-repeat:no-repeat;">
             Game loading...
         </div>
