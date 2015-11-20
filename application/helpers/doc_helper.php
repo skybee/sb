@@ -45,12 +45,17 @@ function serpDataFromJson($json)
 }
 
 function insertLikeArticleInTxt($text, $likeList)
-{
+{   
     if(!isset($likeList[0])){
-        return $text;
+        return $text; 
     }
 
+//    echo $likeList[0]['text'];
+    
     $newsUrl    = "/{$likeList[0]['full_uri']}-{$likeList[0]['id']}-{$likeList[0]['url_name']}/";
+    
+    $likeTitle  = str_replace('$', '&dollar;', $likeList[0]['title']);
+    $likeText   = str_replace('$', '&dollar;', $likeList[0]['text']);
 
     $search     = "/([\s\S]{500}(<\/p>|<br.{0,2}>\s*<br.{0,2}>))/i";
     $replace    = "$1 \n "
@@ -59,16 +64,16 @@ function insertLikeArticleInTxt($text, $likeList)
                     . '@media(max-width: 540px){ #left div.single div.mobile-in-txt .mobile-intxt-grey{width: 320px; height: 100px;} } '
                     . '@media(max-width: 340px){ #left div.single div.mobile-in-txt .mobile-intxt-grey{width: 234px; height: 60px;} } '
                 . '</style> '
-                .'<h2 class="look_more_hdn" rel="'.$newsUrl.'"><span>Смотрите также:</span> '.$likeList[0]['title']
+                .'<h2 class="look_more_hdn" rel="'.$newsUrl.'"><span>Смотрите также:</span> '.$likeTitle
                     ."<span class=\"gAd\" data=\"mobile greyInTxt\"></span> \n  "
                 . "</h2>\n";
     
     $replace   .= '<p class="look_more_hdn">'."\n";
 
     if(!empty($likeList[0]['main_img'])){
-        $replace .= '<img src="/upload/images/small/'.$likeList[0]['main_img'].'" alt="'.$likeList[0]['title'].'" onerror="imgError(this);" />'."\n";
+        $replace .= '<img src="/upload/images/small/'.$likeList[0]['main_img'].'" alt="'.$likeTitle.'" onerror="imgError(this);" />'."\n";
     }
-    $replace   .= $likeList[0]['text']."\n "
+    $replace   .= $likeText."\n "
             . "<span style=\"display:block; margin-top:15px;\"> \n"
             . "<span class=\"gAd\" data=\"content greyInTxt\"></span> \n "
             . "</span> \n"
