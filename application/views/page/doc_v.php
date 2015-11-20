@@ -8,11 +8,11 @@
         <h1><?=$doc_data['title']?></h1>
     </div>
     
-    <div class="doc-date">
+    <div class="doc-date doc-date-top">
         
-        <div class="social_btn">
+        <div class="social_btn social_btn_top">
             <script async type="text/javascript" src="//yandex.st/share/share.js" charset="utf-8"></script>
-            <div class="yashare-auto-init" data-yashareL10n="ru" data-yashareType="none" data-yashareQuickServices="vkontakte,facebook,twitter,odnoklassniki,moimir,gplus"></div> 
+            <div class="yashare-auto-init" data-yashareL10n="ru" data-yashareTheme="counter" data-yashareType="normal" data-yashareQuickServices="vkontakte,facebook,twitter,odnoklassniki,moimir,gplus"></div> 
         </div>
         
         <div class="dd_left">
@@ -67,7 +67,7 @@
     
     <div class="doc-date doc-date-bottom">
         <div class="social_btn">
-            <div class="yashare-auto-init" data-yashareL10n="ru" data-yashareType="none" data-yashareQuickServices="vkontakte,facebook,twitter,odnoklassniki,moimir,gplus"></div> 
+            <div class="yashare-auto-init" data-yashareL10n="ru" data-yashareTheme="counter" data-yashareType="normal" data-yashareQuickServices="vkontakte,facebook,twitter,odnoklassniki,moimir,gplus"></div> 
         </div>
         <div class="dd_left long_date_str">
             &mdash; &nbsp; Поделится Новостью в Соц. Сетях
@@ -76,6 +76,7 @@
     
     
     <style>
+        #left div.single div.thumb-gAd .gad-bottom-respon{width: 616px;}
         @media(max-width: 980px){ #left div.single div.content-gAd-bottom .mobile-noimg{width: 336px; height: 280px;} }
         @media(max-width: 340px){ #left div.single div.content-gAd-bottom .mobile-noimg{width: 300px; height: 250px;} }
     </style>
@@ -85,11 +86,11 @@
         </div>
     </div>
     
-    <div class="content-gAd content-gAd-bottom" id="bottom-games" style="padding: 15px 0;margin:40px 0;border-color:#009ddb;" >
+<!--    <div class="content-gAd content-gAd-bottom" id="bottom-games" style="padding: 15px 0;margin:40px 0;border-color:#009ddb;" >
         <div style="height:32px;line-height:32px;font-size:16px;padding-left:37px;margin:5px 0px 5px 240px;display:inline-block;background-image:url('/img/slider/bx_loader.gif');background-repeat:no-repeat;">
             Game loading...
         </div>
-    </div>
+    </div>-->
     
     <div id="video_holder" style="display:none;"></div>
     <div class="othernews">

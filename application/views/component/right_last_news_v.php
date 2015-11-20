@@ -35,16 +35,40 @@
     </div>
 </div>
 
-<!--<h3 class="widget-title">
-    <span class="title">Реклама</span>
-</h3>-->
-
-<div id="right-ajax-block">
-</div>
-
 <div class="right_gad_block">
     <span class="gAd" data="right top"></span>
 </div>
+
+<style>
+    #unit_83636 td{
+        padding-top: 7px !important;
+        padding-bottom: 7px !important;
+    }
+    #unit_83636 td a{ line-height: 18px; }
+    #unit_83636 tr:nth-child(4) td/*,
+    #unit_83636 tr:nth-child(7) td*/{
+        padding-top: 20px !important;
+    }
+    #unit_83636 tr:nth-child(3) td/*,
+    #unit_83636 tr:nth-child(6) td*/{
+        padding-bottom: 20px !important;
+        border-bottom-width: 2px;
+        border-bottom-color: #209c00;
+    }
+</style>
+<div id="unit_83636" style="float:left;margin:0 0 20px 8px;"><!--<a href="http://smi2.net/">Новости СМИ2</a>--></div>
+<script type="text/javascript" charset="utf-8">
+  (function() {
+    var sc = document.createElement('script'); sc.type = 'text/javascript'; sc.async = true;
+    sc.src = '//news.smi2.ru/data/js/83636.js'; sc.charset = 'utf-8';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(sc, s);
+  }());
+</script>
+
+<!--
+<div id="right-ajax-block">
+</div>
+-->
 
 
 <h3 class="widget-title">

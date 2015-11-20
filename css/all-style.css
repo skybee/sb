@@ -1,3 +1,16 @@
+/*******************************************************************************
+
+Theme Name: London Live
+Theme URI: http://londonthemes.com/index.php?themeforest=true
+Description: News style theme, but works well with everything.
+Author: Skyali
+Author URI: http://londonthemes.com/index.php?themeforest=true
+Version: 1.4
+
+********************************************************************************
+
+/*** General ***/
+
 html,body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,th,td {
 	margin:0;
 	padding:0;
@@ -10,6 +23,7 @@ body {
         background-color: #ececec !important;
         background-attachment: fixed;
 }
+
 
 
 #left_no_sidebar code,#left_no_sidebar pre {
@@ -434,8 +448,8 @@ hr {
 }
 
 #left div.single .doc-date{
-    height: 12px;
-    padding: 5px 0px 5px 0px;
+    height: 32px;
+    /*padding: 5px 0px 5px 0px;*/
     /*border: #c00 1px dashed;*/
     margin-top: 12px;
     color: #999;
@@ -447,17 +461,19 @@ hr {
     width: 606px;
     float: left;
 }
-#left div.single .doc-date .dd_left{ float: left; /*width: 150px;*/ }
+#left div.single .doc-date .dd_left{ float: left; line-height: 32px; /*width: 150px;*/ }
 #left .short_date_str{display: none;}
 #left div.single .doc-date-bottom .dd_left{ width: 250px; }
-#left div.single .doc-date .dd_right{ float: right; /*width: 210px;*/ text-align: right; }
+#left div.single .doc-date .dd_right{ float: right; line-height: 32px; /*width: 210px;*/ text-align: right; }
 #left div.single .doc-date .dd_right a.doc-donor-link{
     display: inline-block;
     float: right;
-    background-repeat: no-repeat; background-position: right top;
-    height: 16px; padding-right: 22px;
-    position: relative; top: -2px;
-    line-height: 16px;
+    background-repeat: no-repeat; background-position: right center;
+    /*height: 16px;*/ 
+    padding-right: 22px;
+/*    position: relative; 
+    top: -2px;*/
+    line-height: 32px;
     font-size: 12px; text-decoration: underline;
     font-weight: normal;
     color: #999;
@@ -465,16 +481,20 @@ hr {
 #left div.single .doc-date .dd_right a.doc-donor-link:hover{ color: #009DDB; }
 
 #left div.single .doc-date .social_btn{
-    height: 20px; width: 140px; 
+    /*height: 25px;*/ 
+    /*width: 140px;*/ 
     float: left;
     overflow: hidden;
-    position: relative; top: -4px; left: -4px;
+    position: relative; 
+    /*top: -2px;*/ 
+    left: -4px;
     margin-right: 0px;
+    margin-top: 3px;
     /*border: #c00 dashed 1px;*/
 }
 
 #left div.single .doc-date .social_btn .yashare-auto-init{
-    margin-top: -4px;
+    /*margin-top: -4px;*/
 }
 
 #left div.single .content-gAd{
@@ -3500,8 +3520,13 @@ img.alignleft,a img.alignleft {
     }
         p.look_more_hdn img{
             float: left;
-            width: 90px;
+            width: 120px;
             padding: 0 10px 5px 0;
+        }
+        
+        p.look_more_hdn span{
+            border-top: 1px solid #009DDB;
+            padding-top: 15px;
         }
 #left div.single div.content h2.look_more_hdn{
     font-size: 14px !important;
@@ -3542,6 +3567,7 @@ img.alignleft,a img.alignleft {
 }    
     
 /*============== </My> ==============*/
+
 
 
 
@@ -3747,6 +3773,7 @@ img.alignleft,a img.alignleft {
     width: 275px;
     min-height: 175px; max-height: 250px;
 }
+
 
 
 /*** Theme Styles ***/
@@ -4054,7 +4081,6 @@ body{
     cursor: default;
     background-position: -96px 0;
 }
-
 
 
 /*@import url(http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300&subset=cyrillic,latin-ext) screen and (min-width : 981px);*/
@@ -4703,7 +4729,6 @@ img.mfp-img {
 	padding: 10px;
 }
 
-
 /*=============== Mobile Style ================*/
 #headernavigation #mobile_nav_btn{
     display:none;
@@ -5042,10 +5067,16 @@ img.mfp-img {
     #left div.othernews #like-acle-slider .slider-block .right .small-desc p{display: none;}
     
     #left div.othernews #like-acle-slider .slider-block .right .small-desc{ height: auto;}
-    #left .single div.listing div.content div.right {height: 145px;}
+    /*#left .single div.listing div.content div.right {height: 145px;}*/
     #left div.othernews #like-acle-slider .slider-block .left .imgholder .like-art-date{right: 6px;}
     #left div.othernews #like-acle-slider .bx-wrapper .bx-controls-direction a{margin-top: -100px;}
     /*==== </Like News> ====*/
+    
+    /*==== <Top Social> ====*/
+    #left div.single .doc-date-top{height: 20px;}
+    #left div.single .doc-date-top .social_btn_top{display: none;}
+    #left div.single .doc-date-top .dd_right{float:left; margin-left: 5px; line-height: 20px;}
+    /*==== </Top Social> ====*/
 }
 
 
@@ -5063,6 +5094,14 @@ img.mfp-img {
     #left div.listing div.content div.right {height: 117px;}
     #left div.othernews #like-acle-slider .bx-wrapper .bx-controls-direction a{margin-top: -90px;}
     /*==== </Like News> ====*/
+    
+/*    #left div.single .content-gAd-bottom{
+        max-width: 293px;
+        padding-left: -3px;
+        overflow: hidden;
+    }*/
+    #left {padding-right: 0;}
+    #content_holder {padding-left: 0;}
 }
 
 

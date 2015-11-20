@@ -123,6 +123,9 @@ function loadGAdDesctop(blockName){
     
     toWrite         = '<!-- No Ads -->';
     writeCheck      = false;
+    responsive      = false;
+    blockClass      = '';
+    dataFormat      = 'auto';
     dataAdClient    = "ca-pub-6096727633142370";
 
     if( blockName == 'content noImg' ){
@@ -133,8 +136,16 @@ function loadGAdDesctop(blockName){
     }
     if( blockName == 'content bottom Netboard' ){
         /* Bottom Content Netboard */
-        adStyle         = "display:inline-block;width:580px;height:400px";
-        dataAdSlot      = "5547096043";
+//        adStyle         = "display:inline-block;width:580px;height:400px";
+//        dataAdSlot      = "5547096043";
+//        writeCheck      = true;
+
+        /* Content Bottom Netboard Block - 2 "Respon" */
+        responsive      = true;
+        adStyle         = "display:block";
+        dataAdSlot      = "8216029246";
+        dataFormat      = 'rectangle';
+        blockClass      = 'gad-bottom-respon';
         writeCheck      = true;
     }
     if( blockName == 'right top' ){
@@ -165,7 +176,17 @@ function loadGAdDesctop(blockName){
                     (adsbygoogle = window.adsbygoogle || []).push({}); \
                     </script>';
         
-//        document.write(toWrite);
+        if(responsive == true){
+            toWrite = '<ins class="adsbygoogle '+blockClass+'" \
+                         style="'+adStyle+'" \
+                         data-ad-client="'+dataAdClient+'" \
+                         data-ad-slot="'+dataAdSlot+'" \
+                         data-ad-format="'+dataFormat+'" \
+                    </ins> \
+                    <script> \
+                    (adsbygoogle = window.adsbygoogle || []).push({}); \
+                    </script>';
+        }
     }
     
     return toWrite;
@@ -227,7 +248,7 @@ function ifDesktop(){
         {
             speed: 1000,
             pause: 6000,
-            auto: false,
+            auto: true,
             //randomStart: true,
             pager: false
         });
@@ -281,7 +302,7 @@ function ifDesktop(){
     }
     // </show this cat>
 
-    $('#right-ajax-block').load('/ajax/background/get_right_hc/');
+//    $('#right-ajax-block').load('/ajax/background/get_right_hc/');
 
     // <serp result add link>
     if($('.serp_block').length > 0){
@@ -297,6 +318,6 @@ function ifDesktop(){
     
     
     //Load Games
-    setTimeout('$("#bottom-games").load("/html/bottom-games.html");', 10000);
+//    setTimeout('$("#bottom-games").load("/html/bottom-games.html");', 10000);
 }
 //===================== <if Desktop> =====================//

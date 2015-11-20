@@ -251,10 +251,16 @@
     #left div.othernews #like-acle-slider .slider-block .right .small-desc p{display: none;}
     
     #left div.othernews #like-acle-slider .slider-block .right .small-desc{ height: auto;}
-    #left .single div.listing div.content div.right {height: 145px;}
+    /*#left .single div.listing div.content div.right {height: 145px;}*/
     #left div.othernews #like-acle-slider .slider-block .left .imgholder .like-art-date{right: 6px;}
     #left div.othernews #like-acle-slider .bx-wrapper .bx-controls-direction a{margin-top: -100px;}
     /*==== </Like News> ====*/
+    
+    /*==== <Top Social> ====*/
+    #left div.single .doc-date-top{height: 20px;}
+    #left div.single .doc-date-top .social_btn_top{display: none;}
+    #left div.single .doc-date-top .dd_right{float:left; margin-left: 5px; line-height: 20px;}
+    /*==== </Top Social> ====*/
 }
 
 
@@ -272,4 +278,12 @@
     #left div.listing div.content div.right {height: 117px;}
     #left div.othernews #like-acle-slider .bx-wrapper .bx-controls-direction a{margin-top: -90px;}
     /*==== </Like News> ====*/
+    
+/*    #left div.single .content-gAd-bottom{
+        max-width: 293px;
+        padding-left: -3px;
+        overflow: hidden;
+    }*/
+    #left {padding-right: 0;}
+    #content_holder {padding-left: 0;}
 }

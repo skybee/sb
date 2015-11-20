@@ -18,7 +18,7 @@
         <link rel="stylesheet" type="text/css" href="/css/skin1/media-queries.css" />
         <link rel="stylesheet" type="text/css" href="/css/skin1/mobile_gads.css" />-->
         
-        <link rel="stylesheet" type="text/css" href="/css/all-style.min.css?v=13-11-01-50" />
+        <link rel="stylesheet" type="text/css" href="/css/all-style.min.css?v=21-11-01-30" />
         
         
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -36,7 +36,7 @@
         <script type='text/javascript' src='/js/skin1/sb.js'></script>-->
             
         <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-        <script async type='text/javascript' src='/js/all-files.min.js?v=13-11-02-25'></script>
+        <script async type='text/javascript' src='/js/all-files.min.js?v=21-11-01-35'></script>
         
     </head>
 
