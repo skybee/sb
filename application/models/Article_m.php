@@ -471,7 +471,7 @@ class Article_m extends CI_Model{
             $this->db->query("INSERT INTO `article_top` SET `article_id` = '{$id}', `ip` = '{$ip}', `rank` = {$rank} ");
             
             if( rand(1, 1000) <= 50 ){ //удаление старых записей
-                $control_date   = date("Y-m-d H:i:s", strtotime("- 30 day", time() ) ); //дата удаления записи
+                $control_date   = date("Y-m-d H:i:s", strtotime("- 60 day", time() ) ); //дата удаления записи
                 
                 $this->db->query("DELETE FROM `article_top` WHERE `date` < '{$control_date}' ");
             }
