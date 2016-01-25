@@ -58,13 +58,21 @@ class Main extends CI_Controller {
 
     function document($url_id_name) {
         
+        if(preg_match("#hi-tech/robotics#i", $_SERVER['REQUEST_URI'])){ //TMP Robots Abuse
+            show_404();
+            exit();
+        }
+        
         preg_match("#-(\d+)-(.+)#i", $url_id_name, $url_id_name_ar); //зазбор URL_name
         $doc_id = $url_id_name_ar[1];
         $doc_urlname = $url_id_name_ar[2];
 
         $data_ar['doc_data']            = $this->article_m->get_doc_data($doc_id);
         if (!$data_ar['doc_data']){
-            show_404();
+            $cat_url = preg_replace("#/-\d+-\S+?/$#i", '/', $_SERVER['REQUEST_URI']);
+            header("HTTP/1.1 301 Moved Permanently");
+            header("Location: {$cat_url}#404");
+            exit();
         }
 
         $right['serp_list'] = serpDataFromJson($data_ar['doc_data']['serp_object']);
