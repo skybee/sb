@@ -18,7 +18,7 @@
         <link rel="stylesheet" type="text/css" href="/css/skin1/media-queries.css" />
         <link rel="stylesheet" type="text/css" href="/css/skin1/mobile_gads.css" />-->
         
-        <link rel="stylesheet" type="text/css" href="/css/all-style.min.css?v=21-11-01-30" />
+        <link rel="stylesheet" type="text/css" href="/css/all-style.min.css?v=21-11-02-07" />
         
         
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
