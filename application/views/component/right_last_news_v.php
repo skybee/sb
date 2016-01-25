@@ -35,9 +35,6 @@
     </div>
 </div>
 
-<div class="right_gad_block">
-    <span class="gAd" data="right top"></span>
-</div>
 
 <style>
     #unit_83636 td{
@@ -64,6 +61,50 @@
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(sc, s);
   }());
 </script>
+
+
+
+
+<div class="right_gad_block">
+    <span class="gAd" data="right top"></span>
+</div>
+
+<div id="unit_83763" style="float:left;margin:0 0 20px 8px;"><!--<a href="http://smi2.net/">Новости СМИ2</a>--></div>
+<script type="text/javascript" charset="utf-8">
+  (function() {
+    var sc = document.createElement('script'); sc.type = 'text/javascript'; sc.async = true;
+    sc.src = '//news.smi2.ru/data/js/83763.js'; sc.charset = 'utf-8';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(sc, s);
+  }());
+</script>
+
+<!--<div id="unit_83636" style="float:left;margin:0 0 20px 8px;"><a href="http://smi2.net/">Новости СМИ2</a></div>
+<script type="text/javascript" charset="utf-8">
+  (function() {
+    var sc = document.createElement('script'); sc.type = 'text/javascript'; sc.async = true;
+    sc.src = '//news.smi2.ru/data/js/83636.js'; sc.charset = 'utf-8';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(sc, s);
+  }());
+</script>-->
+
+<!--<style>
+    .dir-adw td.da_adp_teaser{ 
+        border-bottom: 1px solid #009ddb !important; 
+        padding-top: 7px !important;
+        padding-bottom: 7px !important; 
+    }
+    
+    .dir-adw .da_adp_title{vertical-align: middle !important;}
+    .dir-adw .da_adp_title a{
+        font-size: 14px !important;
+        line-height: 18px;
+    }
+    .dir-adw .da_adp_title a:hover{color: #009ddb !important;}
+</style>
+    
+<div class="dir-adw" style="float:left;margin:0 0 20px 8px;">
+    <script>(function(e){var t="DIV_DA_"+e+"_"+parseInt(Math.random()*1e3); document.write('<div id="'+t+'" class="directadvert-block directadvert-block-'+e+'"></div>'); if("undefined"===typeof loaded_blocks_directadvert){loaded_blocks_directadvert=[]; function n(){var e=loaded_blocks_directadvert.shift(); var t=e.adp_id; var r=e.div; var i=document.createElement("script"); i.type="text/javascript"; i.async=true; i.charset="windows-1251"; i.src="//code.directadvert.ru/show.cgi?async=1&adp="+t+"&div="+r+"&t="+Math.random(); var s=document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]; s.appendChild(i); var o=setInterval(function(){if(document.getElementById(r).innerHTML&&loaded_blocks_directadvert.length){n(); clearInterval(o)}},50)} setTimeout(n)}loaded_blocks_directadvert.push({adp_id:e,div:t})})(263717)</script>
+</div>-->
 
 <!--
 <div id="right-ajax-block">
