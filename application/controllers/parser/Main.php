@@ -76,7 +76,7 @@ class Main extends CI_Controller
         header("Content-type:text/html;Charset=utf-8");
         
         
-        if( $this->single_work( 15, 'parse_news') == false ) exit('The work temporary Lock');
+        if( $this->single_work( 5, 'parse_news') == false ) exit('The work temporary Lock');
         
         $parse_list = $this->parser_m->get_news_url_to_parse( $cnt_news );
         
@@ -93,6 +93,10 @@ class Main extends CI_Controller
 //            $news_ar['url']     = 'http://hochu.ua/cat-sex/we-and-men/article-56119-kak-reagirovat-esli-kenu-perestali-nravitsya-barbi/';  
 //            $news_ar['host']    = 'hochu.ua';
             #</for test>
+            
+            if(preg_match("#robohunter#i", $news_ar['url'])){
+                continue;
+            }
             
             $html = $this->news_parser_lib->down_with_curl( $news_ar['url'] );
             
