@@ -158,6 +158,14 @@ class parseTsn extends parse_page{
 
 class parseKorrespondent extends parse_page{
     
+    function predParseHTML($html)
+    {
+        if(stripos($html, 'http://dynamo.kiev.ua') != false)
+        {
+            return '';
+        }
+    }
+    
     function parseDOM(){
         if( is_object( $this->html_obj->find('.post-item__photo img',0) ) ){
             $this->data['img']      = $this->html_obj->find('.post-item__photo img',0)->src;
