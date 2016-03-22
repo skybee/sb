@@ -60,6 +60,8 @@
         else{
             define('ENVIRONMENT', 'production');
         }
+        
+        include_once './ref-spam-ban.php';
 
 /*
  *---------------------------------------------------------------

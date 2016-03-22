@@ -144,6 +144,12 @@
                                 </div>
                             </div>
                         <?php endforeach; ?>
+                        <div class="footer_acb_main_cat">
+                            <a href="javascript:void(0)" class="footer_main_cat_a">Партнеры:</a><br />
+                            <div class="footer_acb_sec_cat">
+                                <a href="http://smiexpress.ru/">SMI Express</a>
+                            </div>
+                        </div>
                     </div>
                     <div class="footer_contact">
                         <span>Контакты</span><br />

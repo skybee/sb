@@ -157,9 +157,19 @@
         <div class="lnl_news">
             <span>
             </span>
+            <a <?=$hcRel?> href="http://cctv-pro.com.ua/" > Видеонаблюдение "CCTV Pro"</a>
+        </div>
+        <div class="lnl_news">
+            <span>
+            </span>
             <a <?=$hcRel?> href="http://house-control.org.ua/category/cctv-systems/" > Видеонаблюдение - система IP камер</a>
         </div>
     <?php elseif( $_SERVER['REQUEST_URI'] == '/hi-tech/' ): ?>
+        <div class="lnl_news">
+            <span>
+            </span>
+            <a <?=$hcRel?> href="http://cctv-pro.com.ua/category/CCTV-Cameras/" > Камеры для систем видеонаблюдения от "CCTV Pro - Украина"</a>
+        </div>
         <div class="lnl_news">
             <span>
             </span>
