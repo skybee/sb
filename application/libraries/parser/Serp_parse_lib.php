@@ -13,6 +13,12 @@ class Serp_parse_lib
 
     function getData($articleData)
     {
+        
+        if(isset($articleData['add_query']) && !empty($articleData['add_query']))
+        {
+            $this->yandexUrl = $this->yandexUrl.$articleData['add_query'];
+        }
+        
         $title      = $this->cleanQuery($articleData['title']);
         $queryUrl   = $this->yandexUrl .'&query='.$title;
         $serpXmlStr = $this->down_with_curl($queryUrl);
