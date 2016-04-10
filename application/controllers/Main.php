@@ -200,6 +200,51 @@ class Main extends CI_Controller {
         $this->load->view('main_v', $tpl_ar);
     }
     
+    function subnews($subHost){
+        $this->output->cache(60*24);
+        
+        $mirrorAr   = $this->getMirrorHostArray();
+        $newsHost   = $mirrorAr[$subHost];
+        $query      = "site:{$newsHost}";
+        
+        $param['title']     = $query;
+        $param['add_query'] = '&within=1';
+        
+        $this->load->library('parser/Serp_parse_lib');
+        $serpData = $this->serp_parse_lib->getData($param);
+        
+        // ----------------- CONTENT ------------------ //
+        $content = '';
+        foreach ($serpData as $row)
+        {
+            $url = str_ireplace($newsHost, $subHost, $row['url']);
+            $content .= "\n<p>\n";
+            $content .= '<a href="'.$url.'">'.$row['title'].'</a><br />'."\n";
+            $content .= $row['text'];
+            $content .= "\n</p>\n";
+        }
+        $content .= '<p><a href="//'.$subHost.'">'.$subHost.'</a></p>';
+        // ----------------- /CONTENT ------------------ //
+        
+        $data_ar['main_menu_list']      = $this->list_m->get_cat(0);
+        $data_ar['second_menu_list']    = $this->list_m->get_cat(1);
+        $data_ar['footer_menu_list']    = $this->list_m->get_footer_cat_link();
+        $mobile_menu_list               = $this->list_m->getMenuListForMobile();
+        $data_ar['meta']['title']       = $subHost;
+        
+        $top_slider['articles']         = $this->article_m->get_top_slider_data(1, 8, $this->catConfig['right_top_news_time'], $this->topSliderTxtLength, true, true); // 1.5 sec.
+        $right['right_top']             = $this->article_m->get_top_slider_data(1, 5, $this->catConfig['right_top_news_time'], $this->topSliderTxtLength, true, true, 'right_top');
+        
+        $right['last_news']              = $this->article_m->get_last_left_news( 1, 50 );
+        
+        $tpl_ar                 = $data_ar; //== !!! tmp
+        $tpl_ar['content']      = $content;
+        $tpl_ar['top_slider']   = $this->load->view('component/slider_top_v', $top_slider, true);
+        $tpl_ar['right']        = $this->load->view('component/right_last_news_v', $right, true);
+        $tpl_ar['mobile_menu']  = $this->load->view('component/mobile_menu_v', array('mobile_menu_list'=>$mobile_menu_list), true);
+
+        $this->load->view('main_v', $tpl_ar);
+    }
     
     
     
@@ -245,6 +290,40 @@ class Main extends CI_Controller {
         $data['html'] = $html;
         
         $this->load->view('page/spe_link_v', $data );
+    }
+    
+    
+    private function getMirrorHostArray(){
+        return $mirrorAr = array(
+                    'ya-mirror.lh'              =>'tsn.ua',
+
+                    'tsn.odnako.su'             =>'tsn.ua',
+                    'unn.odnako.su'             =>'www.unn.com.ua',
+                    'korrespondent.odnako.su'   =>'korrespondent.net',
+                    'segodnya.odnako.su'        =>'www.segodnya.ua',
+                    'liga.odnako.su'            =>'www.liga.net',
+                    'unian.odnako.su'           =>'www.unian.net',
+                    'pravda.odnako.su'          => 'www.pravda.com.ua',
+                    'gazeta.odnako.su'          => 'gazeta.ua',
+                    'obozrevatel.odnako.su'     => 'obozrevatel.com',
+                    'comments.odnako.su'        => 'comments.ua',
+                    'delo.odnako.su'            => 'delo.ua',
+                    'zn.odnako.su'              => 'zn.ua',
+                    'interfax.odnako.su'        => 'interfax.com.ua',
+
+                    'ria.odnako.su'             => 'ria.ru',
+                    'kp.odnako.su'              => 'www.kp.ru',
+                    'rg.odnako.su'              => 'rg.ru',
+                    'gazeta-ru.odnako.su'       => 'www.gazeta.ru',
+                    'rbc.odnako.su'             => 'www.rbc.ru',
+                    'aif.odnako.su'             => 'www.aif.ru',
+                    'kommersant.odnako.su'      => 'www.kommersant.ru',
+                    'vesti.odnako.su'           => 'www.vesti.ru',
+                    'mk.odnako.su'              => 'www.mk.ru',
+                    'izvestia.odnako.su'        => 'izvestia.ru',
+                    '1tv.odnako.su'             => 'www.1tv.ru',
+                    'tass.odnako.su'            => 'tass.ru'
+                    );
     }
 
 }
