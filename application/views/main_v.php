@@ -6,7 +6,7 @@
         <title><?= $meta['title'] ?></title>
         <link rel="shortcut icon" href="/img/favico.png" type="image/png" />
         
-<!--        <link rel="stylesheet" type="text/css" href="/css/skin1/style.css" />
+        <link rel="stylesheet" type="text/css" href="/css/skin1/style.css" />
         <link rel="stylesheet" type="text/css" href="/css/skin1/featured_long_style.css" />
         <link rel="stylesheet" type="text/css" href="/css/skin1/featured_long.css" />
         <link rel="stylesheet" type="text/css" href="/css/skin1/default.css" />
@@ -16,9 +16,9 @@
         <link rel="stylesheet" type="text/css" href="/css/skin1/jquery.bxslider.css" />
         <link rel="stylesheet" type="text/css" href="/css/skin1/mobile.css" />
         <link rel="stylesheet" type="text/css" href="/css/skin1/media-queries.css" />
-        <link rel="stylesheet" type="text/css" href="/css/skin1/mobile_gads.css" />-->
+        <link rel="stylesheet" type="text/css" href="/css/skin1/mobile_gads.css" />
         
-        <link rel="stylesheet" type="text/css" href="/css/all-style.min.css?v=21-11-02-07" />
+        <!--<link rel="stylesheet" type="text/css" href="/css/all-style.min.css?v=21-11-02-07" />-->
         
         
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -144,12 +144,9 @@
                                 </div>
                             </div>
                         <?php endforeach; ?>
-                        <div class="footer_acb_main_cat">
-                            <a href="javascript:void(0)" class="footer_main_cat_a">Партнеры:</a><br />
-                            <div class="footer_acb_sec_cat">
-                                <a href="http://smiexpress.ru/">SMI Express</a>
-                            </div>
-                        </div>
+                        
+
+                        
                     </div>
                     <div class="footer_contact">
                         <span>Контакты</span><br />

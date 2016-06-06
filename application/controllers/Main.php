@@ -16,6 +16,7 @@ class Main extends CI_Controller {
         $this->load->driver('cache');
         $this->load->config('category');
         $this->load->library('cat_lib');
+        $this->load->library('Express_news_lib');
         
         $this->catNameAr = $this->cat_lib->getCatFromUri();
         $this->catConfig = $this->cat_lib->getCatConfig();
@@ -28,7 +29,12 @@ class Main extends CI_Controller {
     function index(){ $this->main_page('news'); }
 
     function main_page($cat_name) {
-        $this->output->cache( $this->catConfig['cache_time']['main_page'] );
+//        $this->output->cache( $this->catConfig['cache_time']['main_page'] );
+        
+        if($cat_name == 'news')
+        {
+            $data_ar['express_news'] = $this->express_news_lib->get_news();
+        }
 
         $data_ar['main_cat_ar']         = $this->article_m->get_cat_data_from_url_name($cat_name);
         
@@ -322,7 +328,9 @@ class Main extends CI_Controller {
                     'mk.odnako.su'              => 'www.mk.ru',
                     'izvestia.odnako.su'        => 'izvestia.ru',
                     '1tv.odnako.su'             => 'www.1tv.ru',
-                    'tass.odnako.su'            => 'tass.ru'
+                    'tass.odnako.su'            => 'tass.ru',
+    
+                    'deutsch-express.com'       => 'www.spiegel.de'
                     );
     }
 

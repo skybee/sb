@@ -13,7 +13,7 @@
 	#RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
 	#RewriteRule ^(.*)$ http://%1/$1 [R=301,L]
 
-        RewriteCond %{HTTP_HOST} !^(mobile.|)odnako.(su|lh)$ [NC]
+        RewriteCond %{HTTP_HOST} !^odnako\.(su|lh)$ [NC]
         RewriteRule ^(.*)$ http://odnako.su/$1 [L,R=301]
 	
 	#Close slash 

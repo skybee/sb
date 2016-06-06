@@ -249,4 +249,22 @@ class Tmp extends CI_Controller{
             sleep(3);
         }
     }
+    
+    function test_server_ip_log()
+    {
+        $fname = './test_server_ip.log';
+        
+        $logStr = '';
+        
+        if(is_file($fname))
+        {
+            $logStr = file_get_contents($fname);
+        }
+        
+        $addLogStr = date("H:i:s Y-m-d").' '.$_SERVER['HTTP_X_REAL_IP']."\n";
+        
+        $logStr .= $addLogStr;
+        
+        file_put_contents($fname, $logStr);
+    }
 }
