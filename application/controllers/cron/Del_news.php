@@ -21,8 +21,6 @@ class Del_news extends CI_Controller{
                 . "`views`=0 "
                 . "AND  "
                 . "`date`<'{$date}' "
-                . "AND  "
-                . "`cat_id` IN ( 4, 5, 6, 7, 8, 9, 10, 11 ) "
                 . "LIMIT {$cnt}";
                 
         $query = $this->db->query($sql);
