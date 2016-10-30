@@ -90,10 +90,10 @@ if( $_SERVER['HTTP_HOST'] == 'odnako.su')
 }
 
 
-$db['default']['hostname'] = 'localhost';
-$db['default']['username'] = 'admin_sb';
-$db['default']['password'] = '1865tsbqwerty';
-$db['default']['database'] = 'admin_news';
+    $db['default']['hostname'] = 'localhost';
+    $db['default']['username'] = 'admin_odnako';
+    $db['default']['password'] = '1865tsbqwerty';
+    $db['default']['database'] = 'admin_odnako';
 
 
 if( $_SERVER['HTTP_HOST'] != 'odnako.su' ){
@@ -103,8 +103,8 @@ if( $_SERVER['HTTP_HOST'] != 'odnako.su' ){
 //    $db['default']['password'] = 'mysql';
 //    $db['default']['database'] = 'sb';
 
-    $db['default']['hostname'] = '92.63.109.20';
-    $db['default']['username'] = 'admin_sb';
+    $db['default']['hostname'] = '5.9.104.44';
+    $db['default']['username'] = 'admin_odnako';
     $db['default']['password'] = '1865tsbqwerty';
-    $db['default']['database'] = 'admin_news';
+    $db['default']['database'] = 'admin_odnako';
 }
