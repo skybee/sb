@@ -37,7 +37,9 @@ class Express_news_lib{
             'smiexpress.ru',
             'en.francais-express.com',
             'de.francais-express.com',
-            'francais-express.com');
+            'francais-express.com',
+            'us.pressfrom.com',
+            'ca.pressfrom.com');
         
         return $hosts;
     }
