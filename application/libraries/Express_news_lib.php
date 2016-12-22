@@ -39,7 +39,9 @@ class Express_news_lib{
             'de.francais-express.com',
             'francais-express.com',
             'us.pressfrom.com',
-            'ca.pressfrom.com');
+            'ca.pressfrom.com',
+            'au.pressfrom.com',
+            'tr.pressfrom.com');
         
         return $hosts;
     }
