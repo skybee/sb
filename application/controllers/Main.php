@@ -110,6 +110,7 @@ class Main extends CI_Controller {
         $top_slider['articles']         = $this->article_m->get_top_slider_data( $data_ar['cat_ar']['id'], 8, $this->catConfig['top_news_time'], $this->topSliderTxtLength, true, false);
         $right['right_top']             = $this->article_m->get_top_slider_data( $data_ar['cat_ar']['parent_id'], 5, $this->catConfig['right_top_news_time'], $this->topSliderTxtLength, true, true, 'right_top');
         $right['last_news']             = $this->article_m->get_last_left_news( $data_ar['cat_ar']['parent_id'], 20 );
+        $right['sape_donor_link']       = get_sape_donor_link();
         
 //        $this->load->helper('sape');
 //        $right['sape_link']    = getSapeLink();

@@ -154,11 +154,13 @@
     ?>
     
     
+    <?php if(!empty($sape_donor_link)):?>
     <div class="lnl_news">
         <span>
         </span>
-        <a href="http://express.odnako.su/" >Новости Express</a>
+        <?=$sape_donor_link?>
     </div>
+    <?php endif;?>
     
     
     <?php if( $_SERVER['REQUEST_URI'] == '/' ): //HC Link ?>
