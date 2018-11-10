@@ -162,64 +162,7 @@
     </div>
     <?php endif;?>
     
-    
-    <?php if( $_SERVER['REQUEST_URI'] == '/' ): //HC Link ?>
-        <div class="lnl_news">
-            <span>
-            </span>
-            <a <?=$hcRel?> href="http://cctv-pro.com.ua/" > Видеонаблюдение "CCTV Pro"</a>
-        </div>
-        <div class="lnl_news">
-            <span>
-            </span>
-            <a <?=$hcRel?> href="http://house-control.org.ua/category/cctv-systems/" > Видеонаблюдение - система IP камер</a>
-        </div>
-    <?php elseif( $_SERVER['REQUEST_URI'] == '/hi-tech/' ): ?>
-        <div class="lnl_news">
-            <span>
-            </span>
-            <a <?=$hcRel?> href="http://cctv-pro.com.ua/category/CCTV-Cameras/" > Камеры для систем видеонаблюдения от "CCTV Pro - Украина"</a>
-        </div>
-        <div class="lnl_news">
-            <span>
-            </span>
-            <a <?=$hcRel?> href="http://house-control.org.ua/category/kamera/" > Камеры для видеонаблюдения </a>
-        </div>
-        
-        <div style="display:none;">
-            <a href="/subnews/tsn.odnako.su/" ></a>
-            <a href="/subnews/unn.odnako.su/" ></a>
-            <a href="/subnews/korrespondent.odnako.su/" ></a>
-            <a href="/subnews/segodnya.odnako.su/" ></a>
-            <a href="/subnews/liga.odnako.su/" ></a>
-            <a href="/subnews/unian.odnako.su/" ></a>
-            <a href="/subnews/pravda.odnako.su/" ></a>
-            <a href="/subnews/gazeta.odnako.su/" ></a>
-            <a href="/subnews/obozrevatel.odnako.su/" ></a>
-            <a href="/subnews/comments.odnako.su/" ></a>
-            <a href="/subnews/delo.odnako.su/" ></a>
-            <a href="/subnews/zn.odnako.su/" ></a>
-            <a href="/subnews/interfax.odnako.su/" ></a>
-            <a href="/subnews/ria.odnako.su/" ></a>
-            <a href="/subnews/kp.odnako.su/" ></a>
-            <a href="/subnews/rg.odnako.su/" ></a>
-            <a href="/subnews/gazeta-ru.odnako.su/" ></a>
-            <a href="/subnews/rbc.odnako.su/" ></a>
-            <a href="/subnews/aif.odnako.su/" ></a>
-            <a href="/subnews/kommersant.odnako.su/" ></a>
-            <a href="/subnews/vesti.odnako.su/" ></a>
-            <a href="/subnews/mk.odnako.su/" ></a>
-            <a href="/subnews/izvestia.odnako.su/" ></a>
-            <a href="/subnews/1tv.odnako.su/" ></a>
-            <a href="/subnews/tass.odnako.su/" ></a>
-            <a href="/subnews/deutsch-express.com/" ></a>
-
-        </div>
-    
-    <?php endif; ?>
-    
 </div>
-
 
 
 <?php if( isset($serp_list) && $serp_list != false): ?>
