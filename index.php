@@ -62,6 +62,14 @@
         }
         
         include_once './ref-spam-ban.php';
+        
+        
+        // PressFromInfo Redirect //
+        if(preg_match("#^/(us|ca|uk|de|fr|au|ru)/#i", $_SERVER['REQUEST_URI'])){
+            header("HTTP/1.1 301 Moved Permanently"); 
+            header("Location: https://pressfrom.info{$_SERVER['REQUEST_URI']}"); 
+            exit();
+        }
 
 /*
  *---------------------------------------------------------------
